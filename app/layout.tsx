@@ -18,10 +18,33 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600"],
 });
 
+const description =
+  "Our new collection and online store are currently being crafted. We'll be back soon.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.justonpointng.com"),
   title: "OnPoint Clothing — Coming Soon",
-  description:
-    "Our new collection and online store are currently being crafted. We'll be back soon.",
+  description,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "OnPoint Clothing — Coming Soon",
+    description,
+    url: "/",
+    siteName: "OnPoint Clothing",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OnPoint Clothing — Coming Soon",
+    description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
