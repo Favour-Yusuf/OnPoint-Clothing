@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="relative flex min-h-dvh flex-col justify-between overflow-hidden bg-background px-6 py-10 sm:px-12 sm:py-14 lg:px-20 lg:py-16">
@@ -11,9 +13,14 @@ export default function Home() {
       />
 
       <header className="animate-fade-in-up relative z-10 text-center sm:text-left">
-        <p className="font-sans text-xs font-medium tracking-[0.35em] text-foreground/70 uppercase">
-          OnPoint Clothing
-        </p>
+        <Image
+          src="/onpointTradeMarkWhite.png"
+          alt="OnPoint Clothing"
+          width={2025}
+          height={873}
+          priority
+          className="inline-block h-8 w-auto sm:h-9"
+        />
       </header>
 
       <main className="animate-fade-in-up animation-delay-500 relative z-10 flex flex-1 flex-col items-center justify-center gap-6 py-16 text-center sm:items-start sm:text-left">
