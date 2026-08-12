@@ -1,0 +1,66 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { filterProducts, getAvailableColors, getAvailableSizes, getCategory, type SortOption } from "@/lib/products";
+import { ShopPageContent } from "@/components/shop/shop-page-content";
+
+const VALID_CATEGORIES = ["men", "women", "accessories", "new-arrivals"] as const;
+
+const COPY: Record<string, { title: string; description: string }> = {
+  men: { title: "Men", description: "Considered tailoring for everyday and occasion." },
+  women: { title: "Women", description: "Tailoring and eveningwear built on precise construction." },
+  accessories: { title: "Accessories", description: "The finishing details — leather, silk, and metal." },
+  "new-arrivals": { title: "New Arrivals", description: "The latest additions to the collection." },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  const copy = COPY[category];
+  return { title: copy?.title ?? "Shop" };
+}
+
+export default async function ShopCategoryPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ category: string }>;
+  searchParams: Promise<{ size?: string; color?: string; sort?: string }>;
+}) {
+  const { category } = await params;
+  if (!VALID_CATEGORIES.includes(category as (typeof VALID_CATEGORIES)[number])) {
+    notFound();
+  }
+
+  const query = await searchParams;
+  const isNewArrivals = category === "new-arrivals";
+
+  const scopedProducts = await filterProducts({
+    category: isNewArrivals ? undefined : category,
+    newOnly: isNewArrivals || undefined,
+  });
+
+  const products = await filterProducts({
+    category: isNewArrivals ? undefined : category,
+    newOnly: isNewArrivals || undefined,
+    size: query.size,
+    color: query.color,
+    sort: query.sort as SortOption | undefined,
+  });
+
+  const categoryMeta = isNewArrivals ? undefined : await getCategory(category);
+  const copy = COPY[category];
+
+  return (
+    <ShopPageContent
+      eyebrow="Shop"
+      title={categoryMeta?.name ?? copy.title}
+      description={categoryMeta?.description ?? copy.description}
+      products={products}
+      availableSizes={getAvailableSizes(scopedProducts)}
+      availableColors={getAvailableColors(scopedProducts)}
+    />
+  );
+}

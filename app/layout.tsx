@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/lib/cart-context";
+import { UIProvider } from "@/lib/ui-context";
+import { Header } from "@/components/layout/header";
+import { MobileNav } from "@/components/layout/mobile-nav";
+import { SearchOverlay } from "@/components/layout/search-overlay";
+import { Footer } from "@/components/layout/footer";
+import { CartDrawer } from "@/components/cart/cart-drawer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,11 +26,14 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 const description =
-  "Our new collection and online store are currently being crafted. We'll be back soon.";
+  "OnPoint Clothing — nineteen years of tailoring and considered design. Shop ready-to-wear and bespoke.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justonpointng.com"),
-  title: "OnPoint Clothing — Coming Soon",
+  title: {
+    default: "OnPoint Clothing — 19 Years of Craft",
+    template: "%s | OnPoint Clothing",
+  },
   description,
   alternates: {
     canonical: "/",
@@ -33,7 +43,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "OnPoint Clothing — Coming Soon",
+    title: "OnPoint Clothing — 19 Years of Craft",
     description,
     url: "/",
     siteName: "OnPoint Clothing",
@@ -42,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OnPoint Clothing — Coming Soon",
+    title: "OnPoint Clothing — 19 Years of Craft",
     description,
   },
 };
@@ -53,7 +63,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col bg-background text-foreground">
+        <CartProvider>
+          <UIProvider>
+            <Header />
+            <MobileNav />
+            <SearchOverlay />
+            <CartDrawer />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </UIProvider>
+        </CartProvider>
+      </body>
     </html>
   );
 }

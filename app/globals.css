@@ -5,6 +5,8 @@
   --foreground: #f2f0ee;
   --color-burgundy: #6d0f1f;
   --color-burgundy-glow: #7a1526;
+  --color-burgundy-light: #9c1f30;
+  --color-paper-dim: #e9e4da;
 }
 
 @theme inline {
@@ -12,6 +14,8 @@
   --color-foreground: var(--foreground);
   --color-burgundy: var(--color-burgundy);
   --color-burgundy-glow: var(--color-burgundy-glow);
+  --color-burgundy-light: var(--color-burgundy-light);
+  --color-paper-dim: var(--color-paper-dim);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-serif);
@@ -20,6 +24,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+::selection {
+  background: var(--color-burgundy);
+  color: var(--foreground);
+}
+
+/* Visible, on-brand keyboard focus ring (WCAG) */
+:focus-visible {
+  outline: 1px solid var(--color-burgundy-light);
+  outline-offset: 3px;
 }
 
 @keyframes fade-in-up {
@@ -82,4 +97,35 @@ body {
     opacity: 1;
     transform: none;
   }
+}
+
+/* Scroll-triggered reveal, paired with the useReveal hook (components/ui/reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Custom scrollbar for horizontally-scrolling editorial rails */
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }

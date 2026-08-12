@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/cart", "/checkout", "/account"],
     },
     sitemap: "https://www.justonpointng.com/sitemap.xml",
   };
