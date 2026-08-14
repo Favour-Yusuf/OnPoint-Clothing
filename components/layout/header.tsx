@@ -2,14 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { useUI } from "@/lib/ui-context";
+import { signOut } from "@/lib/actions/auth";
+import { useCurrentAccount } from "@/lib/use-current-account";
 import { BagIcon, MenuIcon, SearchIcon, UserIcon } from "@/components/ui/icons";
 import { NAV_LINKS } from "@/components/layout/nav-links";
 import { Logo } from "@/components/layout/logo";
 
 export function Header() {
+  const { isSignedIn, isAdmin } = useCurrentAccount();
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isCheckout = pathname.startsWith("/checkout");
@@ -72,13 +75,21 @@ export function Header() {
           >
             <SearchIcon className="h-[18px] w-[18px]" />
           </button>
-          <Link
-            href="/account"
-            aria-label="Account"
-            className="hidden h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground sm:flex"
-          >
-            <UserIcon className="h-[18px] w-[18px]" />
-          </Link>
+
+          <div className="hidden sm:block">
+            {isSignedIn ? (
+              <AccountMenu isAdmin={isAdmin} />
+            ) : (
+              <Link
+                href="/account"
+                aria-label="Account"
+                className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground"
+              >
+                <UserIcon className="h-[18px] w-[18px]" />
+              </Link>
+            )}
+          </div>
+
           <button
             type="button"
             onClick={openCart}
@@ -103,5 +114,82 @@ export function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+function AccountMenu({ isAdmin }: { isAdmin: boolean }) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) setOpen(false);
+    }
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [open]);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-label="Account menu"
+        aria-expanded={open}
+        aria-haspopup="menu"
+        className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground"
+      >
+        <UserIcon className="h-[18px] w-[18px]" />
+      </button>
+
+      {open ? (
+        <div
+          role="menu"
+          className="absolute top-full right-0 mt-2 w-48 border border-foreground/10 bg-background py-2 shadow-lg"
+        >
+          <MenuLink href="/account" onSelect={() => setOpen(false)}>
+            My Account
+          </MenuLink>
+          <MenuLink href="/account/orders" onSelect={() => setOpen(false)}>
+            Orders
+          </MenuLink>
+          {isAdmin ? (
+            <MenuLink href="/admin" onSelect={() => setOpen(false)}>
+              Admin Dashboard
+            </MenuLink>
+          ) : null}
+          <form action={signOut}>
+            <button
+              type="submit"
+              role="menuitem"
+              className="w-full px-4 py-2 text-left font-sans text-sm text-foreground/70 hover:bg-foreground/[0.04] hover:text-foreground"
+            >
+              Sign Out
+            </button>
+          </form>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function MenuLink({ href, onSelect, children }: { href: string; onSelect: () => void; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      role="menuitem"
+      onClick={onSelect}
+      className="block px-4 py-2 font-sans text-sm text-foreground/70 hover:bg-foreground/[0.04] hover:text-foreground"
+    >
+      {children}
+    </Link>
   );
 }

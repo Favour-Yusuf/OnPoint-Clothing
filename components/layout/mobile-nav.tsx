@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { useUI } from "@/lib/ui-context";
+import { useCurrentAccount } from "@/lib/use-current-account";
 import { CloseIcon, SearchIcon, UserIcon } from "@/components/ui/icons";
 import { NAV_LINKS } from "@/components/layout/nav-links";
 
 export function MobileNav() {
+  const { isAdmin } = useCurrentAccount();
   const { isMobileNavOpen, closeMobileNav, openSearch } = useUI();
 
   useEffect(() => {
@@ -58,13 +60,24 @@ export function MobileNav() {
         >
           <SearchIcon className="h-4 w-4" /> Search
         </button>
-        <Link
-          href="/account"
-          onClick={closeMobileNav}
-          className="flex items-center gap-2 font-sans text-xs font-medium tracking-[0.18em] text-foreground/70 uppercase hover:text-foreground"
-        >
-          <UserIcon className="h-4 w-4" /> Account
-        </Link>
+        <div className="flex items-center gap-5">
+          {isAdmin ? (
+            <Link
+              href="/admin"
+              onClick={closeMobileNav}
+              className="font-sans text-xs font-medium tracking-[0.18em] text-foreground/70 uppercase hover:text-foreground"
+            >
+              Admin
+            </Link>
+          ) : null}
+          <Link
+            href="/account"
+            onClick={closeMobileNav}
+            className="flex items-center gap-2 font-sans text-xs font-medium tracking-[0.18em] text-foreground/70 uppercase hover:text-foreground"
+          >
+            <UserIcon className="h-4 w-4" /> Account
+          </Link>
+        </div>
       </div>
     </div>
   );

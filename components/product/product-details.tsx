@@ -161,7 +161,7 @@ export function ProductDetails({ product }: { product: Product }) {
       <div className="flex flex-col border-t border-foreground/10">
         <DetailAccordion title="Details" items={product.details} />
         <DetailAccordion title="Care" items={product.care} />
-        <DetailAccordion title="Shipping & Returns" text="Complimentary shipping on orders over $200. Returns accepted within 30 days of delivery, unworn and with tags attached." />
+        <DetailAccordion title="Shipping & Returns" text="Complimentary shipping on orders over ₦20,000. Returns accepted within 30 days of delivery, unworn and with tags attached." />
       </div>
     </div>
   );

@@ -1,15 +1,12 @@
-import { products } from "@/lib/data/products";
-import { categories } from "@/lib/data/categories";
-import { collections } from "@/lib/data/collections";
-import type { Product } from "@/lib/types";
+import { createPublicClient } from "@/lib/supabase/public";
+import type { Category, Collection, CloudinaryImage, Product, ProductColor, ProductVariant } from "@/lib/types";
 
 /**
- * Product service layer. UI code should only ever import from here (or
- * lib/categories.ts / lib/collections.ts if added), never from lib/data/*
- * directly — that keeps a future database or CMS swap contained to this
- * file. Functions are async on purpose, even though the current
- * implementation is a synchronous in-memory read, so call sites already
- * look the way they will once this is backed by a real data source.
+ * Product service layer, backed by Supabase Postgres. UI code should only
+ * ever import from here (never from lib/data/* directly, and never query
+ * Supabase for catalog data outside this file) — that keeps the data source
+ * swap contained to this one module. Function names/signatures match the
+ * original mock-data version exactly so no component call sites changed.
  */
 
 export type SortOption = "featured" | "price-asc" | "price-desc" | "newest";
@@ -24,48 +21,180 @@ export type ProductFilters = {
   newOnly?: boolean;
 };
 
+// categories uses !inner so .eq("categories.slug", ...) filters actually
+// exclude non-matching products (a plain embed only filters the nested
+// object, not the parent row, per PostgREST's embedded-resource semantics).
+const PRODUCT_SELECT = `
+  id, slug, name, description, short_description, price, compare_at_price,
+  currency, details, care, is_new, is_bespoke_eligible, availability,
+  categories!inner ( slug ),
+  product_images ( url, alt, position ),
+  product_variants ( id, size, color_name, color_hex, sku, stock_quantity ),
+  product_collections ( collections ( slug ) )
+`;
+
+type ProductRow = {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  short_description: string;
+  price: number;
+  compare_at_price: number | null;
+  currency: "NGN";
+  details: string[];
+  care: string[];
+  is_new: boolean;
+  is_bespoke_eligible: boolean;
+  availability: Product["availability"];
+  categories: { slug: string } | null;
+  product_images: { url: string; alt: string; position: number }[];
+  product_variants: {
+    id: string;
+    size: string;
+    color_name: string;
+    color_hex: string;
+    sku: string;
+    stock_quantity: number;
+  }[];
+  product_collections: { collections: { slug: string } | null }[];
+};
+
+const toMajorUnits = (minorUnits: number) => minorUnits / 100;
+
+function mapProductRow(row: ProductRow): Product {
+  const images: CloudinaryImage[] = [...row.product_images]
+    .sort((a, b) => a.position - b.position)
+    .map((image) => ({ url: image.url, alt: image.alt }));
+
+  const variants: ProductVariant[] = row.product_variants.map((variant) => ({
+    id: variant.id,
+    size: variant.size,
+    color: variant.color_name,
+    sku: variant.sku,
+    inStock: variant.stock_quantity > 0,
+  }));
+
+  const sizes = Array.from(new Set(row.product_variants.map((v) => v.size)));
+  const colors: ProductColor[] = Array.from(
+    new Map(row.product_variants.map((v) => [v.color_name, { name: v.color_name, hex: v.color_hex }])).values()
+  );
+
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: row.name,
+    price: toMajorUnits(row.price),
+    compareAtPrice: row.compare_at_price != null ? toMajorUnits(row.compare_at_price) : undefined,
+    currency: row.currency,
+    categorySlug: row.categories?.slug ?? "",
+    collectionSlugs: row.product_collections.flatMap((pc) => (pc.collections ? [pc.collections.slug] : [])),
+    images,
+    shortDescription: row.short_description,
+    description: row.description,
+    details: row.details,
+    care: row.care,
+    sizes,
+    colors,
+    variants,
+    availability: row.availability,
+    isNew: row.is_new,
+    isBespokeEligible: row.is_bespoke_eligible,
+  };
+}
+
 export async function getAllProducts(): Promise<Product[]> {
-  return products;
+  const supabase = createPublicClient();
+  const { data, error } = await supabase.from("products").select(PRODUCT_SELECT).eq("is_active", true);
+  if (error) throw new Error(`getAllProducts: ${error.message}`);
+  return (data as unknown as ProductRow[]).map(mapProductRow);
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | undefined> {
-  return products.find((product) => product.slug === slug);
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("slug", slug)
+    .eq("is_active", true)
+    .maybeSingle();
+  if (error) throw new Error(`getProductBySlug: ${error.message}`);
+  return data ? mapProductRow(data as unknown as ProductRow) : undefined;
 }
 
 export async function getNewArrivals(limit?: number): Promise<Product[]> {
-  const results = products.filter((product) => product.isNew);
-  return typeof limit === "number" ? results.slice(0, limit) : results;
+  const supabase = createPublicClient();
+  let query = supabase.from("products").select(PRODUCT_SELECT).eq("is_active", true).eq("is_new", true);
+  if (typeof limit === "number") query = query.limit(limit);
+  const { data, error } = await query;
+  if (error) throw new Error(`getNewArrivals: ${error.message}`);
+  return (data as unknown as ProductRow[]).map(mapProductRow);
 }
 
 export async function getFeaturedProducts(limit = 4): Promise<Product[]> {
-  return products.slice(0, limit);
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("is_active", true)
+    .eq("is_featured", true)
+    .limit(limit);
+  if (error) throw new Error(`getFeaturedProducts: ${error.message}`);
+  const rows = (data as unknown as ProductRow[]).map(mapProductRow);
+  if (rows.length > 0) return rows;
+
+  // No products are marked featured yet (fresh seed) — fall back to the
+  // first `limit` active products so the homepage isn't empty.
+  const { data: fallbackData, error: fallbackError } = await supabase
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("is_active", true)
+    .limit(limit);
+  if (fallbackError) throw new Error(`getFeaturedProducts fallback: ${fallbackError.message}`);
+  return (fallbackData as unknown as ProductRow[]).map(mapProductRow);
 }
 
 export async function getRelatedProducts(product: Product, limit = 4): Promise<Product[]> {
-  const sameCategory = products.filter(
-    (candidate) => candidate.id !== product.id && candidate.categorySlug === product.categorySlug
-  );
-  return sameCategory.slice(0, limit);
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("is_active", true)
+    .eq("categories.slug", product.categorySlug)
+    .neq("id", product.id)
+    .limit(limit);
+  if (error) throw new Error(`getRelatedProducts: ${error.message}`);
+  return (data as unknown as ProductRow[]).map(mapProductRow);
 }
 
 export async function searchProducts(query: string): Promise<Product[]> {
-  const normalized = query.trim().toLowerCase();
+  const normalized = query.trim();
   if (!normalized) return [];
-  return products.filter((product) => {
-    const haystack = `${product.name} ${product.shortDescription} ${product.categorySlug}`.toLowerCase();
-    return haystack.includes(normalized);
-  });
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("is_active", true)
+    .or(`name.ilike.%${normalized}%,short_description.ilike.%${normalized}%`);
+  if (error) throw new Error(`searchProducts: ${error.message}`);
+  return (data as unknown as ProductRow[]).map(mapProductRow);
 }
 
 export async function filterProducts(filters: ProductFilters): Promise<Product[]> {
-  let results = [...products];
+  const supabase = createPublicClient();
+  let query = supabase.from("products").select(PRODUCT_SELECT).eq("is_active", true);
 
-  if (filters.newOnly) {
-    results = results.filter((product) => product.isNew);
-  }
-  if (filters.category) {
-    results = results.filter((product) => product.categorySlug === filters.category);
-  }
+  if (filters.newOnly) query = query.eq("is_new", true);
+  if (filters.category) query = query.eq("categories.slug", filters.category);
+  if (filters.query) query = query.ilike("name", `%${filters.query.trim()}%`);
+
+  const { data, error } = await query;
+  if (error) throw new Error(`filterProducts: ${error.message}`);
+  let results = (data as unknown as ProductRow[]).map(mapProductRow);
+
+  // Collection/size/color filters need the mapped shape (collectionSlugs,
+  // sizes, colors are derived client-side from joined rows), so they're
+  // applied in-memory after the DB round-trip rather than pushed into SQL.
   if (filters.collection) {
     results = results.filter((product) => product.collectionSlugs.includes(filters.collection!));
   }
@@ -76,10 +205,6 @@ export async function filterProducts(filters: ProductFilters): Promise<Product[]
     results = results.filter((product) =>
       product.colors.some((color) => color.name.toLowerCase() === filters.color!.toLowerCase())
     );
-  }
-  if (filters.query) {
-    const normalized = filters.query.trim().toLowerCase();
-    results = results.filter((product) => product.name.toLowerCase().includes(normalized));
   }
 
   switch (filters.sort) {
@@ -115,24 +240,62 @@ export function getAvailableColors(productList: Product[]): string[] {
   return Array.from(colors);
 }
 
-export async function getAllCategories() {
-  return categories;
+export async function getAllCategories(): Promise<Category[]> {
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("categories")
+    .select("slug, name, description, image_url")
+    .eq("is_active", true);
+  if (error) throw new Error(`getAllCategories: ${error.message}`);
+  return data.map((row) => ({
+    slug: row.slug,
+    name: row.name,
+    description: row.description ?? "",
+    image: { url: row.image_url ?? "", alt: row.name },
+  }));
 }
 
-export async function getCategory(slug: string) {
+export async function getCategory(slug: string): Promise<Category | undefined> {
+  const categories = await getAllCategories();
   return categories.find((category) => category.slug === slug);
 }
 
-export async function getAllCollections() {
-  return collections;
+type CollectionRow = {
+  slug: string;
+  name: string;
+  season: string | null;
+  description: string | null;
+  image_url: string | null;
+  product_collections: { products: { slug: string } | null }[];
+};
+
+export async function getAllCollections(): Promise<Collection[]> {
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("collections")
+    .select("slug, name, season, description, image_url, product_collections ( products ( slug ) )")
+    .eq("is_active", true);
+  if (error) throw new Error(`getAllCollections: ${error.message}`);
+  return (data as unknown as CollectionRow[]).map((row) => ({
+    slug: row.slug,
+    name: row.name,
+    season: row.season ?? "",
+    description: row.description ?? "",
+    image: { url: row.image_url ?? "", alt: row.name },
+    productSlugs: row.product_collections.flatMap((pc) => (pc.products ? [pc.products.slug] : [])),
+  }));
 }
 
-export async function getCollection(slug: string) {
+export async function getCollection(slug: string): Promise<Collection | undefined> {
+  const collections = await getAllCollections();
   return collections.find((collection) => collection.slug === slug);
 }
 
 export async function getCollectionProducts(slug: string): Promise<Product[]> {
-  const collection = collections.find((c) => c.slug === slug);
+  const collection = await getCollection(slug);
   if (!collection) return [];
-  return products.filter((product) => collection.productSlugs.includes(product.slug));
+  const supabase = createPublicClient();
+  const { data, error } = await supabase.from("products").select(PRODUCT_SELECT).in("slug", collection.productSlugs).eq("is_active", true);
+  if (error) throw new Error(`getCollectionProducts: ${error.message}`);
+  return (data as unknown as ProductRow[]).map(mapProductRow);
 }

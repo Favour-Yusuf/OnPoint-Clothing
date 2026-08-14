@@ -40,7 +40,7 @@ export type Product = {
   /** Price in the smallest sensible display unit for the currency (major units, e.g. dollars). */
   price: number;
   compareAtPrice?: number;
-  currency: "USD";
+  currency: "NGN";
   categorySlug: string;
   collectionSlugs: string[];
   images: CloudinaryImage[];
@@ -102,19 +102,63 @@ export type Customer = {
   fullName: string;
 };
 
-export type OrderStatus = "pending" | "confirmed" | "fulfilled" | "cancelled";
+export type Address = {
+  id: string;
+  label?: string | null;
+  fullName: string;
+  address1: string;
+  address2?: string | null;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  phone?: string | null;
+  isDefault?: boolean;
+};
+
+export type OrderStatus =
+  | "pending"
+  | "processing"
+  | "ready_for_delivery"
+  | "shipped"
+  | "delivered"
+  | "cancelled";
+
+export type PaymentStatus = "pending" | "paid" | "failed" | "refunded";
+
+export type OrderItem = {
+  id: string;
+  productName: string;
+  productSlug?: string | null;
+  imageUrl?: string | null;
+  size?: string | null;
+  color?: string | null;
+  quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+};
 
 export type Order = {
   id: string;
-  items: CartItem[];
-  subtotal: number;
-  shipping: number;
-  total: number;
+  orderNumber: string;
+  userId?: string | null;
+  customerName: string;
+  customerEmail: string;
+  customerPhone?: string | null;
   status: OrderStatus;
+  paymentStatus: PaymentStatus;
+  subtotal: number;
+  shippingFee: number;
+  discount: number;
+  total: number;
+  currency: string;
   shippingAddress: ShippingAddress;
-  email: string;
+  paystackReference?: string | null;
+  items: OrderItem[];
   createdAt: string;
 };
+
+export type BespokeStatus = "new" | "contacted" | "consultation" | "in_progress" | "completed" | "cancelled";
 
 export type BespokeRequest = {
   name: string;
@@ -123,3 +167,39 @@ export type BespokeRequest = {
   garmentType: string;
   notes: string;
 };
+
+export type BespokeRequestAdmin = BespokeRequest & {
+  id: string;
+  customerId: string | null;
+  status: BespokeStatus;
+  createdAt: string;
+};
+
+export type AdminCustomerSummary = {
+  key: string;
+  userId: string | null;
+  name: string;
+  email: string;
+  phone: string | null;
+  orderCount: number;
+  totalSpent: number;
+  lastOrderAt: string;
+  type: "registered" | "guest";
+};
+
+export type AdminPayment = {
+  id: string;
+  orderId: string;
+  orderNumber: string;
+  customerName: string;
+  customerEmail: string;
+  provider: string;
+  reference: string;
+  amount: number;
+  currency: string;
+  status: PaymentStatus;
+  paidAt: string | null;
+  createdAt: string;
+};
+
+export type DateRangeKey = "today" | "7d" | "30d" | "90d" | "12mo";
