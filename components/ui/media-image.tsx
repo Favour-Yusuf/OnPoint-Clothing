@@ -20,17 +20,22 @@ export function MediaImage({
   className = "",
   sizes = "100vw",
   priority = false,
+  fit = "cover",
 }: {
   image: CloudinaryImage;
   className?: string;
   sizes?: string;
   priority?: boolean;
+  /** "contain" for uncropped display (e.g. a lightbox); defaults to the usual fill-and-crop. */
+  fit?: "cover" | "contain";
 }) {
   const [failed, setFailed] = useState(false);
 
   if (failed || isPlaceholder(image.publicId)) {
     return <PlaceholderArt label={placeholderLabel(image.publicId)} caption={image.alt} className={className} />;
   }
+
+  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
 
   return (
     <Image
@@ -40,7 +45,7 @@ export function MediaImage({
       fill
       sizes={sizes}
       priority={priority}
-      className={`object-cover ${className}`}
+      className={`${fitClass} ${className}`}
       onError={() => setFailed(true)}
     />
   );

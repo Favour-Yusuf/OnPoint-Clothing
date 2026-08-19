@@ -16,6 +16,7 @@ const SHOP_LINKS = [
 
 const HOUSE_LINKS = [
   { label: "About OnPoint", href: "/about" },
+  { label: "OnPoint Expression", href: "/expression" },
   { label: "Bespoke", href: "/bespoke" },
   { label: "Contact", href: "/about#contact" },
 ];

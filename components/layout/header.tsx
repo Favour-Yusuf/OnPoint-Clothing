@@ -97,12 +97,12 @@ export function Header() {
           <Logo priority className="h-7 w-auto" />
         </Link>
 
-        <nav aria-label="Primary" className="flex items-center gap-9">
+        <nav aria-label="Primary" className="flex items-center gap-5 xl:gap-9">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="relative py-1 font-sans text-xs font-light tracking-[0.16em] text-foreground/75 uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-burgundy-light after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100"
+              className="relative py-1 font-sans text-xs font-light tracking-[0.12em] whitespace-nowrap text-foreground/75 uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-burgundy-light after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100 xl:tracking-[0.16em]"
             >
               {link.label}
             </Link>
