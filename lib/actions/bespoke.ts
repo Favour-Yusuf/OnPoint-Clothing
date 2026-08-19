@@ -1,6 +1,8 @@
 "use server";
 
+import { after } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { notifyAdminOfBespokeRequest } from "@/lib/notifications/bespoke";
 
 export type BespokeFormState = {
   status: "idle" | "success" | "error";
@@ -36,20 +38,39 @@ export async function submitBespokeRequest(
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { error } = await supabase.from("bespoke_requests").insert({
-    customer_id: user?.id ?? null,
-    name: String(formData.get("name")),
-    email,
-    phone: String(formData.get("phone") ?? "") || null,
-    garment_type: String(formData.get("garmentType")),
-    notes: String(formData.get("notes")),
-  });
+  const name = String(formData.get("name"));
+  const phone = String(formData.get("phone") ?? "") || null;
+  const garmentType = String(formData.get("garmentType"));
+  const notes = String(formData.get("notes"));
 
-  if (error) {
+  const { data: inserted, error } = await supabase
+    .from("bespoke_requests")
+    .insert({
+      customer_id: user?.id ?? null,
+      name,
+      email,
+      phone,
+      garment_type: garmentType,
+      notes,
+    })
+    .select("id")
+    .single();
+
+  if (error || !inserted) {
     return { status: "error", message: "We couldn't submit your enquiry. Please try again." };
   }
 
-  // No CRM/inbox is connected yet — the OnPoint team currently follows up
-  // from the admin dashboard's Bespoke section rather than an email alert.
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  after(() =>
+    notifyAdminOfBespokeRequest({
+      name,
+      email,
+      phone,
+      garmentType,
+      notes,
+      adminUrl: `${siteUrl}/admin/bespoke/${inserted.id}`,
+    })
+  );
+
   return { status: "success", message: "Your enquiry has been received. Our bespoke team will be in touch within two business days." };
 }

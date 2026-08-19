@@ -55,7 +55,7 @@ export function VerifyEmailView({ email }: { email: string }) {
       </span>
 
       <div>
-        <h1 className="font-serif text-3xl font-light text-foreground sm:text-4xl">Check Your Email</h1>
+        <h1 className="font-display text-3xl font-light text-foreground sm:text-4xl">Check Your Email</h1>
         <p className="mt-3 text-sm leading-relaxed text-foreground/60">
           We&rsquo;ve sent a verification link to your email address. Verify your email to finish setting up your
           account.

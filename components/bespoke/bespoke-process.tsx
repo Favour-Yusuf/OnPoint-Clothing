@@ -12,9 +12,9 @@ export function BespokeProcess() {
   return (
     <div className="grid grid-cols-1 gap-px overflow-hidden bg-foreground/10 sm:grid-cols-2 lg:grid-cols-5">
       {STEPS.map((step, index) => (
-        <Reveal key={step.number} delayMs={index * 90} className="bg-background p-8">
-          <p className="font-serif text-3xl font-light text-burgundy">{step.number}</p>
-          <h3 className="mt-4 font-sans text-sm font-medium tracking-[0.1em] text-foreground uppercase">{step.title}</h3>
+        <Reveal key={step.number} delayMs={index * 90} className="bg-background p-8 transition-colors duration-300 hover:bg-burgundy-deep/40">
+          <p className="font-display text-3xl font-light text-burgundy">{step.number}</p>
+          <h3 className="mt-4 font-sans text-sm font-light tracking-[0.1em] text-foreground uppercase">{step.title}</h3>
           <p className="mt-3 text-sm leading-relaxed text-foreground/55">{step.description}</p>
         </Reveal>
       ))}

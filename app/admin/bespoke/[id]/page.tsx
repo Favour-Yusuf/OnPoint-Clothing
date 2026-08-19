@@ -22,7 +22,7 @@ export default async function AdminBespokeDetailPage({ params }: { params: Promi
 
       <div className="mt-4 flex flex-wrap items-start justify-between gap-6">
         <div>
-          <h1 className="font-serif text-3xl font-light text-foreground">{request.name}</h1>
+          <h1 className="font-display text-3xl font-light text-foreground">{request.name}</h1>
           <div className="mt-2">
             <BespokeStatusBadge status={request.status} />
           </div>
@@ -39,7 +39,7 @@ export default async function AdminBespokeDetailPage({ params }: { params: Promi
 
       <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-[1fr_280px]">
         <section>
-          <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+          <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
             Request Details
           </h2>
           <div className="mt-4 flex flex-col gap-4 font-sans text-sm">
@@ -55,7 +55,7 @@ export default async function AdminBespokeDetailPage({ params }: { params: Promi
         </section>
 
         <section>
-          <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">Contact</h2>
+          <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">Contact</h2>
           <div className="mt-4 font-sans text-sm text-foreground/70 select-all">
             <p>{request.email}</p>
             {request.phone ? <p>{request.phone}</p> : null}

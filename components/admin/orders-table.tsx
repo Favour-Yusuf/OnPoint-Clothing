@@ -13,7 +13,7 @@ export function OrdersTable({ orders }: { orders: Order[] }) {
       {/* Desktop */}
       <table className="hidden w-full min-w-[760px] border-collapse font-sans text-sm sm:table">
         <thead>
-          <tr className="border-b border-foreground/10 text-left text-xs tracking-[0.15em] text-foreground/45 uppercase">
+          <tr className="border-b border-foreground/10 text-left text-xs font-light tracking-[0.15em] text-foreground/45 uppercase">
             <th className="py-3 pr-4 font-medium">Order</th>
             <th className="py-3 pr-4 font-medium">Customer</th>
             <th className="py-3 pr-4 font-medium">Date</th>
@@ -35,7 +35,7 @@ export function OrdersTable({ orders }: { orders: Order[] }) {
               </td>
               <td className="py-3 pr-4 text-foreground/70">{order.customerName}</td>
               <td className="py-3 pr-4 text-foreground/50">{new Date(order.createdAt).toLocaleDateString()}</td>
-              <td className="py-3 pr-4 text-foreground tabular-nums">{formatPrice(order.total / 100)}</td>
+              <td className="py-3 pr-4 font-light tracking-wide text-foreground tabular-nums">{formatPrice(order.total / 100)}</td>
               <td className="py-3 pr-4">
                 <PaymentStatusBadge status={order.paymentStatus} />
               </td>
@@ -57,7 +57,7 @@ export function OrdersTable({ orders }: { orders: Order[] }) {
           >
             <div className="flex items-center justify-between">
               <span className="text-foreground">{order.orderNumber}</span>
-              <span className="text-foreground tabular-nums">{formatPrice(order.total / 100)}</span>
+              <span className="font-light tracking-wide text-foreground tabular-nums">{formatPrice(order.total / 100)}</span>
             </div>
             <div className="flex items-center justify-between text-foreground/60">
               <span>{order.customerName}</span>

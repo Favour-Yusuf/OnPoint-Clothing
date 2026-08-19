@@ -8,6 +8,7 @@ import { useUI } from "@/lib/ui-context";
 import { QuantitySelector } from "@/components/ui/quantity-selector";
 import { Button } from "@/components/ui/button";
 import { ChevronDownIcon, CheckIcon } from "@/components/ui/icons";
+import { getPrimaryImage } from "@/lib/cloudinary/image";
 
 const AVAILABILITY_LABEL: Record<Product["availability"], string> = {
   "in-stock": "In Stock",
@@ -49,7 +50,7 @@ export function ProductDetails({ product }: { product: Product }) {
         slug: product.slug,
         name: product.name,
         price: product.price,
-        image: product.images[0],
+        image: getPrimaryImage(product.images),
         size: variant.size,
         color: variant.color,
       },
@@ -65,12 +66,12 @@ export function ProductDetails({ product }: { product: Product }) {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <p className="font-sans text-xs font-medium tracking-[0.3em] text-foreground/45 uppercase">{product.categorySlug}</p>
-        <h1 className="mt-3 font-serif text-3xl leading-tight font-light text-foreground sm:text-4xl">{product.name}</h1>
+        <p className="font-sans text-xs font-light tracking-[0.3em] text-foreground/45 uppercase">{product.categorySlug}</p>
+        <h1 className="mt-3 font-sans text-3xl leading-tight font-semibold text-foreground sm:text-4xl">{product.name}</h1>
         <div className="mt-3 flex items-center gap-3">
-          <p className="font-sans text-lg text-foreground tabular-nums">{formatPrice(product.price)}</p>
+          <p className="font-sans text-2xl font-light tracking-wide text-burgundy-light tabular-nums">{formatPrice(product.price)}</p>
           {product.compareAtPrice ? (
-            <p className="font-sans text-sm text-foreground/40 line-through tabular-nums">{formatPrice(product.compareAtPrice)}</p>
+            <p className="font-sans text-sm font-light tracking-wide text-foreground/40 line-through tabular-nums">{formatPrice(product.compareAtPrice)}</p>
           ) : null}
         </div>
       </div>
@@ -79,7 +80,7 @@ export function ProductDetails({ product }: { product: Product }) {
 
       {/* Color */}
       <div>
-        <p className="font-sans text-xs font-medium tracking-[0.15em] text-foreground/60 uppercase">
+        <p className="font-sans text-xs font-light tracking-[0.15em] text-foreground/60 uppercase">
           Color <span className="text-foreground">{selectedColor}</span>
         </p>
         <div className="mt-3 flex flex-wrap gap-3">
@@ -106,7 +107,7 @@ export function ProductDetails({ product }: { product: Product }) {
       {/* Size */}
       <div>
         <div className="flex items-center justify-between">
-          <p className="font-sans text-xs font-medium tracking-[0.15em] text-foreground/60 uppercase">Size</p>
+          <p className="font-sans text-xs font-light tracking-[0.15em] text-foreground/60 uppercase">Size</p>
           <button type="button" className="font-sans text-xs text-foreground/50 underline hover:text-foreground">
             Size Guide
           </button>
@@ -125,9 +126,9 @@ export function ProductDetails({ product }: { product: Product }) {
                 }}
                 className={`min-w-11 border px-3 py-2.5 font-sans text-sm transition-colors ${
                   selectedSize === size
-                    ? "border-foreground bg-foreground text-background"
+                    ? "border-burgundy bg-burgundy text-foreground"
                     : inStock
-                      ? "border-foreground/25 text-foreground hover:border-foreground/60"
+                      ? "border-foreground/25 text-foreground hover:border-burgundy-light hover:text-burgundy-light"
                       : "border-foreground/10 text-foreground/25 line-through"
                 }`}
               >
@@ -142,7 +143,7 @@ export function ProductDetails({ product }: { product: Product }) {
       {/* Quantity + Add to bag */}
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-4">
-          <p className="font-sans text-xs font-medium tracking-[0.15em] text-foreground/60 uppercase">Qty</p>
+          <p className="font-sans text-xs font-light tracking-[0.15em] text-foreground/60 uppercase">Qty</p>
           <QuantitySelector value={quantity} onChange={setQuantity} />
         </div>
 

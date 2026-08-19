@@ -23,7 +23,7 @@ export default async function OrderHistoryPage() {
   return (
     <div className="bg-background pt-16 lg:pt-20">
       <Container className="py-16">
-        <h1 className="font-serif text-3xl font-light text-foreground">Order History</h1>
+        <h1 className="font-display text-3xl font-light text-foreground">Order History</h1>
 
         {orders.length === 0 ? (
           <div className="mt-10">
@@ -47,7 +47,7 @@ export default async function OrderHistoryPage() {
                 <div className="flex items-center gap-6 font-sans text-sm">
                   <span className="text-foreground/70 capitalize">{order.status.replace(/_/g, " ")}</span>
                   <span className="text-foreground/70 capitalize">Payment: {order.paymentStatus}</span>
-                  <span className="text-foreground tabular-nums">{formatPrice(order.total / 100)}</span>
+                  <span className="font-light tracking-wide text-foreground tabular-nums">{formatPrice(order.total / 100)}</span>
                 </div>
               </div>
             ))}

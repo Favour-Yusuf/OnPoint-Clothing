@@ -4,10 +4,13 @@ import { MediaImage } from "@/components/ui/media-image";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { Heritage } from "@/components/home/heritage";
+import { ContactMethods } from "@/components/about/contact-methods";
+import { editorialImages } from "@/lib/data/editorial";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Nineteen years of tailoring and considered design — the story of OnPoint Clothing.",
+  description:
+    "OnPoint Clothing Nig — a multiple award-winning fashion house founded by Enoyi Abba George, redefining luxury for the 21st century.",
 };
 
 export default function AboutPage() {
@@ -15,27 +18,34 @@ export default function AboutPage() {
     <div className="bg-background">
       <section className="relative flex h-[60vh] min-h-[420px] w-full items-end overflow-hidden pt-16 lg:pt-20">
         <div className="absolute inset-0">
-          <MediaImage image={{ url: "placeholder:about-hero-01", alt: "The OnPoint atelier" }} priority sizes="100vw" />
-          <div className="absolute inset-0 bg-linear-to-t from-background via-background/25 to-background/10" />
+          <MediaImage image={editorialImages.aboutHero} priority sizes="100vw" />
+          <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep via-background/50 to-background/10" />
         </div>
         <Container className="relative z-10 pb-16">
-          <p className="font-sans text-xs font-medium tracking-[0.35em] text-burgundy uppercase">The House</p>
-          <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-[1.05] font-light text-foreground sm:text-6xl">
-            Nineteen years, one standard.
+          <div className="flex items-center gap-3">
+            <span className="h-px w-8 bg-burgundy-light" aria-hidden="true" />
+            <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy-light uppercase">The House</p>
+          </div>
+          <h1 className="mt-4 max-w-2xl font-display text-4xl leading-[1.05] font-light text-foreground sm:text-6xl">
+            Nineteen years, <em className="text-burgundy-light not-italic">one standard.</em>
           </h1>
         </Container>
       </section>
 
       <section className="py-20 sm:py-28">
         <Container>
-          <Reveal className="mx-auto flex max-w-2xl flex-col gap-6 text-center">
+          <Reveal className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+            <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy uppercase">Our Story</p>
+            <h2 className="font-display text-3xl leading-tight font-light text-foreground sm:text-4xl">
+              Innovative, influential, progressive.
+            </h2>
             <p className="text-lg leading-relaxed text-foreground/65">
-              OnPoint Clothing has spent nineteen years on the same premise: that clothing built with care outlasts
-              clothing built for a season. Construction over trend. Fit over flourish.
+              OnPoint Clothing Nig is reinventing a classic approach to fashion with a modern edge. Founded by{" "}
+              <span className="text-foreground">Enoyi Abba George</span>, the brand has redefined luxury for the
+              21st century, reinforcing its position as one of Nigeria&rsquo;s most desirable fashion houses.
             </p>
-            <p className="text-base leading-relaxed text-foreground/50">
-              The fuller story of the house — its founding, its people, and the milestones along the way — is being
-              written for this new site. Check back soon.
+            <p className="text-base leading-relaxed text-stone">
+              A multiple award-winning fashion company, a top celebrity clothier, and a genuine game changer.
             </p>
           </Reveal>
         </Container>
@@ -43,9 +53,26 @@ export default function AboutPage() {
 
       <Heritage />
 
+      <section id="contact" className="scroll-mt-24 py-20 sm:py-28">
+        <Container>
+          <Reveal className="mx-auto flex max-w-xl flex-col items-center gap-4 text-center">
+            <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy uppercase">Get in Touch</p>
+            <h2 className="font-display text-3xl leading-tight font-light text-foreground sm:text-4xl">
+              We&rsquo;d love to hear from you.
+            </h2>
+            <p className="text-base leading-relaxed text-foreground/55">
+              For enquiries, bespoke consultations, or press — reach us directly.
+            </p>
+          </Reveal>
+          <div className="mt-12">
+            <ContactMethods />
+          </div>
+        </Container>
+      </section>
+
       <section className="py-20 sm:py-28">
         <Container className="flex flex-col items-center gap-6 text-center">
-          <h2 className="font-serif text-3xl leading-tight font-light text-foreground sm:text-4xl">
+          <h2 className="font-display text-3xl leading-tight font-light text-foreground sm:text-4xl">
             See the current collection.
           </h2>
           <div className="flex gap-4">

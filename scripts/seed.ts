@@ -39,7 +39,7 @@ async function seedCategories() {
     slug: category.slug,
     name: category.name,
     description: category.description,
-    image_url: category.image.url,
+    cloudinary_public_id: category.image.publicId,
     is_active: true,
   }));
   const { data, error } = await supabase.from("categories").upsert(rows, { onConflict: "slug" }).select("id, slug");
@@ -53,7 +53,7 @@ async function seedCollections() {
     name: collection.name,
     season: collection.season,
     description: collection.description,
-    image_url: collection.image.url,
+    cloudinary_public_id: collection.image.publicId,
     is_active: true,
   }));
   const { data, error } = await supabase.from("collections").upsert(rows, { onConflict: "slug" }).select("id, slug");
@@ -84,6 +84,23 @@ async function seedProducts(categoryIdBySlug: Map<string, string>) {
   return new Map(data.map((row) => [row.slug, row.id as string]));
 }
 
+// Seeding is authoritative: any product in the DB that's no longer in
+// lib/data/products.ts is removed. Cascades to its images/variants/
+// collection links; order_items keep their historical snapshot regardless
+// (product_id there is ON DELETE SET NULL, not the source of truth).
+async function pruneRemovedProducts() {
+  const currentSlugs = new Set(mockProducts.map((product) => product.slug));
+  const { data, error } = await supabase.from("products").select("id, slug");
+  if (error) throw new Error(`prune products (read): ${error.message}`);
+
+  const staleSlugs = data.filter((row) => !currentSlugs.has(row.slug)).map((row) => row.slug);
+  if (staleSlugs.length === 0) return;
+
+  const { error: deleteError } = await supabase.from("products").delete().in("slug", staleSlugs);
+  if (deleteError) throw new Error(`prune products (delete): ${deleteError.message}`);
+  console.log(`Removed ${staleSlugs.length} product(s) no longer in lib/data/products.ts: ${staleSlugs.join(", ")}`);
+}
+
 async function seedProductImages(productIdBySlug: Map<string, string>) {
   for (const product of mockProducts) {
     const productId = productIdBySlug.get(product.slug);
@@ -96,7 +113,7 @@ async function seedProductImages(productIdBySlug: Map<string, string>) {
 
     const rows = product.images.map((image, position) => ({
       product_id: productId,
-      url: image.url,
+      cloudinary_public_id: image.publicId,
       alt: image.alt,
       position,
     }));
@@ -112,6 +129,14 @@ async function seedProductVariants(productIdBySlug: Map<string, string>) {
     const productId = productIdBySlug.get(product.slug);
     if (!productId) continue;
 
+    // Delete-all-and-reinsert per product (like product_images below) keeps
+    // this idempotent even when a variant's derived SKU changes between seed
+    // runs (e.g. a product's id prefix is renumbered) — an upsert keyed on
+    // sku alone would leave the old-SKU rows behind and collide with the
+    // (product_id, size, color_name) unique constraint on reinsert.
+    const { error: deleteError } = await supabase.from("product_variants").delete().eq("product_id", productId);
+    if (deleteError) throw new Error(`product_variants delete (${product.slug}): ${deleteError.message}`);
+
     const rows = product.variants.map((variant) => {
       const color = product.colors.find((c) => c.name === variant.color);
       return {
@@ -124,7 +149,7 @@ async function seedProductVariants(productIdBySlug: Map<string, string>) {
       };
     });
     if (rows.length === 0) continue;
-    const { error } = await supabase.from("product_variants").upsert(rows, { onConflict: "sku" });
+    const { error } = await supabase.from("product_variants").insert(rows);
     if (error) throw new Error(`product_variants (${product.slug}): ${error.message}`);
   }
 }
@@ -158,6 +183,9 @@ async function main() {
 
   console.log("Seeding products...");
   const productIdBySlug = await seedProducts(categoryIdBySlug);
+
+  console.log("Removing products no longer in lib/data/products.ts...");
+  await pruneRemovedProducts();
 
   console.log("Seeding product images...");
   await seedProductImages(productIdBySlug);

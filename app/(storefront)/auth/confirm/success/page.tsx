@@ -25,14 +25,14 @@ export default async function EmailVerifiedPage({
           <CheckIcon className="h-6 w-6 text-burgundy-light" />
         </span>
         <div>
-          <h1 className="font-serif text-3xl font-light text-foreground sm:text-4xl">Email Verified</h1>
+          <h1 className="font-display text-3xl font-light text-foreground sm:text-4xl">Email Verified</h1>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-foreground/60">
             Your account is now verified. Taking you onward&hellip;
           </p>
         </div>
         <Link
           href={destination}
-          className="font-sans text-xs font-medium tracking-[0.18em] text-foreground/70 uppercase underline-offset-4 hover:text-foreground hover:underline"
+          className="font-sans text-xs font-light tracking-[0.18em] text-foreground/70 uppercase underline-offset-4 hover:text-foreground hover:underline"
         >
           Continue
         </Link>

@@ -37,10 +37,10 @@ export function AdminSidebar({
             href={item.href}
             onClick={onNavigate}
             aria-current={isActive(pathname, item.href) ? "page" : undefined}
-            className={`px-3 py-2 transition-colors ${
+            className={`border-l-2 px-3 py-2 transition-colors ${
               isActive(pathname, item.href)
-                ? "bg-foreground/[0.06] text-foreground"
-                : "text-foreground/55 hover:text-foreground"
+                ? "border-burgundy bg-foreground/6 text-foreground"
+                : "border-transparent text-foreground/55 hover:border-burgundy/40 hover:text-foreground"
             }`}
           >
             {item.label}
@@ -53,10 +53,10 @@ export function AdminSidebar({
           href="/admin/settings"
           onClick={onNavigate}
           aria-current={isActive(pathname, "/admin/settings") ? "page" : undefined}
-          className={`px-3 py-2 transition-colors ${
+          className={`border-l-2 px-3 py-2 transition-colors ${
             isActive(pathname, "/admin/settings")
-              ? "bg-foreground/[0.06] text-foreground"
-              : "text-foreground/55 hover:text-foreground"
+              ? "border-burgundy bg-foreground/6 text-foreground"
+              : "border-transparent text-foreground/55 hover:border-burgundy/40 hover:text-foreground"
           }`}
         >
           Settings

@@ -1,35 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { MediaImage } from "@/components/ui/media-image";
-import type { CloudinaryImage } from "@/lib/types";
-
-const HERO_IMAGE: CloudinaryImage = { url: "placeholder:hero-campaign-01", alt: "OnPoint Clothing campaign" };
+import { editorialImages } from "@/lib/data/editorial";
 
 export function Hero() {
   return (
     <section className="relative flex h-dvh min-h-[640px] w-full flex-col justify-end overflow-hidden bg-background">
       <div className="absolute inset-0">
-        <MediaImage image={HERO_IMAGE} priority sizes="100vw" />
-        <div className="absolute inset-0 bg-linear-to-t from-background via-background/30 to-background/10" />
+        <MediaImage image={editorialImages.hero} priority sizes="100vw" />
+        {/* Burgundy-tinted wash, not a neutral black fade — the color carries the hero. */}
+        <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep via-background/75 to-background/20" />
+        <div className="absolute inset-0 bg-linear-to-r from-background/50 via-transparent to-transparent" />
       </div>
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-40 -right-40 h-[36rem] w-[36rem] rounded-full bg-burgundy/20 blur-[150px]"
-      />
-
       <div className="animate-fade-in-up relative z-10 flex flex-col gap-8 px-6 pb-16 sm:px-10 sm:pb-20 lg:px-16 lg:pb-24 xl:px-20">
-        <div className="animate-reveal-line animation-delay-200 h-px w-16 bg-burgundy sm:w-24" aria-hidden="true" />
+        <div className="animate-reveal-line animation-delay-200 h-[3px] w-16 bg-burgundy sm:w-24" aria-hidden="true" />
 
         <div className="flex flex-col gap-2">
-          <p className="font-sans text-xs font-medium tracking-[0.4em] text-foreground/70 uppercase">
+          <p className="font-sans text-xs font-light tracking-[0.4em] text-burgundy-light uppercase">
             Est. 2007 &middot; Nineteen Years
           </p>
-          <h1 className="max-w-3xl font-serif text-5xl leading-[1.05] font-light text-foreground sm:text-7xl lg:text-8xl">
-            Defining the way forward.
+          <h1 className="max-w-3xl font-display text-5xl leading-[1.05] font-light text-foreground sm:text-7xl lg:text-8xl">
+            Defining the way <em className="text-burgundy-light not-italic">forward.</em>
           </h1>
         </div>
 
-        <p className="max-w-md text-base leading-relaxed text-foreground/65 sm:text-lg">
+        <p className="max-w-md text-base leading-relaxed text-foreground/70 sm:text-lg">
           Nineteen years of tailoring and considered design, now built for the way you shop today.
         </p>
 
@@ -39,6 +34,16 @@ export function Hero() {
             Explore Bespoke
           </Button>
         </div>
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="animate-fade-in-up animation-delay-1100 absolute right-6 bottom-8 z-10 hidden items-center gap-3 sm:right-10 lg:flex lg:right-16 xl:right-20"
+      >
+        <span className="font-sans text-[10px] font-light tracking-[0.3em] text-foreground/50 uppercase [writing-mode:vertical-rl]">
+          Scroll
+        </span>
+        <span className="h-10 w-px bg-linear-to-b from-burgundy-light to-transparent" />
       </div>
     </section>
   );

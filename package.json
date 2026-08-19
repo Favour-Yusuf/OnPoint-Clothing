@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "cloudinary:list": "tsx scripts/list-cloudinary-assets.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",
     "@supabase/supabase-js": "^2.112.3",
     "next": "16.3.0",
+    "nodemailer": "^9.0.5",
     "postcss": "^8.5.26",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "dotenv": "^17.4.2",

@@ -16,7 +16,7 @@ export function AdminHeader({ onMenuClick }: { onMenuClick?: () => void }) {
         </button>
         <Link href="/admin" className="flex items-center gap-3">
           <Logo className="h-5 w-auto" />
-          <span className="hidden font-sans text-xs font-medium tracking-[0.2em] text-foreground/45 uppercase sm:inline">
+          <span className="hidden font-sans text-xs font-light tracking-[0.2em] text-foreground/45 uppercase sm:inline">
             Admin
           </span>
         </Link>

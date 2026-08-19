@@ -7,7 +7,7 @@ export const collections: Collection[] = [
     season: "Season Two",
     description:
       "Structured outerwear and precise tailoring, built to move between the office and the evening.",
-    image: { url: "placeholder:collection-tailored-01", alt: "The Tailored Edit" },
+    image: { publicId: "placeholder:collection-tailored-01", alt: "The Tailored Edit" },
     productSlugs: [
       "tailored-wool-overcoat",
       "structured-wool-blazer",
@@ -22,7 +22,7 @@ export const collections: Collection[] = [
     name: "Essential Layers",
     season: "Season Two",
     description: "Fine-gauge knitwear and everyday cloth, made to sit under tailoring or stand alone.",
-    image: { url: "placeholder:collection-layers-01", alt: "Essential Layers" },
+    image: { publicId: "placeholder:collection-layers-01", alt: "Essential Layers" },
     productSlugs: ["merino-crewneck-sweater", "oxford-cotton-shirt", "cashmere-turtleneck"],
   },
   {
@@ -30,7 +30,7 @@ export const collections: Collection[] = [
     name: "Evening Hours",
     season: "Season Two",
     description: "Fluid silk and matte crepe for occasions after dark.",
-    image: { url: "placeholder:collection-evening-01", alt: "Evening Hours" },
+    image: { publicId: "placeholder:collection-evening-01", alt: "Evening Hours" },
     productSlugs: ["silk-wrap-blouse", "column-evening-dress", "silk-twill-scarf", "structured-leather-tote"],
   },
 ];

@@ -28,7 +28,7 @@ const PRODUCT_SELECT = `
   id, slug, name, description, short_description, price, compare_at_price,
   currency, details, care, is_new, is_bespoke_eligible, availability,
   categories!inner ( slug ),
-  product_images ( url, alt, position ),
+  product_images ( cloudinary_public_id, alt, position ),
   product_variants ( id, size, color_name, color_hex, sku, stock_quantity ),
   product_collections ( collections ( slug ) )
 `;
@@ -48,7 +48,7 @@ type ProductRow = {
   is_bespoke_eligible: boolean;
   availability: Product["availability"];
   categories: { slug: string } | null;
-  product_images: { url: string; alt: string; position: number }[];
+  product_images: { cloudinary_public_id: string; alt: string; position: number }[];
   product_variants: {
     id: string;
     size: string;
@@ -65,7 +65,7 @@ const toMajorUnits = (minorUnits: number) => minorUnits / 100;
 function mapProductRow(row: ProductRow): Product {
   const images: CloudinaryImage[] = [...row.product_images]
     .sort((a, b) => a.position - b.position)
-    .map((image) => ({ url: image.url, alt: image.alt }));
+    .map((image) => ({ publicId: image.cloudinary_public_id, alt: image.alt }));
 
   const variants: ProductVariant[] = row.product_variants.map((variant) => ({
     id: variant.id,
@@ -244,14 +244,14 @@ export async function getAllCategories(): Promise<Category[]> {
   const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("categories")
-    .select("slug, name, description, image_url")
+    .select("slug, name, description, cloudinary_public_id")
     .eq("is_active", true);
   if (error) throw new Error(`getAllCategories: ${error.message}`);
   return data.map((row) => ({
     slug: row.slug,
     name: row.name,
     description: row.description ?? "",
-    image: { url: row.image_url ?? "", alt: row.name },
+    image: { publicId: row.cloudinary_public_id ?? "placeholder:no-image", alt: row.name },
   }));
 }
 
@@ -265,7 +265,7 @@ type CollectionRow = {
   name: string;
   season: string | null;
   description: string | null;
-  image_url: string | null;
+  cloudinary_public_id: string | null;
   product_collections: { products: { slug: string } | null }[];
 };
 
@@ -273,7 +273,7 @@ export async function getAllCollections(): Promise<Collection[]> {
   const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("collections")
-    .select("slug, name, season, description, image_url, product_collections ( products ( slug ) )")
+    .select("slug, name, season, description, cloudinary_public_id, product_collections ( products ( slug ) )")
     .eq("is_active", true);
   if (error) throw new Error(`getAllCollections: ${error.message}`);
   return (data as unknown as CollectionRow[]).map((row) => ({
@@ -281,7 +281,7 @@ export async function getAllCollections(): Promise<Collection[]> {
     name: row.name,
     season: row.season ?? "",
     description: row.description ?? "",
-    image: { url: row.image_url ?? "", alt: row.name },
+    image: { publicId: row.cloudinary_public_id ?? "placeholder:no-image", alt: row.name },
     productSlugs: row.product_collections.flatMap((pc) => (pc.products ? [pc.products.slug] : [])),
   }));
 }

@@ -13,7 +13,7 @@ export function PaymentsTable({ payments }: { payments: AdminPayment[] }) {
       {/* Desktop */}
       <table className="hidden w-full min-w-[760px] border-collapse font-sans text-sm sm:table">
         <thead>
-          <tr className="border-b border-foreground/10 text-left text-xs tracking-[0.15em] text-foreground/45 uppercase">
+          <tr className="border-b border-foreground/10 text-left text-xs font-light tracking-[0.15em] text-foreground/45 uppercase">
             <th className="py-3 pr-4 font-medium">Reference</th>
             <th className="py-3 pr-4 font-medium">Order</th>
             <th className="py-3 pr-4 font-medium">Customer</th>
@@ -35,7 +35,7 @@ export function PaymentsTable({ payments }: { payments: AdminPayment[] }) {
                 </Link>
               </td>
               <td className="py-3 pr-4 text-foreground/70">{payment.customerName}</td>
-              <td className="py-3 pr-4 text-foreground tabular-nums">{formatPrice(payment.amount / 100)}</td>
+              <td className="py-3 pr-4 font-light tracking-wide text-foreground tabular-nums">{formatPrice(payment.amount / 100)}</td>
               <td className="py-3 pr-4 text-foreground/50">{new Date(payment.createdAt).toLocaleDateString()}</td>
               <td className="py-3 pr-4">
                 <PaymentStatusBadge status={payment.status} />
@@ -55,7 +55,7 @@ export function PaymentsTable({ payments }: { payments: AdminPayment[] }) {
           >
             <div className="flex items-center justify-between">
               <span className="text-foreground">{payment.orderNumber}</span>
-              <span className="text-foreground tabular-nums">{formatPrice(payment.amount / 100)}</span>
+              <span className="font-light tracking-wide text-foreground tabular-nums">{formatPrice(payment.amount / 100)}</span>
             </div>
             <p className="font-mono text-xs text-foreground/45">{payment.reference}</p>
             <div className="flex items-center justify-between text-xs text-foreground/50">

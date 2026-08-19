@@ -24,7 +24,7 @@ export default async function AdminCustomersPage({
   if (total === 0 && !params.q) {
     return (
       <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10">
-        <h1 className="font-serif text-2xl font-light text-foreground">Customers</h1>
+        <h1 className="font-display text-2xl font-light text-foreground">Customers</h1>
         <EmptyState title="No customers yet." description="Customers will appear here after their first order." />
       </div>
     );
@@ -33,7 +33,7 @@ export default async function AdminCustomersPage({
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="font-serif text-2xl font-light text-foreground">Customers</h1>
+        <h1 className="font-display text-2xl font-light text-foreground">Customers</h1>
         <SearchInput placeholder="Search name or email…" />
       </div>
 

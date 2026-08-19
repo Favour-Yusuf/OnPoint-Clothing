@@ -21,10 +21,10 @@ export function AccountView({
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-12">
       <div className="flex items-center justify-between border-b border-foreground/10 pb-6">
         <div>
-          <p className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+          <p className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
             Signed in as
           </p>
-          <h1 className="mt-1 font-serif text-2xl font-light text-foreground">{fullName || email}</h1>
+          <h1 className="mt-1 font-display text-2xl font-light text-foreground">{fullName || email}</h1>
         </div>
         <form action={signOut}>
           <Button type="submit" variant="outline" size="md">
@@ -35,7 +35,7 @@ export function AccountView({
 
       <section>
         <div className="flex items-center justify-between">
-          <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+          <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
             Recent Orders
           </h2>
           <Link href="/account/orders" className="font-sans text-xs text-foreground/60 hover:text-foreground">
@@ -60,7 +60,7 @@ export function AccountView({
       </section>
 
       <section>
-        <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+        <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
           Saved Addresses
         </h2>
         <div className="mt-4 flex flex-col gap-4">

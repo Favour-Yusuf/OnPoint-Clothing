@@ -22,9 +22,12 @@ export function ShopPageContent({
   return (
     <div className="bg-background pt-16 lg:pt-20">
       <Container className="py-12 sm:py-16">
-        <p className="font-sans text-xs font-medium tracking-[0.35em] text-burgundy uppercase">{eyebrow}</p>
-        <h1 className="mt-4 font-serif text-4xl leading-[1.05] font-light text-foreground sm:text-5xl">{title}</h1>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-foreground/60">{description}</p>
+        <div className="flex items-center gap-3">
+          <span className="h-px w-8 bg-burgundy" aria-hidden="true" />
+          <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy-light uppercase">{eyebrow}</p>
+        </div>
+        <h1 className="mt-4 font-display text-4xl leading-[1.05] font-light text-foreground sm:text-5xl">{title}</h1>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">{description}</p>
       </Container>
 
       <Container>

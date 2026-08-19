@@ -11,8 +11,8 @@ export function EmptyState({
 }) {
   return (
     <div className="flex flex-col items-center gap-4 py-20 text-center">
-      <div className="h-px w-10 bg-foreground/20" aria-hidden="true" />
-      <p className="font-serif text-2xl font-light text-foreground">{title}</p>
+      <div className="h-px w-10 bg-burgundy" aria-hidden="true" />
+      <p className="font-display text-2xl font-light text-foreground">{title}</p>
       {description ? <p className="max-w-sm text-sm text-foreground/55">{description}</p> : null}
       {action ? <div className="mt-2">{action}</div> : null}
     </div>

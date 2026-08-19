@@ -8,12 +8,13 @@
 
 export type CloudinaryImage = {
   /**
-   * Production value is a Cloudinary delivery URL. Until real photography is
-   * supplied, this holds a "placeholder:<key>" marker that MediaImage
-   * (components/ui/media-image.tsx) renders as an art-directed placeholder
-   * instead of a broken <img>.
+   * A Cloudinary public ID (e.g. "onpoint/products/suits/classic-black-suit/front"),
+   * resolved to a delivery URL by lib/cloudinary/image.ts. Until real
+   * photography is supplied, this holds a "placeholder:<key>" marker that
+   * MediaImage (components/ui/media-image.tsx) renders as an art-directed
+   * placeholder instead of a broken <img>.
    */
-  url: string;
+  publicId: string;
   alt: string;
 };
 
@@ -130,7 +131,7 @@ export type OrderItem = {
   id: string;
   productName: string;
   productSlug?: string | null;
-  imageUrl?: string | null;
+  imagePublicId?: string | null;
   size?: string | null;
   color?: string | null;
   quantity: number;

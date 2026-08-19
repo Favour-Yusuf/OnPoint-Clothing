@@ -20,10 +20,10 @@ export default async function AdminSettingsPage() {
 
   return (
     <div className="mx-auto max-w-[600px] px-4 py-8 sm:px-6 sm:py-10">
-      <h1 className="font-serif text-2xl font-light text-foreground">Settings</h1>
+      <h1 className="font-display text-2xl font-light text-foreground">Settings</h1>
 
       <section className="mt-8 border border-foreground/10 p-6">
-        <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+        <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
           Admin Account
         </h2>
         <div className="mt-4 font-sans text-sm text-foreground/70">

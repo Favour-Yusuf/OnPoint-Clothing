@@ -25,7 +25,7 @@ const ORDER_SELECT_ADMIN_DETAIL = `
   shipping_address, paystack_reference, created_at,
   order_items (
     id, product_name, size, color, quantity, unit_price, total_price,
-    products ( slug, product_images ( url, position ) )
+    products ( slug, product_images ( cloudinary_public_id, position ) )
   )
 `;
 
@@ -54,7 +54,7 @@ type OrderRow = {
     quantity: number;
     unit_price: number;
     total_price: number;
-    products?: { slug: string; product_images: { url: string; position: number }[] } | null;
+    products?: { slug: string; product_images: { cloudinary_public_id: string; position: number }[] } | null;
   }[];
 };
 
@@ -66,7 +66,7 @@ function mapOrderRow(row: OrderRow): Order {
       id: item.id,
       productName: item.product_name,
       productSlug: item.products?.slug ?? null,
-      imageUrl: firstImage?.url ?? null,
+      imagePublicId: firstImage?.cloudinary_public_id ?? null,
       size: item.size,
       color: item.color,
       quantity: item.quantity,

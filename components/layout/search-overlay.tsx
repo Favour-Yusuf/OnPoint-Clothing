@@ -7,6 +7,7 @@ import { products } from "@/lib/data/products";
 import { formatPrice } from "@/lib/format";
 import { CloseIcon, SearchIcon } from "@/components/ui/icons";
 import { MediaImage } from "@/components/ui/media-image";
+import { getPrimaryImage } from "@/lib/cloudinary/image";
 
 const POPULAR_SEARCHES = ["Overcoats", "Tailoring", "Cashmere", "Bespoke", "Accessories"];
 
@@ -56,7 +57,7 @@ export function SearchOverlay() {
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search products"
             aria-label="Search products"
-            className="w-full bg-transparent font-serif text-2xl font-light text-foreground placeholder:text-foreground/35 focus:outline-none sm:text-3xl"
+            className="w-full bg-transparent font-display text-2xl font-light text-foreground placeholder:text-foreground/35 focus:outline-none sm:text-3xl"
           />
           <button
             type="button"
@@ -72,7 +73,7 @@ export function SearchOverlay() {
       <div className="mx-auto w-full max-w-4xl flex-1 overflow-y-auto px-6 py-10">
         {query.trim() === "" ? (
           <div>
-            <p className="font-sans text-xs font-medium tracking-[0.25em] text-foreground/50 uppercase">Popular Searches</p>
+            <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/50 uppercase">Popular Searches</p>
             <div className="mt-4 flex flex-wrap gap-3">
               {POPULAR_SEARCHES.map((term) => (
                 <button
@@ -88,7 +89,7 @@ export function SearchOverlay() {
           </div>
         ) : results.length === 0 ? (
           <div className="flex flex-col items-start gap-2 py-10">
-            <p className="font-serif text-2xl font-light text-foreground">No results for &ldquo;{query}&rdquo;</p>
+            <p className="font-display text-2xl font-light text-foreground">No results for &ldquo;{query}&rdquo;</p>
             <p className="text-sm text-foreground/55">Try a category like Men, Women, or Accessories.</p>
           </div>
         ) : (
@@ -101,13 +102,13 @@ export function SearchOverlay() {
                   className="flex items-center gap-5 py-4 transition-opacity hover:opacity-80"
                 >
                   <div className="relative h-20 w-16 shrink-0 overflow-hidden bg-foreground/5">
-                    <MediaImage image={product.images[0]} sizes="80px" />
+                    <MediaImage image={getPrimaryImage(product.images)} sizes="80px" />
                   </div>
                   <div className="flex flex-1 flex-col gap-1">
-                    <p className="font-sans text-sm text-foreground">{product.name}</p>
+                    <p className="font-sans text-sm font-semibold text-foreground">{product.name}</p>
                     <p className="font-sans text-xs text-foreground/50 capitalize">{product.categorySlug}</p>
                   </div>
-                  <p className="font-sans text-sm text-foreground/80 tabular-nums">{formatPrice(product.price)}</p>
+                  <p className="font-sans text-sm font-light tracking-wide text-foreground/80 tabular-nums">{formatPrice(product.price)}</p>
                 </Link>
               </li>
             ))}

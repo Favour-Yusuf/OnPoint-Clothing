@@ -12,7 +12,7 @@ export function CustomersTable({ customers }: { customers: AdminCustomerSummary[
       {/* Desktop */}
       <table className="hidden w-full min-w-[720px] border-collapse font-sans text-sm sm:table">
         <thead>
-          <tr className="border-b border-foreground/10 text-left text-xs tracking-[0.15em] text-foreground/45 uppercase">
+          <tr className="border-b border-foreground/10 text-left text-xs font-light tracking-[0.15em] text-foreground/45 uppercase">
             <th className="py-3 pr-4 font-medium">Customer</th>
             <th className="py-3 pr-4 font-medium">Type</th>
             <th className="py-3 pr-4 font-medium">Orders</th>
@@ -35,8 +35,8 @@ export function CustomersTable({ customers }: { customers: AdminCustomerSummary[
               <td className="py-3 pr-4 text-foreground/60">
                 {customer.type === "registered" ? "Registered" : "Guest"}
               </td>
-              <td className="py-3 pr-4 text-foreground/70 tabular-nums">{customer.orderCount}</td>
-              <td className="py-3 pr-4 text-foreground tabular-nums">{formatPrice(customer.totalSpent / 100)}</td>
+              <td className="py-3 pr-4 font-light tracking-wide text-foreground/70 tabular-nums">{customer.orderCount}</td>
+              <td className="py-3 pr-4 font-light tracking-wide text-foreground tabular-nums">{formatPrice(customer.totalSpent / 100)}</td>
               <td className="py-3 pr-4 text-foreground/50">{new Date(customer.lastOrderAt).toLocaleDateString()}</td>
             </tr>
           ))}
@@ -53,7 +53,7 @@ export function CustomersTable({ customers }: { customers: AdminCustomerSummary[
           >
             <div className="flex items-center justify-between">
               <span className="text-foreground">{customer.name}</span>
-              <span className="text-foreground tabular-nums">{formatPrice(customer.totalSpent / 100)}</span>
+              <span className="font-light tracking-wide text-foreground tabular-nums">{formatPrice(customer.totalSpent / 100)}</span>
             </div>
             <p className="text-xs text-foreground/45">{customer.email}</p>
             <div className="flex items-center justify-between text-xs text-foreground/50">

@@ -5,19 +5,19 @@ export const categories: Category[] = [
     slug: "women",
     name: "Women",
     description: "Tailoring and eveningwear built on precise construction.",
-    image: { url: "placeholder:category-women", alt: "Women's collection" },
+    image: { publicId: "placeholder:category-women", alt: "Women's collection" },
   },
   {
     slug: "men",
     name: "Men",
     description: "Considered tailoring for everyday and occasion.",
-    image: { url: "placeholder:category-men", alt: "Men's collection" },
+    image: { publicId: "placeholder:category-men", alt: "Men's collection" },
   },
   {
     slug: "accessories",
     name: "Accessories",
     description: "The finishing details — leather, silk, and metal.",
-    image: { url: "placeholder:category-accessories", alt: "Accessories collection" },
+    image: { publicId: "placeholder:category-accessories", alt: "Accessories collection" },
   },
 ];
 

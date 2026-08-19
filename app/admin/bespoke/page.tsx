@@ -33,7 +33,7 @@ export default async function AdminBespokePage({
   if (total === 0 && !hasFilters) {
     return (
       <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10">
-        <h1 className="font-serif text-2xl font-light text-foreground">Bespoke Requests</h1>
+        <h1 className="font-display text-2xl font-light text-foreground">Bespoke Requests</h1>
         <EmptyState title="No bespoke requests yet." description="Enquiries submitted from the Bespoke page will appear here." />
       </div>
     );
@@ -42,7 +42,7 @@ export default async function AdminBespokePage({
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="font-serif text-2xl font-light text-foreground">Bespoke Requests</h1>
+        <h1 className="font-display text-2xl font-light text-foreground">Bespoke Requests</h1>
         <SearchInput placeholder="Search name, email, garment…" />
       </div>
 

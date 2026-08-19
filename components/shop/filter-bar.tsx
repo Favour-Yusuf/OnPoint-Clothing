@@ -52,10 +52,10 @@ export function FilterBar({
               key={size}
               type="button"
               onClick={() => updateParam("size", activeSize === size ? "" : size)}
-              className={`border px-3 py-1.5 font-sans text-xs tracking-wide transition-colors ${
+              className={`border px-3 py-1.5 font-sans text-xs font-light tracking-wide transition-colors ${
                 activeSize === size
-                  ? "border-foreground bg-foreground text-background"
-                  : "border-foreground/25 text-foreground/70 hover:border-foreground/60"
+                  ? "border-burgundy bg-burgundy text-foreground"
+                  : "border-foreground/25 text-foreground/70 hover:border-burgundy-light hover:text-burgundy-light"
               }`}
             >
               {size}
@@ -118,7 +118,7 @@ export function FilterBar({
         <button
           type="button"
           onClick={() => setDrawerOpen(true)}
-          className="flex items-center gap-2 border border-foreground/25 px-4 py-2 font-sans text-xs tracking-wide text-foreground uppercase lg:hidden"
+          className="flex items-center gap-2 border border-foreground/25 px-4 py-2 font-sans text-xs font-light tracking-wide text-foreground uppercase lg:hidden"
         >
           Filters{activeCount > 0 ? ` (${activeCount})` : ""}
         </button>
@@ -134,7 +134,7 @@ export function FilterBar({
           />
           <div className="relative flex max-h-[80vh] flex-col gap-6 overflow-y-auto bg-background px-6 pt-6 pb-10">
             <div className="flex items-center justify-between">
-              <p className="font-sans text-xs font-medium tracking-[0.25em] text-foreground uppercase">Filters</p>
+              <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground uppercase">Filters</p>
               <button type="button" onClick={() => setDrawerOpen(false)} aria-label="Close filters">
                 <CloseIcon className="h-5 w-5 text-foreground/70" />
               </button>
@@ -154,13 +154,13 @@ export function FilterBar({
               </select>
             </FilterGroup>
             <div className="flex gap-3 pt-2">
-              <button type="button" onClick={clearAll} className="flex-1 border border-foreground/25 py-3 font-sans text-xs tracking-wide text-foreground uppercase">
+              <button type="button" onClick={clearAll} className="flex-1 border border-foreground/25 py-3 font-sans text-xs font-light tracking-wide text-foreground uppercase">
                 Clear All
               </button>
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                className="flex-1 bg-burgundy py-3 font-sans text-xs tracking-wide text-foreground uppercase"
+                className="flex-1 bg-burgundy py-3 font-sans text-xs font-light tracking-wide text-foreground uppercase"
               >
                 Show {resultCount} Results
               </button>

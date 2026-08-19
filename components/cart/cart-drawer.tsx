@@ -40,9 +40,9 @@ export function CartDrawer() {
         className="absolute inset-0 bg-background/70 backdrop-blur-sm"
       />
 
-      <div className="absolute top-0 right-0 flex h-full w-full max-w-md flex-col bg-background shadow-2xl">
+      <div className="absolute top-0 right-0 flex h-full w-full max-w-md flex-col border-l border-burgundy/25 bg-background shadow-2xl">
         <div className="flex items-center justify-between border-b border-foreground/10 px-6 py-5">
-          <p className="font-sans text-xs font-medium tracking-[0.3em] text-foreground uppercase">
+          <p className="font-sans text-xs font-light tracking-[0.3em] text-foreground uppercase">
             Your Bag {items.length > 0 ? `(${items.length})` : ""}
           </p>
           <button
@@ -59,7 +59,7 @@ export function CartDrawer() {
           <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
             <BagIcon className="h-8 w-8 text-foreground/25" />
             <div>
-              <p className="font-serif text-xl font-light text-foreground">Your bag is empty</p>
+              <p className="font-display text-xl font-light text-foreground">Your bag is empty</p>
               <p className="mt-1 text-sm text-foreground/55">Pieces you add will appear here.</p>
             </div>
             <Button href="/shop" variant="outline" onClick={closeCart} className="mt-2">

@@ -3,7 +3,12 @@
 import { useActionState } from "react";
 import { submitBespokeRequest, type BespokeFormState } from "@/lib/actions/bespoke";
 import { Button } from "@/components/ui/button";
-import { CheckIcon } from "@/components/ui/icons";
+import { CheckIcon, ChatIcon } from "@/components/ui/icons";
+import { CONTACT } from "@/lib/contact";
+
+const WHATSAPP_FOLLOWUP_HREF = `${CONTACT.whatsapp.href}?text=${encodeURIComponent(
+  "Hi OnPoint, I just submitted a bespoke enquiry on the website and wanted to follow up."
+)}`;
 
 const initialState: BespokeFormState = { status: "idle" };
 
@@ -16,8 +21,17 @@ export function BespokeForm() {
         <span className="flex h-11 w-11 items-center justify-center rounded-full border border-burgundy-light">
           <CheckIcon className="h-5 w-5 text-burgundy-light" />
         </span>
-        <p className="font-serif text-2xl font-light text-foreground">Enquiry Sent</p>
+        <p className="font-display text-2xl font-light text-foreground">Enquiry Sent</p>
         <p className="max-w-md text-sm leading-relaxed text-foreground/60">{state.message}</p>
+        <a
+          href={WHATSAPP_FOLLOWUP_HREF}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-flex items-center gap-2 font-sans text-sm text-burgundy-light underline-offset-4 hover:underline"
+        >
+          <ChatIcon className="h-4 w-4" />
+          Want a faster reply? Message us on WhatsApp
+        </a>
       </div>
     );
   }

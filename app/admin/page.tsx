@@ -34,7 +34,7 @@ export default async function AdminDashboardPage({
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="font-serif text-2xl font-light text-foreground">Dashboard</h1>
+        <h1 className="font-display text-2xl font-light text-foreground">Dashboard</h1>
         <DateRangeTabs active={range} />
       </div>
 
@@ -47,7 +47,7 @@ export default async function AdminDashboardPage({
 
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_320px]">
         <section>
-          <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">Revenue</h2>
+          <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">Revenue</h2>
           <div className="mt-4 border border-foreground/10 p-6">
             <RevenueChart data={series} />
           </div>
@@ -58,7 +58,7 @@ export default async function AdminDashboardPage({
 
       <section className="mt-10">
         <div className="flex items-center justify-between">
-          <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+          <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
             Recent Orders
           </h2>
           <Link href="/admin/orders" className="font-sans text-xs text-foreground/60 hover:text-foreground">

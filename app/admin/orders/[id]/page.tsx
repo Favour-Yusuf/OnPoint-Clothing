@@ -28,7 +28,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
 
       <div className="mt-4 flex flex-wrap items-start justify-between gap-6">
         <div>
-          <h1 className="font-serif text-3xl font-light text-foreground">{order.orderNumber}</h1>
+          <h1 className="font-display text-3xl font-light text-foreground">{order.orderNumber}</h1>
           <div className="mt-2 flex items-center gap-4">
             <PaymentStatusBadge status={order.paymentStatus} />
             <OrderStatusBadge status={order.status} />
@@ -47,13 +47,13 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_340px]">
         <div className="flex flex-col gap-10">
           <section>
-            <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">Items</h2>
+            <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">Items</h2>
             <div className="mt-4 flex flex-col divide-y divide-foreground/10 border-t border-b border-foreground/10">
               {order.items.map((item) => (
                 <div key={item.id} className="flex items-center gap-4 py-4 font-sans text-sm">
                   <div className="relative h-16 w-16 shrink-0 overflow-hidden bg-foreground/5">
-                    {item.imageUrl ? (
-                      <MediaImage image={{ url: item.imageUrl, alt: item.productName }} sizes="64px" />
+                    {item.imagePublicId ? (
+                      <MediaImage image={{ publicId: item.imagePublicId, alt: item.productName }} sizes="64px" />
                     ) : null}
                   </div>
                   <div className="flex-1">
@@ -66,7 +66,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
                       Qty {item.quantity}
                     </p>
                   </div>
-                  <span className="text-foreground tabular-nums">{formatPrice(item.totalPrice / 100)}</span>
+                  <span className="font-light tracking-wide text-foreground tabular-nums">{formatPrice(item.totalPrice / 100)}</span>
                 </div>
               ))}
             </div>
@@ -74,28 +74,28 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
             <div className="mt-6 flex flex-col gap-2 font-sans text-sm">
               <div className="flex justify-between text-foreground/60">
                 <span>Subtotal</span>
-                <span className="tabular-nums">{formatPrice(order.subtotal / 100)}</span>
+                <span className="font-light tracking-wide tabular-nums">{formatPrice(order.subtotal / 100)}</span>
               </div>
               <div className="flex justify-between text-foreground/60">
                 <span>Shipping</span>
-                <span className="tabular-nums">{formatPrice(order.shippingFee / 100)}</span>
+                <span className="font-light tracking-wide tabular-nums">{formatPrice(order.shippingFee / 100)}</span>
               </div>
               {order.discount > 0 ? (
                 <div className="flex justify-between text-foreground/60">
                   <span>Discount</span>
-                  <span className="tabular-nums">&minus;{formatPrice(order.discount / 100)}</span>
+                  <span className="font-light tracking-wide tabular-nums">&minus;{formatPrice(order.discount / 100)}</span>
                 </div>
               ) : null}
               <div className="flex justify-between border-t border-foreground/10 pt-2 text-base text-foreground">
                 <span>Total</span>
-                <span className="tabular-nums">{formatPrice(order.total / 100)}</span>
+                <span className="font-light tracking-wide tabular-nums">{formatPrice(order.total / 100)}</span>
               </div>
             </div>
           </section>
 
           {payment ? (
             <section>
-              <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+              <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
                 Payment
               </h2>
               <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 font-sans text-sm sm:grid-cols-3">
@@ -109,7 +109,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
                 </div>
                 <div>
                   <dt className="text-foreground/45">Amount</dt>
-                  <dd className="mt-0.5 text-foreground tabular-nums">
+                  <dd className="mt-0.5 font-light tracking-wide text-foreground tabular-nums">
                     {formatPrice(payment.amount / 100)} {payment.currency}
                   </dd>
                 </div>
@@ -132,7 +132,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
 
         <div className="flex flex-col gap-8">
           <section>
-            <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">Customer</h2>
+            <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">Customer</h2>
             <div className="mt-4 font-sans text-sm text-foreground/70">
               <p className="text-foreground">{order.customerName}</p>
               <p>{order.customerEmail}</p>
@@ -152,7 +152,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
           </section>
 
           <section>
-            <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+            <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
               Shipping Address
             </h2>
             <div className="mt-4 font-sans text-sm text-foreground/70 select-all">

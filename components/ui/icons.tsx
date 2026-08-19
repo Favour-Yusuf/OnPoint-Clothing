@@ -85,6 +85,22 @@ export function MailIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function PhoneIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 5 5.1 1.5 1.5 0 0 1 6.5 3.5Z" />
+    </svg>
+  );
+}
+
+export function ChatIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 5.5h16v11H9l-4 3.5v-3.5H4Z" />
+    </svg>
+  );
+}
+
 export function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...base} {...props}>

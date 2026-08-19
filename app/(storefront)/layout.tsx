@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
+import { Montserrat, Geist_Mono, Bebas_Neue } from "next/font/google";
 import "../globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { UIProvider } from "@/lib/ui-context";
@@ -9,8 +9,8 @@ import { SearchOverlay } from "@/components/layout/search-overlay";
 import { Footer } from "@/components/layout/footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -19,10 +19,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-serif",
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400"],
 });
 
 const description =
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${geistMono.variable} ${bebasNeue.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <CartProvider>

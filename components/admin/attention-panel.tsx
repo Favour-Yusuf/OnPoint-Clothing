@@ -28,7 +28,7 @@ export function AttentionPanel({ summary }: { summary: AttentionSummary }) {
 
   return (
     <div className="border border-foreground/10 p-6">
-      <p className="font-sans text-xs font-medium tracking-[0.18em] text-foreground/45 uppercase">Needs Attention</p>
+      <p className="font-sans text-xs font-light tracking-[0.18em] text-foreground/45 uppercase">Needs Attention</p>
       {items.length === 0 ? (
         <p className="mt-4 font-sans text-sm text-foreground/55">Everything is up to date.</p>
       ) : (

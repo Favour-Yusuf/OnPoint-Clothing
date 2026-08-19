@@ -21,7 +21,7 @@ export default async function PaymentSuccessPage({
   if (!order) {
     return (
       <Container className="flex flex-col items-center gap-4 py-24 text-center">
-        <h1 className="font-serif text-3xl font-light text-foreground">We Couldn&rsquo;t Find That Order</h1>
+        <h1 className="font-display text-3xl font-light text-foreground">We Couldn&rsquo;t Find That Order</h1>
         <p className="max-w-md text-sm leading-relaxed text-foreground/60">
           If you completed a payment, check your email for confirmation, or contact us with your reference number.
         </p>
@@ -33,12 +33,12 @@ export default async function PaymentSuccessPage({
   if (order.paymentStatus !== "paid") {
     return (
       <Container className="flex flex-col items-center gap-4 py-24 text-center">
-        <h1 className="font-serif text-3xl font-light text-foreground">Confirming Your Payment&hellip;</h1>
+        <h1 className="font-display text-3xl font-light text-foreground">Confirming Your Payment&hellip;</h1>
         <p className="max-w-md text-sm leading-relaxed text-foreground/60">
           We&rsquo;re still confirming your payment with Paystack. This usually takes a few seconds — refresh this
           page shortly. You&rsquo;ll also receive an email once it&rsquo;s confirmed.
         </p>
-        <p className="font-sans text-xs tracking-[0.2em] text-foreground/45 uppercase">
+        <p className="font-sans text-xs font-light tracking-[0.2em] text-foreground/45 uppercase">
           Reference {order.orderNumber}
         </p>
       </Container>
@@ -52,12 +52,12 @@ export default async function PaymentSuccessPage({
         <CheckIcon className="h-6 w-6 text-burgundy-light" />
       </span>
       <div>
-        <h1 className="font-serif text-3xl font-light text-foreground sm:text-4xl">Order Confirmed</h1>
+        <h1 className="font-display text-3xl font-light text-foreground sm:text-4xl">Order Confirmed</h1>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-foreground/60">
           Thank you — your payment was successful and your order is being processed.
         </p>
       </div>
-      <p className="font-sans text-xs tracking-[0.2em] text-foreground/45 uppercase">Order {order.orderNumber}</p>
+      <p className="font-sans text-xs font-light tracking-[0.2em] text-foreground/45 uppercase">Order {order.orderNumber}</p>
 
       <div className="w-full max-w-md border border-foreground/15 p-5 text-left">
         <div className="flex flex-col gap-3">

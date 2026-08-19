@@ -1,6 +1,8 @@
 import "server-only";
+import { after } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { verifyTransaction, PaystackError } from "@/lib/paystack";
+import { notifyAdminOfPaidOrder } from "@/lib/notifications/orders";
 
 /**
  * The single place that turns a Paystack reference into a confirmed paid
@@ -113,5 +115,54 @@ export async function confirmPaystackPayment(reference: string): Promise<Confirm
     }
   }
 
+  after(() => notifyAdminOfPaidOrderById(admin, claimed.order_id));
+
   return { ok: true, paid: true, message: "Payment confirmed." };
+}
+
+// Best-effort admin notification (email + WhatsApp) for a just-paid order.
+// Runs once per order, guarded by the same `claimed` row above — never
+// blocks or fails the payment confirmation itself.
+async function notifyAdminOfPaidOrderById(admin: ReturnType<typeof createAdminClient>, orderId: string) {
+  try {
+    const { data: order, error: orderError } = await admin
+      .from("orders")
+      .select("order_number, customer_name, customer_email, customer_phone, total, shipping_address")
+      .eq("id", orderId)
+      .maybeSingle();
+    if (orderError || !order) {
+      console.error(`notifyAdminOfPaidOrderById: could not load order ${orderId}:`, orderError?.message);
+      return;
+    }
+
+    const { data: items, error: itemsError } = await admin
+      .from("order_items")
+      .select("product_name, size, color, quantity, total_price")
+      .eq("order_id", orderId);
+    if (itemsError) {
+      console.error(`notifyAdminOfPaidOrderById: could not load items for order ${orderId}:`, itemsError.message);
+      return;
+    }
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+
+    await notifyAdminOfPaidOrder({
+      orderNumber: order.order_number,
+      customerName: order.customer_name,
+      customerEmail: order.customer_email,
+      customerPhone: order.customer_phone,
+      total: order.total,
+      items: (items ?? []).map((item) => ({
+        productName: item.product_name,
+        size: item.size,
+        color: item.color,
+        quantity: item.quantity,
+        totalPrice: item.total_price,
+      })),
+      shippingAddress: order.shipping_address,
+      adminUrl: `${siteUrl}/admin/orders/${orderId}`,
+    });
+  } catch (error) {
+    console.error(`notifyAdminOfPaidOrderById: unexpected error for order ${orderId}:`, error);
+  }
 }

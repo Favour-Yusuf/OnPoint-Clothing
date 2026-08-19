@@ -111,7 +111,7 @@ export function CheckoutView() {
   if (phase === "awaiting-payment" || phase === "verifying") {
     return (
       <Container className="flex flex-col items-center gap-4 py-24 text-center">
-        <h1 className="font-serif text-2xl font-light text-foreground">
+        <h1 className="font-display text-2xl font-light text-foreground">
           {phase === "verifying" ? "Confirming Your Payment…" : "Complete Your Payment"}
         </h1>
         <p className="max-w-sm text-sm leading-relaxed text-foreground/55">
@@ -165,7 +165,7 @@ export function CheckoutView() {
                 <label
                   key={option.id}
                   className={`flex cursor-pointer items-center justify-between border px-4 py-3 transition-colors ${
-                    delivery === option.id ? "border-foreground" : "border-foreground/20 hover:border-foreground/40"
+                    delivery === option.id ? "border-burgundy" : "border-foreground/20 hover:border-burgundy-light/50"
                   }`}
                 >
                   <span className="flex items-center gap-3">
@@ -207,8 +207,8 @@ export function CheckoutView() {
           ) : null}
         </div>
 
-        <div className="h-fit border border-foreground/10 p-6 lg:sticky lg:top-28">
-          <p className="font-sans text-xs font-medium tracking-[0.25em] text-foreground/60 uppercase">Order Summary</p>
+        <div className="h-fit border border-t-2 border-foreground/10 border-t-burgundy bg-foreground/2 p-6 lg:sticky lg:top-28">
+          <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/60 uppercase">Order Summary</p>
           <div className="mt-5 flex flex-col gap-4">
             {items.map((item) => (
               <div key={item.key} className="flex items-center justify-between gap-3 font-sans text-sm">
@@ -245,7 +245,7 @@ export function CheckoutView() {
 function Section({ index, title, children }: { index: string; title: string; children: React.ReactNode }) {
   return (
     <div>
-      <p className="flex items-center gap-3 font-sans text-xs font-medium tracking-[0.2em] text-foreground/50 uppercase">
+      <p className="flex items-center gap-3 font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
         <span className="text-burgundy">{index}</span> {title}
       </p>
       <div className="mt-4">{children}</div>
@@ -276,7 +276,7 @@ function Field({
         name={name}
         autoComplete={autoComplete}
         className={`border bg-transparent px-3 py-2.5 font-sans text-sm text-foreground focus-visible:outline-none ${
-          error ? "border-burgundy-light" : "border-foreground/20 focus:border-foreground/50"
+          error ? "border-burgundy-light" : "border-foreground/20 focus:border-burgundy-light"
         }`}
       />
       {error ? <span className="font-sans text-xs text-burgundy-light">{error}</span> : null}

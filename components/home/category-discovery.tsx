@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { getAllCategories } from "@/lib/products";
+import { editorialImages } from "@/lib/data/editorial";
 import type { CloudinaryImage } from "@/lib/types";
 
 type Tile = {
@@ -22,9 +23,9 @@ export async function CategoryDiscovery() {
       href: `/shop/${category.slug}`,
       image: category.image,
     })),
-    { name: "New Arrivals", href: "/shop/new-arrivals", image: { url: "placeholder:category-new-arrivals", alt: "New Arrivals" } },
-    { name: "Collections", href: "/collections", image: { url: "placeholder:category-collections", alt: "Collections" } },
-    { name: "Bespoke", href: "/bespoke", image: { url: "placeholder:category-bespoke", alt: "Bespoke" } },
+    { name: "New Arrivals", href: "/shop/new-arrivals", image: editorialImages.categoryTiles.newArrivals },
+    { name: "Collections", href: "/collections", image: editorialImages.categoryTiles.collections },
+    { name: "Bespoke", href: "/bespoke", image: editorialImages.categoryTiles.bespoke },
   ];
 
   return (
@@ -42,15 +43,15 @@ export async function CategoryDiscovery() {
             <Reveal key={tile.href} delayMs={index * 80}>
               <Link
                 href={tile.href}
-                className="group relative block aspect-4/5 w-full overflow-hidden bg-background sm:aspect-4/3"
+                className="group relative block aspect-4/5 w-full overflow-hidden bg-background ring-0 ring-inset ring-burgundy transition-shadow duration-300 hover:ring-2 sm:aspect-4/3"
               >
                 <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.05]">
                   <MediaImage image={tile.image} sizes="(min-width: 1024px) 33vw, 50vw" />
                 </div>
-                <div className="absolute inset-0 bg-linear-to-t from-background/80 via-background/10 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep/85 via-background/15 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 sm:p-6">
-                  <span className="font-serif text-xl font-light text-foreground sm:text-2xl">{tile.name}</span>
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-foreground/30 text-foreground transition-colors group-hover:border-burgundy group-hover:bg-burgundy">
+                  <span className="font-sans text-xl font-semibold text-foreground sm:text-2xl">{tile.name}</span>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-foreground/30 text-foreground transition-colors group-hover:border-burgundy-light group-hover:bg-burgundy-light">
                     <ArrowRightIcon className="h-3.5 w-3.5" />
                   </span>
                 </div>

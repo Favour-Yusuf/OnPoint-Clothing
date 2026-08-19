@@ -17,7 +17,7 @@ const SHOP_LINKS = [
 const HOUSE_LINKS = [
   { label: "About OnPoint", href: "/about" },
   { label: "Bespoke", href: "/bespoke" },
-  { label: "Contact", href: "mailto:hello@justonpointng.com" },
+  { label: "Contact", href: "/about#contact" },
 ];
 
 export function Footer() {
@@ -27,7 +27,7 @@ export function Footer() {
   if (pathname.startsWith("/checkout")) {
     return (
       <footer className="border-t border-foreground/10 bg-background">
-        <Container className="flex flex-col items-center gap-2 py-6 font-sans text-xs tracking-[0.15em] text-foreground/45 uppercase sm:flex-row sm:justify-between">
+        <Container className="flex flex-col items-center gap-2 py-6 font-sans text-xs font-light tracking-[0.15em] text-foreground/45 uppercase sm:flex-row sm:justify-between">
           <p>&copy; {year} OnPoint Clothing</p>
           <p>Secure Checkout</p>
         </Container>
@@ -36,22 +36,21 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-foreground/10 bg-background">
+    <footer className="border-t border-burgundy/20 bg-background">
       <Container className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:py-20">
         <div className="flex flex-col items-start gap-5">
           <Logo className="h-7 w-auto" />
           <p className="max-w-xs text-sm leading-relaxed text-foreground/55">
-            Nineteen years of tailoring, craft, and considered design. OnPoint Clothing is currently rebuilding its
-            digital home.
+            Nineteen years of tailoring, craft, and considered design — redefining luxury for the 21st century.
           </p>
         </div>
 
         <nav aria-label="Shop">
-          <p className="font-sans text-xs font-medium tracking-[0.25em] text-foreground/45 uppercase">Shop</p>
+          <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/45 uppercase">Shop</p>
           <ul className="mt-5 flex flex-col gap-3">
             {SHOP_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+                <Link href={link.href} className="text-sm text-foreground/70 transition-colors hover:text-burgundy-light">
                   {link.label}
                 </Link>
               </li>
@@ -60,11 +59,11 @@ export function Footer() {
         </nav>
 
         <nav aria-label="The House">
-          <p className="font-sans text-xs font-medium tracking-[0.25em] text-foreground/45 uppercase">The House</p>
+          <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/45 uppercase">The House</p>
           <ul className="mt-5 flex flex-col gap-3">
             {HOUSE_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+                <Link href={link.href} className="text-sm text-foreground/70 transition-colors hover:text-burgundy-light">
                   {link.label}
                 </Link>
               </li>
@@ -73,7 +72,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="font-sans text-xs font-medium tracking-[0.25em] text-foreground/45 uppercase">Stay Informed</p>
+          <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/45 uppercase">Stay Informed</p>
           <p className="mt-5 text-sm text-foreground/60">New collections and bespoke openings, occasionally.</p>
           <div className="mt-5">
             <NewsletterForm />
@@ -82,9 +81,9 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-foreground/10">
-        <Container className="flex flex-col items-center gap-2 py-6 font-sans text-xs tracking-[0.15em] text-foreground/45 uppercase sm:flex-row sm:justify-between">
+        <Container className="flex flex-col items-center gap-2 py-6 font-sans text-xs font-light tracking-[0.15em] text-foreground/45 uppercase sm:flex-row sm:justify-between">
           <p>&copy; {year} OnPoint Clothing</p>
-          <p>19 Years of Craft</p>
+          <p className="text-burgundy-light">19 Years of Craft</p>
         </Container>
       </div>
     </footer>

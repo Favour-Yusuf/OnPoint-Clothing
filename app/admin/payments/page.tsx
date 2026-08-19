@@ -31,7 +31,7 @@ export default async function AdminPaymentsPage({
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="font-serif text-2xl font-light text-foreground">Payments</h1>
+        <h1 className="font-display text-2xl font-light text-foreground">Payments</h1>
         <SearchInput placeholder="Search reference, order, customer…" />
       </div>
 

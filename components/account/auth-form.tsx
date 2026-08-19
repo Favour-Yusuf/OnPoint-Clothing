@@ -15,7 +15,7 @@ export function AuthForm({ next }: { next?: string } = {}) {
 
   return (
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
-      <div className="flex gap-6 border-b border-foreground/10 font-sans text-xs font-medium tracking-[0.2em] uppercase">
+      <div className="flex gap-6 border-b border-foreground/10 font-sans text-xs font-light tracking-[0.2em] uppercase">
         {(["sign-in", "sign-up"] as const).map((tab) => (
           <button
             key={tab}

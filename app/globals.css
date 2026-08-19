@@ -1,12 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #f2f0ee;
+  /* Ink and cream carry a faint warm/wine undertone rather than being
+     neutral black/white — the whole site is built on these two, so
+     warming them here is what keeps burgundy-adjacent surfaces from
+     reading as flat gray. */
+  --background: #0d0808;
+  --foreground: #f7f1e8;
   --color-burgundy: #6d0f1f;
   --color-burgundy-glow: #7a1526;
-  --color-burgundy-light: #9c1f30;
-  --color-paper-dim: #e9e4da;
+  --color-burgundy-light: #b02f47;
+  --color-burgundy-deep: #2e070d;
+  --color-paper-dim: #ece1cd;
+  /* The one supporting neutral — warm-toned, used sparingly for
+     utility/caption text, never for large surfaces. */
+  --color-stone: #8f8073;
 }
 
 @theme inline {
@@ -15,10 +23,12 @@
   --color-burgundy: var(--color-burgundy);
   --color-burgundy-glow: var(--color-burgundy-glow);
   --color-burgundy-light: var(--color-burgundy-light);
+  --color-burgundy-deep: var(--color-burgundy-deep);
   --color-paper-dim: var(--color-paper-dim);
-  --font-sans: var(--font-geist-sans);
+  --color-stone: var(--color-stone);
+  --font-sans: var(--font-montserrat);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-serif);
+  --font-display: var(--font-bebas-neue);
 }
 
 body {

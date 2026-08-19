@@ -30,7 +30,7 @@ export function ConfirmDialog({
           if (e.target === dialogRef.current) dialogRef.current?.close();
         }}
       >
-        <h2 className="font-serif text-xl font-light text-foreground">{title}</h2>
+        <h2 className="font-display text-xl font-light text-foreground">{title}</h2>
         <p className="mt-3 font-sans text-sm leading-relaxed text-foreground/60">{description}</p>
         <div className="mt-6 flex justify-end gap-3">
           <Button type="button" variant="outline" size="md" onClick={() => dialogRef.current?.close()}>

@@ -37,7 +37,7 @@ export function Header() {
           <Link href="/" aria-label="OnPoint Clothing — Home">
             <Logo priority className="h-6 w-auto sm:h-7" />
           </Link>
-          <p className="font-sans text-xs font-medium tracking-[0.3em] text-foreground/60 uppercase">Secure Checkout</p>
+          <p className="font-sans text-xs font-light tracking-[0.3em] text-burgundy-light uppercase">Secure Checkout</p>
         </div>
       </header>
     );
@@ -49,67 +49,100 @@ export function Header() {
         solid ? "border-b border-foreground/10 bg-background/95 backdrop-blur-md" : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 w-full max-w-[1680px] items-center justify-between px-6 sm:px-10 lg:h-20 lg:px-16 xl:px-20">
-        <Link href="/" aria-label="OnPoint Clothing — Home" className="shrink-0">
-          <Logo priority className="h-6 w-auto sm:h-7" />
+      {/* Mobile: hamburger / logo / icons as three equal-width grid tracks, so the
+          logo is centered on the viewport regardless of how the left and right
+          content differ in width — flexbox justify-between can't guarantee that. */}
+      <div className="grid h-16 w-full grid-cols-[1fr_auto_1fr] items-center px-6 sm:px-10 lg:hidden">
+        <button
+          type="button"
+          onClick={openMobileNav}
+          aria-label="Open menu"
+          className="flex h-10 w-10 items-center justify-center justify-self-start text-foreground/80 transition-colors hover:text-burgundy-light"
+        >
+          <MenuIcon className="h-[18px] w-[18px]" />
+        </button>
+
+        <Link href="/" aria-label="OnPoint Clothing — Home" className="justify-self-center">
+          <Logo priority className="h-6 w-auto" />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
+        <div className="flex items-center justify-self-end gap-1">
+          <button
+            type="button"
+            onClick={openSearch}
+            aria-label="Search"
+            className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-burgundy-light"
+          >
+            <SearchIcon className="h-[18px] w-[18px]" />
+          </button>
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label={`Bag, ${itemCount} item${itemCount === 1 ? "" : "s"}`}
+            className="relative flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-burgundy-light"
+          >
+            <BagIcon className="h-[18px] w-[18px]" />
+            {itemCount > 0 ? (
+              <span className="absolute top-1.5 right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-burgundy px-1 font-sans text-[10px] font-light text-foreground tabular-nums">
+                {itemCount}
+              </span>
+            ) : null}
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div className="mx-auto hidden h-20 w-full max-w-[1680px] items-center justify-between px-16 lg:flex xl:px-20">
+        <Link href="/" aria-label="OnPoint Clothing — Home" className="shrink-0">
+          <Logo priority className="h-7 w-auto" />
+        </Link>
+
+        <nav aria-label="Primary" className="flex items-center gap-9">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-xs font-medium tracking-[0.16em] text-foreground/75 uppercase transition-colors hover:text-foreground"
+              className="relative py-1 font-sans text-xs font-light tracking-[0.16em] text-foreground/75 uppercase transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-burgundy-light after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1">
           <button
             type="button"
             onClick={openSearch}
             aria-label="Search"
-            className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground"
+            className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-burgundy-light"
           >
             <SearchIcon className="h-[18px] w-[18px]" />
           </button>
 
-          <div className="hidden sm:block">
-            {isSignedIn ? (
-              <AccountMenu isAdmin={isAdmin} />
-            ) : (
-              <Link
-                href="/account"
-                aria-label="Account"
-                className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground"
-              >
-                <UserIcon className="h-[18px] w-[18px]" />
-              </Link>
-            )}
-          </div>
+          {isSignedIn ? (
+            <AccountMenu isAdmin={isAdmin} />
+          ) : (
+            <Link
+              href="/account"
+              aria-label="Account"
+              className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-burgundy-light"
+            >
+              <UserIcon className="h-[18px] w-[18px]" />
+            </Link>
+          )}
 
           <button
             type="button"
             onClick={openCart}
             aria-label={`Bag, ${itemCount} item${itemCount === 1 ? "" : "s"}`}
-            className="relative flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground"
+            className="relative flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-burgundy-light"
           >
             <BagIcon className="h-[18px] w-[18px]" />
             {itemCount > 0 ? (
-              <span className="absolute top-1.5 right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-burgundy px-1 font-sans text-[10px] font-medium text-foreground tabular-nums">
+              <span className="absolute top-1.5 right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-burgundy px-1 font-sans text-[10px] font-light text-foreground tabular-nums">
                 {itemCount}
               </span>
             ) : null}
-          </button>
-          <button
-            type="button"
-            onClick={openMobileNav}
-            aria-label="Open menu"
-            className="flex h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground lg:hidden"
-          >
-            <MenuIcon className="h-[18px] w-[18px]" />
           </button>
         </div>
       </div>

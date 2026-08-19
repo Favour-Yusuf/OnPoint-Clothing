@@ -24,14 +24,14 @@ export function CartLineItem({ item, compact = false }: { item: CartItem; compac
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <Link href={`/product/${item.slug}`} className="font-sans text-sm text-foreground hover:text-foreground/80">
+            <Link href={`/product/${item.slug}`} className="font-sans text-sm font-semibold text-foreground hover:text-foreground/80">
               {item.name}
             </Link>
             <p className="mt-1 font-sans text-xs text-foreground/50">
               {item.color} &middot; {item.size}
             </p>
           </div>
-          <p className="font-sans text-sm text-foreground tabular-nums">{formatPrice(item.price * item.quantity)}</p>
+          <p className="font-sans text-sm font-light tracking-wide text-foreground tabular-nums">{formatPrice(item.price * item.quantity)}</p>
         </div>
 
         <div className="flex items-center justify-between">

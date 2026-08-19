@@ -6,7 +6,7 @@ type Tone = "on-dark" | "on-light";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-sans text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300 focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-40";
+  "inline-flex items-center justify-center gap-2 font-sans text-xs font-medium tracking-[0.18em] uppercase transition-all duration-300 focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-40";
 
 const sizes: Record<Size, string> = {
   md: "px-6 py-3",
@@ -15,17 +15,17 @@ const sizes: Record<Size, string> = {
 
 function variantClasses(variant: Variant, tone: Tone): string {
   if (variant === "primary") {
-    return "bg-burgundy text-[#f2f0ee] hover:bg-burgundy-light";
+    return "bg-burgundy text-[#f7f1e8] shadow-[0_0_0_0_rgba(176,47,71,0)] hover:-translate-y-px hover:bg-burgundy-light hover:shadow-[0_6px_20px_-4px_rgba(176,47,71,0.55)]";
   }
   if (variant === "outline") {
     return tone === "on-dark"
-      ? "border border-foreground/35 text-foreground hover:border-foreground hover:bg-foreground/5"
-      : "border border-background/30 text-background hover:border-background hover:bg-background/5";
+      ? "border border-foreground/30 text-foreground hover:-translate-y-px hover:border-burgundy-light hover:text-burgundy-light"
+      : "border border-background/30 text-background hover:-translate-y-px hover:border-burgundy hover:text-burgundy";
   }
   // text
   return tone === "on-dark"
-    ? "text-foreground/80 hover:text-foreground underline decoration-burgundy decoration-2 underline-offset-8"
-    : "text-background/70 hover:text-background underline decoration-burgundy decoration-2 underline-offset-8";
+    ? "text-foreground/80 hover:text-burgundy-light underline decoration-burgundy decoration-2 underline-offset-8"
+    : "text-background/70 hover:text-burgundy underline decoration-burgundy decoration-2 underline-offset-8";
 }
 
 type CommonProps = {

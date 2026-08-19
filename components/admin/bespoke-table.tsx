@@ -12,7 +12,7 @@ export function BespokeTable({ requests }: { requests: BespokeRequestAdmin[] }) 
       {/* Desktop */}
       <table className="hidden w-full min-w-[720px] border-collapse font-sans text-sm sm:table">
         <thead>
-          <tr className="border-b border-foreground/10 text-left text-xs tracking-[0.15em] text-foreground/45 uppercase">
+          <tr className="border-b border-foreground/10 text-left text-xs font-light tracking-[0.15em] text-foreground/45 uppercase">
             <th className="py-3 pr-4 font-medium">Customer</th>
             <th className="py-3 pr-4 font-medium">Garment</th>
             <th className="py-3 pr-4 font-medium">Date</th>

@@ -65,7 +65,7 @@ export function RevenueChart({ data }: { data: RevenuePoint[] }) {
         </div>
       ) : null}
 
-      <div className="mt-2 flex justify-between font-sans text-[10px] tracking-[0.05em] text-foreground/35 uppercase">
+      <div className="mt-2 flex justify-between font-sans text-[10px] font-light tracking-[0.05em] text-foreground/35 uppercase">
         <span>{data[0]?.label}</span>
         {data.length > 1 ? <span>{data[data.length - 1]?.label}</span> : null}
       </div>

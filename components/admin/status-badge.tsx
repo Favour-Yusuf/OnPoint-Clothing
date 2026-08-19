@@ -12,7 +12,7 @@ const TONE_CLASSES: Record<Tone, { text: string; dot: string }> = {
 function Badge({ label, tone }: { label: string; tone: Tone }) {
   const classes = TONE_CLASSES[tone];
   return (
-    <span className={`inline-flex items-center gap-1.5 font-sans text-xs ${classes.text}`}>
+    <span className={`inline-flex items-center gap-1.5 font-sans text-xs font-light tracking-wide ${classes.text}`}>
       <span className={`h-1.5 w-1.5 rounded-full ${classes.dot}`} aria-hidden="true" />
       {label}
     </span>
