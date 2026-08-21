@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
 import { useCart } from "@/lib/cart-context";
@@ -26,6 +26,24 @@ export function ProductDetails({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [sizeError, setSizeError] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  const sizeSectionRef = useRef<HTMLDivElement>(null);
+  const primaryCtaRef = useRef<HTMLDivElement>(null);
+
+  // Mobile only: once the in-flow Add to Bag button scrolls above the
+  // viewport, surface a persistent bottom bar so the CTA stays reachable
+  // through the description/accordions below it.
+  useEffect(() => {
+    const node = primaryCtaRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowStickyBar(!entry.isIntersecting && entry.boundingClientRect.top < 0),
+      { threshold: 0 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const variant = useMemo(
     () => product.variants.find((v) => v.color === selectedColor && v.size === selectedSize),
@@ -39,6 +57,7 @@ export function ProductDetails({ product }: { product: Product }) {
   function handleAddToBag() {
     if (!selectedSize) {
       setSizeError(true);
+      sizeSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
     if (!variant || !variant.inStock) return;
@@ -67,7 +86,7 @@ export function ProductDetails({ product }: { product: Product }) {
     <div className="flex flex-col gap-8">
       <div>
         <p className="font-sans text-xs font-light tracking-[0.3em] text-foreground/45 uppercase">{product.categorySlug}</p>
-        <h1 className="mt-3 font-sans text-3xl leading-tight font-semibold text-foreground sm:text-4xl">{product.name}</h1>
+        <h1 className="mt-3 font-sans text-3xl leading-tight font-semibold tracking-wide text-foreground uppercase sm:text-4xl">{product.name}</h1>
         <div className="mt-3 flex items-center gap-3">
           <p className="font-sans text-2xl font-light tracking-wide text-burgundy-light tabular-nums">{formatPrice(product.price)}</p>
           {product.compareAtPrice ? (
@@ -105,7 +124,7 @@ export function ProductDetails({ product }: { product: Product }) {
       </div>
 
       {/* Size */}
-      <div>
+      <div ref={sizeSectionRef}>
         <div className="flex items-center justify-between">
           <p className="font-sans text-xs font-light tracking-[0.15em] text-foreground/60 uppercase">Size</p>
           <button type="button" className="font-sans text-xs text-foreground/50 underline hover:text-foreground">
@@ -141,7 +160,7 @@ export function ProductDetails({ product }: { product: Product }) {
       </div>
 
       {/* Quantity + Add to bag */}
-      <div className="flex flex-col gap-4">
+      <div ref={primaryCtaRef} className="flex flex-col gap-4">
         <div className="flex items-center gap-4">
           <p className="font-sans text-xs font-light tracking-[0.15em] text-foreground/60 uppercase">Qty</p>
           <QuantitySelector value={quantity} onChange={setQuantity} />
@@ -156,6 +175,25 @@ export function ProductDetails({ product }: { product: Product }) {
           {AVAILABILITY_LABEL[product.availability]}
           {product.isBespokeEligible ? " · Available as Bespoke" : ""}
         </p>
+      </div>
+
+      {/* Mobile-only sticky CTA — reachable once the in-flow button above scrolls out of view */}
+      <div
+        className={`fixed inset-x-0 bottom-0 z-30 border-t border-foreground/10 bg-background/95 px-4 pt-3 backdrop-blur-md transition-transform duration-300 lg:hidden ${
+          showStickyBar ? "translate-y-0" : "translate-y-full"
+        }`}
+        style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+        aria-hidden={!showStickyBar}
+      >
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="truncate font-sans text-xs font-semibold tracking-wide text-foreground uppercase">{product.name}</p>
+            <p className="font-sans text-sm font-light text-burgundy-light tabular-nums">{formatPrice(product.price)}</p>
+          </div>
+          <Button type="button" onClick={handleAddToBag} disabled={soldOut} size="md" className="shrink-0" tabIndex={showStickyBar ? 0 : -1}>
+            {soldOut ? "Sold Out" : justAdded ? "Added" : "Add to Bag"}
+          </Button>
+        </div>
       </div>
 
       {/* Accordions */}

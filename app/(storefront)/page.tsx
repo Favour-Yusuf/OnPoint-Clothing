@@ -5,7 +5,7 @@ import { ExpressionTeaser } from "@/components/home/expression-teaser";
 import { CategoryDiscovery } from "@/components/home/category-discovery";
 import { BespokeTeaser } from "@/components/home/bespoke-teaser";
 import { FeaturedProducts } from "@/components/home/featured-products";
-import { Heritage } from "@/components/home/heritage";
+import { Recognition } from "@/components/home/recognition";
 import { FinalCTA } from "@/components/home/final-cta";
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
       <CategoryDiscovery />
       <BespokeTeaser />
       <FeaturedProducts />
-      <Heritage />
+      <Recognition />
       <FinalCTA />
     </>
   );

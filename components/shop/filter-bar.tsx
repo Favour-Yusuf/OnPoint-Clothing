@@ -55,7 +55,7 @@ export function FilterBar({
               className={`border px-3 py-1.5 font-sans text-xs font-light tracking-wide transition-colors ${
                 activeSize === size
                   ? "border-burgundy bg-burgundy text-foreground"
-                  : "border-foreground/25 text-foreground/70 hover:border-burgundy-light hover:text-burgundy-light"
+                  : "border-background/25 text-background/70 hover:border-burgundy hover:text-burgundy"
               }`}
             >
               {size}
@@ -75,7 +75,7 @@ export function FilterBar({
               aria-label={color}
               title={color}
               className={`h-7 w-7 rounded-full border transition-all ${
-                activeColor === color ? "ring-2 ring-burgundy ring-offset-2 ring-offset-background" : "border-foreground/20"
+                activeColor === color ? "ring-2 ring-burgundy ring-offset-2 ring-offset-foreground" : "border-background/20"
               }`}
               style={{ backgroundColor: colorToHex(color) }}
             />
@@ -86,30 +86,30 @@ export function FilterBar({
   );
 
   return (
-    <div className="border-b border-foreground/10 py-5">
+    <div className="border-b border-background/10 py-5">
       <div className="flex items-center justify-between gap-4">
-        <p className="font-sans text-xs text-foreground/50">
+        <p className="font-sans text-xs text-background/50">
           {resultCount} {resultCount === 1 ? "piece" : "pieces"}
         </p>
 
         <div className="hidden items-center gap-6 lg:flex">
           {controls}
-          <label className="flex items-center gap-2 font-sans text-xs text-foreground/60">
+          <label className="flex items-center gap-2 font-sans text-xs text-background/60">
             Sort
             <select
               value={activeSort}
               onChange={(event) => updateParam("sort", event.target.value)}
-              className="border border-foreground/25 bg-transparent px-2 py-1.5 font-sans text-xs text-foreground focus-visible:outline-none"
+              className="border border-background/25 bg-transparent px-2 py-1.5 font-sans text-xs text-background focus-visible:outline-none"
             >
               {SORT_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value} className="bg-background text-foreground">
+                <option key={option.value} value={option.value} className="bg-foreground text-background">
                   {option.label}
                 </option>
               ))}
             </select>
           </label>
           {activeCount > 0 ? (
-            <button type="button" onClick={clearAll} className="font-sans text-xs text-foreground/50 underline hover:text-foreground">
+            <button type="button" onClick={clearAll} className="font-sans text-xs text-background/50 underline hover:text-background">
               Clear
             </button>
           ) : null}
@@ -118,7 +118,7 @@ export function FilterBar({
         <button
           type="button"
           onClick={() => setDrawerOpen(true)}
-          className="flex items-center gap-2 border border-foreground/25 px-4 py-2 font-sans text-xs font-light tracking-wide text-foreground uppercase lg:hidden"
+          className="flex items-center gap-2 border border-background/25 px-4 py-2 font-sans text-xs font-light tracking-wide text-background uppercase lg:hidden"
         >
           Filters{activeCount > 0 ? ` (${activeCount})` : ""}
         </button>
@@ -132,11 +132,11 @@ export function FilterBar({
             aria-label="Close filters"
             className="absolute inset-0 bg-background/70 backdrop-blur-sm"
           />
-          <div className="relative flex max-h-[80vh] flex-col gap-6 overflow-y-auto bg-background px-6 pt-6 pb-10">
+          <div className="relative flex max-h-[80vh] flex-col gap-6 overflow-y-auto bg-foreground px-6 pt-6 pb-10">
             <div className="flex items-center justify-between">
-              <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground uppercase">Filters</p>
+              <p className="font-sans text-xs font-light tracking-[0.25em] text-background uppercase">Filters</p>
               <button type="button" onClick={() => setDrawerOpen(false)} aria-label="Close filters">
-                <CloseIcon className="h-5 w-5 text-foreground/70" />
+                <CloseIcon className="h-5 w-5 text-background/70" />
               </button>
             </div>
             {controls}
@@ -144,17 +144,17 @@ export function FilterBar({
               <select
                 value={activeSort}
                 onChange={(event) => updateParam("sort", event.target.value)}
-                className="w-full border border-foreground/25 bg-transparent px-3 py-2 font-sans text-sm text-foreground"
+                className="w-full border border-background/25 bg-transparent px-3 py-2 font-sans text-sm text-background"
               >
                 {SORT_OPTIONS.map((option) => (
-                  <option key={option.value} value={option.value} className="bg-background text-foreground">
+                  <option key={option.value} value={option.value} className="bg-foreground text-background">
                     {option.label}
                   </option>
                 ))}
               </select>
             </FilterGroup>
             <div className="flex gap-3 pt-2">
-              <button type="button" onClick={clearAll} className="flex-1 border border-foreground/25 py-3 font-sans text-xs font-light tracking-wide text-foreground uppercase">
+              <button type="button" onClick={clearAll} className="flex-1 border border-background/25 py-3 font-sans text-xs font-light tracking-wide text-background uppercase">
                 Clear All
               </button>
               <button
@@ -175,7 +175,7 @@ export function FilterBar({
 function FilterGroup({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-3">
-      <p className="font-sans text-xs text-foreground/50 lg:hidden">{label}</p>
+      <p className="font-sans text-xs text-background/50 lg:hidden">{label}</p>
       {children}
     </div>
   );

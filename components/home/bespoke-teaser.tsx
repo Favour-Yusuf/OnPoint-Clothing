@@ -19,10 +19,10 @@ export function BespokeTeaser() {
           <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy-light uppercase">The Bespoke Service</p>
         </div>
         <h2 className="max-w-md font-display text-4xl leading-[1.05] font-light text-foreground sm:text-5xl">
-          Made <span>for you.</span>
+          Made <span className="italic">for you.</span>
         </h2>
         <p className="max-w-md text-base leading-relaxed text-foreground/75 sm:text-lg">
-          Beyond ready-to-wear, OnPoint offers a bespoke service — garments built to your measure, from a
+          Beyond ready-to-wear, OnPoint offers a bespoke service. Garments built to your measure, from a
           consultation through to final fitting.
         </p>
         <div>

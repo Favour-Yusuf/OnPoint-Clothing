@@ -11,7 +11,10 @@ export async function FeaturedCollection() {
   return (
     <section className="relative flex h-[85vh] min-h-[560px] w-full items-end overflow-hidden bg-background">
       <div className="absolute inset-0">
-        <MediaImage image={collection.image} sizes="100vw" />
+        {/* This section runs very wide and short (h-[85vh] but full-bleed
+            width) against tall portrait photography — center-cropping loses
+            the model's face off the top of frame, so bias the crop upward. */}
+        <MediaImage image={collection.image} sizes="100vw" position="50% 15%" />
         <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep/90 via-background/40 to-transparent" />
       </div>
 

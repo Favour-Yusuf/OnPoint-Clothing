@@ -9,6 +9,8 @@ import { placeOrder, type CheckoutState } from "@/lib/actions/checkout";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
+import { ChevronDownIcon } from "@/components/ui/icons";
+import type { CartItem } from "@/lib/types";
 
 const initialState: CheckoutState = { status: "idle" };
 
@@ -139,8 +141,11 @@ export function CheckoutView() {
     <Container className="py-10 sm:py-14">
       <Script src="https://js.paystack.co/v1/inline.js" strategy="afterInteractive" />
 
-      <form action={formAction} className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_380px]">
+      <form action={formAction} className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-[1fr_380px]">
         <input type="hidden" name="cartItems" value={JSON.stringify(items)} />
+
+        <MobileOrderSummary items={items} subtotal={subtotal} shipping={shipping} total={total} />
+
         <div className="flex flex-col gap-10">
           <Section index="01" title="Contact">
             <Field label="Email" name="email" type="email" error={state.errors?.email} autoComplete="email" />
@@ -208,8 +213,75 @@ export function CheckoutView() {
         </div>
 
         <div className="h-fit border border-t-2 border-foreground/10 border-t-burgundy bg-foreground/2 p-6 lg:sticky lg:top-28">
-          <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/60 uppercase">Order Summary</p>
-          <div className="mt-5 flex flex-col gap-4">
+          {/* Full breakdown: desktop-only — the mobile equivalent is the
+              collapsible MobileOrderSummary above the form. */}
+          <div className="hidden lg:block">
+            <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/60 uppercase">Order Summary</p>
+            <div className="mt-5 flex flex-col gap-4">
+              {items.map((item) => (
+                <div key={item.key} className="flex items-center justify-between gap-3 font-sans text-sm">
+                  <span className="text-foreground/70">
+                    {item.name} <span className="text-foreground/40">&times;{item.quantity}</span>
+                  </span>
+                  <span className="shrink-0 text-foreground tabular-nums">{formatPrice(item.price * item.quantity)}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-col gap-2 border-t border-foreground/10 pt-5 font-sans text-sm">
+              <div className="flex justify-between text-foreground/60">
+                <span>Subtotal</span>
+                <span className="tabular-nums">{formatPrice(subtotal)}</span>
+              </div>
+              <div className="flex justify-between text-foreground/60">
+                <span>Shipping</span>
+                <span className="tabular-nums">{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
+              </div>
+              <div className="flex justify-between border-t border-foreground/10 pt-2 text-base text-foreground">
+                <span>Total</span>
+                <span className="tabular-nums">{formatPrice(total)}</span>
+              </div>
+            </div>
+          </div>
+          <Button type="submit" disabled={pending} className="w-full lg:mt-6">
+            {pending ? "Placing Order…" : `Pay Now · ${formatPrice(total)}`}
+          </Button>
+        </div>
+      </form>
+    </Container>
+  );
+}
+
+function MobileOrderSummary({
+  items,
+  subtotal,
+  shipping,
+  total,
+}: {
+  items: CartItem[];
+  subtotal: number;
+  shipping: number;
+  total: number;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border border-foreground/10 bg-foreground/2 lg:hidden">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3.5"
+      >
+        <span className="flex items-center gap-2 font-sans text-xs font-light tracking-[0.15em] text-foreground/70 uppercase">
+          <ChevronDownIcon className={`h-3.5 w-3.5 shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
+          Order Summary &middot; {items.length} {items.length === 1 ? "item" : "items"}
+        </span>
+        <span className="shrink-0 font-sans text-sm text-foreground tabular-nums">{formatPrice(total)}</span>
+      </button>
+
+      {open ? (
+        <div className="border-t border-foreground/10 px-4 py-4">
+          <div className="flex flex-col gap-3">
             {items.map((item) => (
               <div key={item.key} className="flex items-center justify-between gap-3 font-sans text-sm">
                 <span className="text-foreground/70">
@@ -219,7 +291,7 @@ export function CheckoutView() {
               </div>
             ))}
           </div>
-          <div className="mt-5 flex flex-col gap-2 border-t border-foreground/10 pt-5 font-sans text-sm">
+          <div className="mt-4 flex flex-col gap-2 border-t border-foreground/10 pt-4 font-sans text-sm">
             <div className="flex justify-between text-foreground/60">
               <span>Subtotal</span>
               <span className="tabular-nums">{formatPrice(subtotal)}</span>
@@ -228,17 +300,10 @@ export function CheckoutView() {
               <span>Shipping</span>
               <span className="tabular-nums">{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
             </div>
-            <div className="flex justify-between border-t border-foreground/10 pt-2 text-base text-foreground">
-              <span>Total</span>
-              <span className="tabular-nums">{formatPrice(total)}</span>
-            </div>
           </div>
-          <Button type="submit" disabled={pending} className="mt-6 w-full">
-            {pending ? "Placing Order…" : "Pay Now"}
-          </Button>
         </div>
-      </form>
-    </Container>
+      ) : null}
+    </div>
   );
 }
 

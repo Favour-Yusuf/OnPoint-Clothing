@@ -11,9 +11,27 @@ export const editorialImages = {
     publicId: "Web_7",
     alt: "OnPoint model in a white embroidered kaftan with coral beadwork",
   } satisfies CloudinaryImage,
-  aboutHero: { publicId: "placeholder:about-hero-01", alt: "The OnPoint atelier" } satisfies CloudinaryImage,
+  /** The homepage hero cycles through these, in order. First entry matches `hero` above. */
+  heroRotation: [
+    {
+      publicId: "Web_7",
+      alt: "OnPoint model in a white embroidered kaftan with coral beadwork",
+    },
+    {
+      publicId: "Web_6",
+      alt: "OnPoint model in a regal red beaded kaftan and crown, holding a fur-trimmed staff, studio portrait on a red backdrop",
+    },
+    {
+      publicId: "Web_11",
+      alt: "Two OnPoint models in matching sage-green printed co-ord sets, studio portrait on a red backdrop",
+    },
+  ] satisfies CloudinaryImage[],
+  aboutHero: {
+    publicId: "Pato_web",
+    alt: "The OnPoint atelier",
+  } satisfies CloudinaryImage,
   bespokeHero: {
-    publicId: "placeholder:bespoke-hero-01",
+    publicId: "_DPR0496.jpg",
     alt: "OnPoint Bespoke atelier",
   } satisfies CloudinaryImage,
   bespokeTeaser: {

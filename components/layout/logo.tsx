@@ -1,15 +1,17 @@
 import Image from "next/image";
 
-// Intrinsic size kept close to actual display size (~24-36px tall everywhere
-// the mark is used) so the browser isn't asked to downscale the full
-// 2025x873 source by 70x+, which visibly aliased the wordmark's thin strokes.
-const LOGO_WIDTH = 253;
-const LOGO_HEIGHT = 109;
+// Matches the real aspect ratio of public/ONPOINTlogo.png (2624x3815, ~0.688:1
+// — a tall stacked mark, not a wide wordmark). Scaled down while preserving
+// that ratio, with headroom for 2x DPR at the largest size the mark is
+// displayed at (~56px tall), so the browser never has to guess and never
+// stretches it into the wrong shape.
+const LOGO_WIDTH = 124;
+const LOGO_HEIGHT = 180;
 
 export function Logo({ className = "h-7 w-auto", priority = false }: { className?: string; priority?: boolean }) {
   return (
     <Image
-      src="/onpointTradeMarkWhite.png"
+      src="/ONPOINTlogo.png"
       alt="OnPoint Clothing"
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}

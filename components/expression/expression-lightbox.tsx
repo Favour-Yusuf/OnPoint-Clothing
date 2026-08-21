@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { MediaImage } from "@/components/ui/media-image";
 import { CloseIcon, ArrowRightIcon } from "@/components/ui/icons";
-import type { ExpressionGalleryImage } from "@/lib/data/onpoint-expression";
+import type { ExpressionImage } from "@/lib/data/onpoint-expression";
 
 export function ExpressionLightbox({
   images,
@@ -11,7 +11,7 @@ export function ExpressionLightbox({
   onClose,
   onNavigate,
 }: {
-  images: ExpressionGalleryImage[];
+  images: ExpressionImage[];
   index: number;
   onClose: () => void;
   onNavigate: (index: number) => void;

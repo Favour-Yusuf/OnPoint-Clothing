@@ -80,7 +80,7 @@ export function AccountView({
                 <button
                   type="submit"
                   aria-label="Remove address"
-                  className="text-foreground/40 transition-colors hover:text-burgundy-light"
+                  className="-mt-2 -mr-2 flex h-10 w-10 shrink-0 items-center justify-center text-foreground/40 transition-colors hover:text-burgundy-light"
                 >
                   <TrashIcon className="h-4 w-4" />
                 </button>

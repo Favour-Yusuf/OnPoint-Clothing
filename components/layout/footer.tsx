@@ -42,7 +42,7 @@ export function Footer() {
         <div className="flex flex-col items-start gap-5">
           <Logo className="h-7 w-auto" />
           <p className="max-w-xs text-sm leading-relaxed text-foreground/55">
-            Nineteen years of tailoring, craft, and considered design — redefining luxury for the 21st century.
+            A multiple award-winning fashion house. Redefining luxury for the 21st century.
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export function Footer() {
       <div className="border-t border-foreground/10">
         <Container className="flex flex-col items-center gap-2 py-6 font-sans text-xs font-light tracking-[0.15em] text-foreground/45 uppercase sm:flex-row sm:justify-between">
           <p>&copy; {year} OnPoint Clothing</p>
-          <p className="text-burgundy-light">19 Years of Craft</p>
+          <p className="text-burgundy-light">Multiple Award-Winning</p>
         </Container>
       </div>
     </footer>

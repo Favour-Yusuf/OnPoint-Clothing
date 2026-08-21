@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Montserrat, Geist_Mono, Bebas_Neue } from "next/font/google";
+import { Montserrat, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import { redirect } from "next/navigation";
 import "../globals.css";
 import { createClient } from "@/lib/supabase/server";
@@ -8,7 +8,11 @@ import { AdminShell } from "@/components/admin/admin-shell";
 
 const montserrat = Montserrat({ variable: "--font-montserrat", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const bebasNeue = Bebas_Neue({ variable: "--font-bebas-neue", subsets: ["latin"], weight: ["400"] });
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justonpointng.com"),
@@ -36,7 +40,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${geistMono.variable} ${bebasNeue.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body className="h-full bg-background text-foreground">
         <AdminShell adminName={customer.full_name} adminEmail={customer.email ?? user.email ?? ""}>

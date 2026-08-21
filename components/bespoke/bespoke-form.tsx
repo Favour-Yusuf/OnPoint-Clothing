@@ -17,17 +17,17 @@ export function BespokeForm() {
 
   if (state.status === "success") {
     return (
-      <div className="flex flex-col items-start gap-4 border border-foreground/15 p-8">
-        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-burgundy-light">
-          <CheckIcon className="h-5 w-5 text-burgundy-light" />
+      <div className="flex flex-col items-start gap-4 border border-background/15 p-8">
+        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-burgundy">
+          <CheckIcon className="h-5 w-5 text-burgundy" />
         </span>
-        <p className="font-display text-2xl font-light text-foreground">Enquiry Sent</p>
-        <p className="max-w-md text-sm leading-relaxed text-foreground/60">{state.message}</p>
+        <p className="font-display text-2xl font-light text-background">Enquiry Sent</p>
+        <p className="max-w-md text-sm leading-relaxed text-background/60">{state.message}</p>
         <a
           href={WHATSAPP_FOLLOWUP_HREF}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center gap-2 font-sans text-sm text-burgundy-light underline-offset-4 hover:underline"
+          className="mt-2 inline-flex items-center gap-2 font-sans text-sm text-burgundy underline-offset-4 hover:underline"
         >
           <ChatIcon className="h-4 w-4" />
           Want a faster reply? Message us on WhatsApp
@@ -43,18 +43,18 @@ export function BespokeForm() {
       <Field label="Phone (optional)" name="phone" type="tel" />
       <Field label="Garment Type" name="garmentType" placeholder="e.g. Suit, Overcoat, Evening Dress" error={state.errors?.garmentType} />
       <label className="flex flex-col gap-1.5 sm:col-span-2">
-        <span className="font-sans text-xs text-foreground/50">Tell us what you have in mind</span>
+        <span className="font-sans text-xs text-background/50">Tell us what you have in mind</span>
         <textarea
           name="notes"
           rows={5}
-          className={`border bg-transparent px-3 py-2.5 font-sans text-sm text-foreground focus-visible:outline-none ${
-            state.errors?.notes ? "border-burgundy-light" : "border-foreground/20 focus:border-foreground/50"
+          className={`border bg-transparent px-3 py-2.5 font-sans text-sm text-background focus-visible:outline-none ${
+            state.errors?.notes ? "border-burgundy" : "border-background/20 focus:border-background/50"
           }`}
         />
-        {state.errors?.notes ? <span className="font-sans text-xs text-burgundy-light">{state.errors.notes}</span> : null}
+        {state.errors?.notes ? <span className="font-sans text-xs text-burgundy">{state.errors.notes}</span> : null}
       </label>
 
-      {state.status === "error" ? <p className="font-sans text-sm text-burgundy-light sm:col-span-2">{state.message}</p> : null}
+      {state.status === "error" ? <p className="font-sans text-sm text-burgundy sm:col-span-2">{state.message}</p> : null}
 
       <div className="sm:col-span-2">
         <Button type="submit" disabled={pending}>
@@ -80,16 +80,16 @@ function Field({
 }) {
   return (
     <label className="flex flex-col gap-1.5">
-      <span className="font-sans text-xs text-foreground/50">{label}</span>
+      <span className="font-sans text-xs text-background/50">{label}</span>
       <input
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`border bg-transparent px-3 py-2.5 font-sans text-sm text-foreground placeholder:text-foreground/30 focus-visible:outline-none ${
-          error ? "border-burgundy-light" : "border-foreground/20 focus:border-foreground/50"
+        className={`border bg-transparent px-3 py-2.5 font-sans text-sm text-background placeholder:text-background/30 focus-visible:outline-none ${
+          error ? "border-burgundy" : "border-background/20 focus:border-background/50"
         }`}
       />
-      {error ? <span className="font-sans text-xs text-burgundy-light">{error}</span> : null}
+      {error ? <span className="font-sans text-xs text-burgundy">{error}</span> : null}
     </label>
   );
 }

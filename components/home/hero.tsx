@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { MediaImage } from "@/components/ui/media-image";
+import { HeroImageRotator } from "@/components/home/hero-image-rotator";
 import { editorialImages } from "@/lib/data/editorial";
 
 export function Hero() {
   return (
     <section className="relative flex h-dvh min-h-[640px] w-full flex-col justify-end overflow-hidden bg-background">
       <div className="absolute inset-0">
-        <MediaImage image={editorialImages.hero} priority sizes="100vw" />
+        <HeroImageRotator images={editorialImages.heroRotation} />
         {/* Burgundy-tinted wash, not a neutral black fade — the color carries the hero. */}
         <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep via-background/75 to-background/20" />
         <div className="absolute inset-0 bg-linear-to-r from-background/50 via-transparent to-transparent" />
@@ -17,15 +17,15 @@ export function Hero() {
 
         <div className="flex flex-col gap-2">
           <p className="font-sans text-xs font-light tracking-[0.4em] text-burgundy-light uppercase">
-            Est. 2007 &middot; Nineteen Years
+            Multiple Award-Winning Fashion House
           </p>
           <h1 className="max-w-3xl font-display text-5xl leading-[1.05] font-light text-foreground sm:text-7xl lg:text-8xl">
-            Defining the way <em className="text-burgundy-light not-italic">forward.</em>
+            Defining the way <em className="text-burgundy-light italic">forward.</em>
           </h1>
         </div>
 
         <p className="max-w-md text-base leading-relaxed text-foreground/70 sm:text-lg">
-          Nineteen years of tailoring and considered design, now built for the way you shop today.
+          A top celebrity clothier and genuine game changer, redefining luxury for the 21st century.
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">

@@ -76,7 +76,7 @@ export function ExpressionHero() {
         </p>
 
         <p className="max-w-md text-base leading-relaxed text-foreground/70 sm:text-lg">
-          A night staged in full color — the house steps off the rack and onto a runway of its own making.
+          A night staged in full color. The house steps off the rack and onto a runway of its own making.
         </p>
       </div>
 

@@ -15,13 +15,12 @@ export function ExpressionIntro() {
             Not a showcase. A statement.
           </h2>
           <p className="text-lg leading-relaxed text-foreground/70">
-            OnPoint Expression is the one night a year the house stops making clothes and starts making an argument
-            — that fashion, done properly, is culture, not commerce.
+            OnPoint Expression is the one night a year the house stops making clothes and starts making an argument;
+            that fashion, done properly, is culture, not commerce.
           </p>
           <p className="max-w-lg text-base leading-relaxed text-stone">
             Every look, every set piece, every guest in the room is part of the same sentence: craftsmanship worn as
-            confidence. It is where OnPoint tells you, in public, what nineteen years in the workroom were building
-            toward.
+            confidence. It is where OnPoint tells you, in public, what the workroom has been building toward.
           </p>
         </Reveal>
       </Container>

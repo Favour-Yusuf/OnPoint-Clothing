@@ -24,7 +24,7 @@ export function CartLineItem({ item, compact = false }: { item: CartItem; compac
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <Link href={`/product/${item.slug}`} className="font-sans text-sm font-semibold text-foreground hover:text-foreground/80">
+            <Link href={`/product/${item.slug}`} className="font-sans text-sm font-semibold tracking-wide text-foreground uppercase hover:text-foreground/80">
               {item.name}
             </Link>
             <p className="mt-1 font-sans text-xs text-foreground/50">

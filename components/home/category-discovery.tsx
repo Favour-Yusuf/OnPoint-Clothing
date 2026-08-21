@@ -35,7 +35,7 @@ export async function CategoryDiscovery() {
           tone="on-light"
           eyebrow="Explore"
           title="Enter the House."
-          description="Each category holds its own point of view — from tailoring to the finishing details."
+          description="Each category holds its own point of view. From tailoring to the finishing details."
         />
 
         <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">

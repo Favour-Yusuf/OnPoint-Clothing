@@ -22,7 +22,7 @@ export function ExpressionTeaser() {
           OnPoint Expression
         </h2>
         <p className="max-w-md text-base leading-relaxed text-foreground/65 sm:text-lg">
-          One night a year, the house steps off the rack and into the room. Culture, craft, and nineteen years of
+          One night a year, the house steps off the rack and into the room. Culture, craft, and award-winning
           construction, staged in full color.
         </p>
         <div>

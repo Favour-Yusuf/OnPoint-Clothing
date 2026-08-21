@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Geist_Mono, Bebas_Neue } from "next/font/google";
+import { Montserrat, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "../globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { UIProvider } from "@/lib/ui-context";
@@ -19,19 +19,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue",
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["300", "400", "500", "600"],
 });
 
 const description =
-  "OnPoint Clothing — nineteen years of tailoring and considered design. Shop ready-to-wear and bespoke.";
+  "OnPoint Clothing — a multiple award-winning fashion house. Shop ready-to-wear and bespoke.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justonpointng.com"),
   title: {
-    default: "OnPoint Clothing — 19 Years of Craft",
+    default: "OnPoint Clothing — Multiple Award-Winning Fashion House",
     template: "%s | OnPoint Clothing",
   },
   description,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "OnPoint Clothing — 19 Years of Craft",
+    title: "OnPoint Clothing — Multiple Award-Winning Fashion House",
     description,
     url: "/",
     siteName: "OnPoint Clothing",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OnPoint Clothing — 19 Years of Craft",
+    title: "OnPoint Clothing — Multiple Award-Winning Fashion House",
     description,
   },
 };
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${geistMono.variable} ${bebasNeue.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <CartProvider>

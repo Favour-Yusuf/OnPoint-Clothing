@@ -61,6 +61,23 @@ async function seedCollections() {
   return new Map(data.map((row) => [row.slug, row.id as string]));
 }
 
+// Mirrors pruneRemovedProducts below — any collection no longer in
+// lib/data/collections.ts (including one that was renamed to a new slug)
+// is removed. product_collections has ON DELETE CASCADE on collection_id,
+// so its links go with it.
+async function pruneRemovedCollections() {
+  const currentSlugs = new Set(mockCollections.map((collection) => collection.slug));
+  const { data, error } = await supabase.from("collections").select("id, slug");
+  if (error) throw new Error(`prune collections (read): ${error.message}`);
+
+  const staleSlugs = data.filter((row) => !currentSlugs.has(row.slug)).map((row) => row.slug);
+  if (staleSlugs.length === 0) return;
+
+  const { error: deleteError } = await supabase.from("collections").delete().in("slug", staleSlugs);
+  if (deleteError) throw new Error(`prune collections (delete): ${deleteError.message}`);
+  console.log(`Removed ${staleSlugs.length} collection(s) no longer in lib/data/collections.ts: ${staleSlugs.join(", ")}`);
+}
+
 async function seedProducts(categoryIdBySlug: Map<string, string>) {
   const rows = mockProducts.map((product) => ({
     slug: product.slug,
@@ -180,6 +197,9 @@ async function main() {
 
   console.log("Seeding collections...");
   const collectionIdBySlug = await seedCollections();
+
+  console.log("Removing collections no longer in lib/data/collections.ts...");
+  await pruneRemovedCollections();
 
   console.log("Seeding products...");
   const productIdBySlug = await seedProducts(categoryIdBySlug);

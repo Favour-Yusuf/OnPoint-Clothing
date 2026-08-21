@@ -105,7 +105,7 @@ export function SearchOverlay() {
                     <MediaImage image={getPrimaryImage(product.images)} sizes="80px" />
                   </div>
                   <div className="flex flex-1 flex-col gap-1">
-                    <p className="font-sans text-sm font-semibold text-foreground">{product.name}</p>
+                    <p className="font-sans text-sm font-semibold tracking-wide text-foreground uppercase">{product.name}</p>
                     <p className="font-sans text-xs text-foreground/50 capitalize">{product.categorySlug}</p>
                   </div>
                   <p className="font-sans text-sm font-light tracking-wide text-foreground/80 tabular-nums">{formatPrice(product.price)}</p>

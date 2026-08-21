@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "OnPoint Clothing — 19 Years of Craft";
+export const alt = "OnPoint Clothing — Multiple Award-Winning Fashion House";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,7 +46,7 @@ export default function Image() {
               color: "#f2f0ee",
             }}
           >
-            Nineteen Years of Craft.
+            Multiple Award-Winning.
           </div>
         </div>
 

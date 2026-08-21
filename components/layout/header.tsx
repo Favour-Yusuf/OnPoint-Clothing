@@ -35,7 +35,7 @@ export function Header() {
       <header className="fixed inset-x-0 top-0 z-40 border-b border-foreground/10 bg-background/95 backdrop-blur-md">
         <div className="mx-auto flex h-16 w-full max-w-[1680px] items-center justify-between px-6 sm:px-10 lg:h-20 lg:px-16 xl:px-20">
           <Link href="/" aria-label="OnPoint Clothing — Home">
-            <Logo priority className="h-6 w-auto sm:h-7" />
+            <Logo priority className="h-10 w-auto lg:h-14" />
           </Link>
           <p className="font-sans text-xs font-light tracking-[0.3em] text-burgundy-light uppercase">Secure Checkout</p>
         </div>
@@ -63,7 +63,7 @@ export function Header() {
         </button>
 
         <Link href="/" aria-label="OnPoint Clothing — Home" className="justify-self-center">
-          <Logo priority className="h-6 w-auto" />
+          <Logo priority className="h-10 w-auto" />
         </Link>
 
         <div className="flex items-center justify-self-end gap-1">
@@ -94,7 +94,7 @@ export function Header() {
       {/* Desktop */}
       <div className="mx-auto hidden h-20 w-full max-w-[1680px] items-center justify-between px-16 lg:flex xl:px-20">
         <Link href="/" aria-label="OnPoint Clothing — Home" className="shrink-0">
-          <Logo priority className="h-7 w-auto" />
+          <Logo priority className="h-14 w-auto" />
         </Link>
 
         <nav aria-label="Primary" className="flex items-center gap-5 xl:gap-9">

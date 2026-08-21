@@ -21,6 +21,7 @@ export function MediaImage({
   sizes = "100vw",
   priority = false,
   fit = "cover",
+  position,
 }: {
   image: CloudinaryImage;
   className?: string;
@@ -28,6 +29,12 @@ export function MediaImage({
   priority?: boolean;
   /** "contain" for uncropped display (e.g. a lightbox); defaults to the usual fill-and-crop. */
   fit?: "cover" | "contain";
+  /**
+   * CSS object-position (e.g. "50% 15%"). Use when a container's aspect ratio
+   * is much wider/shorter than the source photo — a tall portrait shot centered
+   * in a short wide crop loses the subject's face off the top. Defaults to center.
+   */
+  position?: string;
 }) {
   const [failed, setFailed] = useState(false);
 
@@ -46,6 +53,7 @@ export function MediaImage({
       sizes={sizes}
       priority={priority}
       className={`${fitClass} ${className}`}
+      style={position ? { objectPosition: position } : undefined}
       onError={() => setFailed(true)}
     />
   );

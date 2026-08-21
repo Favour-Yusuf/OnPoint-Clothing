@@ -122,6 +122,17 @@ export async function getProductBySlug(slug: string): Promise<Product | undefine
   return data ? mapProductRow(data as unknown as ProductRow) : undefined;
 }
 
+export async function getBespokeProducts(): Promise<Product[]> {
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("is_active", true)
+    .eq("is_bespoke_eligible", true);
+  if (error) throw new Error(`getBespokeProducts: ${error.message}`);
+  return (data as unknown as ProductRow[]).map(mapProductRow);
+}
+
 export async function getNewArrivals(limit?: number): Promise<Product[]> {
   const supabase = createPublicClient();
   let query = supabase.from("products").select(PRODUCT_SELECT).eq("is_active", true).eq("is_new", true);
@@ -287,8 +298,24 @@ export async function getAllCollections(): Promise<Collection[]> {
 }
 
 export async function getCollection(slug: string): Promise<Collection | undefined> {
-  const collections = await getAllCollections();
-  return collections.find((collection) => collection.slug === slug);
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("collections")
+    .select("slug, name, season, description, cloudinary_public_id, product_collections ( products ( slug ) )")
+    .eq("slug", slug)
+    .eq("is_active", true)
+    .maybeSingle();
+  if (error) throw new Error(`getCollection: ${error.message}`);
+  if (!data) return undefined;
+  const row = data as unknown as CollectionRow;
+  return {
+    slug: row.slug,
+    name: row.name,
+    season: row.season ?? "",
+    description: row.description ?? "",
+    image: { publicId: row.cloudinary_public_id ?? "placeholder:no-image", alt: row.name },
+    productSlugs: row.product_collections.flatMap((pc) => (pc.products ? [pc.products.slug] : [])),
+  };
 }
 
 export async function getCollectionProducts(slug: string): Promise<Product[]> {

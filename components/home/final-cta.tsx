@@ -11,7 +11,7 @@ export function FinalCTA() {
       <Reveal className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-8 px-6 text-center">
         <span className="h-px w-12 bg-burgundy" aria-hidden="true" />
         <h2 className="font-display text-4xl leading-[1.05] font-light text-foreground sm:text-6xl">
-          Find your next <em className="text-burgundy-light not-italic">signature.</em>
+          Find your next <em className="text-burgundy-light italic">signature.</em>
         </h2>
         <Button href="/shop" size="lg">
           Shop OnPoint

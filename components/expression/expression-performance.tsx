@@ -8,35 +8,45 @@ import { Reveal } from "@/components/ui/reveal";
 import { ExpressionLightbox } from "@/components/expression/expression-lightbox";
 import { onPointExpression } from "@/lib/data/onpoint-expression";
 
-export function ExpressionGallery() {
+// Every source photo is a portrait crop, so size variation here comes from
+// deliberate grid spans (with object-cover accepting the crop) rather than
+// from each image's native aspect ratio — a dense, high-energy wall rather
+// than a uniform grid.
+const SPANS = [
+  "col-span-2 row-span-2 aspect-4/5 sm:aspect-auto",
+  "aspect-4/5",
+  "aspect-4/5",
+  "col-span-2 aspect-16/9 sm:aspect-16/9",
+  "aspect-4/5",
+  "aspect-4/5",
+  "aspect-4/5",
+  "col-span-2 aspect-16/9 sm:aspect-16/9",
+];
+
+export function ExpressionPerformance() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const images = onPointExpression.gallery;
+  const images = onPointExpression.performance;
 
   return (
     <section className="py-20 sm:py-28">
       <Container>
         <SectionHeading
-          eyebrow="The Gallery"
-          title="As it happened."
-          description="Unposed, unfiltered — the night from the room, backstage, and the stage itself."
+          eyebrow="Performance"
+          title="The stage, at full volume."
+          description="Sound and spectacle, staged like the rest of the night — with the same attention as the clothes."
         />
 
-        {/* CSS multi-column masonry: each item keeps its real aspect ratio
-            (set per image in lib/data/onpoint-expression.ts) so heights vary
-            naturally, without a JS layout library. */}
-        <div className="mt-14 columns-2 gap-4 sm:columns-3 lg:columns-4">
+        <div className="mt-14 grid grid-flow-row-dense grid-cols-2 gap-3 sm:mt-20 sm:grid-cols-4 sm:gap-4">
           {images.map((image, index) => (
-            <Reveal key={image.publicId} delayMs={(index % 4) * 60} className="mb-4 break-inside-avoid">
+            <Reveal key={image.publicId} delayMs={(index % 4) * 60} className={SPANS[index % SPANS.length]}>
               <button
                 type="button"
                 onClick={() => setOpenIndex(index)}
                 aria-label={`Open image: ${image.alt}`}
-                className={`group relative block w-full overflow-hidden bg-foreground/5 ${
-                  image.orientation === "landscape" ? "aspect-3/2" : "aspect-4/5"
-                }`}
+                className="group relative block h-full w-full overflow-hidden bg-foreground/5"
               >
                 <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-                  <MediaImage image={image} sizes="(min-width: 1024px) 24vw, (min-width: 640px) 33vw, 50vw" />
+                  <MediaImage image={image} sizes="(min-width: 640px) 25vw, 50vw" />
                 </div>
                 <div className="absolute inset-0 bg-burgundy-deep/0 transition-colors duration-300 group-hover:bg-burgundy-deep/15" />
               </button>

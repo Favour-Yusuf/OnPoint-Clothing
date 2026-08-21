@@ -1,37 +1,33 @@
 import type { Collection } from "@/lib/types";
 
+/**
+ * `productSlugs` here is for humans reading this file — the actual
+ * product↔collection link seeded into Supabase comes from each product's
+ * own `collectionSlugs` in lib/data/products.ts (see scripts/seed.ts).
+ * Keep the two in sync by hand; nothing enforces it automatically.
+ */
 export const collections: Collection[] = [
   {
     slug: "the-tailored-edit",
     name: "The Tailored Edit",
     season: "Season Two",
-    description:
-      "Structured outerwear and precise tailoring, built to move between the office and the evening.",
-    image: { publicId: "placeholder:collection-tailored-01", alt: "The Tailored Edit" },
+    description: "Architectural silhouettes in ivory, black, and grey — precise tailoring worn with quiet authority.",
+    image: { publicId: "DSC02738", alt: "OnPoint model in the Aura White Kaftan, architectural tailoring in luminous ivory" },
     productSlugs: [
-      "tailored-wool-overcoat",
-      "structured-wool-blazer",
-      "straight-leg-wool-trouser",
-      "wool-tailored-blazer",
-      "pleated-midi-skirt",
-      "tailored-wide-leg-trouser",
+      "aura-monolith-vslit-set",
+      "black-senator-kaftan",
+      "aura-white-kaftan",
+      "sovereign-jacquard-tunic",
+      "white-flow-tunic",
     ],
   },
   {
-    slug: "essential-layers",
-    name: "Essential Layers",
+    slug: "the-regalia-edit",
+    name: "The Regalia Edit",
     season: "Season Two",
-    description: "Fine-gauge knitwear and everyday cloth, made to sit under tailoring or stand alone.",
-    image: { publicId: "placeholder:collection-layers-01", alt: "Essential Layers" },
-    productSlugs: ["merino-crewneck-sweater", "oxford-cotton-shirt", "cashmere-turtleneck"],
-  },
-  {
-    slug: "evening-hours",
-    name: "Evening Hours",
-    season: "Season Two",
-    description: "Fluid silk and matte crepe for occasions after dark.",
-    image: { publicId: "placeholder:collection-evening-01", alt: "Evening Hours" },
-    productSlugs: ["silk-wrap-blouse", "column-evening-dress", "silk-twill-scarf", "structured-leather-tote"],
+    description: "Beadwork, gold embroidery, and ceremonial detail — ensembles built for the moments that call for a crown.",
+    image: { publicId: "full-shot", alt: "OnPoint model in the Crown Legacy ensemble, burgundy jacquard with hand-applied beadwork" },
+    productSlugs: ["crown-legacy", "imperial-noir", "ezego", "itego-collection", "royal-crown-fila"],
   },
 ];
 

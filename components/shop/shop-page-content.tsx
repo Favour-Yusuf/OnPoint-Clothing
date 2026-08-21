@@ -20,14 +20,14 @@ export function ShopPageContent({
   availableColors: string[];
 }) {
   return (
-    <div className="bg-background pt-16 lg:pt-20">
+    <div className="bg-foreground pt-16 lg:pt-20">
       <Container className="py-12 sm:py-16">
         <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-burgundy" aria-hidden="true" />
-          <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy-light uppercase">{eyebrow}</p>
+          <span className="h-px w-8 bg-background" aria-hidden="true" />
+          <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy uppercase">{eyebrow}</p>
         </div>
-        <h1 className="mt-4 font-display text-4xl leading-[1.05] font-light text-foreground sm:text-5xl">{title}</h1>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">{description}</p>
+        <h1 className="mt-4 font-display text-4xl leading-[1.05] font-light text-background sm:text-5xl">{title}</h1>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-background/60">{description}</p>
       </Container>
 
       <Container>
@@ -36,11 +36,12 @@ export function ShopPageContent({
         <div className="py-12">
           {products.length === 0 ? (
             <EmptyState
+              tone="on-light"
               title="No pieces match your filters"
               description="Try clearing a filter or exploring a different category."
             />
           ) : (
-            <ProductGrid products={products} tone="on-dark" />
+            <ProductGrid products={products} tone="on-light" />
           )}
         </div>
       </Container>

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getCollection, getCollectionProducts, getAllCollections, getAvailableSizes, getAvailableColors } from "@/lib/products";
+import { getCollection, getCollectionProducts, getAvailableSizes, getAvailableColors } from "@/lib/products";
 import { ShopPageContent } from "@/components/shop/shop-page-content";
 import { filterProducts, type SortOption } from "@/lib/products";
 
-export async function generateStaticParams() {
-  const collections = await getAllCollections();
-  return collections.map((collection) => ({ slug: collection.slug }));
-}
+// Rendered on-demand rather than statically: the catalog has no
+// revalidation hook, so a statically-prerendered collection page would
+// never reflect a later change without a full redeploy.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

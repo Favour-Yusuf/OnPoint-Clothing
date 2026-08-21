@@ -24,8 +24,8 @@ export function CartView() {
             action={<Button href="/shop">Continue Shopping</Button>}
           />
         ) : (
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_360px]">
-            <div className="flex flex-col gap-8 divide-y divide-foreground/10">
+          <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-[1fr_360px]">
+            <div className="order-last flex flex-col gap-8 divide-y divide-foreground/10 lg:order-0">
               {items.map((item) => (
                 <div key={item.key} className="pt-8 first:pt-0">
                   <CartLineItem item={item} />
@@ -33,7 +33,9 @@ export function CartView() {
               ))}
             </div>
 
-            <div className="h-fit border border-foreground/10 p-6">
+            {/* Order-first on mobile so the total and checkout CTA are reachable
+                without scrolling past every line item. */}
+            <div className="order-first h-fit border border-foreground/10 p-6 lg:order-0">
               <p className="font-sans text-xs font-light tracking-[0.25em] text-foreground/60 uppercase">Order Summary</p>
               <div className="mt-5 flex items-center justify-between font-sans text-sm text-foreground">
                 <span className="text-foreground/60">Subtotal</span>
