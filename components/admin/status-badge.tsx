@@ -81,6 +81,16 @@ export function BespokeStatusBadge({ status }: { status: BespokeStatus }) {
   return <Badge label={BESPOKE_STATUS_LABEL[status]} tone={BESPOKE_STATUS_TONE[status]} />;
 }
 
+const PAYMENT_PROVIDER_LABEL: Record<string, string> = {
+  paystack: "Paystack",
+  bank_transfer: "Bank Transfer",
+};
+
+/** "paystack" -> "Paystack", "bank_transfer" -> "Bank Transfer"; falls back to the raw value for anything unrecognized. */
+export function formatPaymentProvider(provider: string): string {
+  return PAYMENT_PROVIDER_LABEL[provider] ?? provider;
+}
+
 export const ORDER_STATUS_OPTIONS = Object.keys(ORDER_STATUS_LABEL) as OrderStatus[];
 export const PAYMENT_STATUS_OPTIONS = Object.keys(PAYMENT_STATUS_LABEL) as PaymentStatus[];
 export const BESPOKE_STATUS_OPTIONS = Object.keys(BESPOKE_STATUS_LABEL) as BespokeStatus[];

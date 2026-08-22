@@ -58,39 +58,41 @@ export function ProductCard({
   }
 
   return (
-    <div className="group relative flex flex-col gap-3">
-      <Link
-        href={`/product/${product.slug}`}
-        className={`relative block aspect-4/5 w-full overflow-hidden ${imageSlotBg} ring-0 ring-inset ring-burgundy transition-shadow duration-300 hover:ring-1`}
-      >
-        <div className="absolute inset-0 opacity-100 transition-opacity duration-500 group-hover:opacity-0">
-          <MediaImage image={primaryImage} sizes={imageSizes} />
-        </div>
-        <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <MediaImage image={secondaryImage} sizes={imageSizes} />
-        </div>
-
-        {product.isNew ? (
-          <span className={`absolute top-3 left-3 ${newBadgeBg} px-2.5 py-1 font-sans text-[10px] font-light tracking-[0.15em] text-foreground uppercase`}>
-            New
-          </span>
-        ) : null}
-        {product.availability === "low-stock" ? (
-          <span className="absolute top-3 left-3 bg-burgundy px-2.5 py-1 font-sans text-[10px] font-light tracking-[0.15em] text-foreground uppercase">
-            Low Stock
-          </span>
-        ) : null}
-      </Link>
-
-      {defaultVariant ? (
-        <button
-          type="button"
-          onClick={handleQuickAdd}
-          className="absolute inset-x-3 bottom-16 hidden translate-y-2 bg-burgundy-deep/95 py-3 text-center font-sans text-xs font-medium tracking-[0.15em] text-foreground uppercase opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:block"
+    <div className="group flex flex-col gap-3">
+      <div className="relative">
+        <Link
+          href={`/product/${product.slug}`}
+          className={`relative block aspect-4/5 w-full overflow-hidden ${imageSlotBg} ring-0 ring-inset ring-burgundy transition-shadow duration-300 hover:ring-1`}
         >
-          {justAdded ? "Added" : "Quick Add"}
-        </button>
-      ) : null}
+          <div className="absolute inset-0 opacity-100 transition-opacity duration-500 group-hover:opacity-0">
+            <MediaImage image={primaryImage} sizes={imageSizes} />
+          </div>
+          <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <MediaImage image={secondaryImage} sizes={imageSizes} />
+          </div>
+
+          {product.isNew ? (
+            <span className={`absolute top-3 left-3 ${newBadgeBg} px-2.5 py-1 font-sans text-[10px] font-light tracking-[0.15em] text-foreground uppercase`}>
+              New
+            </span>
+          ) : null}
+          {product.availability === "low-stock" ? (
+            <span className="absolute top-3 left-3 bg-burgundy px-2.5 py-1 font-sans text-[10px] font-light tracking-[0.15em] text-foreground uppercase">
+              Low Stock
+            </span>
+          ) : null}
+        </Link>
+
+        {defaultVariant ? (
+          <button
+            type="button"
+            onClick={handleQuickAdd}
+            className="absolute inset-x-3 bottom-4 hidden translate-y-2 bg-burgundy-deep/95 py-3 text-center font-sans text-xs font-medium tracking-[0.15em] text-foreground uppercase opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:block"
+          >
+            {justAdded ? "Added" : "Quick Add"}
+          </button>
+        ) : null}
+      </div>
 
       <Link href={`/product/${product.slug}`} className="flex flex-col gap-1.5">
         <p className={`font-sans text-sm font-semibold tracking-wide uppercase transition-colors group-hover:text-burgundy-light ${textColor}`}>{product.name}</p>

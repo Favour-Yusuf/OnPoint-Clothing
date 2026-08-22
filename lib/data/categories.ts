@@ -16,7 +16,7 @@ export const categories: Category[] = [
   {
     slug: "accessories",
     name: "Accessories",
-    description: "The finishing details — leather, silk, and metal.",
+    description: "The finishing details: leather, silk, and metal.",
     image: { publicId: "placeholder:category-accessories", alt: "Accessories collection" },
   },
 ];

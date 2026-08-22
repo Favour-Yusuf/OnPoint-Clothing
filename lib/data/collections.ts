@@ -11,7 +11,7 @@ export const collections: Collection[] = [
     slug: "the-tailored-edit",
     name: "The Tailored Edit",
     season: "Season Two",
-    description: "Architectural silhouettes in ivory, black, and grey — precise tailoring worn with quiet authority.",
+    description: "Architectural silhouettes in ivory, black, and grey: precise tailoring worn with quiet authority.",
     image: { publicId: "DSC02738", alt: "OnPoint model in the Aura White Kaftan, architectural tailoring in luminous ivory" },
     productSlugs: [
       "aura-monolith-vslit-set",
@@ -25,7 +25,7 @@ export const collections: Collection[] = [
     slug: "the-regalia-edit",
     name: "The Regalia Edit",
     season: "Season Two",
-    description: "Beadwork, gold embroidery, and ceremonial detail — ensembles built for the moments that call for a crown.",
+    description: "Beadwork, gold embroidery, and ceremonial detail: ensembles built for the moments that call for a crown.",
     image: { publicId: "full-shot", alt: "OnPoint model in the Crown Legacy ensemble, burgundy jacquard with hand-applied beadwork" },
     productSlugs: ["crown-legacy", "imperial-noir", "ezego", "itego-collection", "royal-crown-fila"],
   },

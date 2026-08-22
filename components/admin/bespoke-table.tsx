@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { BespokeStatusBadge } from "@/components/admin/status-badge";
+import { ClickableRow } from "@/components/admin/clickable-row";
 import type { BespokeRequestAdmin } from "@/lib/types";
+
+const IDENTITY_LINK_CLASS =
+  "font-medium text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:text-burgundy-light hover:decoration-burgundy-light";
 
 export function BespokeTable({ requests }: { requests: BespokeRequestAdmin[] }) {
   if (requests.length === 0) {
@@ -21,12 +25,9 @@ export function BespokeTable({ requests }: { requests: BespokeRequestAdmin[] }) 
         </thead>
         <tbody>
           {requests.map((request) => (
-            <tr key={request.id} className="border-b border-foreground/5 hover:bg-foreground/[0.03]">
+            <ClickableRow key={request.id} href={`/admin/bespoke/${request.id}`}>
               <td className="py-3 pr-4">
-                <Link
-                  href={`/admin/bespoke/${request.id}`}
-                  className="text-foreground underline-offset-4 hover:underline"
-                >
+                <Link href={`/admin/bespoke/${request.id}`} className={IDENTITY_LINK_CLASS}>
                   {request.name}
                 </Link>
                 <p className="text-xs text-foreground/45">{request.email}</p>
@@ -36,7 +37,7 @@ export function BespokeTable({ requests }: { requests: BespokeRequestAdmin[] }) 
               <td className="py-3 pr-4">
                 <BespokeStatusBadge status={request.status} />
               </td>
-            </tr>
+            </ClickableRow>
           ))}
         </tbody>
       </table>

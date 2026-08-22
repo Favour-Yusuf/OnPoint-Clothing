@@ -2,7 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import type { BespokeStatus, OrderStatus } from "@/lib/types";
+import { createAdminClient } from "@/lib/supabase/admin";
+import type { BespokeStatus, OrderStatus, PaymentStatus } from "@/lib/types";
 
 const VALID_ORDER_STATUSES: OrderStatus[] = [
   "pending",
@@ -12,6 +13,8 @@ const VALID_ORDER_STATUSES: OrderStatus[] = [
   "delivered",
   "cancelled",
 ];
+
+const VALID_PAYMENT_STATUSES: PaymentStatus[] = ["pending", "paid", "failed", "refunded"];
 
 const VALID_BESPOKE_STATUSES: BespokeStatus[] = [
   "new",
@@ -55,6 +58,46 @@ export async function updateOrderStatus(_prevState: AdminActionState, formData: 
 
   revalidatePath(`/admin/orders/${orderId}`);
   revalidatePath("/admin/orders");
+  revalidatePath("/admin");
+  return { status: "idle" };
+}
+
+// Marks a payment paid/failed/refunded — the counterpart to the automatic
+// Paystack webhook, used when a payment was confirmed some other way (a bank
+// transfer receipt sent over WhatsApp, most often). RLS only grants admins
+// SELECT on payments (see 0004_rls.sql), so this writes through the
+// service-role client — safe here because requireAdmin() already confirmed
+// the caller is an admin before either write runs.
+export async function updateOrderPaymentStatus(
+  _prevState: AdminActionState,
+  formData: FormData
+): Promise<AdminActionState> {
+  const supabase = await requireAdmin();
+  if (!supabase) return { status: "error", message: "Not authorized." };
+
+  const orderId = String(formData.get("orderId") ?? "");
+  const paymentStatus = String(formData.get("paymentStatus") ?? "");
+  if (!orderId || !VALID_PAYMENT_STATUSES.includes(paymentStatus as PaymentStatus)) {
+    return { status: "error", message: "Invalid payment status." };
+  }
+
+  const admin = createAdminClient();
+  const paidAt = paymentStatus === "paid" ? new Date().toISOString() : null;
+
+  const { error: orderError } = await admin.from("orders").update({ payment_status: paymentStatus }).eq("id", orderId);
+  if (orderError) return { status: "error", message: "Could not update the order. Please try again." };
+
+  const { error: paymentError } = await admin
+    .from("payments")
+    .update({ status: paymentStatus, paid_at: paidAt })
+    .eq("order_id", orderId);
+  if (paymentError) {
+    return { status: "error", message: "Order was updated, but the payment record couldn't be updated." };
+  }
+
+  revalidatePath(`/admin/orders/${orderId}`);
+  revalidatePath("/admin/orders");
+  revalidatePath("/admin/payments");
   revalidatePath("/admin");
   return { status: "idle" };
 }

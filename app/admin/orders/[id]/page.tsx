@@ -5,7 +5,8 @@ import { formatPrice } from "@/lib/format";
 import { getOrderByIdForAdmin } from "@/lib/orders";
 import { getPaymentByOrderId } from "@/lib/payments";
 import { OrderStatusControl } from "@/components/admin/order-status-control";
-import { OrderStatusBadge, PaymentStatusBadge } from "@/components/admin/status-badge";
+import { PaymentStatusControl } from "@/components/admin/payment-status-control";
+import { OrderStatusBadge, PaymentStatusBadge, formatPaymentProvider } from "@/components/admin/status-badge";
 import { MediaImage } from "@/components/ui/media-image";
 
 export const metadata: Metadata = {
@@ -95,13 +96,16 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
 
           {payment ? (
             <section>
-              <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
-                Payment
-              </h2>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <h2 className="font-sans text-xs font-light tracking-[0.2em] text-foreground/50 uppercase">
+                  Payment
+                </h2>
+                <PaymentStatusControl orderId={order.id} currentStatus={payment.status} />
+              </div>
               <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 font-sans text-sm sm:grid-cols-3">
                 <div>
-                  <dt className="text-foreground/45">Provider</dt>
-                  <dd className="mt-0.5 text-foreground capitalize">{payment.provider}</dd>
+                  <dt className="text-foreground/45">Method</dt>
+                  <dd className="mt-0.5 text-foreground">{formatPaymentProvider(payment.provider)}</dd>
                 </div>
                 <div>
                   <dt className="text-foreground/45">Reference</dt>

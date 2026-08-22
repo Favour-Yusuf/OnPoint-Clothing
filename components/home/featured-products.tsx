@@ -14,7 +14,7 @@ export async function FeaturedProducts() {
           tone="on-light"
           eyebrow="Just In"
           title="Featured Pieces."
-          description="A curated selection — not the whole catalog, just what's worth your attention right now."
+          description="A curated selection. This is not the whole catalog, just what's worth your attention right now."
           action={
             <Button href="/shop" variant="outline" tone="on-light">
               View All

@@ -1,46 +1,68 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import type { MouseEvent } from "react";
 import { formatPrice } from "@/lib/format";
-import { PaymentStatusBadge } from "@/components/admin/status-badge";
+import { PaymentStatusBadge, formatPaymentProvider } from "@/components/admin/status-badge";
+import { ClickableRow } from "@/components/admin/clickable-row";
+import { MarkPaidButton } from "@/components/admin/mark-paid-button";
 import type { AdminPayment } from "@/lib/types";
 
+const IDENTITY_LINK_CLASS =
+  "font-medium text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:text-burgundy-light hover:decoration-burgundy-light";
+
 export function PaymentsTable({ payments }: { payments: AdminPayment[] }) {
+  const router = useRouter();
+
   if (payments.length === 0) {
     return <p className="py-10 text-center font-sans text-sm text-foreground/50">No payments found.</p>;
+  }
+
+  function handleCardClick(event: MouseEvent<HTMLDivElement>, orderId: string) {
+    const target = event.target as HTMLElement;
+    if (target.closest("button, a, input, select, textarea")) return;
+    router.push(`/admin/orders/${orderId}`);
   }
 
   return (
     <>
       {/* Desktop */}
-      <table className="hidden w-full min-w-[760px] border-collapse font-sans text-sm sm:table">
+      <table className="hidden w-full min-w-[820px] border-collapse font-sans text-sm sm:table">
         <thead>
           <tr className="border-b border-foreground/10 text-left text-xs font-light tracking-[0.15em] text-foreground/45 uppercase">
             <th className="py-3 pr-4 font-medium">Reference</th>
             <th className="py-3 pr-4 font-medium">Order</th>
             <th className="py-3 pr-4 font-medium">Customer</th>
+            <th className="py-3 pr-4 font-medium">Method</th>
             <th className="py-3 pr-4 font-medium">Amount</th>
             <th className="py-3 pr-4 font-medium">Date</th>
             <th className="py-3 pr-4 font-medium">Status</th>
+            <th className="py-3 pr-4 font-medium">&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {payments.map((payment) => (
-            <tr key={payment.id} className="border-b border-foreground/5 hover:bg-foreground/[0.03]">
+            <ClickableRow key={payment.id} href={`/admin/orders/${payment.orderId}`}>
               <td className="py-3 pr-4 font-mono text-xs text-foreground/70">{payment.reference}</td>
               <td className="py-3 pr-4">
-                <Link
-                  href={`/admin/orders/${payment.orderId}`}
-                  className="text-foreground underline-offset-4 hover:underline"
-                >
+                <Link href={`/admin/orders/${payment.orderId}`} className={IDENTITY_LINK_CLASS}>
                   {payment.orderNumber}
                 </Link>
               </td>
               <td className="py-3 pr-4 text-foreground/70">{payment.customerName}</td>
+              <td className="py-3 pr-4 text-foreground/70">{formatPaymentProvider(payment.provider)}</td>
               <td className="py-3 pr-4 font-light tracking-wide text-foreground tabular-nums">{formatPrice(payment.amount / 100)}</td>
               <td className="py-3 pr-4 text-foreground/50">{new Date(payment.createdAt).toLocaleDateString()}</td>
               <td className="py-3 pr-4">
                 <PaymentStatusBadge status={payment.status} />
               </td>
-            </tr>
+              <td className="py-3 pr-4" onClick={(e) => e.stopPropagation()}>
+                {payment.status === "pending" && payment.provider === "bank_transfer" ? (
+                  <MarkPaidButton orderId={payment.orderId} />
+                ) : null}
+              </td>
+            </ClickableRow>
           ))}
         </tbody>
       </table>
@@ -48,13 +70,15 @@ export function PaymentsTable({ payments }: { payments: AdminPayment[] }) {
       {/* Mobile */}
       <div className="flex flex-col divide-y divide-foreground/10 border-t border-foreground/10 sm:hidden">
         {payments.map((payment) => (
-          <Link
+          <div
             key={payment.id}
-            href={`/admin/orders/${payment.orderId}`}
-            className="flex flex-col gap-2 py-4 font-sans text-sm active:bg-foreground/[0.03]"
+            onClick={(e) => handleCardClick(e, payment.orderId)}
+            className="flex cursor-pointer flex-col gap-2 py-4 font-sans text-sm active:bg-foreground/6"
           >
             <div className="flex items-center justify-between">
-              <span className="text-foreground">{payment.orderNumber}</span>
+              <Link href={`/admin/orders/${payment.orderId}`} className={IDENTITY_LINK_CLASS}>
+                {payment.orderNumber}
+              </Link>
               <span className="font-light tracking-wide text-foreground tabular-nums">{formatPrice(payment.amount / 100)}</span>
             </div>
             <p className="font-mono text-xs text-foreground/45">{payment.reference}</p>
@@ -62,8 +86,16 @@ export function PaymentsTable({ payments }: { payments: AdminPayment[] }) {
               <span>{payment.customerName}</span>
               <span>{new Date(payment.createdAt).toLocaleDateString()}</span>
             </div>
-            <PaymentStatusBadge status={payment.status} />
-          </Link>
+            <div className="flex items-center justify-between">
+              <span className="font-sans text-xs text-foreground/50">{formatPaymentProvider(payment.provider)}</span>
+              <PaymentStatusBadge status={payment.status} />
+            </div>
+            {payment.status === "pending" && payment.provider === "bank_transfer" ? (
+              <div className="mt-1">
+                <MarkPaidButton orderId={payment.orderId} />
+              </div>
+            ) : null}
+          </div>
         ))}
       </div>
     </>

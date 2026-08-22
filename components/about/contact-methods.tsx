@@ -1,16 +1,17 @@
 import { CONTACT } from "@/lib/contact";
-import { ChatIcon, MailIcon, PhoneIcon } from "@/components/ui/icons";
+import { ChatIcon, MailIcon, MapPinIcon, PhoneIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
 
 const METHODS = [
   { label: "Call", value: CONTACT.phone.display, href: CONTACT.phone.href, icon: PhoneIcon },
   { label: "WhatsApp", value: CONTACT.whatsapp.display, href: CONTACT.whatsapp.href, icon: ChatIcon },
   { label: "Email", value: CONTACT.email.display, href: CONTACT.email.href, icon: MailIcon },
+  { label: "Visit Us", value: CONTACT.address.display, href: CONTACT.address.href, icon: MapPinIcon },
 ] as const;
 
 export function ContactMethods() {
   return (
-    <div className="grid grid-cols-1 gap-px overflow-hidden bg-foreground/10 sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-px overflow-hidden bg-foreground/10 sm:grid-cols-2 lg:grid-cols-4">
       {METHODS.map((method, index) => (
         <Reveal key={method.label} delayMs={index * 90} className="bg-background">
           <a

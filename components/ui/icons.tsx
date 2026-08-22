@@ -101,6 +101,34 @@ export function ChatIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function MapPinIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z" />
+      <circle cx="12" cy="9" r="2.5" />
+    </svg>
+  );
+}
+
+export function BankIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 10.5 12 4l9 6.5" />
+      <path d="M4.5 10.5v8M9 10.5v8M15 10.5v8M19.5 10.5v8" />
+      <path d="M3 18.5h18" />
+    </svg>
+  );
+}
+
+export function CopyIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="9" y="9" width="11" height="11" rx="1.5" />
+      <path d="M5.5 15H5a1.5 1.5 0 0 1-1.5-1.5V5A1.5 1.5 0 0 1 5 3.5h8.5A1.5 1.5 0 0 1 15 5v.5" />
+    </svg>
+  );
+}
+
 export function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...base} {...props}>

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { formatPrice } from "@/lib/format";
 import { OrderStatusBadge, PaymentStatusBadge } from "@/components/admin/status-badge";
+import { ClickableRow } from "@/components/admin/clickable-row";
 import type { Order } from "@/lib/types";
+
+const IDENTITY_LINK_CLASS =
+  "font-medium text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:text-burgundy-light hover:decoration-burgundy-light";
 
 export function OrdersTable({ orders }: { orders: Order[] }) {
   if (orders.length === 0) {
@@ -24,12 +28,9 @@ export function OrdersTable({ orders }: { orders: Order[] }) {
         </thead>
         <tbody>
           {orders.map((order) => (
-            <tr key={order.id} className="border-b border-foreground/5 hover:bg-foreground/[0.03]">
+            <ClickableRow key={order.id} href={`/admin/orders/${order.id}`}>
               <td className="py-3 pr-4">
-                <Link
-                  href={`/admin/orders/${order.id}`}
-                  className="text-foreground underline-offset-4 hover:underline"
-                >
+                <Link href={`/admin/orders/${order.id}`} className={IDENTITY_LINK_CLASS}>
                   {order.orderNumber}
                 </Link>
               </td>
@@ -42,7 +43,7 @@ export function OrdersTable({ orders }: { orders: Order[] }) {
               <td className="py-3 pr-4">
                 <OrderStatusBadge status={order.status} />
               </td>
-            </tr>
+            </ClickableRow>
           ))}
         </tbody>
       </table>

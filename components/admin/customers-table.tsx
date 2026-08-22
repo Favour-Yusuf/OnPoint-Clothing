@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { formatPrice } from "@/lib/format";
+import { ClickableRow } from "@/components/admin/clickable-row";
 import type { AdminCustomerSummary } from "@/lib/types";
+
+const IDENTITY_LINK_CLASS =
+  "font-medium text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:text-burgundy-light hover:decoration-burgundy-light";
 
 export function CustomersTable({ customers }: { customers: AdminCustomerSummary[] }) {
   if (customers.length === 0) {
@@ -22,12 +26,9 @@ export function CustomersTable({ customers }: { customers: AdminCustomerSummary[
         </thead>
         <tbody>
           {customers.map((customer) => (
-            <tr key={customer.key} className="border-b border-foreground/5 hover:bg-foreground/[0.03]">
+            <ClickableRow key={customer.key} href={`/admin/customers/${encodeURIComponent(customer.key)}`}>
               <td className="py-3 pr-4">
-                <Link
-                  href={`/admin/customers/${encodeURIComponent(customer.key)}`}
-                  className="text-foreground underline-offset-4 hover:underline"
-                >
+                <Link href={`/admin/customers/${encodeURIComponent(customer.key)}`} className={IDENTITY_LINK_CLASS}>
                   {customer.name}
                 </Link>
                 <p className="text-xs text-foreground/45">{customer.email}</p>
@@ -38,7 +39,7 @@ export function CustomersTable({ customers }: { customers: AdminCustomerSummary[
               <td className="py-3 pr-4 font-light tracking-wide text-foreground/70 tabular-nums">{customer.orderCount}</td>
               <td className="py-3 pr-4 font-light tracking-wide text-foreground tabular-nums">{formatPrice(customer.totalSpent / 100)}</td>
               <td className="py-3 pr-4 text-foreground/50">{new Date(customer.lastOrderAt).toLocaleDateString()}</td>
-            </tr>
+            </ClickableRow>
           ))}
         </tbody>
       </table>

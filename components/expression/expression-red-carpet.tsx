@@ -23,7 +23,7 @@ export function ExpressionRedCarpet() {
         <SectionHeading
           eyebrow="Arrivals"
           title="The carpet, walked with intention."
-          description="Before the show starts, the room already knows what OnPoint stands for — security in formation, the marquee lit, every entrance a statement."
+          description="Before the show starts, the room already knows what OnPoint stands for: security in formation, the marquee lit, every entrance a statement."
         />
       </Container>
 
@@ -81,7 +81,7 @@ export function ExpressionRedCarpet() {
               Every arrival is announced.
             </h3>
             <p className="max-w-md text-base leading-relaxed text-foreground/60">
-              The sign, the carpet, the line of security — the same theatre a fashion house builds for the runway,
+              The sign, the carpet, the line of security; the same theatre a fashion house builds for the runway,
               built first for the door.
             </p>
           </Reveal>

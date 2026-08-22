@@ -7,7 +7,7 @@ import { validateCartItems, type CartValidationIssue } from "@/lib/cart/validate
 import type { CartItem, ShippingAddress } from "@/lib/types";
 
 export type CheckoutState = {
-  status: "idle" | "error" | "ready";
+  status: "idle" | "error" | "ready" | "bank_transfer";
   message?: string;
   errors?: Record<string, string>;
   payment?: {
@@ -15,6 +15,10 @@ export type CheckoutState = {
     amount: number; // minor units — what the inline popup must charge
     email: string;
     orderId: string;
+  };
+  bankTransfer?: {
+    orderNumber: string;
+    total: number; // minor units
   };
 };
 
@@ -85,13 +89,19 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
     phone: String(formData.get("phone") ?? "") || undefined,
   };
 
+  const paymentMethod = String(formData.get("paymentMethod") ?? "paystack");
+  const isBankTransfer = paymentMethod === "bank_transfer";
+
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
   const admin = createAdminClient();
-  const reference = `onpt_${randomUUID()}`;
+  // Paystack reads this reference to open the correct transaction; a bank
+  // transfer has no external processor, so its reference just identifies the
+  // payments row (and is prefixed distinctly for admin-side scanability).
+  const reference = isBankTransfer ? `onpt_bank_${randomUUID()}` : `onpt_${randomUUID()}`;
 
   const { data: order, error: orderError } = await admin
     .from("orders")
@@ -105,9 +115,13 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
       total,
       currency: ORDER_CURRENCY,
       shipping_address: shippingAddress,
-      paystack_reference: reference,
+      // Only a real Paystack attempt gets a paystack_reference — a bank
+      // transfer order has nothing for the Paystack verify/webhook flow to
+      // match against, so this stays null and payment confirmation is
+      // manual (admin marks it paid once the receipt/transfer is checked).
+      paystack_reference: isBankTransfer ? null : reference,
     })
-    .select("id")
+    .select("id, order_number")
     .single();
 
   if (orderError || !order) {
@@ -130,6 +144,7 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
   const { error: itemsError } = await admin.from("order_items").insert(orderItemRows);
   const { error: paymentError } = await admin.from("payments").insert({
     order_id: order.id,
+    provider: isBankTransfer ? "bank_transfer" : "paystack",
     reference,
     amount: total,
     currency: ORDER_CURRENCY,
@@ -138,6 +153,17 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
   if (itemsError || paymentError) {
     await admin.from("orders").delete().eq("id", order.id);
     return { status: "error", message: "We couldn't place your order. Please try again." };
+  }
+
+  if (isBankTransfer) {
+    // No admin notification fires here on purpose — the customer is sent
+    // straight to WhatsApp with their order number to send the receipt,
+    // which is the actual real-time signal to the OnPoint team. The order
+    // still sits in admin as a normal pending/unpaid order either way.
+    return {
+      status: "bank_transfer",
+      bankTransfer: { orderNumber: order.order_number, total },
+    };
   }
 
   // No server-side Paystack call here — the inline popup creates the

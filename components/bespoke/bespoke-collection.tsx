@@ -17,7 +17,7 @@ export async function BespokeCollection() {
           tone="on-light"
           eyebrow="Already Bespoke"
           title="The Bespoke Collection."
-          description="Made-to-measure pieces, built one at a time — request your size and colorway directly."
+          description="Made to measure pieces, built one at a time. Request your size and colorway directly."
         />
         <div className="mt-14">
           <ProductGrid products={products} tone="on-light" columns={3} />

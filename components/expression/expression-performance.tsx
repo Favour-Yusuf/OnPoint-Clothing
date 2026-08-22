@@ -33,7 +33,7 @@ export function ExpressionPerformance() {
         <SectionHeading
           eyebrow="Performance"
           title="The stage, at full volume."
-          description="Sound and spectacle, staged like the rest of the night — with the same attention as the clothes."
+          description="Sound and spectacle, staged like the rest of the night with the same attention as the clothes."
         />
 
         <div className="mt-14 grid grid-flow-row-dense grid-cols-2 gap-3 sm:mt-20 sm:grid-cols-4 sm:gap-4">

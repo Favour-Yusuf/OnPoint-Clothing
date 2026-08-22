@@ -22,7 +22,7 @@ export function BespokeTeaser() {
           Made <span className="italic">for you.</span>
         </h2>
         <p className="max-w-md text-base leading-relaxed text-foreground/75 sm:text-lg">
-          Beyond ready-to-wear, OnPoint offers a bespoke service. Garments built to your measure, from a
+          Beyond ready to wear, OnPoint offers a bespoke service. Garments built to your measure, from a
           consultation through to final fitting.
         </p>
         <div>

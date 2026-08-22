@@ -97,6 +97,8 @@ export function ProductDetails({ product }: { product: Product }) {
 
       <p className="max-w-md text-sm leading-relaxed text-foreground/65">{product.shortDescription}</p>
 
+      <p className="max-w-md whitespace-pre-line text-sm leading-relaxed text-foreground/60">{product.description}</p>
+
       {/* Color */}
       <div>
         <p className="font-sans text-xs font-light tracking-[0.15em] text-foreground/60 uppercase">

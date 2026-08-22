@@ -25,6 +25,14 @@ export const editorialImages = {
       publicId: "Web_11",
       alt: "Two OnPoint models in matching sage-green printed co-ord sets, studio portrait on a red backdrop",
     },
+    {
+      publicId: "Pato_web",
+      alt: "OnPoint model in a black velvet robe with a red beaded crown and layered gold chains, studio portrait",
+    },
+    {
+      publicId: "IGHALO_WEB",
+      alt: "OnPoint model in a black embellished cape, standing before a framed portrait and dark sculptural bust",
+    },
   ] satisfies CloudinaryImage[],
   aboutHero: {
     publicId: "Pato_web",

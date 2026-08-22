@@ -9,7 +9,8 @@ import { placeOrder, type CheckoutState } from "@/lib/actions/checkout";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
-import { ChevronDownIcon } from "@/components/ui/icons";
+import { ChevronDownIcon, BankIcon, CopyIcon, CheckIcon, ChatIcon } from "@/components/ui/icons";
+import { CONTACT, BANK_TRANSFER } from "@/lib/contact";
 import type { CartItem } from "@/lib/types";
 
 const initialState: CheckoutState = { status: "idle" };
@@ -17,6 +18,11 @@ const initialState: CheckoutState = { status: "idle" };
 const DELIVERY_OPTIONS = [
   { id: "standard", label: "Standard Shipping", detail: "5–7 business days", price: 0 },
   { id: "express", label: "Express Shipping", detail: "1–2 business days", price: 3500 },
+] as const;
+
+const PAYMENT_METHODS = [
+  { id: "paystack", label: "Pay Online", detail: "Card, bank transfer, or USSD via Paystack" },
+  { id: "bank_transfer", label: "Direct Bank Transfer", detail: "If Paystack isn't working for you" },
 ] as const;
 
 // "form": the checkout form is visible and can be submitted.
@@ -30,12 +36,14 @@ type Phase = "form" | "awaiting-payment" | "verifying" | "verify-failed";
 
 export function CheckoutView() {
   const router = useRouter();
-  const { items, subtotal } = useCart();
+  const { items, subtotal, clear } = useCart();
   const [state, formAction, pending] = useActionState(placeOrder, initialState);
   const [delivery, setDelivery] = useState<(typeof DELIVERY_OPTIONS)[number]["id"]>("standard");
+  const [paymentMethod, setPaymentMethod] = useState<(typeof PAYMENT_METHODS)[number]["id"]>("paystack");
   const [phase, setPhase] = useState<Phase>("form");
   const [phaseMessage, setPhaseMessage] = useState<string | null>(null);
   const openedReferenceRef = useRef<string | null>(null);
+  const clearedForBankTransferRef = useRef(false);
 
   const shipping = DELIVERY_OPTIONS.find((option) => option.id === delivery)?.price ?? 0;
   const total = subtotal + shipping;
@@ -109,6 +117,54 @@ export function CheckoutView() {
     openedReferenceRef.current = state.payment.reference;
     openInlinePayment(state.payment);
   }, [state, openInlinePayment]);
+
+  useEffect(() => {
+    if (state.status !== "bank_transfer" || clearedForBankTransferRef.current) return;
+    clearedForBankTransferRef.current = true;
+    clear();
+  }, [state.status, clear]);
+
+  if (state.status === "bank_transfer" && state.bankTransfer) {
+    const { orderNumber, total: orderTotal } = state.bankTransfer;
+    const whatsappMessage = `Hi OnPoint, I just placed order #${orderNumber} (${formatPrice(
+      orderTotal
+    )}) and made a bank transfer. Attaching my payment receipt.`;
+
+    return (
+      <Container className="flex flex-col items-center gap-6 py-24 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-burgundy-light">
+          <CheckIcon className="h-6 w-6 text-burgundy-light" />
+        </span>
+        <div>
+          <h1 className="font-display text-3xl font-light text-foreground sm:text-4xl">Order Placed</h1>
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-foreground/60">
+            Transfer {formatPrice(orderTotal)} using the details below, then send us your receipt on WhatsApp so we
+            can confirm and start processing right away.
+          </p>
+        </div>
+        <p className="font-sans text-xs font-light tracking-[0.2em] text-foreground/45 uppercase">
+          Reference {orderNumber}
+        </p>
+
+        <BankTransferDetails />
+
+        <div className="flex w-full max-w-sm flex-col gap-3">
+          <a
+            href={`${CONTACT.whatsapp.href}?text=${encodeURIComponent(whatsappMessage)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-burgundy px-6 py-3 font-sans text-xs font-medium tracking-[0.18em] text-foreground uppercase transition-colors hover:bg-burgundy-light"
+          >
+            <ChatIcon className="h-4 w-4" />
+            Send Receipt on WhatsApp
+          </a>
+          <Button href="/shop" variant="outline">
+            Continue Shopping
+          </Button>
+        </div>
+      </Container>
+    );
+  }
 
   if (phase === "awaiting-payment" || phase === "verifying") {
     return (
@@ -196,12 +252,49 @@ export function CheckoutView() {
           </Section>
 
           <Section index="04" title="Payment">
-            <div className="border border-foreground/15 p-6 text-center">
-              <p className="font-sans text-sm text-foreground/60">
-                You&rsquo;ll enter your card details securely in a Paystack window on this page — OnPoint never sees
-                or stores your card information.
-              </p>
+            <input type="hidden" name="paymentMethod" value={paymentMethod} />
+            <div className="flex flex-col gap-3">
+              {PAYMENT_METHODS.map((method) => (
+                <label
+                  key={method.id}
+                  className={`flex cursor-pointer items-center justify-between border px-4 py-3 transition-colors ${
+                    paymentMethod === method.id ? "border-burgundy" : "border-foreground/20 hover:border-burgundy-light/50"
+                  }`}
+                >
+                  <span className="flex items-center gap-3">
+                    <input
+                      type="radio"
+                      name="paymentMethodChoice"
+                      value={method.id}
+                      checked={paymentMethod === method.id}
+                      onChange={() => setPaymentMethod(method.id)}
+                      className="h-4 w-4 accent-burgundy"
+                    />
+                    <span>
+                      <span className="block font-sans text-sm text-foreground">{method.label}</span>
+                      <span className="block font-sans text-xs text-foreground/50">{method.detail}</span>
+                    </span>
+                  </span>
+                </label>
+              ))}
             </div>
+
+            {paymentMethod === "paystack" ? (
+              <div className="mt-4 border border-foreground/15 p-6 text-center">
+                <p className="font-sans text-sm text-foreground/60">
+                  You&rsquo;ll enter your card details securely in a Paystack window on this page — OnPoint never
+                  sees or stores your card information.
+                </p>
+              </div>
+            ) : (
+              <div className="mt-4 flex flex-col items-start gap-4">
+                <p className="font-sans text-sm text-foreground/60">
+                  Transfer the order total to the account below, then send your receipt on WhatsApp — we&rsquo;ll
+                  confirm and process your order right away.
+                </p>
+                <BankTransferDetails />
+              </div>
+            )}
           </Section>
 
           {state.status === "error" ? (
@@ -243,7 +336,11 @@ export function CheckoutView() {
             </div>
           </div>
           <Button type="submit" disabled={pending} className="w-full lg:mt-6">
-            {pending ? "Placing Order…" : `Pay Now · ${formatPrice(total)}`}
+            {pending
+              ? "Placing Order…"
+              : paymentMethod === "bank_transfer"
+                ? `Place Order · ${formatPrice(total)}`
+                : `Pay Now · ${formatPrice(total)}`}
           </Button>
         </div>
       </form>
@@ -302,6 +399,55 @@ function MobileOrderSummary({
             </div>
           </div>
         </div>
+      ) : null}
+    </div>
+  );
+}
+
+function BankTransferDetails() {
+  return (
+    <div className="w-full max-w-sm border border-foreground/15 p-5 text-left">
+      <div className="flex items-center gap-2 text-foreground/50">
+        <BankIcon className="h-4 w-4" />
+        <p className="font-sans text-xs font-light tracking-[0.15em] uppercase">Bank Transfer Details</p>
+      </div>
+      <div className="mt-4 flex flex-col gap-3">
+        <DetailRow label="Bank" value={BANK_TRANSFER.bankName} />
+        <DetailRow label="Account Name" value={BANK_TRANSFER.accountName} />
+        <DetailRow label="Account Number" value={BANK_TRANSFER.accountNumber} copyable />
+      </div>
+    </div>
+  );
+}
+
+function DetailRow({ label, value, copyable = false }: { label: string; value: string; copyable?: boolean }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
+    } catch {
+      // Clipboard API unavailable (e.g. insecure context) — the value is still visible/selectable text.
+    }
+  }
+
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <div>
+        <p className="font-sans text-xs text-foreground/45">{label}</p>
+        <p className="font-sans text-sm text-foreground tabular-nums">{value}</p>
+      </div>
+      {copyable ? (
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="flex shrink-0 items-center gap-1.5 border border-foreground/20 px-3 py-1.5 font-sans text-xs text-foreground/70 transition-colors hover:border-burgundy-light hover:text-burgundy-light"
+        >
+          {copied ? <CheckIcon className="h-3.5 w-3.5" /> : <CopyIcon className="h-3.5 w-3.5" />}
+          {copied ? "Copied" : "Copy"}
+        </button>
       ) : null}
     </div>
   );

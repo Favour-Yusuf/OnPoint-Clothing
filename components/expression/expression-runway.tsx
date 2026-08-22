@@ -25,7 +25,7 @@ export function ExpressionRunway() {
         <SectionHeading
           eyebrow="The Runway"
           title="This is what recognition sounds like."
-          description="The clothes, presented the way they were built to be seen — one walk, one look, one argument at a time."
+          description="The clothes, presented the way they were built to be seen: one walk, one look, one argument at a time."
         />
       </Container>
 
