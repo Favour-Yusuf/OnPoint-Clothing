@@ -52,8 +52,8 @@ export const editorialImages = {
       alt: "OnPoint model in a white embroidered kaftan with coral beadwork",
     } satisfies CloudinaryImage,
     collections: {
-      publicId: "Web_6.jpg.jpg",
-      alt: "OnPoint presenting on stage at a brand event",
+      publicId: "close-knit",
+      alt: "Crown Legacy, close knit detail",
     } satisfies CloudinaryImage,
     bespoke: {
       publicId: "Pato_web",

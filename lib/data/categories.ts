@@ -11,13 +11,13 @@ export const categories: Category[] = [
     slug: "men",
     name: "Men",
     description: "Considered tailoring for everyday and occasion.",
-    image: { publicId: "placeholder:category-men", alt: "Men's collection" },
+    image: { publicId: "_DPR0419__2", alt: "OnPoint model in the White Flow Tunic, full look" },
   },
   {
     slug: "accessories",
     name: "Accessories",
     description: "The finishing details: leather, silk, and metal.",
-    image: { publicId: "placeholder:category-accessories", alt: "Accessories collection" },
+    image: { publicId: "IMG_8699", alt: "ONPOINT BLACK Signature Trucker Cap, held up in hands" },
   },
 ];
 

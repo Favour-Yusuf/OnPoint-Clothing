@@ -12,6 +12,18 @@ type Tile = {
   name: string;
   href: string;
   image: CloudinaryImage;
+  /** Overrides MediaImage's default centered crop — see per-tile comments below. */
+  position?: string;
+};
+
+// This grid crops every tile image into a landscape (4:3 on sm+) box. The tile
+// photos below are all tall portrait shots, so a centered crop cuts the
+// subject's head off; these positions were measured against each photo's
+// actual composition to keep the face/product in frame instead.
+const TILE_POSITION: Record<string, string> = {
+  men: "50% 8%", // full-length standing shot — keep head+torso, crop at the legs
+  accessories: "50% 15%", // cap held up by hand — keep cap+rings, crop at the wrists
+  collections: "50% 10%", // close bust portrait — keep the cap/face, crop at the chest
 };
 
 export async function CategoryDiscovery() {
@@ -22,9 +34,15 @@ export async function CategoryDiscovery() {
       name: category.name,
       href: `/shop/${category.slug}`,
       image: category.image,
+      position: TILE_POSITION[category.slug],
     })),
     { name: "New Arrivals", href: "/shop/new-arrivals", image: editorialImages.categoryTiles.newArrivals },
-    { name: "Collections", href: "/collections", image: editorialImages.categoryTiles.collections },
+    {
+      name: "Collections",
+      href: "/collections",
+      image: editorialImages.categoryTiles.collections,
+      position: TILE_POSITION.collections,
+    },
     { name: "Bespoke", href: "/bespoke", image: editorialImages.categoryTiles.bespoke },
   ];
 
@@ -46,7 +64,7 @@ export async function CategoryDiscovery() {
                 className="group relative block aspect-4/5 w-full overflow-hidden bg-background ring-0 ring-inset ring-burgundy transition-shadow duration-300 hover:ring-2 sm:aspect-4/3"
               >
                 <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.05]">
-                  <MediaImage image={tile.image} sizes="(min-width: 1024px) 33vw, 50vw" />
+                  <MediaImage image={tile.image} sizes="(min-width: 1024px) 33vw, 50vw" position={tile.position} />
                 </div>
                 <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep/85 via-background/15 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 sm:p-6">
