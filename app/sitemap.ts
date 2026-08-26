@@ -12,6 +12,7 @@ const STATIC_ROUTES = [
   "/shop/new-arrivals",
   "/collections",
   "/bespoke",
+  "/active",
   "/about",
 ];
 

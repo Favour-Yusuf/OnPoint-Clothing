@@ -18,6 +18,7 @@ const HOUSE_LINKS = [
   { label: "About OnPoint", href: "/about" },
   { label: "OnPoint Expression", href: "/expression" },
   { label: "Bespoke", href: "/bespoke" },
+  { label: "OnPoint Active", href: "/active" },
   { label: "Contact", href: "/about#contact" },
 ];
 

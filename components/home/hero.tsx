@@ -24,9 +24,9 @@ export function Hero() {
           </h1>
         </div>
 
-        <p className="max-w-md text-base leading-relaxed text-foreground/70 sm:text-lg">
+        {/* <p className="max-w-md text-base leading-relaxed text-foreground/70 sm:text-lg">
           A top celebrity clothier and genuine game changer, redefining luxury for the 21st century.
-        </p>
+        </p> */}
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <Button href="/shop">Shop the Collection</Button>

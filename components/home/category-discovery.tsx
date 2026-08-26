@@ -21,21 +21,32 @@ type Tile = {
 // subject's head off; these positions were measured against each photo's
 // actual composition to keep the face/product in frame instead.
 const TILE_POSITION: Record<string, string> = {
+  women: "50% 13%", // full-length standing shot — keep head+torso, crop at the legs
   men: "50% 8%", // full-length standing shot — keep head+torso, crop at the legs
   accessories: "50% 15%", // cap held up by hand — keep cap+rings, crop at the wrists
   collections: "50% 10%", // close bust portrait — keep the cap/face, crop at the chest
+  active: "50% 15%", // full-length standing shot — keep head+torso, crop at the legs
 };
+
+// "categories" (Supabase) holds every product taxonomy, including "bespoke"
+// — that exists purely to satisfy the products table's category foreign key
+// and gets its own dedicated page + homepage teaser section instead of a
+// /shop/[category] route, so it's excluded here rather than auto-spread
+// (which would link to a 404).
+const SHOP_TILE_SLUGS = ["women", "men", "accessories"];
 
 export async function CategoryDiscovery() {
   const categories = await getAllCategories();
 
   const tiles: Tile[] = [
-    ...categories.map((category) => ({
-      name: category.name,
-      href: `/shop/${category.slug}`,
-      image: category.image,
-      position: TILE_POSITION[category.slug],
-    })),
+    ...categories
+      .filter((category) => SHOP_TILE_SLUGS.includes(category.slug))
+      .map((category) => ({
+        name: category.name,
+        href: `/shop/${category.slug}`,
+        image: category.image,
+        position: TILE_POSITION[category.slug],
+      })),
     { name: "New Arrivals", href: "/shop/new-arrivals", image: editorialImages.categoryTiles.newArrivals },
     {
       name: "Collections",
@@ -44,6 +55,12 @@ export async function CategoryDiscovery() {
       position: TILE_POSITION.collections,
     },
     { name: "Bespoke", href: "/bespoke", image: editorialImages.categoryTiles.bespoke },
+    {
+      name: "OnPoint Active",
+      href: "/active",
+      image: editorialImages.categoryTiles.active,
+      position: TILE_POSITION.active,
+    },
   ];
 
   return (

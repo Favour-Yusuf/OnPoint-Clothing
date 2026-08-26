@@ -146,14 +146,6 @@ async function seedProductVariants(productIdBySlug: Map<string, string>) {
     const productId = productIdBySlug.get(product.slug);
     if (!productId) continue;
 
-    // Delete-all-and-reinsert per product (like product_images below) keeps
-    // this idempotent even when a variant's derived SKU changes between seed
-    // runs (e.g. a product's id prefix is renumbered) — an upsert keyed on
-    // sku alone would leave the old-SKU rows behind and collide with the
-    // (product_id, size, color_name) unique constraint on reinsert.
-    const { error: deleteError } = await supabase.from("product_variants").delete().eq("product_id", productId);
-    if (deleteError) throw new Error(`product_variants delete (${product.slug}): ${deleteError.message}`);
-
     const rows = product.variants.map((variant) => {
       const color = product.colors.find((c) => c.name === variant.color);
       return {
@@ -165,9 +157,40 @@ async function seedProductVariants(productIdBySlug: Map<string, string>) {
         stock_quantity: variant.inStock ? DEFAULT_IN_STOCK_QUANTITY : 0,
       };
     });
-    if (rows.length === 0) continue;
-    const { error } = await supabase.from("product_variants").insert(rows);
-    if (error) throw new Error(`product_variants (${product.slug}): ${error.message}`);
+
+    // Upsert on the natural (product_id, size, color_name) key — NOT
+    // delete-and-reinsert. A fresh insert always gets a new random `id`
+    // (see 0001_initial_schema.sql), and any customer's cart/order refers to
+    // a variant by that id (see lib/cart/validate.ts). Deleting and
+    // reinserting on every seed run — even when nothing about the variant
+    // actually changed — silently orphans every cart that already has an
+    // item in it, which is exactly what broke checkout on staging. Upserting
+    // in place keeps the id stable across reseeds; `sku`/`stock_quantity`/
+    // `color_hex` still update normally when the source data changes.
+    if (rows.length > 0) {
+      const { error } = await supabase
+        .from("product_variants")
+        .upsert(rows, { onConflict: "product_id,size,color_name" });
+      if (error) throw new Error(`product_variants upsert (${product.slug}): ${error.message}`);
+    }
+
+    // Still prune combos that no longer exist for this product (e.g. a
+    // dropped color) — upsert alone never deletes, so those would otherwise
+    // linger as orderable-but-invisible rows.
+    const currentKeys = new Set(rows.map((r) => `${r.size}::${r.color_name}`));
+    const { data: existingRows, error: fetchError } = await supabase
+      .from("product_variants")
+      .select("id, size, color_name")
+      .eq("product_id", productId);
+    if (fetchError) throw new Error(`product_variants fetch (${product.slug}): ${fetchError.message}`);
+
+    const staleIds = (existingRows ?? [])
+      .filter((row) => !currentKeys.has(`${row.size}::${row.color_name}`))
+      .map((row) => row.id);
+    if (staleIds.length > 0) {
+      const { error: pruneError } = await supabase.from("product_variants").delete().in("id", staleIds);
+      if (pruneError) throw new Error(`product_variants prune (${product.slug}): ${pruneError.message}`);
+    }
   }
 }
 

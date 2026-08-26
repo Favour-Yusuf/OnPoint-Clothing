@@ -13,7 +13,7 @@ export async function FeaturedProducts() {
         <SectionHeading
           tone="on-light"
           eyebrow="Just In"
-          title="Featured Pieces."
+          title="Shop the Look."
           description="A curated selection. This is not the whole catalog, just what's worth your attention right now."
           action={
             <Button href="/shop" variant="outline" tone="on-light">

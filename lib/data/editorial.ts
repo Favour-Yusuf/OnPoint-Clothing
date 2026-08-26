@@ -18,20 +18,28 @@ export const editorialImages = {
       alt: "OnPoint model in a white embroidered kaftan with coral beadwork",
     },
     {
+      publicId: "DSC05331",
+      alt: "Two OnPoint models in matching coral two-piece sets, seated on driftwood at the beach",
+    },
+    {
+      publicId: "Web_9",
+      alt: "A model in an angular geometric-print wrap walking the runway, GLITZ Fashion Week signage behind",
+    },
+    {
+      publicId: "DSC05254",
+      alt: "Two OnPoint models in matching coral two-piece sets, walking together on the beach",
+    },
+    {
       publicId: "Web_6",
       alt: "OnPoint model in a regal red beaded kaftan and crown, holding a fur-trimmed staff, studio portrait on a red backdrop",
     },
     {
+      publicId: "DSC05179",
+      alt: "Two OnPoint models in matching coral two-piece sets, standing together on the beach",
+    },
+    {
       publicId: "Web_11",
       alt: "Two OnPoint models in matching sage-green printed co-ord sets, studio portrait on a red backdrop",
-    },
-    {
-      publicId: "Pato_web",
-      alt: "OnPoint model in a black velvet robe with a red beaded crown and layered gold chains, studio portrait",
-    },
-    {
-      publicId: "IGHALO_WEB",
-      alt: "OnPoint model in a black embellished cape, standing before a framed portrait and dark sculptural bust",
     },
   ] satisfies CloudinaryImage[],
   aboutHero: {
@@ -46,6 +54,14 @@ export const editorialImages = {
     publicId: "IGHALO_WEB",
     alt: "OnPoint Bespoke client in a tailored cape and crown, studio portrait",
   } satisfies CloudinaryImage,
+  activeHero: {
+    publicId: "_DPR7522.jpg.jpg",
+    alt: "CORE SET, cropped performance top and sculpting leggings in burgundy, front view",
+  } satisfies CloudinaryImage,
+  activeTeaser: {
+    publicId: "_DPR0246",
+    alt: "VERDANT MOTION SET, deep-green crop top and leggings, side pose",
+  } satisfies CloudinaryImage,
   categoryTiles: {
     newArrivals: {
       publicId: "Web_7",
@@ -58,6 +74,10 @@ export const editorialImages = {
     bespoke: {
       publicId: "Pato_web",
       alt: "OnPoint Bespoke client in a custom cape with layered chains and a crown",
+    } satisfies CloudinaryImage,
+    active: {
+      publicId: "_DPR7522.jpg.jpg",
+      alt: "CORE SET, cropped performance top and sculpting leggings in burgundy, front view",
     } satisfies CloudinaryImage,
   },
 };

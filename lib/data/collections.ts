@@ -29,6 +29,22 @@ export const collections: Collection[] = [
     image: { publicId: "full-shot", alt: "OnPoint model in the Crown Legacy ensemble, burgundy jacquard with hand-applied beadwork" },
     productSlugs: ["crown-legacy", "imperial-noir", "ezego", "itego-collection", "royal-crown-fila"],
   },
+  {
+    slug: "onpoint-active",
+    name: "OnPoint Active",
+    season: "Ongoing",
+    description: "Performance activewear for movement, training, and everyday wear.",
+    image: { publicId: "_DPR7522.jpg.jpg", alt: "CORE SET, cropped performance top and sculpting leggings in burgundy, front view" },
+    productSlugs: [
+      "rita-romper",
+      "rita-romper-long",
+      "monalisa-sculptfit-romper",
+      "verdant-motion-set",
+      "velora-3-piece-active-set",
+      "core-set",
+      "blush-sculpt-set",
+    ],
+  },
 ];
 
 export function getCollectionBySlug(slug: string): Collection | undefined {
