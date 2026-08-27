@@ -9,7 +9,12 @@ import type { Category, Collection, CloudinaryImage, Product, ProductColor, Prod
  * original mock-data version exactly so no component call sites changed.
  */
 
-export type SortOption = "featured" | "price-asc" | "price-desc" | "newest";
+// "color" groups the grid by photography backdrop (see backdropColor on
+// Product) so matching backdrops land in the same row — it's the default
+// view (see FilterBar's activeSort fallback), not something layered on top
+// of "featured". Picking "featured" (or any other option) explicitly is a
+// real, fully ungrouped sort in catalog order, same as it always was.
+export type SortOption = "color" | "featured" | "price-asc" | "price-desc" | "newest";
 
 export type ProductFilters = {
   category?: string;
@@ -26,7 +31,7 @@ export type ProductFilters = {
 // object, not the parent row, per PostgREST's embedded-resource semantics).
 const PRODUCT_SELECT = `
   id, slug, name, description, short_description, price, compare_at_price,
-  currency, details, care, is_new, is_bespoke_eligible, availability,
+  currency, details, care, is_new, is_bespoke_eligible, availability, backdrop_color,
   categories!inner ( slug ),
   product_images ( cloudinary_public_id, alt, position ),
   product_variants ( id, size, color_name, color_hex, sku, stock_quantity ),
@@ -47,6 +52,7 @@ type ProductRow = {
   is_new: boolean;
   is_bespoke_eligible: boolean;
   availability: Product["availability"];
+  backdrop_color: string | null;
   categories: { slug: string } | null;
   product_images: { cloudinary_public_id: string; alt: string; position: number }[];
   product_variants: {
@@ -89,6 +95,7 @@ function mapProductRow(row: ProductRow): Product {
     currency: row.currency,
     categorySlug: row.categories?.slug ?? "",
     collectionSlugs: row.product_collections.flatMap((pc) => (pc.collections ? [pc.collections.slug] : [])),
+    backdropColor: row.backdrop_color ?? undefined,
     images,
     shortDescription: row.short_description,
     description: row.description,
@@ -228,11 +235,34 @@ export async function filterProducts(filters: ProductFilters): Promise<Product[]
     case "newest":
       results.sort((a, b) => Number(b.isNew) - Number(a.isNew));
       break;
+    case "color":
+      results = groupByBackdropColor(results);
+      break;
+    case "featured":
     default:
+      // Unchanged catalog order — this is the real "Featured" sort, kept
+      // deliberately separate from "color" grouping (see SortOption above).
       break;
   }
 
   return results;
+}
+
+/**
+ * Buckets products by backdropColor, preserving each product's relative
+ * order within its bucket, then concatenates buckets in the order their
+ * first member appears — so same-backdrop products land in contiguous grid
+ * rows without needing an arbitrary priority order between colors.
+ */
+function groupByBackdropColor(products: Product[]): Product[] {
+  const buckets = new Map<string, Product[]>();
+  for (const product of products) {
+    const key = product.backdropColor ?? "unassigned";
+    const bucket = buckets.get(key);
+    if (bucket) bucket.push(product);
+    else buckets.set(key, [product]);
+  }
+  return Array.from(buckets.values()).flat();
 }
 
 export function getAvailableSizes(productList: Product[]): string[] {

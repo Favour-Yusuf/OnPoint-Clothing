@@ -95,6 +95,7 @@ async function seedProducts(categoryIdBySlug: Map<string, string>) {
     is_new: Boolean(product.isNew),
     is_bespoke_eligible: Boolean(product.isBespokeEligible),
     availability: product.availability,
+    backdrop_color: product.backdropColor ?? null,
   }));
   const { data, error } = await supabase.from("products").upsert(rows, { onConflict: "slug" }).select("id, slug");
   if (error) throw new Error(`products: ${error.message}`);

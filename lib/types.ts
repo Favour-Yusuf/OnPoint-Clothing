@@ -44,6 +44,8 @@ export type Product = {
   currency: "NGN";
   categorySlug: string;
   collectionSlugs: string[];
+  /** Photography backdrop color (e.g. "red", "grey") — not a garment color. Used to group the shop grid by matching backdrops. */
+  backdropColor?: string;
   images: CloudinaryImage[];
   shortDescription: string;
   description: string;

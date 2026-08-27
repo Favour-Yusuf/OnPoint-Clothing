@@ -47,7 +47,10 @@ export default async function ShopCategoryPage({
     newOnly: isNewArrivals || undefined,
     size: query.size,
     color: query.color,
-    sort: query.sort as SortOption | undefined,
+    // No ?sort= yet — default to the backdrop-color grouped view, matching
+    // FilterBar's own default so the dropdown never shows "By Color"
+    // selected while the grid is actually rendering ungrouped.
+    sort: (query.sort as SortOption | undefined) ?? "color",
   });
 
   const categoryMeta = isNewArrivals ? undefined : await getCategory(category);

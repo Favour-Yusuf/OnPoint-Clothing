@@ -19,7 +19,7 @@ export default async function ShopPage({
     category: params.category,
     size: params.size,
     color: params.color,
-    sort: params.sort as SortOption | undefined,
+    sort: (params.sort as SortOption | undefined) ?? "color",
   });
 
   return (

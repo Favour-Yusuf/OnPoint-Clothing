@@ -6,6 +6,7 @@ import type { SortOption } from "@/lib/products";
 import { CloseIcon } from "@/components/ui/icons";
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: "color", label: "By Color" },
   { value: "featured", label: "Featured" },
   { value: "newest", label: "Newest" },
   { value: "price-asc", label: "Price: Low to High" },
@@ -28,7 +29,7 @@ export function FilterBar({
 
   const activeSize = searchParams.get("size") ?? "";
   const activeColor = searchParams.get("color") ?? "";
-  const activeSort = (searchParams.get("sort") as SortOption) || "featured";
+  const activeSort = (searchParams.get("sort") as SortOption) || "color";
   const activeCount = [activeSize, activeColor].filter(Boolean).length;
 
   function updateParam(key: string, value: string) {

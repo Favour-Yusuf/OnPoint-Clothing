@@ -70,6 +70,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-tailored-edit"],
+    backdropColor: "neutral",
     images: [
       { publicId: "front", alt: "Aura Monolith V-Slit Set, front view" },
       { publicId: "full", alt: "Aura Monolith V-Slit Set, full length" },
@@ -95,6 +96,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-tailored-edit"],
+    backdropColor: "neutral",
     images: [
       { publicId: "OJM09875", alt: "Black Senator Kaftan, full length" },
       { publicId: "OJM09882", alt: "Black Senator Kaftan, half shot" },
@@ -120,6 +122,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-tailored-edit"],
+    backdropColor: "neutral",
     images: [
       { publicId: "DSC02738", alt: "Aura White Kaftan, full length" },
       { publicId: "DSC02735", alt: "Aura White Kaftan, Styled Look" },
@@ -144,6 +147,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: ["the-regalia-edit"],
+    backdropColor: "green",
     images: [
       { publicId: "close-shot", alt: "Crown Legacy, close detail" },
       { publicId: "full-shot", alt: "Crown Legacy, full shot" },
@@ -176,6 +180,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "accessories",
     collectionSlugs: ["the-regalia-edit"],
+    backdropColor: "grey",
     images: [
       { publicId: "8e66e545-b5c1-4ebc-8220-d2d5a06bd554.JPG.jpg", alt: "Royal Crown Fila worn with a white agbada, front view" },
       { publicId: "39cf1774-dd32-4c36-8166-9424c7b24dbe.JPG.jpg", alt: "Royal Crown Fila worn with a white agbada, side view" },
@@ -206,6 +211,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: ["the-regalia-edit"],
+    backdropColor: "grey",
     images: [
       { publicId: "imperial_DPR1625", alt: "Imperial Noir, portrait detail of the beaded red ceremonial cap" },
       { publicId: "imperial_DPR1613", alt: "Imperial Noir, full look with flowing outer robe, front view" },
@@ -234,6 +240,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: ["the-tailored-edit"],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR0278", alt: "Sovereign Jacquard Tunic, full look, front view" },
       { publicId: "_DPR0302", alt: "Sovereign Jacquard Tunic, full look, walking" },
@@ -260,6 +267,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-tailored-edit"],
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR0405", alt: "White Flow Tunic, full look, front view" },
       { publicId: "_DPR0419__2", alt: "White Flow Tunic, full look, holding sunglasses" },
@@ -285,6 +293,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-regalia-edit"],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR0338", alt: "Eze'go, full look with Onowu hat and horsehair accessory, front view" },
       { publicId: "_DPR0344", alt: "Eze'go, full look with Onowu hat and horsehair accessory, side view" },
@@ -310,6 +319,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: ["the-regalia-edit"],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR0559", alt: "ITE'go Collection, full look standing with cane and dagger" },
       { publicId: "_DPR0566", alt: "ITE'go Collection, full look seated with cane and dagger" },
@@ -336,6 +346,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "accessories",
     collectionSlugs: [],
+    backdropColor: "black",
     images: [
       { publicId: "5c0aef31-ba1c-4456-a507-86275895ed0a.JPG.jpg", alt: "ONPOINT Bordeaux Crest Cap, front angled view" },
       { publicId: "a92281f8-c1e1-4c0a-b117-18d46d369dc3.JPG.jpg", alt: "ONPOINT Bordeaux Crest Cap, side angled view" },
@@ -361,6 +372,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "neutral",
     images: [
       { publicId: "IMG_3299.JPG.jpg", alt: "Ivory cut, full look, front view" },
       { publicId: "IMG_3300.JPG.jpg", alt: "Ivory cut, full look, walking" },
@@ -386,6 +398,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "accessories",
     collectionSlugs: [],
+    backdropColor: "white",
     images: [
       { publicId: "IMG_8682", alt: "ONPOINT BLACK Signature Trucker Cap, front studio view" },
       { publicId: "IMG_8699", alt: "ONPOINT BLACK Signature Trucker Cap, held up in hands" },
@@ -413,6 +426,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "accessories",
     collectionSlugs: [],
+    backdropColor: "black",
     images: [
       { publicId: "8B539D0B-99FF-472A-8DE9-79E9F7DDFDD6", alt: "ONPOINT Bordeaux Crest Cap in Navy Blue, front view" },
       { publicId: "190E228D-A6AB-4A10-8C6B-3EA4A5DFFAC9", alt: "ONPOINT Bordeaux Crest Cap in Navy Blue, front view on stand" },
@@ -439,11 +453,11 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "beige",
     images: [
       { publicId: "_DPR0093", alt: "NOIRVANE Set, full look, front view" },
       { publicId: "_DPR0084", alt: "NOIRVANE Set, full look, front view, hands clasped" },
       { publicId: "_DPR0121", alt: "NOIRVANE Set, full look, three-quarter angle" },
-      { publicId: "_DPR0077", alt: "NOIRVANE Set, full look, side view" },
       { publicId: "_DPR0139", alt: "NOIRVANE Set, full look, dynamic pose" },
     ],
     shortDescription: "A black Damask set with antique gold detailing.",
@@ -466,6 +480,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "beige",
     images: [
       { publicId: "_DPR0151", alt: "Emerald Sovereign, full look with sculpted cap, front view" },
       { publicId: "_DPR0203", alt: "Emerald Sovereign, full look with sculpted cap, hands clasped" },
@@ -492,6 +507,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR4745", alt: "IJoba, full look, studio front view" },
       { publicId: "_DPR4750", alt: "IJoba, full look, studio front view, holding sceptre" },
@@ -520,6 +536,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "neutral",
     images: [
       { publicId: "_DPR9412", alt: "Desert silk Gold, full look, front view" },
       { publicId: "_DPR9331", alt: "Desert silk Gold, full look, walking, side view" },
@@ -545,6 +562,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "beige",
     images: [
       { publicId: "_DPR9650", alt: "Emerald Sovereign (plain), full look, front view" },
       { publicId: "_DPR9671", alt: "Emerald Sovereign (plain), full look, looking down" },
@@ -571,6 +589,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "beige",
     images: [
       { publicId: "_DPR9142", alt: "Mejestic, full look, seated, front view" },
       { publicId: "_DPR9099", alt: "Mejestic, full look, seated, smiling" },
@@ -597,6 +616,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "neutral",
     images: [
       { publicId: "_DPR0820", alt: "Black oversize Kaftan Set, full look, front view" },
       { publicId: "_DPR0846", alt: "Black oversize Kaftan Set, full look, crouched, editorial" },
@@ -621,6 +641,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR7210-Recovered", alt: "NOIR DYNASTY, full look, front view" },
       { publicId: "_DPR7331-Recovered", alt: "NOIR DYNASTY, full look, walking, side view" },
@@ -652,6 +673,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "neutral",
     images: [
       { publicId: "2X3A7694.jpg.jpg", alt: "The Groom, full look, front view" },
       { publicId: "2X3A7707.jpg.jpg", alt: "The Groom, full look, close front view" },
@@ -679,6 +701,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "beige",
     images: [
       { publicId: "PHOTO-2025-06-11-20-34-33.jpg.jpg", alt: "ROYALTY, full look, front view, smiling" },
       { publicId: "PHOTO-2025-06-11-20-34-33_2.jpg.jpg", alt: "ROYALTY, full look, front view, standing" },
@@ -711,6 +734,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "green",
     images: [
       { publicId: "5013a21f-cd5e-494d-ac98-c5bbc5f4d993.JPG.jpg", alt: "The Groom 2, full look, front view" },
       { publicId: "cc6c2567-aced-4b08-be65-ab8cc1af34f3.JPG.jpg", alt: "The Groom 2, full look, dynamic pose" },
@@ -737,6 +761,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "grey",
     images: [
       { publicId: "4449D69E-DC78-4AB2-9229-33863335CE52.jpg.jpg", alt: "Butter Scotch Kaftan, full look, front view" },
       { publicId: "E7F7411D-8EA6-4C0A-991D-15960F5BE636", alt: "Butter Scotch Kaftan, full look, side view" },
@@ -762,6 +787,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "neutral",
     images: [
       { publicId: "IMG_1380.JPG.jpg", alt: "Oversize Tunic, full look, standing on stairs" },
       { publicId: "IMG_1379.JPG.jpg", alt: "Oversize Tunic, full look, standing on stairs, alternate pose" },
@@ -787,6 +813,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
+    backdropColor: "white",
     images: [
       { publicId: "IMG_8455.JPG.jpg", alt: "Rita romper, cream colorway" },
       { publicId: "IMG_8449.JPG.jpg", alt: "Rita romper, sky blue colorway" },
@@ -812,6 +839,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
+    backdropColor: "beige",
     images: [
       { publicId: "On_Point_2024-316", alt: "Rita romper (Long), full look, front view" },
       { publicId: "On_Point_2024-311", alt: "Rita romper (Long), full look, back view" },
@@ -839,6 +867,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR0366", alt: "Monalisa SculptFit Romper, full look, front view, arms crossed" },
       { publicId: "_DPR0407", alt: "Monalisa SculptFit Romper, full look, front view, playful" },
@@ -867,6 +896,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR0246", alt: "VERDANT MOTION SET, side pose" },
       { publicId: "_DPR0222", alt: "VERDANT MOTION SET, side pose, standing" },
@@ -891,6 +921,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR0490", alt: "VELORA 3 Piece Active Set, full look, front view" },
       { publicId: "_DPR0531", alt: "VELORA 3 Piece Active Set, full look, side angle" },
@@ -916,6 +947,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR7522.jpg.jpg", alt: "CORE SET, full look, front view, standing" },
       { publicId: "_DPR7452.jpg.jpg", alt: "CORE SET, full look, front view, playful" },
@@ -941,6 +973,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR1155", alt: "Ọ̀nà Heritage Jacquard, full look, front view" },
       { publicId: "_DPR1163", alt: "Ọ̀nà Heritage Jacquard, full look, front view, close" },
@@ -965,12 +998,13 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "beige",
     images: [
-      { publicId: "_DPR7561-1", alt: "KOVA SET, full look, front view" },
+      { publicId: "_DPR7661-1", alt: "KOVA SET, close portrait, playful pose" },
       { publicId: "_DPR7632-1", alt: "KOVA SET, full look, walking" },
       { publicId: "_DPR7643-1", alt: "KOVA SET, full look, walking, looking down" },
       { publicId: "_DPR7633-1", alt: "KOVA SET, full look, walking, smiling" },
-      { publicId: "_DPR7661-1", alt: "KOVA SET, close portrait, playful pose" },
+      { publicId: "_DPR7561-1", alt: "KOVA SET, full look, front view" },
     ],
     shortDescription: "An all-white embroidered set with flowing tailoring.",
     description:
@@ -991,6 +1025,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR7708", alt: "Nairo flow Set, full look, front view, smiling" },
       { publicId: "_DPR7692", alt: "Nairo flow Set, full look, walking, front-side view" },
@@ -1016,6 +1051,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: [],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR6882-Recovered", alt: "KAIRO Luxe Set, full look, front view" },
       { publicId: "_DPR6914-Recovered", alt: "KAIRO Luxe Set, full look, dynamic pose" },
@@ -1041,6 +1077,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
+    backdropColor: "red",
     images: [
       { publicId: "_DPR7016-1-Recovered", alt: "The Kairo Set, styled with a matching look, front view" },
       { publicId: "_DPR7004", alt: "The Kairo Set, styled with a matching look, standing" },
@@ -1067,6 +1104,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "yellow",
     images: [
       { publicId: "ESO_1.jpg.jpg", alt: "Ayo Set, full look, front view" },
       { publicId: "Eso2.jpg.jpg", alt: "Ayo Set, full look, front view, close" },
@@ -1092,6 +1130,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
+    backdropColor: "white",
     images: [
       { publicId: "4A7E7069-3934-43C0-AA7F-5A1C39365143", alt: "Blush Sculpt Set, full look, front view" },
       { publicId: "EEDB1C34-441A-483B-B503-D4FF164F4B4C", alt: "Blush Sculpt Set, full look, front view, arms up" },
@@ -1117,6 +1156,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR2381-1", alt: "ZURI SET, full look, front view" },
       { publicId: "_DPR2406-1", alt: "ZURI SET, full look, walking" },
@@ -1143,12 +1183,12 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR2593-1", alt: "Navy Royale Set, full look, front view" },
       { publicId: "_DPR2628-1", alt: "Navy Royale Set, full look, walking, side view" },
       { publicId: "_DPR2681-1", alt: "Navy Royale Set, close portrait, side view" },
       { publicId: "_DPR2682-1", alt: "Navy Royale Set, close portrait, looking back" },
-      { publicId: "_DPR2688-1", alt: "Navy Royale Set, close portrait, over the shoulder" },
       { publicId: "_DPR2688-1.jpg111new.jpg", alt: "Navy Royale Set, close portrait, over the shoulder, alternate take" },
       { publicId: "_DPR2607-1", alt: "Navy Royale Set, full look, back view" },
     ],
