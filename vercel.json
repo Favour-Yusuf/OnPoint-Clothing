@@ -1,0 +1,5 @@
+{
+  "crons": [
+    { "path": "/api/cron/abandoned-checkouts", "schedule": "0 * * * *" }
+  ]
+}
