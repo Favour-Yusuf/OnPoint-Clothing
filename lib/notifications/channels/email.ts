@@ -21,20 +21,42 @@ function getTransporter() {
   return transporter;
 }
 
-/** Best-effort — logs and returns on any failure rather than throwing. */
-export async function sendAdminEmail({ subject, text }: { subject: string; text: string }): Promise<void> {
-  const to = process.env.ADMIN_NOTIFICATION_EMAIL;
+/** Shared send path. Returns whether the send actually succeeded, so callers that need to know (unlike the fire-and-forget admin notifications) can act on failure. */
+async function send({ to, subject, text }: { to: string; subject: string; text: string }): Promise<boolean> {
   const transport = getTransporter();
-  if (!to || !transport) {
-    console.error(
-      "sendAdminEmail: not configured — set YAHOO_SMTP_USER, YAHOO_SMTP_APP_PASSWORD, ADMIN_NOTIFICATION_EMAIL"
-    );
-    return;
+  if (!transport) {
+    console.error("email: not configured — set YAHOO_SMTP_USER, YAHOO_SMTP_APP_PASSWORD");
+    return false;
   }
 
   try {
     await transport.sendMail({ from: `"OnPoint Clothing" <${process.env.YAHOO_SMTP_USER}>`, to, subject, text });
+    return true;
   } catch (error) {
-    console.error(`sendAdminEmail: send failed ("${subject}"):`, error);
+    console.error(`email: send failed ("${subject}"):`, error);
+    return false;
   }
+}
+
+/** Best-effort — logs and returns on any failure rather than throwing. */
+export async function sendAdminEmail({ subject, text }: { subject: string; text: string }): Promise<void> {
+  const to = process.env.ADMIN_NOTIFICATION_EMAIL;
+  if (!to) {
+    console.error("sendAdminEmail: not configured — set ADMIN_NOTIFICATION_EMAIL");
+    return;
+  }
+  await send({ to, subject, text });
+}
+
+/** Sends to an arbitrary customer address. Returns success so callers (e.g. the abandoned-checkout cron) can decide whether to retry. */
+export async function sendCustomerEmail({
+  to,
+  subject,
+  text,
+}: {
+  to: string;
+  subject: string;
+  text: string;
+}): Promise<boolean> {
+  return send({ to, subject, text });
 }
