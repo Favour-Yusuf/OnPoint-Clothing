@@ -31,3 +31,18 @@ export type BespokeRequestNotification = {
   notes: string;
   adminUrl: string;
 };
+
+export type AbandonedCheckoutNotification = {
+  orderNumber: string;
+  customerName: string;
+  customerEmail: string;
+  total: number; // minor units (kobo), same convention as the orders table
+  items: {
+    productName: string;
+    size: string | null;
+    color: string | null;
+    quantity: number;
+    totalPrice: number; // minor units
+  }[];
+  checkoutUrl: string;
+};
