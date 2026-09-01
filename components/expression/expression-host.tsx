@@ -20,12 +20,7 @@ export function ExpressionHost() {
   return (
     <section className="bg-foreground py-24 text-background sm:py-32">
       <Container>
-        <SectionHeading
-          tone="on-light"
-          eyebrow="The Host"
-          title="The voice that holds the room."
-          description="Every transition, every beat of the night, carried by two people who never let the energy drop."
-        />
+        <SectionHeading title="Host" />
 
         <div className="mt-16 grid grid-cols-1 items-center gap-10 sm:mt-20 lg:grid-cols-12 lg:gap-8">
           <Reveal className="relative aspect-4/5 w-full lg:col-span-5">
