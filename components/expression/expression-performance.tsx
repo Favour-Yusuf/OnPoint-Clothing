@@ -8,10 +8,10 @@ import { Reveal } from "@/components/ui/reveal";
 import { ExpressionLightbox } from "@/components/expression/expression-lightbox";
 import { onPointExpression } from "@/lib/data/onpoint-expression";
 
-// Every source photo is a portrait crop, so size variation here comes from
-// deliberate grid spans (with object-cover accepting the crop) rather than
-// from each image's native aspect ratio — one anchor image plus two smaller
-// beats and a closing wide band, instead of a uniform grid.
+// Every source photo is (mostly) a portrait crop, so size variation here
+// comes from deliberate grid spans rather than each image's native aspect
+// ratio. The 4-tile unit (anchor, small, small, wide) repeats via
+// `index % SPANS.length` to tile however many images the section holds.
 const SPANS = [
   "col-span-2 row-span-2 aspect-4/5 sm:aspect-auto",
   "aspect-4/5",
@@ -26,11 +26,7 @@ export function ExpressionPerformance() {
   return (
     <section className="py-20 sm:py-28">
       <Container>
-        <SectionHeading
-          eyebrow="Performance"
-          title="The stage, at full volume."
-          description="Sound and spectacle, staged like the rest of the night with the same attention as the clothes."
-        />
+        <SectionHeading title="Performance" />
 
         <div className="mt-14 grid grid-flow-row-dense grid-cols-2 gap-3 sm:mt-20 sm:grid-cols-4 sm:gap-4">
           {images.map((image, index) => (

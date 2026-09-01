@@ -374,23 +374,48 @@ export const onPointExpression = {
 
   performance: [
     {
-      publicId: "ON_POINT_EXPRESSION_-272",
-      alt: "A performer under stage lights, sleeve aflame, reading a Guinness World Records book",
+      publicId: "ON_POINT_EXPRESSION_-291",
+      alt: "The performer presenting the jeweled crown toward camera, a CROWN title screen glowing behind",
       orientation: "portrait",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-256",
-      alt: "A performer commanding the stage, microphone in hand",
+      publicId: "ON_POINT_EXPRESSION_-299",
+      alt: "A man in a black velvet cape performing a crowning gesture on another, the pale performer looking on",
       orientation: "portrait",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-271",
-      alt: "A performer in a bejeweled white jacket, caught mid-thought onstage",
+      publicId: "ON_POINT_EXPRESSION_-304",
+      alt: "A man in a red cap and black cape raising a curved horn triumphantly overhead amid smoke",
       orientation: "portrait",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-401",
-      alt: "A performer and backing vocalist beneath the OnPoint Expression sign",
+      publicId: "ON_POINT_EXPRESSION_-487",
+      alt: "Three men in dark ceremonial robes on stage, one raising a fist triumphantly",
+      orientation: "landscape",
+    },
+    {
+      publicId: "ON_POINT_EXPRESSION_-404",
+      alt: "A performer with platinum hair and a shiny graphic bomber jacket singing into a microphone onstage",
+      orientation: "portrait",
+    },
+    {
+      publicId: "ON_POINT_EXPRESSION_-396",
+      alt: "A black-and-white shot of two performers trading vocals face to face on the runway stage",
+      orientation: "portrait",
+    },
+    {
+      publicId: "ON_POINT_EXPRESSION_-395",
+      alt: "A performer in a leather jacket and skirt singing on the illuminated stage, colorful seated audience behind",
+      orientation: "portrait",
+    },
+    {
+      publicId: "ON_POINT_EXPRESSION_-274",
+      alt: "A performer in a cream jacket gesturing dramatically with a newspaper prop, campaign graphic glowing on the screen behind",
+      orientation: "portrait",
+    },
+    {
+      publicId: "ON_POINT_EXPRESSION_-277",
+      alt: "A black-and-white shot of the performer reading a newspaper prop with a comic flourish onstage",
       orientation: "portrait",
     },
   ] satisfies ExpressionImage[],
