@@ -36,7 +36,7 @@ function describeIssue(issue: CartValidationIssue): string {
     case "unavailable":
       return "An item in your bag is no longer available.";
     case "insufficient_stock":
-      return `Only ${issue.available} left of an item in your bag — please adjust the quantity.`;
+      return `Only ${issue.available} left of an item in your bag, please adjust the quantity.`;
     case "price_changed":
       return "The price of an item in your bag has changed. Please review your bag and try again.";
   }

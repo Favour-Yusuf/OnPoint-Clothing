@@ -28,7 +28,7 @@ export default async function AccountPage({
           {error === "verification_failed" ? (
             <p className="max-w-sm text-center font-sans text-sm text-burgundy-light">
               That verification link is invalid or has expired. If your email is already verified, just sign in
-              below — otherwise request a new link from the sign-up form.
+              below, otherwise request a new link from the sign-up form.
             </p>
           ) : null}
           <AuthForm next={next} />

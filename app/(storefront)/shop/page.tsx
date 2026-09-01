@@ -26,7 +26,7 @@ export default async function ShopPage({
     <ShopPageContent
       eyebrow="Shop"
       title="The Full Collection"
-      description="Ready-to-wear tailoring, knitwear, and accessories — built to the same standard as everything else we make."
+      description="Ready-to-wear tailoring, knitwear, and accessories, built to the same standard as everything else we make."
       products={products}
       availableSizes={getAvailableSizes(allProducts)}
       availableColors={getAvailableColors(allProducts)}

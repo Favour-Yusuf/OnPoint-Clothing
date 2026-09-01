@@ -86,9 +86,9 @@ export default function ReturnsPage() {
 
       <PolicySection title="Return Shipping Costs">
         <ul className="flex flex-col gap-1.5">
-          <li>&bull; Change of mind or wrong size — you cover the return shipping.</li>
+          <li>&bull; Change of mind or wrong size: you cover the return shipping.</li>
           <li>
-            &bull; Damaged, defective, incorrect, or not as described — we cover it, and we will either arrange
+            &bull; Damaged, defective, incorrect, or not as described: we cover it, and we will either arrange
             collection or reimburse a reasonable return shipping cost against a receipt.
           </li>
         </ul>

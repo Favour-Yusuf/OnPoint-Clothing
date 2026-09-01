@@ -174,7 +174,7 @@ export function CheckoutView() {
         </h1>
         <p className="max-w-sm text-sm leading-relaxed text-foreground/55">
           {phase === "verifying"
-            ? "Almost there — just a moment while we confirm your payment with Paystack."
+            ? "Almost there, just a moment while we confirm your payment with Paystack."
             : "Enter your payment details in the Paystack window. Don’t close this page."}
         </p>
       </Container>
@@ -282,14 +282,14 @@ export function CheckoutView() {
             {paymentMethod === "paystack" ? (
               <div className="mt-4 border border-foreground/15 p-6 text-center">
                 <p className="font-sans text-sm text-foreground/60">
-                  You&rsquo;ll enter your card details securely in a Paystack window on this page — OnPoint never
+                  You&rsquo;ll enter your card details securely in a Paystack window on this page. OnPoint never
                   sees or stores your card information.
                 </p>
               </div>
             ) : (
               <div className="mt-4 flex flex-col items-start gap-4">
                 <p className="font-sans text-sm text-foreground/60">
-                  Transfer the order total to the account below, then send your receipt on WhatsApp — we&rsquo;ll
+                  Transfer the order total to the account below, then send your receipt on WhatsApp. We&rsquo;ll
                   confirm and process your order right away.
                 </p>
                 <BankTransferDetails />

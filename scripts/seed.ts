@@ -141,6 +141,30 @@ async function seedProductImages(productIdBySlug: Map<string, string>) {
   }
 }
 
+async function seedProductVideos(productIdBySlug: Map<string, string>) {
+  for (const product of mockProducts) {
+    const productId = productIdBySlug.get(product.slug);
+    if (!productId) continue;
+
+    // Same replace-all approach as seedProductImages: videos have no
+    // natural unique key, so this stays idempotent instead of accumulating
+    // duplicate rows on re-run.
+    const { error: deleteError } = await supabase.from("product_videos").delete().eq("product_id", productId);
+    if (deleteError) throw new Error(`product_videos delete (${product.slug}): ${deleteError.message}`);
+
+    const videos = product.videos ?? [];
+    if (videos.length === 0) continue;
+
+    const rows = videos.map((video, position) => ({
+      product_id: productId,
+      cloudinary_public_id: video.publicId,
+      position,
+    }));
+    const { error } = await supabase.from("product_videos").insert(rows);
+    if (error) throw new Error(`product_videos insert (${product.slug}): ${error.message}`);
+  }
+}
+
 async function seedProductVariants(productIdBySlug: Map<string, string>) {
   const DEFAULT_IN_STOCK_QUANTITY = 25;
   for (const product of mockProducts) {
@@ -233,6 +257,9 @@ async function main() {
 
   console.log("Seeding product images...");
   await seedProductImages(productIdBySlug);
+
+  console.log("Seeding product videos...");
+  await seedProductVideos(productIdBySlug);
 
   console.log("Seeding product variants...");
   await seedProductVariants(productIdBySlug);

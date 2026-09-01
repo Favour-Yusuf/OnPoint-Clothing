@@ -34,7 +34,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <div className="bg-background pt-16 lg:pt-20">
       <Container className="py-8 sm:py-12">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-          <ProductGallery images={product.images} />
+          <ProductGallery images={product.images} videos={product.videos} />
           <div className="lg:sticky lg:top-28 lg:self-start">
             <ProductDetails product={product} />
           </div>

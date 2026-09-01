@@ -8,7 +8,7 @@ const VALID_CATEGORIES = ["men", "women", "accessories", "new-arrivals"] as cons
 const COPY: Record<string, { title: string; description: string }> = {
   men: { title: "Men", description: "Considered tailoring for everyday and occasion." },
   women: { title: "Women", description: "Tailoring and eveningwear built on precise construction." },
-  accessories: { title: "Accessories", description: "The finishing details — leather, silk, and metal." },
+  accessories: { title: "Accessories", description: "The finishing details: leather, silk, and metal." },
   "new-arrivals": { title: "New Arrivals", description: "The latest additions to the collection." },
 };
 

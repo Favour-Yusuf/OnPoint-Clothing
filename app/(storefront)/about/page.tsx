@@ -10,7 +10,7 @@ import { editorialImages } from "@/lib/data/editorial";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "OnPoint Clothing Nig — a multiple award-winning fashion house founded by Enoyi Abba George, redefining luxury for the 21st century.",
+    "OnPoint Clothing Nig, a multiple award-winning fashion house founded by Enoyi Abba George, redefining luxury for the 21st century.",
 };
 
 export default function AboutPage() {
@@ -63,7 +63,7 @@ export default function AboutPage() {
               We&rsquo;d love to hear from you.
             </h2>
             <p className="text-base leading-relaxed text-foreground/55">
-              For enquiries, bespoke consultations, or press — reach us directly.
+              For enquiries, bespoke consultations, or press, reach us directly.
             </p>
           </Reveal>
           <div className="mt-12">

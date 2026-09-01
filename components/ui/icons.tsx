@@ -145,6 +145,25 @@ export function HeartIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function SpeakerIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 9h3l4-3v12l-4-3H4z" />
+      <path d="M16.5 8.5a5 5 0 0 1 0 7" />
+      <path d="M19 6a8.5 8.5 0 0 1 0 12" />
+    </svg>
+  );
+}
+
+export function SpeakerMuteIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 9h3l4-3v12l-4-3H4z" />
+      <path d="m16 9 4 6M20 9l-4 6" />
+    </svg>
+  );
+}
+
 export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>

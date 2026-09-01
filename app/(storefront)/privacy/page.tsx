@@ -23,8 +23,8 @@ export default function PrivacyPage() {
       <PolicySection title="Information We Collect">
         <p>Information you give us directly:</p>
         <ul className="flex flex-col gap-1.5">
-          <li>&bull; Account details — your name and email address when you create an account.</li>
-          <li>&bull; Order and delivery information — name, delivery address, phone number, and the contents of your order.</li>
+          <li>&bull; Account details: your name and email address when you create an account.</li>
+          <li>&bull; Order and delivery information: name, delivery address, phone number, and the contents of your order.</li>
           <li>&bull; Bespoke measurements and style preferences, if you submit a bespoke request.</li>
           <li>&bull; Wishlist and saved products linked to your account.</li>
           <li>&bull; Your email address if you sign up for our newsletter.</li>
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           <li>&bull; Your shopping bag contents and sign-in session, stored on your device.</li>
         </ul>
         <p>
-          We do not collect or store your card details. Payments are handled directly by Paystack — see &ldquo;Third
+          We do not collect or store your card details. Payments are handled directly by Paystack: see &ldquo;Third
           Parties We Work With&rdquo; below.
         </p>
       </PolicySection>
@@ -68,19 +68,19 @@ export default function PrivacyPage() {
       <PolicySection title="Third Parties We Work With">
         <p>We share the minimum information needed with the following service providers:</p>
         <ul className="flex flex-col gap-1.5">
-          <li>&bull; <span className="text-foreground">Supabase</span> — hosts our database and manages account sign-in.</li>
+          <li>&bull; <span className="text-foreground">Supabase</span>: hosts our database and manages account sign-in.</li>
           <li>
-            &bull; <span className="text-foreground">Paystack</span> — processes card and bank transfer payments.
+            &bull; <span className="text-foreground">Paystack</span>: processes card and bank transfer payments.
             Paystack collects your payment details directly. We never see or store your full card number.
             Paystack&rsquo;s own privacy policy governs that data.
           </li>
-          <li>&bull; <span className="text-foreground">Cloudinary</span> — hosts our product photography. This does not involve customer personal data.</li>
+          <li>&bull; <span className="text-foreground">Cloudinary</span>: hosts our product photography. This does not involve customer personal data.</li>
           <li>
-            &bull; <span className="text-foreground">WhatsApp (Meta)</span> — we send new order details to our own
+            &bull; <span className="text-foreground">WhatsApp (Meta)</span>: we send new order details to our own
             team over WhatsApp so we can act on orders quickly. Meta processes that message data under its own
             terms.
           </li>
-          <li>&bull; <span className="text-foreground">Delivery partners</span> — we pass your name, delivery address, and phone number to the courier handling your order.</li>
+          <li>&bull; <span className="text-foreground">Delivery partners</span>: we pass your name, delivery address, and phone number to the courier handling your order.</li>
         </ul>
         <p>
           We may also disclose information where we are required to by law, by a court, or by a regulator, or where
@@ -126,11 +126,11 @@ export default function PrivacyPage() {
 
       <PolicySection title="How Long We Keep It">
         <ul className="flex flex-col gap-1.5">
-          <li>&bull; Account and wishlist data — while your account is active, and for a reasonable period after you close it.</li>
-          <li>&bull; Order and transaction records — at least six years from the end of the relevant financial year, to meet tax and accounting requirements.</li>
-          <li>&bull; Bespoke measurements — until you ask us to delete them, or until your account is closed.</li>
-          <li>&bull; Newsletter subscription data — until you unsubscribe.</li>
-          <li>&bull; Enquiries and correspondence — up to two years after the matter is closed.</li>
+          <li>&bull; Account and wishlist data: while your account is active, and for a reasonable period after you close it.</li>
+          <li>&bull; Order and transaction records: at least six years from the end of the relevant financial year, to meet tax and accounting requirements.</li>
+          <li>&bull; Bespoke measurements: until you ask us to delete them, or until your account is closed.</li>
+          <li>&bull; Newsletter subscription data: until you unsubscribe.</li>
+          <li>&bull; Enquiries and correspondence: up to two years after the matter is closed.</li>
         </ul>
         <p>
           You can ask us to delete your data at any time. We will do so unless we are legally required to keep it,

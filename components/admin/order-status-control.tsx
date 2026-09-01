@@ -36,7 +36,7 @@ export function OrderStatusControl({ orderId, currentStatus }: { orderId: string
         {isCancelling ? (
           <ConfirmDialog
             title="Cancel this order?"
-            description="This marks the order as cancelled. Only do this when the order genuinely won't be fulfilled — this cannot be undone from here."
+            description="This marks the order as cancelled. Only do this when the order genuinely won't be fulfilled. This cannot be undone from here."
             confirmLabel="Cancel Order"
             pending={pending}
             onConfirm={() => formRef.current?.requestSubmit()}

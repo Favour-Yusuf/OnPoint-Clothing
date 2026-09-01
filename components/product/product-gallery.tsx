@@ -1,12 +1,21 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type { CloudinaryImage } from "@/lib/types";
+import type { CloudinaryImage, CloudinaryVideo } from "@/lib/types";
 import { MediaImage } from "@/components/ui/media-image";
+import { VideoSlide } from "@/components/product/video-slide";
 
-export function ProductGallery({ images }: { images: CloudinaryImage[] }) {
+type GalleryItem = { type: "video"; video: CloudinaryVideo } | { type: "image"; image: CloudinaryImage };
+
+export function ProductGallery({ images, videos = [] }: { images: CloudinaryImage[]; videos?: CloudinaryVideo[] }) {
   const [active, setActive] = useState(0);
   const scrollerRef = useRef<HTMLDivElement>(null);
+
+  // Videos lead the gallery, photos follow — see product-video design decision.
+  const items: GalleryItem[] = [
+    ...videos.map((video): GalleryItem => ({ type: "video", video })),
+    ...images.map((image): GalleryItem => ({ type: "image", image })),
+  ];
 
   function handleScroll() {
     const node = scrollerRef.current;
@@ -17,22 +26,26 @@ export function ProductGallery({ images }: { images: CloudinaryImage[] }) {
 
   return (
     <div>
-      {/* Mobile: swipeable single-image carousel */}
+      {/* Mobile: swipeable single-item carousel */}
       <div className="lg:hidden">
         <div
           ref={scrollerRef}
           onScroll={handleScroll}
           className="scrollbar-hidden flex snap-x snap-mandatory overflow-x-auto"
         >
-          {images.map((image, index) => (
+          {items.map((item, index) => (
             <div key={index} className="relative aspect-4/5 w-full shrink-0 snap-start bg-foreground/5">
-              <MediaImage image={image} priority={index === 0} sizes="100vw" />
+              {item.type === "video" ? (
+                <VideoSlide video={item.video} priority={index === 0} />
+              ) : (
+                <MediaImage image={item.image} priority={index === 0} sizes="100vw" />
+              )}
             </div>
           ))}
         </div>
-        {images.length > 1 ? (
+        {items.length > 1 ? (
           <div className="mt-4 flex items-center justify-center gap-2">
-            {images.map((_, index) => (
+            {items.map((_, index) => (
               <span
                 key={index}
                 className={`h-1.5 w-1.5 rounded-full transition-colors ${index === active ? "bg-burgundy" : "bg-foreground/20"}`}
@@ -44,9 +57,13 @@ export function ProductGallery({ images }: { images: CloudinaryImage[] }) {
 
       {/* Desktop: stacked editorial gallery */}
       <div className="hidden flex-col gap-4 lg:flex">
-        {images.map((image, index) => (
+        {items.map((item, index) => (
           <div key={index} className="relative aspect-4/5 w-full bg-foreground/5">
-            <MediaImage image={image} priority={index === 0} sizes="50vw" />
+            {item.type === "video" ? (
+              <VideoSlide video={item.video} priority={index === 0} />
+            ) : (
+              <MediaImage image={item.image} priority={index === 0} sizes="50vw" />
+            )}
           </div>
         ))}
       </div>

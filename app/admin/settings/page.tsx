@@ -27,7 +27,7 @@ export default async function AdminSettingsPage() {
           Admin Account
         </h2>
         <div className="mt-4 font-sans text-sm text-foreground/70">
-          <p className="text-foreground">{customer?.full_name || "—"}</p>
+          <p className="text-foreground">{customer?.full_name || "Not set"}</p>
           <p>{customer?.email ?? user?.email}</p>
         </div>
         <form action={signOut} className="mt-6">

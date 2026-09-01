@@ -35,8 +35,8 @@ export default async function PaymentSuccessPage({
       <Container className="flex flex-col items-center gap-4 py-24 text-center">
         <h1 className="font-display text-3xl font-light text-foreground">Confirming Your Payment&hellip;</h1>
         <p className="max-w-md text-sm leading-relaxed text-foreground/60">
-          We&rsquo;re still confirming your payment with Paystack. This usually takes a few seconds — refresh this
-          page shortly. You&rsquo;ll also receive an email once it&rsquo;s confirmed.
+          We&rsquo;re still confirming your payment with Paystack. This usually takes a few seconds, so refresh
+          this page shortly. You&rsquo;ll also receive an email once it&rsquo;s confirmed.
         </p>
         <p className="font-sans text-xs font-light tracking-[0.2em] text-foreground/45 uppercase">
           Reference {order.orderNumber}
@@ -54,7 +54,7 @@ export default async function PaymentSuccessPage({
       <div>
         <h1 className="font-display text-3xl font-light text-foreground sm:text-4xl">Order Confirmed</h1>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-foreground/60">
-          Thank you — your payment was successful and your order is being processed.
+          Thank you. Your payment was successful and your order is being processed.
         </p>
       </div>
       <p className="font-sans text-xs font-light tracking-[0.2em] text-foreground/45 uppercase">Order {order.orderNumber}</p>

@@ -7,7 +7,7 @@ function buildEmail(request: BespokeRequestNotification) {
   const text = `New bespoke enquiry from ${request.name}
 
 Email: ${request.email}
-Phone: ${request.phone ?? "—"}
+Phone: ${request.phone ?? "Not provided"}
 Garment type: ${request.garmentType}
 
 Notes:
@@ -15,13 +15,13 @@ ${request.notes}
 
 View in admin: ${request.adminUrl}
 `;
-  return { subject: `New bespoke enquiry — ${request.name} (${request.garmentType})`, text };
+  return { subject: `New bespoke enquiry: ${request.name} (${request.garmentType})`, text };
 }
 
 function buildWhatsApp(request: BespokeRequestNotification): string {
   return [
     "New OnPoint bespoke enquiry!",
-    `${request.name} — ${request.garmentType}`,
+    `${request.name}: ${request.garmentType}`,
     request.phone ? `Phone: ${request.phone}` : `Email: ${request.email}`,
     request.adminUrl,
   ].join("\n");

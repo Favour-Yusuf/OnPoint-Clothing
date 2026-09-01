@@ -1,6 +1,6 @@
 import { createPublicClient } from "@/lib/supabase/public";
 import { getColorFamily, getFamilyHex } from "@/lib/color-families";
-import type { Category, Collection, CloudinaryImage, Product, ProductColor, ProductVariant } from "@/lib/types";
+import type { Category, Collection, CloudinaryImage, CloudinaryVideo, Product, ProductColor, ProductVariant } from "@/lib/types";
 
 /**
  * Product service layer, backed by Supabase Postgres. UI code should only
@@ -35,6 +35,7 @@ const PRODUCT_SELECT = `
   currency, details, care, is_new, is_bespoke_eligible, availability, backdrop_color,
   categories!inner ( slug ),
   product_images ( cloudinary_public_id, alt, position ),
+  product_videos ( cloudinary_public_id, position ),
   product_variants ( id, size, color_name, color_hex, sku, stock_quantity ),
   product_collections ( collections ( slug ) )
 `;
@@ -56,6 +57,7 @@ type ProductRow = {
   backdrop_color: string | null;
   categories: { slug: string } | null;
   product_images: { cloudinary_public_id: string; alt: string; position: number }[];
+  product_videos: { cloudinary_public_id: string; position: number }[];
   product_variants: {
     id: string;
     size: string;
@@ -73,6 +75,10 @@ function mapProductRow(row: ProductRow): Product {
   const images: CloudinaryImage[] = [...row.product_images]
     .sort((a, b) => a.position - b.position)
     .map((image) => ({ publicId: image.cloudinary_public_id, alt: image.alt }));
+
+  const videos: CloudinaryVideo[] = [...row.product_videos]
+    .sort((a, b) => a.position - b.position)
+    .map((video) => ({ publicId: video.cloudinary_public_id }));
 
   const variants: ProductVariant[] = row.product_variants.map((variant) => ({
     id: variant.id,
@@ -98,6 +104,7 @@ function mapProductRow(row: ProductRow): Product {
     collectionSlugs: row.product_collections.flatMap((pc) => (pc.collections ? [pc.collections.slug] : [])),
     backdropColor: row.backdrop_color ?? undefined,
     images,
+    videos,
     shortDescription: row.short_description,
     description: row.description,
     details: row.details,

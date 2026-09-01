@@ -6,7 +6,7 @@ import type { PaidOrderNotification } from "@/lib/notifications/types";
 
 function formatItemLine(item: PaidOrderNotification["items"][number]): string {
   const attrs = [item.size, item.color].filter(Boolean).join(", ");
-  return `  • ${item.productName}${attrs ? ` (${attrs})` : ""} × ${item.quantity} — ${formatPrice(item.totalPrice / 100)}`;
+  return `  • ${item.productName}${attrs ? ` (${attrs})` : ""} × ${item.quantity}: ${formatPrice(item.totalPrice / 100)}`;
 }
 
 function buildEmail(order: PaidOrderNotification) {
@@ -15,7 +15,7 @@ function buildEmail(order: PaidOrderNotification) {
 
 Customer: ${order.customerName}
 Email: ${order.customerEmail}
-Phone: ${order.customerPhone ?? "—"}
+Phone: ${order.customerPhone ?? "Not provided"}
 
 Items:
 ${order.items.map(formatItemLine).join("\n")}
@@ -30,15 +30,15 @@ ${address.country}
 
 View in admin: ${order.adminUrl}
 `;
-  return { subject: `New paid order — ${order.orderNumber} (${formatPrice(order.total / 100)})`, text };
+  return { subject: `New paid order: ${order.orderNumber} (${formatPrice(order.total / 100)})`, text };
 }
 
 function buildWhatsApp(order: PaidOrderNotification): string {
   const itemCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
   return [
     "New OnPoint order paid!",
-    `#${order.orderNumber} — ${order.customerName}`,
-    `${itemCount} item${itemCount === 1 ? "" : "s"} — ${formatPrice(order.total / 100)}`,
+    `#${order.orderNumber}: ${order.customerName}`,
+    `${itemCount} item${itemCount === 1 ? "" : "s"}: ${formatPrice(order.total / 100)}`,
     order.adminUrl,
   ].join("\n");
 }

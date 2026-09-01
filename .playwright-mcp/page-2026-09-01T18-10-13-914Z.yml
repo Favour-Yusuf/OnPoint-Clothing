@@ -1,0 +1,272 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - 'link "OnPoint Clothing: Home" [ref=e4] [cursor=pointer]':
+        - /url: /
+        - img "OnPoint Clothing" [ref=e5]
+      - navigation "Primary" [ref=e6]:
+        - link "New Arrivals" [ref=e7] [cursor=pointer]:
+          - /url: /shop/new-arrivals
+        - link "Men" [ref=e8] [cursor=pointer]:
+          - /url: /shop/men
+        - link "Women" [ref=e9] [cursor=pointer]:
+          - /url: /shop/women
+        - link "Active" [ref=e10] [cursor=pointer]:
+          - /url: /active
+        - link "Accessories" [ref=e11] [cursor=pointer]:
+          - /url: /shop/accessories
+        - link "Expression" [ref=e12] [cursor=pointer]:
+          - /url: /expression
+        - link "Bespoke" [ref=e13] [cursor=pointer]:
+          - /url: /bespoke
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e15]:
+        - button "Search" [ref=e16]
+        - link "Account" [ref=e20] [cursor=pointer]:
+          - /url: /account
+        - button "Bag, 0 items" [ref=e24]
+  - main [ref=e28]:
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - img "The illuminated OnPoint Expression marquee sign glowing magenta against the night sky" [ref=e32]
+        - generic [ref=e35]:
+          - generic [ref=e37]:
+            - paragraph [ref=e38]: OnPoint Clothing Presents
+            - heading "Expression" [level=1] [ref=e39]
+          - paragraph [ref=e40]: Where fashion finds its voice.
+        - generic [ref=e42]: Scroll
+      - generic [ref=e44]:
+        - heading "Arrival" [level=2] [ref=e49]
+        - 'button "Open image: The red carpet arrivals path, lined with step-and-repeat banners and palm fronds" [ref=e51]':
+          - img "The red carpet arrivals path, lined with step-and-repeat banners and palm fronds" [ref=e52]
+        - generic [ref=e55]:
+          - 'button "Open image: A close portrait of a guest in an ornate gold Egyptian-style collar necklace and beige suit, holding a red cup" [ref=e57]':
+            - img "A close portrait of a guest in an ornate gold Egyptian-style collar necklace and beige suit, holding a red cup" [ref=e59]
+          - 'button "Open image: A guest in a burgundy-and-green striped kaftan posing dramatically beside the illuminated ON POINT EXPRESSION marquee letters" [ref=e61]':
+            - img "A guest in a burgundy-and-green striped kaftan posing dramatically beside the illuminated ON POINT EXPRESSION marquee letters" [ref=e63]
+          - 'button "Open image: A guest in a black plunging halter jumpsuit checking her phone on a lounge cushion, holding a Hennessy cup" [ref=e65]':
+            - img "A guest in a black plunging halter jumpsuit checking her phone on a lounge cushion, holding a Hennessy cup" [ref=e67]
+          - 'button "Open image: A guest''s back view showing the vivid print of her tie-dye kaftan, in conversation with another guest" [ref=e69]':
+            - img "A guest's back view showing the vivid print of her tie-dye kaftan, in conversation with another guest" [ref=e71]
+      - img "OnPoint Expression's security detail lined up in suits and sunglasses before the step-and-repeat wall" [ref=e73]
+      - generic [ref=e74]:
+        - heading "Runway" [level=2] [ref=e79]
+        - 'button "Open image: A model in an angular geometric-print wrap walking the runway, GLITZ Fashion Week signage behind" [ref=e81]':
+          - img "A model in an angular geometric-print wrap walking the runway, GLITZ Fashion Week signage behind" [ref=e82]
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - 'button "Open image: A model in a dark beaded caftan and fur hat walking the runway past a seated audience" [ref=e87]':
+              - img "A model in a dark beaded caftan and fur hat walking the runway past a seated audience" [ref=e89]
+            - 'button "Open image: A model in a black cropped top and pencil skirt walking through stage fog past an \"ACTIVE ONPOINT\" screen, confident stride" [ref=e91]':
+              - img "A model in a black cropped top and pencil skirt walking through stage fog past an \"ACTIVE ONPOINT\" screen, confident stride" [ref=e93]
+            - 'button "Open image: A man in a dark trench-style robe and wide-brimmed hat walking alone down the runway path, moody amber lighting" [ref=e95]':
+              - img "A man in a dark trench-style robe and wide-brimmed hat walking alone down the runway path, moody amber lighting" [ref=e97]
+            - 'button "Open image: A man in a red embroidered kaftan and cap walking alone down the runway path through smoke" [ref=e99]':
+              - img "A man in a red embroidered kaftan and cap walking alone down the runway path through smoke" [ref=e101]
+            - 'button "Open image: The hosts walking the runway together in matching black regalia" [ref=e103]':
+              - img "The hosts walking the runway together in matching black regalia" [ref=e105]
+            - 'button "Open image: The hosts walking the runway together in matching dark regalia, big screen behind" [ref=e107]':
+              - img "The hosts walking the runway together in matching dark regalia, big screen behind" [ref=e109]
+            - 'button "Open image: A black-and-white shot of a plus-size model in a jacquard tunic standing inside an illuminated runway frame" [ref=e111]':
+              - img "A black-and-white shot of a plus-size model in a jacquard tunic standing inside an illuminated runway frame" [ref=e113]
+            - 'button "Open image: The hosts walking the runway in red-trimmed regalia, TRACE screen behind" [ref=e115]':
+              - img "The hosts walking the runway in red-trimmed regalia, TRACE screen behind" [ref=e117]
+            - 'button "Open image: A model in a full-face helmet and dark robe walking alone through fog and light" [ref=e119]':
+              - img "A model in a full-face helmet and dark robe walking alone through fog and light" [ref=e121]
+            - 'button "Open image: A model in a white plunging embellished blazer and matching shorts, voluminous hair, striking pose on the runway" [ref=e123]':
+              - img "A model in a white plunging embellished blazer and matching shorts, voluminous hair, striking pose on the runway" [ref=e125]
+            - 'button "Open image: A black-and-white shot of a model in a fitted romper with twin space-buns, mid-stride on the runway" [ref=e127]':
+              - img "A black-and-white shot of a model in a fitted romper with twin space-buns, mid-stride on the runway" [ref=e129]
+            - 'button "Open image: A model in a dark textured mini set and dramatic feathered hat, side profile inside an illuminated mirrored runway frame" [ref=e131]':
+              - img "A model in a dark textured mini set and dramatic feathered hat, side profile inside an illuminated mirrored runway frame" [ref=e133]
+            - 'button "Open image: A helmeted model walking toward the camera, screens reading ACE ONPOINT behind" [ref=e135]':
+              - img "A helmeted model walking toward the camera, screens reading ACE ONPOINT behind" [ref=e137]
+            - 'button "Open image: A plus-size model in a sage jacquard kaftan on the runway, a model in black-and-gold following behind" [ref=e139]':
+              - img "A plus-size model in a sage jacquard kaftan on the runway, a model in black-and-gold following behind" [ref=e141]
+            - 'button "Open image: A black-and-white close shot of a model in a wide-brimmed hat, sunglasses, and netted gloves on the runway" [ref=e143]':
+              - img "A black-and-white close shot of a model in a wide-brimmed hat, sunglasses, and netted gloves on the runway" [ref=e145]
+          - generic [ref=e146]:
+            - 'button "Open image: A model in a fur-trimmed black-and-white graphic-print caftan walking past a sculptural silver chair prop" [ref=e148]':
+              - img "A model in a fur-trimmed black-and-white graphic-print caftan walking past a sculptural silver chair prop" [ref=e150]
+            - 'button "Open image: A black-and-white shot of the hosts walking the runway toward camera, disco ball prop in the foreground" [ref=e152]':
+              - img "A black-and-white shot of the hosts walking the runway toward camera, disco ball prop in the foreground" [ref=e154]
+            - 'button "Open image: The hosts walking the runway past a \"Just Onpoint\" script screen amid festive lighting" [ref=e156]':
+              - img "The hosts walking the runway past a \"Just Onpoint\" script screen amid festive lighting" [ref=e158]
+            - 'button "Open image: A man in an embroidered ivory agbada and sunglasses on the runway, red slides, ON POINT EXPRESSION signage behind" [ref=e160]':
+              - img "A man in an embroidered ivory agbada and sunglasses on the runway, red slides, ON POINT EXPRESSION signage behind" [ref=e162]
+            - 'button "Open image: A man in a black kaftan and velvet cap with layered red beads, smiling as he walks the runway" [ref=e164]':
+              - img "A man in a black kaftan and velvet cap with layered red beads, smiling as he walks the runway" [ref=e166]
+            - 'button "Open image: A model in a black fringed crop top and shorts walking past the Hennessy-branded illuminated runway installation" [ref=e168]':
+              - img "A model in a black fringed crop top and shorts walking past the Hennessy-branded illuminated runway installation" [ref=e170]
+            - 'button "Open image: Two men in ceremonial red and black velvet robes walking the runway together" [ref=e172]':
+              - img "Two men in ceremonial red and black velvet robes walking the runway together" [ref=e174]
+            - 'button "Open image: Two models on the runway past a mirrored installation, one in a dark bejeweled robe walking, one standing still in green" [ref=e176]':
+              - img "Two models on the runway past a mirrored installation, one in a dark bejeweled robe walking, one standing still in green" [ref=e178]
+            - 'button "Open image: A model in a dark embellished kaftan and cap posed still inside an illuminated mirrored runway box, crowd reflected behind" [ref=e180]':
+              - img "A model in a dark embellished kaftan and cap posed still inside an illuminated mirrored runway box, crowd reflected behind" [ref=e182]
+            - 'button "Open image: A model in a black velvet embroidered kaftan and red cap standing in profile inside an illuminated runway box" [ref=e184]':
+              - img "A model in a black velvet embroidered kaftan and red cap standing in profile inside an illuminated runway box" [ref=e186]
+            - 'button "Open image: A model in a white tie-dye ruffled tunic and dark wide-leg trousers walking between illuminated runway panels" [ref=e188]':
+              - img "A model in a white tie-dye ruffled tunic and dark wide-leg trousers walking between illuminated runway panels" [ref=e190]
+            - 'button "Open image: A man in a rust agbada walking barefoot down the runway path, disco ball prop in the foreground" [ref=e192]':
+              - img "A man in a rust agbada walking barefoot down the runway path, disco ball prop in the foreground" [ref=e194]
+            - 'button "Open image: A model in a mustard sleeveless dress walking through an illuminated glass runway installation, seated guests visible behind" [ref=e196]':
+              - img "A model in a mustard sleeveless dress walking through an illuminated glass runway installation, seated guests visible behind" [ref=e198]
+            - 'button "Open image: A man in a rust kaftan and cap standing still inside an illuminated runway box, crew and photographers visible at the edges" [ref=e200]':
+              - img "A man in a rust kaftan and cap standing still inside an illuminated runway box, crew and photographers visible at the edges" [ref=e202]
+            - 'button "Open image: A man in a blue-and-white graphic plaid top and cornrows walking the runway past the Expression entrance signage" [ref=e204]':
+              - img "A man in a blue-and-white graphic plaid top and cornrows walking the runway past the Expression entrance signage" [ref=e206]
+            - 'button "Open image: A black-and-white long shot of a model in a white crop set walking through heavy stage fog past a repeating mural" [ref=e208]':
+              - img "A black-and-white long shot of a model in a white crop set walking through heavy stage fog past a repeating mural" [ref=e210]
+            - 'button "Open image: A man in a dark brown agbada, cap, and sunglasses walking the runway past red stage lighting" [ref=e212]':
+              - img "A man in a dark brown agbada, cap, and sunglasses walking the runway past red stage lighting" [ref=e214]
+            - 'button "Open image: A black-and-white side-profile shot of a model in a jacquard cape walking the runway" [ref=e216]':
+              - img "A black-and-white side-profile shot of a model in a jacquard cape walking the runway" [ref=e218]
+            - 'button "Open image: A model''s back view in white Onpoint-branded activewear crop top and biker shorts, hair in braided buns" [ref=e220]':
+              - img "A model's back view in white Onpoint-branded activewear crop top and biker shorts, hair in braided buns" [ref=e222]
+            - 'button "Open image: A model in a black top and dark maxi skirt walking off the runway into stage fog, jacket in hand" [ref=e224]':
+              - img "A model in a black top and dark maxi skirt walking off the runway into stage fog, jacket in hand" [ref=e226]
+            - 'button "Open image: A black-and-white candid shot of the hosts walking and conversing along the runway" [ref=e228]':
+              - img "A black-and-white candid shot of the hosts walking and conversing along the runway" [ref=e230]
+            - 'button "Open image: Two models crossing paths on the runway, one in a white cutout bodysuit, one in a matching cream crop set" [ref=e232]':
+              - img "Two models crossing paths on the runway, one in a white cutout bodysuit, one in a matching cream crop set" [ref=e234]
+            - 'button "Open image: A model in a white cutout bodysuit, back to the camera, carrying a white helmet" [ref=e236]':
+              - img "A model in a white cutout bodysuit, back to the camera, carrying a white helmet" [ref=e238]
+            - 'button "Open image: A model in a fur-trimmed ivory jacquard vest and beaded cap on the runway, side profile" [ref=e240]':
+              - img "A model in a fur-trimmed ivory jacquard vest and beaded cap on the runway, side profile" [ref=e242]
+            - 'button "Open image: A model in a fur-trimmed ivory jacquard vest and beaded cap, close portrait" [ref=e244]':
+              - img "A model in a fur-trimmed ivory jacquard vest and beaded cap, close portrait" [ref=e246]
+            - 'button "Open image: A model in a chartreuse wrap top on the runway" [ref=e248]':
+              - img "A model in a chartreuse wrap top on the runway" [ref=e250]
+            - 'button "Open image: A model in a cream cutout crop top and matching trousers on the runway" [ref=e252]':
+              - img "A model in a cream cutout crop top and matching trousers on the runway" [ref=e254]
+            - 'button "Open image: A model in a black draped, sheer-layered look walking through a fog-lit doorway" [ref=e256]':
+              - img "A model in a black draped, sheer-layered look walking through a fog-lit doorway" [ref=e258]
+            - 'button "Open image: A model in a dark beaded caftan and velvet hat on the runway" [ref=e260]':
+              - img "A model in a dark beaded caftan and velvet hat on the runway" [ref=e262]
+      - img "The hosts walking the runway, the female host's cape caught mid-motion" [ref=e264]
+      - generic [ref=e266]:
+        - heading "Host" [level=2] [ref=e270]
+        - 'button "Open image: The hosts sharing the stage beside a disco ball prop, a red-dress campaign image glowing on the screen behind" [ref=e273]':
+          - img "The hosts sharing the stage beside a disco ball prop, a red-dress campaign image glowing on the screen behind" [ref=e275]
+        - generic [ref=e278]:
+          - 'button "Open image: The hosts mid-address together in front of an ACTIVE ONPOINT screen" [ref=e280]':
+            - img "The hosts mid-address together in front of an ACTIVE ONPOINT screen" [ref=e282]
+          - 'button "Open image: A close portrait of the male host mid-gesture, gold beetle brooch and beaded necklaces visible" [ref=e284]':
+            - img "A close portrait of the male host mid-gesture, gold beetle brooch and beaded necklaces visible" [ref=e286]
+          - 'button "Open image: A close profile portrait of the female host, statement earring catching the light" [ref=e288]':
+            - img "A close profile portrait of the female host, statement earring catching the light" [ref=e290]
+          - 'button "Open image: The hosts face to face mid-exchange, warm smile, dramatic backlighting" [ref=e292]':
+            - img "The hosts face to face mid-exchange, warm smile, dramatic backlighting" [ref=e294]
+          - 'button "Open image: A black-and-white full-length shot of the female host walking with a microphone past a sculptural white installation" [ref=e296]':
+            - img "A black-and-white full-length shot of the female host walking with a microphone past a sculptural white installation" [ref=e298]
+          - 'button "Open image: The hosts sharing a warm laugh together, full body, in front of an orange stage curtain" [ref=e300]':
+            - img "The hosts sharing a warm laugh together, full body, in front of an orange stage curtain" [ref=e302]
+          - 'button "Open image: The hosts full body with arms open mid-gesture, colorful seated crowd and disco ball prop behind" [ref=e304]':
+            - img "The hosts full body with arms open mid-gesture, colorful seated crowd and disco ball prop behind" [ref=e306]
+          - 'button "Open image: The hosts sharing a joyful high-five moment, disco ball prop in the foreground" [ref=e308]':
+            - img "The hosts sharing a joyful high-five moment, disco ball prop in the foreground" [ref=e310]
+          - 'button "Open image: A black-and-white shot of the hosts fist-bumping mid-address" [ref=e312]':
+            - img "A black-and-white shot of the hosts fist-bumping mid-address" [ref=e314]
+          - 'button "Open image: A black-and-white close portrait of the male host, fist raised, \"Just Onpoint\" script glowing behind" [ref=e316]':
+            - img "A black-and-white close portrait of the male host, fist raised, \"Just Onpoint\" script glowing behind" [ref=e318]
+          - 'button "Open image: The female host mid-dance move, playful energy, \"Just Onpoint\" screen behind" [ref=e320]':
+            - img "The female host mid-dance move, playful energy, \"Just Onpoint\" screen behind" [ref=e322]
+          - 'button "Open image: A black-and-white shot of the hosts both addressing the crowd side by side" [ref=e324]':
+            - img "A black-and-white shot of the hosts both addressing the crowd side by side" [ref=e326]
+      - generic [ref=e328]:
+        - heading "Performance" [level=2] [ref=e332]
+        - generic [ref=e333]:
+          - 'button "Open image: The performer presenting the jeweled crown toward camera, a CROWN title screen glowing behind" [ref=e335]':
+            - img "The performer presenting the jeweled crown toward camera, a CROWN title screen glowing behind" [ref=e337]
+          - 'button "Open image: A man in a black velvet cape performing a crowning gesture on another, the pale performer looking on" [ref=e340]':
+            - img "A man in a black velvet cape performing a crowning gesture on another, the pale performer looking on" [ref=e342]
+          - 'button "Open image: A man in a red cap and black cape raising a curved horn triumphantly overhead amid smoke" [ref=e345]':
+            - img "A man in a red cap and black cape raising a curved horn triumphantly overhead amid smoke" [ref=e347]
+          - 'button "Open image: Three men in dark ceremonial robes on stage, one raising a fist triumphantly" [ref=e350]':
+            - img "Three men in dark ceremonial robes on stage, one raising a fist triumphantly" [ref=e352]
+          - 'button "Open image: A performer with platinum hair and a shiny graphic bomber jacket singing into a microphone onstage" [ref=e355]':
+            - img "A performer with platinum hair and a shiny graphic bomber jacket singing into a microphone onstage" [ref=e357]
+          - 'button "Open image: A black-and-white shot of two performers trading vocals face to face on the runway stage" [ref=e360]':
+            - img "A black-and-white shot of two performers trading vocals face to face on the runway stage" [ref=e362]
+          - 'button "Open image: A performer in a leather jacket and skirt singing on the illuminated stage, colorful seated audience behind" [ref=e365]':
+            - img "A performer in a leather jacket and skirt singing on the illuminated stage, colorful seated audience behind" [ref=e367]
+          - 'button "Open image: A performer in a cream jacket gesturing dramatically with a newspaper prop, campaign graphic glowing on the screen behind" [ref=e370]':
+            - img "A performer in a cream jacket gesturing dramatically with a newspaper prop, campaign graphic glowing on the screen behind" [ref=e372]
+          - 'button "Open image: A black-and-white shot of the performer reading a newspaper prop with a comic flourish onstage" [ref=e375]':
+            - img "A black-and-white shot of the performer reading a newspaper prop with a comic flourish onstage" [ref=e377]
+      - generic [ref=e379]:
+        - generic [ref=e380]:
+          - img "The OnPoint Expression marquee glowing at dusk" [ref=e382]
+          - heading "Not a departure. A continuation." [level=2] [ref=e386]
+        - generic [ref=e388]:
+          - img "A black-and-white close embrace between two guests, one laughing broadly in sunglasses" [ref=e390]
+          - img "A warm backstage embrace between two guests, a stylist working in the background" [ref=e392]
+      - generic [ref=e394]:
+        - heading [level=2] [ref=e396]:
+          - text: Discover
+          - emphasis [ref=e397]: the collection.
+        - paragraph [ref=e398]: Expression is the stage. The clothes are always waiting on the other side of it.
+        - link "Shop OnPoint" [ref=e399] [cursor=pointer]:
+          - /url: /shop
+  - contentinfo [ref=e400]:
+    - generic [ref=e401]:
+      - generic [ref=e402]:
+        - img "OnPoint Clothing" [ref=e403]
+        - paragraph [ref=e404]: A multiple award-winning fashion house. Redefining luxury for the 21st century.
+      - navigation "Shop" [ref=e405]:
+        - paragraph [ref=e406]: Shop
+        - list [ref=e407]:
+          - listitem [ref=e408]:
+            - link "New Arrivals" [ref=e409] [cursor=pointer]:
+              - /url: /shop/new-arrivals
+          - listitem [ref=e410]:
+            - link "Men" [ref=e411] [cursor=pointer]:
+              - /url: /shop/men
+          - listitem [ref=e412]:
+            - link "Women" [ref=e413] [cursor=pointer]:
+              - /url: /shop/women
+          - listitem [ref=e414]:
+            - link "Accessories" [ref=e415] [cursor=pointer]:
+              - /url: /shop/accessories
+          - listitem [ref=e416]:
+            - link "Collections" [ref=e417] [cursor=pointer]:
+              - /url: /collections
+      - navigation "The House" [ref=e418]:
+        - paragraph [ref=e419]: The House
+        - list [ref=e420]:
+          - listitem [ref=e421]:
+            - link "About OnPoint" [ref=e422] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e423]:
+            - link "OnPoint Expression" [ref=e424] [cursor=pointer]:
+              - /url: /expression
+          - listitem [ref=e425]:
+            - link "Bespoke" [ref=e426] [cursor=pointer]:
+              - /url: /bespoke
+          - listitem [ref=e427]:
+            - link "OnPoint Active" [ref=e428] [cursor=pointer]:
+              - /url: /active
+          - listitem [ref=e429]:
+            - link "Contact" [ref=e430] [cursor=pointer]:
+              - /url: /about#contact
+      - generic [ref=e431]:
+        - paragraph [ref=e432]: Stay Informed
+        - paragraph [ref=e433]: New collections and bespoke openings, occasionally.
+        - generic [ref=e436]:
+          - textbox "Email address" [ref=e437]
+          - button "Subscribe" [ref=e438]
+    - generic [ref=e442]:
+      - paragraph [ref=e443]: © 2026 OnPoint Clothing
+      - generic [ref=e444]:
+        - link "Privacy Policy" [ref=e445] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms of Service" [ref=e446] [cursor=pointer]:
+          - /url: /terms
+        - link "Returns" [ref=e447] [cursor=pointer]:
+          - /url: /returns
+      - paragraph [ref=e448]: Multiple Award-Winning
+  - link "Chat with us on WhatsApp" [ref=e449] [cursor=pointer]:
+    - /url: https://wa.me/2348034645559?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20OnPoint%20Clothing.
+  - button "Open Next.js Dev Tools" [ref=e457] [cursor=pointer]

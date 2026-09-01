@@ -70,16 +70,17 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-tailored-edit"],
-    backdropColor: "neutral",
+    backdropColor: "shop",
     images: [
       { publicId: "front", alt: "Aura Monolith V-Slit Set, front view" },
       { publicId: "full", alt: "Aura Monolith V-Slit Set, full length" },
       { publicId: "detail", alt: "Aura Monolith V-Slit Set, fabric detail" },
       { publicId: "full-style", alt: "Aura Monolith V-Slit Set, styled full look" },
     ],
+    videos: [{ publicId: "OP_3_squished" }],
     shortDescription: "A grey linen V-slit tunic and wide-leg trouser set.",
     description:
-      "Redefine modern luxury with the Aura Monolith V-Slit Set, masterfully crafted for the contemporary tastemaker. This ensemble seamlessly blends rich cultural heritage with avant-garde streetwear aesthetics. Cut from a premium, tactile grey linen, the set features a striking deep V-neckline tunic paired with effortlessly draped, wide-leg trousers — built for a high-end cultural gathering or a bold statement at a day event.",
+      "Redefine modern luxury with the Aura Monolith V-Slit Set, masterfully crafted for the contemporary tastemaker. This ensemble seamlessly blends rich cultural heritage with avant-garde streetwear aesthetics. Cut from a premium, tactile grey linen, the set features a striking deep V-neckline tunic paired with effortlessly draped, wide-leg trousers, built for a high-end cultural gathering or a bold statement at a day event.",
     details: ["Premium tactile linen", "Deep V-neckline tunic", "Wide-leg trousers", "Two-piece set"],
     care: ["Dry clean only", "Steam to refresh", "Store on a broad-shouldered hanger"],
     sizes: KAFTAN_SIZES,
@@ -96,13 +97,14 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-tailored-edit"],
-    backdropColor: "neutral",
+    backdropColor: "shop",
     images: [
       { publicId: "OJM09875", alt: "Black Senator Kaftan, full length" },
       { publicId: "OJM09882", alt: "Black Senator Kaftan, half shot" },
       { publicId: "OJM09904", alt: "Black Senator Kaftan, seated shot" },
       { publicId: "OJM09891", alt: "Black Senator Kaftan, fabric detail" },
     ],
+    videos: [{ publicId: "OP_1_squished" }],
     shortDescription: "A sleek black kaftan in the finest Irish cotton.",
     description:
       "Expertly tailored from the finest Irish cotton, this sleek kaftan delivers ultimate comfort and effortless luxury for the modern gentleman.",
@@ -122,12 +124,13 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: ["the-tailored-edit"],
-    backdropColor: "neutral",
+    backdropColor: "shop",
     images: [
       { publicId: "DSC02738", alt: "Aura White Kaftan, full length" },
       { publicId: "DSC02735", alt: "Aura White Kaftan, Styled Look" },
       { publicId: "DSC02764", alt: "Aura White Kaftan, Detail" },
     ],
+    videos: [{ publicId: "ONPOINT_FOR_WEBSITE_squished" }, { publicId: "OP_2_squished" }],
     shortDescription: "A luminous white kaftan with architectural tailoring.",
     description:
       "A refined expression of contemporary African luxury. Crafted in a luminous textured fabric, this impeccably tailored ensemble blends relaxed elegance with architectural detailing, creating a silhouette that feels effortlessly regal. Designed for the man who commands attention through subtlety, the Aura White Kaftan embodies sophistication, movement, and timeless presence.",
@@ -192,6 +195,7 @@ export const products: Product[] = [
       { publicId: "615069C3-EEDF-4EFA-B42F-E00BCF8A614D", alt: "Royal Crown Fila, white and gold beaded cap, angled view" },
       { publicId: "8C146C77-4A4F-4FC9-AA5F-A7680B5003BF", alt: "Royal Crown Fila, three beaded colorways displayed together" },
     ],
+    videos: [{ publicId: "A65F0238-E3AC-4F8D-91B5-7411D1A6CB49" }],
     shortDescription: "Handcrafted, exquisite, unmistakably distinctive.",
     description:
       "Exquisitely handcrafted headpieces featuring rich textures, intricate embroidery, crystals, beads, and refined gold embellishments. Designed to elevate traditional and contemporary looks with a distinctive touch of luxury.",
@@ -319,7 +323,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: ["the-regalia-edit"],
-    backdropColor: "red",
+    backdropColor: "grey",
     images: [
       { publicId: "_DPR0559", alt: "ITE'go Collection, full look standing with cane and dagger" },
       { publicId: "_DPR0566", alt: "ITE'go Collection, full look seated with cane and dagger" },
@@ -372,7 +376,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "men",
     collectionSlugs: [],
-    backdropColor: "neutral",
+    backdropColor: "shop",
     images: [
       { publicId: "IMG_3299.JPG.jpg", alt: "Ivory cut, full look, front view" },
       { publicId: "IMG_3300.JPG.jpg", alt: "Ivory cut, full look, walking" },
@@ -400,9 +404,9 @@ export const products: Product[] = [
     collectionSlugs: [],
     backdropColor: "white",
     images: [
-      { publicId: "IMG_8682", alt: "ONPOINT BLACK Signature Trucker Cap, front studio view" },
-      { publicId: "IMG_8699", alt: "ONPOINT BLACK Signature Trucker Cap, held up in hands" },
       { publicId: "IMG_8720", alt: "ONPOINT BLACK Signature Trucker Cap, worn on a subway platform" },
+      { publicId: "IMG_8699", alt: "ONPOINT BLACK Signature Trucker Cap, held up in hands" },
+      { publicId: "IMG_8682", alt: "ONPOINT BLACK Signature Trucker Cap, front studio view" },
       { publicId: "IMG_8700", alt: "ONPOINT BLACK Signature Trucker Cap, worn poolside" },
       { publicId: "IMG_8684", alt: "ONPOINT BLACK Signature Trucker Cap, back view" },
       { publicId: "eea2701d-58dd-42b6-bd6e-a9ec5de94d39.JPG.jpg", alt: "ONPOINT BLACK Signature Trucker Cap, underside view" },
@@ -583,18 +587,18 @@ export const products: Product[] = [
   },
   {
     id: "p-20",
-    slug: "mejestic",
-    name: "Mejestic",
+    slug: "majestic",
+    name: "Majestic",
     price: 499000,
     currency: "NGN",
     categorySlug: "bespoke",
     collectionSlugs: [],
     backdropColor: "beige",
     images: [
-      { publicId: "_DPR9142", alt: "Mejestic, full look, seated, front view" },
-      { publicId: "_DPR9099", alt: "Mejestic, full look, seated, smiling" },
-      { publicId: "_DPR9094", alt: "Mejestic, close seated portrait" },
-      { publicId: "_DPR9114", alt: "Mejestic, close seated portrait, alternate pose" },
+      { publicId: "_DPR9142", alt: "Majestic, full look, seated, front view" },
+      { publicId: "_DPR9099", alt: "Majestic, full look, seated, smiling" },
+      { publicId: "_DPR9094", alt: "Majestic, close seated portrait" },
+      { publicId: "_DPR9114", alt: "Majestic, close seated portrait, alternate pose" },
     ],
     shortDescription: "A black jacquard ensemble with sculptural detailing and a matching cap.",
     description:
@@ -741,6 +745,11 @@ export const products: Product[] = [
       { publicId: "a66fa3d2-c3f8-45bb-8b0d-b03fa0d78259.JPG.jpg", alt: "The Groom 2, portrait, indoors" },
       { publicId: "b354663f-d726-49eb-89dd-bc64d0112fc7.JPG.jpg", alt: "The Groom 2, with the bride" },
     ],
+    videos: [
+      { publicId: "Susan_1B_squished" },
+      { publicId: "437622e9670a408ba6ad43c2e04fe1b9_squished" },
+      { publicId: "7cbc415a61bf4394a2d5160030ec88c0_squished_squished_squished" },
+    ],
     shortDescription: "A navy blue groom ensemble with red and black embroidery.",
     description:
       "Navy blue luxury groom ensemble featuring intricate red and black embroidery, a bold geometric chest panel, and a matching  embellished idoma tribe cap. A regal fusion of traditional craftsmanship and contemporary elegance perfect for the distinguished groom.",
@@ -820,6 +829,7 @@ export const products: Product[] = [
       { publicId: "IMG_8453.JPG.jpg", alt: "Rita romper, navy blue colorway" },
       { publicId: "IMG_8452.JPG.jpg", alt: "Rita romper, dark colorway" },
     ],
+    videos: [{ publicId: "AYOt_squished_squished_squished" }],
     shortDescription: "A sleek open-back fitness romper in a spandex-Lycra blend.",
     description:
       "This sleek fitness outfit, crafted from a blend of spandex and Lycra, offers a perfect balance of comfort, stretch, and style. Its open-back design ensures breathability, while the sculpting fit enhances your silhouette during workouts or leisure activities.",
@@ -848,6 +858,7 @@ export const products: Product[] = [
       { publicId: "AXR_0881", alt: "Rita romper (Long), back view, flexing" },
       { publicId: "AXR_0846", alt: "Rita romper (Long), close back detail" },
     ],
+    videos: [{ publicId: "Nancy__squished" }],
     shortDescription: "A long-legged open-back fitness romper in a spandex-Lycra blend.",
     description:
       "This sleek fitness outfit, crafted from a blend of spandex and Lycra, offers a perfect balance of comfort, stretch, and style. Its open-back design ensures breathability, while the sculpting fit enhances your silhouette during workouts or leisure activities.",
@@ -1137,6 +1148,7 @@ export const products: Product[] = [
       { publicId: "60E96D15-ABD3-4256-9FFE-6AFD14E75C1F", alt: "Blush Sculpt Set, full look, side view, glancing back" },
       { publicId: "D64D3B07-CCB8-44D2-A52A-4051E7AF8F19", alt: "Blush Sculpt Set, full look, back view" },
     ],
+    videos: [{ publicId: "Slider__squished" }],
     shortDescription: "A blush pink sculpting activewear set with a second-skin fit.",
     description:
       "A sleek, feminine activewear set crafted for effortless movement and confidence. The soft blush tone, sculpting fit, and streamlined silhouette provide a flattering second-skin feel perfect for workouts, studio sessions, or elevated everyday wear",

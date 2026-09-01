@@ -47,8 +47,8 @@ export const editorialImages = {
     alt: "The OnPoint atelier",
   } satisfies CloudinaryImage,
   bespokeHero: {
-    publicId: "_DPR0496.jpg",
-    alt: "OnPoint Bespoke atelier",
+    publicId: "Pato_web",
+    alt: "OnPoint Bespoke client in a regal beaded cap and black brocade cape, studio portrait",
   } satisfies CloudinaryImage,
   bespokeTeaser: {
     publicId: "IGHALO_WEB",

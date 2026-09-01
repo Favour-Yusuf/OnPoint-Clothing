@@ -18,6 +18,11 @@ export type CloudinaryImage = {
   alt: string;
 };
 
+export type CloudinaryVideo = {
+  /** A Cloudinary public ID, resolved to a delivery URL by lib/cloudinary/video.ts. No placeholder handling — videos are only ever added once real footage exists. */
+  publicId: string;
+};
+
 export type ProductColor = {
   name: string;
   /** Swatch hex, for the color selector UI. */
@@ -47,6 +52,8 @@ export type Product = {
   /** Photography backdrop color (e.g. "red", "grey") — not a garment color. Used to group the shop grid by matching backdrops. */
   backdropColor?: string;
   images: CloudinaryImage[];
+  /** Gallery videos, shown before `images` on the product page. Absent/empty for most products. */
+  videos?: CloudinaryVideo[];
   shortDescription: string;
   description: string;
   details: string[];

@@ -10,17 +10,18 @@ import { editorialImages } from "@/lib/data/editorial";
 
 export const metadata: Metadata = {
   title: "Bespoke",
-  description: "OnPoint Clothing's bespoke service — garments built to your measure.",
+  description: "OnPoint Clothing's bespoke service: garments built to your measure.",
 };
 
 export default function BespokePage() {
   return (
     <div className="bg-foreground">
-      <section className="relative flex h-[70vh] min-h-[480px] w-full items-end overflow-hidden pt-16 lg:pt-20">
+      <section className="relative flex aspect-video w-full items-end overflow-hidden pt-16 lg:pt-20">
         <div className="absolute inset-0">
-          {/* Wide, short section against a tall portrait photo — center-cropping
-              loses the subject off the top of frame, so bias the crop upward. */}
-          <MediaImage image={editorialImages.bespokeHero} priority sizes="100vw" position="50% 12%" />
+          {/* Section is shaped to the photo's own 16:9 ratio (not a fixed
+              viewport-height band) so it displays edge-to-edge with zero
+              cropping. */}
+          <MediaImage image={editorialImages.bespokeHero} priority sizes="100vw" />
           <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep via-background/50 to-background/10" />
         </div>
         <div aria-hidden="true" className="absolute top-0 bottom-0 left-0 hidden w-1.5 bg-burgundy lg:block" />

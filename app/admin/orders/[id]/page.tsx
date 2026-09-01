@@ -126,7 +126,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
                 <div>
                   <dt className="text-foreground/45">Paid</dt>
                   <dd className="mt-0.5 text-foreground">
-                    {payment.paidAt ? new Date(payment.paidAt).toLocaleString() : "—"}
+                    {payment.paidAt ? new Date(payment.paidAt).toLocaleString() : "Not yet"}
                   </dd>
                 </div>
               </dl>

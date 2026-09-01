@@ -18,6 +18,7 @@ export function SectionHeading({
   className?: string;
 }) {
   const mutedColor = tone === "on-dark" ? "text-stone" : "text-background/60";
+  const titleColor = tone === "on-dark" ? "text-foreground" : "text-background";
   const alignClasses = align === "center" ? "items-center text-center mx-auto" : "items-start text-left";
 
   return (
@@ -30,7 +31,7 @@ export function SectionHeading({
               <p className="font-sans text-xs font-light tracking-[0.35em] text-burgundy-light uppercase">{eyebrow}</p>
             </div>
           ) : null}
-          <h2 className="max-w-2xl font-display text-3xl leading-[1.1] font-light sm:text-4xl lg:text-5xl">{title}</h2>
+          <h2 className={`max-w-2xl font-display text-3xl leading-[1.1] font-light sm:text-4xl lg:text-5xl ${titleColor}`}>{title}</h2>
           {description ? <p className={`max-w-xl text-base leading-relaxed sm:text-lg ${mutedColor}`}>{description}</p> : null}
         </div>
         {action && align !== "center" ? <div className="shrink-0">{action}</div> : null}

@@ -28,12 +28,12 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 const description =
-  "OnPoint Clothing — a multiple award-winning fashion house. Shop ready-to-wear and bespoke.";
+  "OnPoint Clothing: a multiple award-winning fashion house. Shop ready-to-wear and bespoke.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justonpointng.com"),
   title: {
-    default: "OnPoint Clothing — Multiple Award-Winning Fashion House",
+    default: "OnPoint Clothing: Multiple Award-Winning Fashion House",
     template: "%s | OnPoint Clothing",
   },
   description,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "OnPoint Clothing — Multiple Award-Winning Fashion House",
+    title: "OnPoint Clothing: Multiple Award-Winning Fashion House",
     description,
     url: "/",
     siteName: "OnPoint Clothing",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OnPoint Clothing — Multiple Award-Winning Fashion House",
+    title: "OnPoint Clothing: Multiple Award-Winning Fashion House",
     description,
   },
 };

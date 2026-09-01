@@ -41,7 +41,7 @@ export function PaymentStatusControl({ orderId, currentStatus }: { orderId: stri
             title={selected === "paid" ? "Mark this order as paid?" : "Change payment status?"}
             description={
               selected === "paid"
-                ? "Only confirm this once you've verified the payment yourself — e.g. checked the bank account for a matching transfer, or confirmed the receipt sent on WhatsApp. This is what tells the team to start fulfilling the order."
+                ? "Only confirm this once you've verified the payment yourself, e.g. checked the bank account for a matching transfer, or confirmed the receipt sent on WhatsApp. This is what tells the team to start fulfilling the order."
                 : "This changes the order away from paid. Only do this if the payment genuinely failed or was refunded."
             }
             confirmLabel="Update Payment Status"

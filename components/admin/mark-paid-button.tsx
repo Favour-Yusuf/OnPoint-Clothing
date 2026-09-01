@@ -22,7 +22,7 @@ export function MarkPaidButton({ orderId }: { orderId: string }) {
       <input type="hidden" name="paymentStatus" value="paid" />
       <ConfirmDialog
         title="Mark this payment as paid?"
-        description="Only confirm once you've verified it yourself — checked the bank account for the transfer, or the receipt sent on WhatsApp. This is what tells the team to start fulfilling the order."
+        description="Only confirm once you've verified it yourself: checked the bank account for the transfer, or the receipt sent on WhatsApp. This is what tells the team to start fulfilling the order."
         confirmLabel="Mark as Paid"
         pending={pending}
         onConfirm={() => formRef.current?.requestSubmit()}

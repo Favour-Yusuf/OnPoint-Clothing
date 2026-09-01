@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/reveal";
 
 const STEPS = [
-  { number: "01", title: "Consultation", description: "A conversation about what you need — occasion, fabric, and fit." },
+  { number: "01", title: "Consultation", description: "A conversation about what you need: occasion, fabric, and fit." },
   { number: "02", title: "Design", description: "Cloth, cut, and detail are finalized together before anything is made." },
   { number: "03", title: "Fit", description: "A fitting to confirm proportions before construction is completed." },
   { number: "04", title: "Craft", description: "Your garment is built by hand to the specification agreed upon." },
