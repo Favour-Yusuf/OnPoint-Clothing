@@ -2,30 +2,30 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { ExpressionHero } from "@/components/expression/expression-hero";
-import { ExpressionIntro } from "@/components/expression/expression-intro";
 import { ExpressionRedCarpet } from "@/components/expression/expression-red-carpet";
+import { ExpressionBreather } from "@/components/expression/expression-breather";
 import { ExpressionRunway } from "@/components/expression/expression-runway";
 import { ExpressionHost } from "@/components/expression/expression-host";
 import { ExpressionPerformance } from "@/components/expression/expression-performance";
-import { ExpressionBehindTheScenes } from "@/components/expression/expression-behind-the-scenes";
-import { ExpressionLegacy } from "@/components/expression/expression-legacy";
+import { ExpressionEpilogue } from "@/components/expression/expression-epilogue";
+import { onPointExpression } from "@/lib/data/onpoint-expression";
 
 export const metadata: Metadata = {
   title: "OnPoint Expression",
-  description: "Where fashion finds its voice. Inside OnPoint Clothing's flagship fashion event.",
+  description: "Where fashion finds its voice — inside OnPoint Clothing's flagship fashion event.",
 };
 
 export default function ExpressionPage() {
   return (
     <div className="bg-background">
       <ExpressionHero />
-      <ExpressionIntro />
       <ExpressionRedCarpet />
+      <ExpressionBreather image={onPointExpression.breathers.intoRunway} />
       <ExpressionRunway />
+      <ExpressionBreather image={onPointExpression.breathers.intoHost} />
       <ExpressionHost />
       <ExpressionPerformance />
-      <ExpressionBehindTheScenes />
-      <ExpressionLegacy />
+      <ExpressionEpilogue />
 
       <section className="relative overflow-hidden border-t border-burgundy/25 bg-background py-28 sm:py-36">
         <div

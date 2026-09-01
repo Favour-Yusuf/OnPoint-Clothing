@@ -5,7 +5,7 @@ import type { CloudinaryImage } from "@/lib/types";
  * verified against the live "onpoint/OnPoint Expression" Cloudinary folder
  * (154 assets total — run `npm run cloudinary:list` to see the full set).
  * The page organizes its curated subset into five real event moments —
- * red carpet, runway, host, performance, behind the scenes — rather than one
+ * red carpet, runway, host, performance, epilogue — rather than one
  * undifferentiated gallery. Swap or extend any entry below with another
  * public ID from that folder; keep each entry in the section its content
  * actually belongs to.
@@ -420,49 +420,6 @@ export const onPointExpression = {
     },
   ] satisfies ExpressionImage[],
 
-  behindTheScenes: [
-    {
-      publicId: "ON_POINT_EXPRESSION_-69",
-      alt: "A styling table set with tools and finishing touches ahead of the show",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-81",
-      alt: "A backstage makeup artist applying lashes under a ring light",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-82",
-      alt: "A stylist finishing a guest's braids backstage",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-85",
-      alt: "Garments hanging on a rack, detail of embroidery and beadwork",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-84",
-      alt: "Garments hanging on a backstage rack, lit low ahead of the show",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-95",
-      alt: "A warm embrace backstage before the show",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-91",
-      alt: "A model in a vivid orange and pink tie-dye dress sharing a quiet moment backstage, garment racks in the background",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-31",
-      alt: "A guest posing in an OnPoint Expression T-shirt at the branding booth",
-      orientation: "portrait",
-    },
-  ] satisfies ExpressionImage[],
-
   epilogue: {
     backstage: [
       {
@@ -481,9 +438,4 @@ export const onPointExpression = {
       alt: "The OnPoint Expression marquee glowing at dusk",
     } satisfies CloudinaryImage,
   },
-
-  legacy: {
-    publicId: "ON_POINT_EXPRESSION_-105",
-    alt: "The OnPoint Expression marquee glowing at dusk",
-  } satisfies CloudinaryImage,
 };
