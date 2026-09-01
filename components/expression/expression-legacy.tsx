@@ -19,7 +19,7 @@ export function ExpressionLegacy() {
           Not a departure. A continuation.
         </h2>
         <p className="max-w-md text-base leading-relaxed text-foreground/75 sm:text-lg">
-          OnPoint Expression didn&rsquo;t appear from nowhere — it&rsquo;s what construction over trend, fit over
+          OnPoint Expression didn&rsquo;t appear from nowhere. It&rsquo;s what construction over trend, fit over
           flourish, eventually earns the right to say out loud.
         </p>
         <p className="max-w-md text-base leading-relaxed text-foreground/55">

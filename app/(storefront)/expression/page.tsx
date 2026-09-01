@@ -12,7 +12,7 @@ import { ExpressionLegacy } from "@/components/expression/expression-legacy";
 
 export const metadata: Metadata = {
   title: "OnPoint Expression",
-  description: "Where fashion finds its voice — inside OnPoint Clothing's flagship fashion event.",
+  description: "Where fashion finds its voice. Inside OnPoint Clothing's flagship fashion event.",
 };
 
 export default function ExpressionPage() {

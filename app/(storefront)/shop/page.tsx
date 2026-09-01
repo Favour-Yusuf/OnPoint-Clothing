@@ -4,7 +4,7 @@ import { ShopPageContent } from "@/components/shop/shop-page-content";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Browse the full OnPoint Clothing collection — tailoring, knitwear, and accessories.",
+  description: "Browse the full OnPoint Clothing collection. Tailoring, knitwear, and accessories.",
 };
 
 export default async function ShopPage({

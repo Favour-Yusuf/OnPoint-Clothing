@@ -1,0 +1,284 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "OnPoint Clothing — Home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "OnPoint Clothing" [ref=e5]
+      - navigation "Primary" [ref=e6]:
+        - link "New Arrivals" [ref=e7] [cursor=pointer]:
+          - /url: /shop/new-arrivals
+        - link "Men" [ref=e8] [cursor=pointer]:
+          - /url: /shop/men
+        - link "Women" [ref=e9] [cursor=pointer]:
+          - /url: /shop/women
+        - link "Active" [ref=e10] [cursor=pointer]:
+          - /url: /active
+        - link "Accessories" [ref=e11] [cursor=pointer]:
+          - /url: /shop/accessories
+        - link "Expression" [ref=e12] [cursor=pointer]:
+          - /url: /expression
+        - link "Bespoke" [ref=e13] [cursor=pointer]:
+          - /url: /bespoke
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e15]:
+        - button "Search" [ref=e16]
+        - link "Account" [ref=e20] [cursor=pointer]:
+          - /url: /account
+        - button "Bag, 0 items" [ref=e24]
+  - main [ref=e28]:
+    - generic [ref=e29]:
+      - img "OnPoint model in a white embroidered kaftan with coral beadwork" [ref=e33]
+      - generic [ref=e54]:
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: Multiple Award-Winning Fashion House
+          - heading [level=1] [ref=e58]:
+            - text: Defining the way
+            - emphasis [ref=e59]: forward.
+        - generic [ref=e60]:
+          - link "Shop the Collection" [ref=e61] [cursor=pointer]:
+            - /url: /shop
+          - link "Explore Bespoke" [ref=e62] [cursor=pointer]:
+            - /url: /bespoke
+      - generic [ref=e63]: Scroll
+    - generic [ref=e67]:
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - paragraph [ref=e73]: Just In
+          - heading "Shop the Look." [level=2] [ref=e74]
+          - paragraph [ref=e75]: A curated selection. This is not the whole catalog, just what's worth your attention right now.
+        - link "View All" [ref=e77] [cursor=pointer]:
+          - /url: /shop
+      - generic [ref=e79]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - link "Crown Legacy, close detail Crown Legacy, full shot New" [ref=e83] [cursor=pointer]:
+              - /url: /product/crown-legacy
+              - img "Crown Legacy, close detail" [ref=e85]
+              - img "Crown Legacy, full shot" [ref=e87]
+              - generic [ref=e88]: New
+            - button "Quick Add" [ref=e89]
+          - link "Crown Legacy ₦2,500,000" [ref=e90] [cursor=pointer]:
+            - /url: /product/crown-legacy
+            - paragraph [ref=e91]: Crown Legacy
+            - generic [ref=e92]: ₦2,500,000
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - link "White Flow Tunic, full look, front view White Flow Tunic, full look, holding sunglasses New" [ref=e97] [cursor=pointer]:
+              - /url: /product/white-flow-tunic
+              - img "White Flow Tunic, full look, front view" [ref=e99]
+              - img "White Flow Tunic, full look, holding sunglasses" [ref=e101]
+              - generic [ref=e102]: New
+            - button "Quick Add" [ref=e103]
+          - link "White Flow Tunic ₦298,000" [ref=e104] [cursor=pointer]:
+            - /url: /product/white-flow-tunic
+            - paragraph [ref=e105]: White Flow Tunic
+            - generic [ref=e106]: ₦298,000
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - link "Desert silk Gold, full look, front view Desert silk Gold, full look, walking, side view New" [ref=e111] [cursor=pointer]:
+              - /url: /product/desert-silk-gold
+              - img "Desert silk Gold, full look, front view" [ref=e113]
+              - img "Desert silk Gold, full look, walking, side view" [ref=e115]
+              - generic [ref=e116]: New
+            - button "Quick Add" [ref=e117]
+          - link "Desert silk Gold ₦350,000" [ref=e118] [cursor=pointer]:
+            - /url: /product/desert-silk-gold
+            - paragraph [ref=e119]: Desert silk Gold
+            - generic [ref=e120]: ₦350,000
+        - generic [ref=e123]:
+          - generic [ref=e124]:
+            - link "Emerald Sovereign (plain), full look, front view Emerald Sovereign (plain), full look, looking down New" [ref=e125] [cursor=pointer]:
+              - /url: /product/emerald-sovereign-plain
+              - img "Emerald Sovereign (plain), full look, front view" [ref=e127]
+              - img "Emerald Sovereign (plain), full look, looking down" [ref=e129]
+              - generic [ref=e130]: New
+            - button "Quick Add" [ref=e131]
+          - link "Emerald Sovereign( plain) ₦400,000" [ref=e132] [cursor=pointer]:
+            - /url: /product/emerald-sovereign-plain
+            - paragraph [ref=e133]: Emerald Sovereign( plain)
+            - generic [ref=e134]: ₦400,000
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - link "Black Senator Kaftan, full length Black Senator Kaftan, half shot New" [ref=e139] [cursor=pointer]:
+              - /url: /product/black-senator-kaftan
+              - img "Black Senator Kaftan, full length" [ref=e141]
+              - img "Black Senator Kaftan, half shot" [ref=e143]
+              - generic [ref=e144]: New
+            - button "Quick Add" [ref=e145]
+          - link "Black Senator Kaftan ₦400,000" [ref=e146] [cursor=pointer]:
+            - /url: /product/black-senator-kaftan
+            - paragraph [ref=e147]: Black Senator Kaftan
+            - generic [ref=e148]: ₦400,000
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - link "Royal Crown Fila worn with a white agbada, front view Royal Crown Fila worn with a white agbada, side view New" [ref=e153] [cursor=pointer]:
+              - /url: /product/royal-crown-fila
+              - img "Royal Crown Fila worn with a white agbada, front view" [ref=e155]
+              - img "Royal Crown Fila worn with a white agbada, side view" [ref=e157]
+              - generic [ref=e158]: New
+            - button "Quick Add" [ref=e159]
+          - link "Royal Crown Fila ₦145,000" [ref=e160] [cursor=pointer]:
+            - /url: /product/royal-crown-fila
+            - paragraph [ref=e161]: Royal Crown Fila
+            - generic [ref=e162]: ₦145,000
+        - generic [ref=e165]:
+          - generic [ref=e166]:
+            - link "ONPOINT Bordeaux Crest Cap, front angled view ONPOINT Bordeaux Crest Cap, side angled view New" [ref=e167] [cursor=pointer]:
+              - /url: /product/onpoint-bordeaux-crest-cap
+              - img "ONPOINT Bordeaux Crest Cap, front angled view" [ref=e169]
+              - img "ONPOINT Bordeaux Crest Cap, side angled view" [ref=e171]
+              - generic [ref=e172]: New
+            - button "Quick Add" [ref=e173]
+          - link "ONPOINT Bordeaux Crest Cap ₦70,000" [ref=e174] [cursor=pointer]:
+            - /url: /product/onpoint-bordeaux-crest-cap
+            - paragraph [ref=e175]: ONPOINT Bordeaux Crest Cap
+            - generic [ref=e176]: ₦70,000
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - link "Ivory cut, full look, front view Ivory cut, full look, walking New" [ref=e181] [cursor=pointer]:
+              - /url: /product/ivory-cut
+              - img "Ivory cut, full look, front view" [ref=e183]
+              - img "Ivory cut, full look, walking" [ref=e185]
+              - generic [ref=e186]: New
+            - button "Quick Add" [ref=e187]
+          - link "Ivory cut ₦285,000" [ref=e188] [cursor=pointer]:
+            - /url: /product/ivory-cut
+            - paragraph [ref=e189]: Ivory cut
+            - generic [ref=e190]: ₦285,000
+    - generic [ref=e192]:
+      - img "The Tailored Edit" [ref=e194]
+      - generic [ref=e197]:
+        - paragraph [ref=e200]: Season Two
+        - heading "The Tailored Edit" [level=2] [ref=e201]
+        - paragraph [ref=e202]: "Architectural silhouettes in ivory, black, and grey: precise tailoring worn with quiet authority."
+        - link "View the Edit" [ref=e204] [cursor=pointer]:
+          - /url: /collections/the-tailored-edit
+    - generic [ref=e206]:
+      - img "A guest in an embroidered kaftan and wide-brimmed hat, standing before a backdrop of ornate framed portraits" [ref=e208]
+      - generic [ref=e211]:
+        - paragraph [ref=e214]: The Flagship Event
+        - heading "OnPoint Expression" [level=2] [ref=e215]
+        - paragraph [ref=e216]: One night a year, the house steps off the rack and into the room. Culture, craft, and award-winning construction, staged in full color.
+        - link "Explore OnPoint Expression" [ref=e218] [cursor=pointer]:
+          - /url: /expression
+    - generic [ref=e220]:
+      - generic [ref=e223]:
+        - paragraph [ref=e226]: Explore
+        - heading "Enter the House." [level=2] [ref=e227]
+        - paragraph [ref=e228]: Each category holds its own point of view. From tailoring to the finishing details.
+      - generic [ref=e229]:
+        - link "Women Women" [ref=e231] [cursor=pointer]:
+          - /url: /shop/women
+          - img "Women" [ref=e233]
+          - generic [ref=e235]: Women
+        - link "Men Men" [ref=e241] [cursor=pointer]:
+          - /url: /shop/men
+          - img "Men" [ref=e243]
+          - generic [ref=e245]: Men
+        - link "Accessories Accessories" [ref=e251] [cursor=pointer]:
+          - /url: /shop/accessories
+          - img "Accessories" [ref=e253]
+          - generic [ref=e255]: Accessories
+        - link "OnPoint model in a white embroidered kaftan with coral beadwork New Arrivals" [ref=e261] [cursor=pointer]:
+          - /url: /shop/new-arrivals
+          - img "OnPoint model in a white embroidered kaftan with coral beadwork" [ref=e263]
+          - generic [ref=e265]: New Arrivals
+        - link "Crown Legacy, close knit detail Collections" [ref=e271] [cursor=pointer]:
+          - /url: /collections
+          - img "Crown Legacy, close knit detail" [ref=e273]
+          - generic [ref=e275]: Collections
+        - link "OnPoint Bespoke client in a custom cape with layered chains and a crown Bespoke" [ref=e281] [cursor=pointer]:
+          - /url: /bespoke
+          - img "OnPoint Bespoke client in a custom cape with layered chains and a crown" [ref=e283]
+          - generic [ref=e285]: Bespoke
+        - link "CORE SET, cropped performance top and sculpting leggings in burgundy, front view OnPoint Active" [ref=e291] [cursor=pointer]:
+          - /url: /active
+          - img "CORE SET, cropped performance top and sculpting leggings in burgundy, front view" [ref=e293]
+          - generic [ref=e295]: OnPoint Active
+    - generic [ref=e300]:
+      - paragraph: "&"
+      - generic [ref=e301]:
+        - paragraph [ref=e304]: The Bespoke Service
+        - heading "Made for you." [level=2] [ref=e305]
+        - paragraph [ref=e306]: Beyond ready to wear, OnPoint offers a bespoke service. Garments built to your measure, from a consultation through to final fitting.
+        - link "Discover Bespoke" [ref=e308] [cursor=pointer]:
+          - /url: /bespoke
+      - img "OnPoint Bespoke client in a tailored cape and crown, studio portrait" [ref=e310]
+    - generic [ref=e312]:
+      - paragraph: °
+      - img "VERDANT MOTION SET, deep-green crop top and leggings, side pose" [ref=e314]
+      - generic [ref=e316]:
+        - paragraph [ref=e319]: OnPoint Active
+        - heading "Built to move." [level=2] [ref=e320]
+        - paragraph [ref=e321]: Performance activewear from OnPoint. Sculpting fits, breathable stretch fabric, and the same attention to detail as the rest of the house.
+        - link "Shop OnPoint Active" [ref=e323] [cursor=pointer]:
+          - /url: /active
+    - generic [ref=e324]:
+      - paragraph: ”
+      - generic [ref=e326]:
+        - generic [ref=e327]:
+          - paragraph [ref=e330]: Multiple Award-Winning
+          - heading "Many Honors. One Standard." [level=2] [ref=e331]: Many Honors.One Standard.
+        - generic [ref=e332]:
+          - paragraph [ref=e334]: "OnPoint Clothing has built its name on the same premise: that clothing made with care outlasts clothing made for a season. Every piece is still measured against that standard; construction over trend, fit over flourish."
+          - paragraph [ref=e335]: This site is the newest expression of that standard. The clothes haven’t changed. The way you find them has.
+    - generic [ref=e337]:
+      - heading [level=2] [ref=e339]:
+        - text: Find your next
+        - emphasis [ref=e340]: signature.
+      - link "Shop OnPoint" [ref=e341] [cursor=pointer]:
+        - /url: /shop
+  - contentinfo [ref=e342]:
+    - generic [ref=e343]:
+      - generic [ref=e344]:
+        - img "OnPoint Clothing" [ref=e345]
+        - paragraph [ref=e346]: A multiple award-winning fashion house. Redefining luxury for the 21st century.
+      - navigation "Shop" [ref=e347]:
+        - paragraph [ref=e348]: Shop
+        - list [ref=e349]:
+          - listitem [ref=e350]:
+            - link "New Arrivals" [ref=e351] [cursor=pointer]:
+              - /url: /shop/new-arrivals
+          - listitem [ref=e352]:
+            - link "Men" [ref=e353] [cursor=pointer]:
+              - /url: /shop/men
+          - listitem [ref=e354]:
+            - link "Women" [ref=e355] [cursor=pointer]:
+              - /url: /shop/women
+          - listitem [ref=e356]:
+            - link "Accessories" [ref=e357] [cursor=pointer]:
+              - /url: /shop/accessories
+          - listitem [ref=e358]:
+            - link "Collections" [ref=e359] [cursor=pointer]:
+              - /url: /collections
+      - navigation "The House" [ref=e360]:
+        - paragraph [ref=e361]: The House
+        - list [ref=e362]:
+          - listitem [ref=e363]:
+            - link "About OnPoint" [ref=e364] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e365]:
+            - link "OnPoint Expression" [ref=e366] [cursor=pointer]:
+              - /url: /expression
+          - listitem [ref=e367]:
+            - link "Bespoke" [ref=e368] [cursor=pointer]:
+              - /url: /bespoke
+          - listitem [ref=e369]:
+            - link "OnPoint Active" [ref=e370] [cursor=pointer]:
+              - /url: /active
+          - listitem [ref=e371]:
+            - link "Contact" [ref=e372] [cursor=pointer]:
+              - /url: /about#contact
+      - generic [ref=e373]:
+        - paragraph [ref=e374]: Stay Informed
+        - paragraph [ref=e375]: New collections and bespoke openings, occasionally.
+        - generic [ref=e378]:
+          - textbox "Email address" [ref=e379]
+          - button "Subscribe" [ref=e380]
+    - generic [ref=e384]:
+      - paragraph [ref=e385]: © 2026 OnPoint Clothing
+      - paragraph [ref=e386]: Multiple Award-Winning
+  - link "Chat with us on WhatsApp" [ref=e387] [cursor=pointer]:
+    - /url: https://wa.me/2348034645559?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20OnPoint%20Clothing.
+  - button "Open Next.js Dev Tools" [ref=e395] [cursor=pointer]

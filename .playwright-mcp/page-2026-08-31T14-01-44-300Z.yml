@@ -1,0 +1,94 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "OnPoint Clothing — Home" [ref=f1e4] [cursor=pointer]:
+        - /url: /
+        - img "OnPoint Clothing" [ref=f1e5]
+      - navigation "Primary" [ref=f1e6]:
+        - link "New Arrivals" [ref=f1e7] [cursor=pointer]:
+          - /url: /shop/new-arrivals
+        - link "Men" [ref=f1e8] [cursor=pointer]:
+          - /url: /shop/men
+        - link "Women" [ref=f1e9] [cursor=pointer]:
+          - /url: /shop/women
+        - link "Active" [ref=f1e10] [cursor=pointer]:
+          - /url: /active
+        - link "Accessories" [ref=f1e11] [cursor=pointer]:
+          - /url: /shop/accessories
+        - link "Expression" [ref=f1e12] [cursor=pointer]:
+          - /url: /expression
+        - link "Bespoke" [ref=f1e13] [cursor=pointer]:
+          - /url: /bespoke
+        - link "About" [ref=f1e14] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=f1e15]:
+        - button "Search" [ref=f1e16]
+        - link "Account" [ref=f1e20] [cursor=pointer]:
+          - /url: /account
+        - button "Bag, 0 items" [ref=f1e24]
+  - main [ref=f1e28]:
+    - generic [ref=f1e31]:
+      - generic [ref=f1e32]:
+        - button "Sign In" [ref=f1e33]
+        - button "Create Account" [ref=f1e34]
+      - generic [ref=f1e35]:
+        - generic [ref=f1e36]:
+          - generic [ref=f1e37]: Email
+          - textbox "Email" [ref=f1e38]
+        - generic [ref=f1e39]:
+          - generic [ref=f1e40]: Password
+          - textbox "Password" [ref=f1e41]
+        - button "Sign In" [ref=f1e42]
+  - contentinfo [ref=f1e43]:
+    - generic [ref=f1e44]:
+      - generic [ref=f1e45]:
+        - img "OnPoint Clothing" [ref=f1e46]
+        - paragraph [ref=f1e47]: A multiple award-winning fashion house. Redefining luxury for the 21st century.
+      - navigation "Shop" [ref=f1e48]:
+        - paragraph [ref=f1e49]: Shop
+        - list [ref=f1e50]:
+          - listitem [ref=f1e51]:
+            - link "New Arrivals" [ref=f1e52] [cursor=pointer]:
+              - /url: /shop/new-arrivals
+          - listitem [ref=f1e53]:
+            - link "Men" [ref=f1e54] [cursor=pointer]:
+              - /url: /shop/men
+          - listitem [ref=f1e55]:
+            - link "Women" [ref=f1e56] [cursor=pointer]:
+              - /url: /shop/women
+          - listitem [ref=f1e57]:
+            - link "Accessories" [ref=f1e58] [cursor=pointer]:
+              - /url: /shop/accessories
+          - listitem [ref=f1e59]:
+            - link "Collections" [ref=f1e60] [cursor=pointer]:
+              - /url: /collections
+      - navigation "The House" [ref=f1e61]:
+        - paragraph [ref=f1e62]: The House
+        - list [ref=f1e63]:
+          - listitem [ref=f1e64]:
+            - link "About OnPoint" [ref=f1e65] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=f1e66]:
+            - link "OnPoint Expression" [ref=f1e67] [cursor=pointer]:
+              - /url: /expression
+          - listitem [ref=f1e68]:
+            - link "Bespoke" [ref=f1e69] [cursor=pointer]:
+              - /url: /bespoke
+          - listitem [ref=f1e70]:
+            - link "OnPoint Active" [ref=f1e71] [cursor=pointer]:
+              - /url: /active
+          - listitem [ref=f1e72]:
+            - link "Contact" [ref=f1e73] [cursor=pointer]:
+              - /url: /about#contact
+      - generic [ref=f1e74]:
+        - paragraph [ref=f1e75]: Stay Informed
+        - paragraph [ref=f1e76]: New collections and bespoke openings, occasionally.
+        - generic [ref=f1e79]:
+          - textbox "Email address" [ref=f1e80]
+          - button "Subscribe" [ref=f1e81]
+    - generic [ref=f1e85]:
+      - paragraph [ref=f1e86]: © 2026 OnPoint Clothing
+      - paragraph [ref=f1e87]: Multiple Award-Winning
+  - link "Chat with us on WhatsApp" [ref=f1e88] [cursor=pointer]:
+    - /url: https://wa.me/2348034645559?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20OnPoint%20Clothing.
+  - button "Open Next.js Dev Tools" [ref=f1e96] [cursor=pointer]

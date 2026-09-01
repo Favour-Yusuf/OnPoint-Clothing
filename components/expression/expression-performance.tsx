@@ -10,14 +10,10 @@ import { onPointExpression } from "@/lib/data/onpoint-expression";
 
 // Every source photo is a portrait crop, so size variation here comes from
 // deliberate grid spans (with object-cover accepting the crop) rather than
-// from each image's native aspect ratio — a dense, high-energy wall rather
-// than a uniform grid.
+// from each image's native aspect ratio — one anchor image plus two smaller
+// beats and a closing wide band, instead of a uniform grid.
 const SPANS = [
   "col-span-2 row-span-2 aspect-4/5 sm:aspect-auto",
-  "aspect-4/5",
-  "aspect-4/5",
-  "col-span-2 aspect-16/9 sm:aspect-16/9",
-  "aspect-4/5",
   "aspect-4/5",
   "aspect-4/5",
   "col-span-2 aspect-16/9 sm:aspect-16/9",

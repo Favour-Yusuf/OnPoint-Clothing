@@ -9,6 +9,7 @@ import { QuantitySelector } from "@/components/ui/quantity-selector";
 import { Button } from "@/components/ui/button";
 import { ChevronDownIcon, CheckIcon } from "@/components/ui/icons";
 import { getPrimaryImage } from "@/lib/cloudinary/image";
+import { WishlistButton } from "@/components/product/wishlist-button";
 
 const AVAILABILITY_LABEL: Record<Product["availability"], string> = {
   "in-stock": "In Stock",
@@ -168,9 +169,12 @@ export function ProductDetails({ product }: { product: Product }) {
           <QuantitySelector value={quantity} onChange={setQuantity} />
         </div>
 
-        <Button type="button" onClick={handleAddToBag} disabled={soldOut} className="w-full">
-          {soldOut ? "Sold Out" : justAdded ? "Added to Bag" : "Add to Bag"}
-        </Button>
+        <div className="flex items-stretch gap-3">
+          <Button type="button" onClick={handleAddToBag} disabled={soldOut} className="flex-1">
+            {soldOut ? "Sold Out" : justAdded ? "Added to Bag" : "Add to Bag"}
+          </Button>
+          <WishlistButton productId={product.id} className="w-14 shrink-0 border border-foreground/25 hover:border-burgundy-light" />
+        </div>
 
         <p className="flex items-center gap-2 font-sans text-xs text-foreground/50">
           {product.availability !== "sold-out" ? <CheckIcon className="h-3.5 w-3.5 text-burgundy-light" /> : null}

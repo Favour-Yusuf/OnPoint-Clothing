@@ -867,7 +867,7 @@ export const products: Product[] = [
     currency: "NGN",
     categorySlug: "women",
     collectionSlugs: ["onpoint-active"],
-    backdropColor: "grey",
+    backdropColor: "red",
     images: [
       { publicId: "_DPR0366", alt: "Monalisa SculptFit Romper, full look, front view, arms crossed" },
       { publicId: "_DPR0407", alt: "Monalisa SculptFit Romper, full look, front view, playful" },

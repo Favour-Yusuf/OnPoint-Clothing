@@ -1,0 +1,152 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "OnPoint Clothing — Home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "OnPoint Clothing" [ref=e5]
+      - navigation "Primary" [ref=e6]:
+        - link "New Arrivals" [ref=e7] [cursor=pointer]:
+          - /url: /shop/new-arrivals
+        - link "Men" [ref=e8] [cursor=pointer]:
+          - /url: /shop/men
+        - link "Women" [ref=e9] [cursor=pointer]:
+          - /url: /shop/women
+        - link "Active" [ref=e10] [cursor=pointer]:
+          - /url: /active
+        - link "Accessories" [ref=e11] [cursor=pointer]:
+          - /url: /shop/accessories
+        - link "Expression" [ref=e12] [cursor=pointer]:
+          - /url: /expression
+        - link "Bespoke" [ref=e13] [cursor=pointer]:
+          - /url: /bespoke
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e15]:
+        - button "Search" [ref=e16]
+        - link "Account" [ref=e20] [cursor=pointer]:
+          - /url: /account
+        - button "Bag, 0 items" [ref=e24]
+  - main [ref=e28]:
+    - generic [ref=e31]:
+      - heading "Privacy Policy" [level=1] [ref=e32]
+      - paragraph [ref=e33]: Last updated 31 August 2026
+      - generic [ref=e34]:
+        - paragraph [ref=e35]: This policy explains what personal information OnPoint Clothing Nig (“OnPoint,” “we,” “us”) collects through justonpointng.com, why we collect it, and the choices you have. It applies to visitors, account holders, and anyone who places an order with us.
+        - generic [ref=e36]:
+          - heading "Information We Collect" [level=2] [ref=e37]
+          - generic [ref=e38]:
+            - paragraph [ref=e39]: "We collect information you provide directly, including:"
+            - list [ref=e40]:
+              - listitem [ref=e41]: • Account details — name and email address, when you create an account.
+              - listitem [ref=e42]: • Order and shipping information — name, delivery address, phone number, and order contents.
+              - listitem [ref=e43]: • Bespoke measurements and preferences, when you submit a bespoke request.
+              - listitem [ref=e44]: • Wishlist and saved-product activity, tied to your account.
+              - listitem [ref=e45]: • Newsletter sign-up email address.
+              - listitem [ref=e46]: • Anything you send us directly by email, phone, or WhatsApp.
+            - paragraph [ref=e47]: We do not collect or store your card details — payment is handled directly by Paystack, our payment processor (see “Third Parties” below).
+        - generic [ref=e48]:
+          - heading "How We Use It" [level=2] [ref=e49]
+          - generic [ref=e50]:
+            - paragraph [ref=e51]: "We use your information to:"
+            - list [ref=e52]:
+              - listitem [ref=e53]: • Process and fulfil orders, including bespoke commissions.
+              - listitem [ref=e54]: • Create and manage your account, including order history and wishlist.
+              - listitem [ref=e55]: • Communicate with you about an order, account, or enquiry.
+              - listitem [ref=e56]: • Send newsletter updates, only if you’ve subscribed — you can unsubscribe at any time.
+              - listitem [ref=e57]: • Detect and prevent fraud, and meet legal or accounting obligations.
+        - generic [ref=e58]:
+          - heading "Third Parties We Work With" [level=2] [ref=e59]
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: "We share the minimum data needed with the following processors to run the site and fulfil orders:"
+            - list [ref=e62]:
+              - listitem [ref=e63]: • Supabase — hosts our database and handles account authentication.
+              - listitem [ref=e64]: • Paystack — processes card and bank-transfer payments; we never see or store your full card number.
+              - listitem [ref=e65]: • Cloudinary — hosts product photography (no personal data).
+            - paragraph [ref=e66]: Order details are also relayed internally to our own team by email and WhatsApp so we can act on new orders promptly — this is an internal notification, not a third-party data sale.
+            - paragraph [ref=e67]: We do not sell your personal information to anyone.
+        - generic [ref=e68]:
+          - heading "Cookies & Local Storage" [level=2] [ref=e69]
+          - paragraph [ref=e71]: We use essential cookies to keep you signed in and to remember your shopping bag between visits. We don’t currently use third-party advertising or tracking cookies.
+        - generic [ref=e72]:
+          - heading "Data Retention" [level=2] [ref=e73]
+          - paragraph [ref=e75]: We keep account and order records for as long as your account is active, and for a reasonable period afterward to meet accounting, tax, and dispute-resolution obligations. You can ask us to delete your account data at any time, subject to records we’re required to keep by law.
+        - generic [ref=e76]:
+          - heading "Your Rights" [level=2] [ref=e77]
+          - paragraph [ref=e79]:
+            - text: Under the Nigeria Data Protection Act, you can ask us to access, correct, or delete the personal information we hold about you, or ask us to stop using it for marketing. To exercise any of these rights, contact us at
+            - link "Onpointclothingnig@yahoo.com" [ref=e80] [cursor=pointer]:
+              - /url: mailto:Onpointclothingnig@yahoo.com
+            - text: .
+        - generic [ref=e81]:
+          - heading "Changes to This Policy" [level=2] [ref=e82]
+          - paragraph [ref=e84]: We may update this policy as our practices change. We’ll update the date at the top of this page whenever we do.
+        - generic [ref=e85]:
+          - heading "Contact" [level=2] [ref=e86]
+          - paragraph [ref=e88]:
+            - text: Questions about this policy or your data can be sent to
+            - link "Onpointclothingnig@yahoo.com" [ref=e89] [cursor=pointer]:
+              - /url: mailto:Onpointclothingnig@yahoo.com
+            - text: or
+            - link "No 12B Ben Okagbue Mba, Lekki Phase 1, Lagos" [ref=e90] [cursor=pointer]:
+              - /url: https://maps.google.com/?q=No%2012B%20Ben%20Okagbue%20Mba%2C%20Lekki%20Phase%201%2C%20Lagos
+            - text: .
+  - contentinfo [ref=e91]:
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - img "OnPoint Clothing" [ref=e94]
+        - paragraph [ref=e95]: A multiple award-winning fashion house. Redefining luxury for the 21st century.
+      - navigation "Shop" [ref=e96]:
+        - paragraph [ref=e97]: Shop
+        - list [ref=e98]:
+          - listitem [ref=e99]:
+            - link "New Arrivals" [ref=e100] [cursor=pointer]:
+              - /url: /shop/new-arrivals
+          - listitem [ref=e101]:
+            - link "Men" [ref=e102] [cursor=pointer]:
+              - /url: /shop/men
+          - listitem [ref=e103]:
+            - link "Women" [ref=e104] [cursor=pointer]:
+              - /url: /shop/women
+          - listitem [ref=e105]:
+            - link "Accessories" [ref=e106] [cursor=pointer]:
+              - /url: /shop/accessories
+          - listitem [ref=e107]:
+            - link "Collections" [ref=e108] [cursor=pointer]:
+              - /url: /collections
+      - navigation "The House" [ref=e109]:
+        - paragraph [ref=e110]: The House
+        - list [ref=e111]:
+          - listitem [ref=e112]:
+            - link "About OnPoint" [ref=e113] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e114]:
+            - link "OnPoint Expression" [ref=e115] [cursor=pointer]:
+              - /url: /expression
+          - listitem [ref=e116]:
+            - link "Bespoke" [ref=e117] [cursor=pointer]:
+              - /url: /bespoke
+          - listitem [ref=e118]:
+            - link "OnPoint Active" [ref=e119] [cursor=pointer]:
+              - /url: /active
+          - listitem [ref=e120]:
+            - link "Contact" [ref=e121] [cursor=pointer]:
+              - /url: /about#contact
+      - generic [ref=e122]:
+        - paragraph [ref=e123]: Stay Informed
+        - paragraph [ref=e124]: New collections and bespoke openings, occasionally.
+        - generic [ref=e127]:
+          - textbox "Email address" [ref=e128]
+          - button "Subscribe" [ref=e129]
+    - generic [ref=e133]:
+      - paragraph [ref=e134]: © 2026 OnPoint Clothing
+      - generic [ref=e135]:
+        - link "Privacy Policy" [ref=e136] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms of Service" [ref=e137] [cursor=pointer]:
+          - /url: /terms
+        - link "Returns" [ref=e138] [cursor=pointer]:
+          - /url: /returns
+      - paragraph [ref=e139]: Multiple Award-Winning
+  - link "Chat with us on WhatsApp" [ref=e140] [cursor=pointer]:
+    - /url: https://wa.me/2348034645559?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20OnPoint%20Clothing.
+  - button "Open Next.js Dev Tools" [ref=e148] [cursor=pointer]

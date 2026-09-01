@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import { ProductGrid } from "@/components/product/product-grid";
 import { FilterBar } from "@/components/shop/filter-bar";
 import { EmptyState } from "@/components/ui/empty-state";
+import type { ColorFamily } from "@/lib/products";
 import type { Product } from "@/lib/types";
 
 export function ShopPageContent({
@@ -17,7 +18,7 @@ export function ShopPageContent({
   description: string;
   products: Product[];
   availableSizes: string[];
-  availableColors: string[];
+  availableColors: ColorFamily[];
 }) {
   return (
     <div className="bg-foreground pt-16 lg:pt-20">

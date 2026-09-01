@@ -107,13 +107,28 @@ export const onPointExpression = {
     ] satisfies ExpressionImage[],
     looks: [
       {
-        publicId: "J11A7496",
-        alt: "A model in a fur-trimmed ivory jacquard vest and beaded cap on the runway",
+        publicId: "J11A7578",
+        alt: "Two models crossing paths on the runway, one in a white cutout bodysuit, one in a matching cream crop set",
         orientation: "portrait",
       },
       {
-        publicId: "J11A7508",
-        alt: "A model in a dark beaded caftan and velvet hat on the runway",
+        publicId: "J11A7566",
+        alt: "A model in a white cutout bodysuit, back to the camera, carrying a white helmet",
+        orientation: "portrait",
+      },
+      {
+        publicId: "J11A7496",
+        alt: "A model in a fur-trimmed ivory jacquard vest and beaded cap on the runway, side profile",
+        orientation: "portrait",
+      },
+      {
+        publicId: "J11A7502",
+        alt: "A model in a fur-trimmed ivory jacquard vest and beaded cap, close portrait",
+        orientation: "portrait",
+      },
+      {
+        publicId: "J11A7570",
+        alt: "A model in a chartreuse wrap top on the runway",
         orientation: "portrait",
       },
       {
@@ -122,8 +137,13 @@ export const onPointExpression = {
         orientation: "portrait",
       },
       {
-        publicId: "J11A7570",
-        alt: "A model in a chartreuse wrap top on the runway",
+        publicId: "J11A7552",
+        alt: "A model in a black draped, sheer-layered look walking through a fog-lit doorway",
+        orientation: "portrait",
+      },
+      {
+        publicId: "J11A7508",
+        alt: "A model in a dark beaded caftan and velvet hat on the runway",
         orientation: "portrait",
       },
     ] satisfies ExpressionImage[],
@@ -189,28 +209,8 @@ export const onPointExpression = {
       orientation: "portrait",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-279",
-      alt: "A performer engaging the crowd from the illuminated stage",
-      orientation: "portrait",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-394",
-      alt: "Two performers reflected in mirrored stage panels",
-      orientation: "portrait",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-397",
-      alt: "Performers framed within illuminated mirrored panels",
-      orientation: "portrait",
-    },
-    {
       publicId: "ON_POINT_EXPRESSION_-401",
       alt: "A performer and backing vocalist beneath the OnPoint Expression sign",
-      orientation: "portrait",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-405",
-      alt: "A vocalist in a black gown performing beneath the marquee",
       orientation: "portrait",
     },
   ] satisfies ExpressionImage[],
@@ -247,8 +247,8 @@ export const onPointExpression = {
       orientation: "landscape",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-71",
-      alt: "Crew members sharing a high-five backstage",
+      publicId: "ON_POINT_EXPRESSION_-91",
+      alt: "A model in a vivid orange and pink tie-dye dress sharing a quiet moment backstage, garment racks in the background",
       orientation: "landscape",
     },
     {

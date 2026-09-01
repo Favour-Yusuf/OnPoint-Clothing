@@ -1,0 +1,131 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link "OnPoint Clothing — Home" [ref=f2e4] [cursor=pointer]:
+        - /url: /
+        - img "OnPoint Clothing" [ref=f2e5]
+      - navigation "Primary" [ref=f2e6]:
+        - link "New Arrivals" [ref=f2e7] [cursor=pointer]:
+          - /url: /shop/new-arrivals
+        - link "Men" [ref=f2e8] [cursor=pointer]:
+          - /url: /shop/men
+        - link "Women" [ref=f2e9] [cursor=pointer]:
+          - /url: /shop/women
+        - link "Active" [ref=f2e10] [cursor=pointer]:
+          - /url: /active
+        - link "Accessories" [ref=f2e11] [cursor=pointer]:
+          - /url: /shop/accessories
+        - link "Expression" [ref=f2e12] [cursor=pointer]:
+          - /url: /expression
+        - link "Bespoke" [ref=f2e13] [cursor=pointer]:
+          - /url: /bespoke
+        - link "About" [ref=f2e14] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=f2e15]:
+        - button "Search" [ref=f2e16]
+        - link "Account" [ref=f2e20] [cursor=pointer]:
+          - /url: /account
+        - button "Bag, 0 items" [ref=f2e24]
+  - main [ref=f2e28]:
+    - generic [ref=f2e31]:
+      - heading "Returns & Refunds" [level=1] [ref=f2e32]
+      - paragraph [ref=f2e33]: Last updated 31 August 2026
+      - generic [ref=f2e34]:
+        - generic [ref=f2e35]:
+          - heading "Ready-to-Wear" [level=2] [ref=f2e36]
+          - generic [ref=f2e37]:
+            - paragraph [ref=f2e38]: Ready-to-wear pieces may be returned within 30 days of delivery, provided the item is unworn, unwashed, and returned with its original tags attached. Items returned outside this window, or that show signs of wear, cannot be accepted.
+            - paragraph [ref=f2e39]:
+              - text: To start a return, contact us at
+              - link "Onpointclothingnig@yahoo.com" [ref=f2e40] [cursor=pointer]:
+                - /url: mailto:Onpointclothingnig@yahoo.com
+              - text: or on WhatsApp at
+              - link "+234 816 880 8535" [ref=f2e41] [cursor=pointer]:
+                - /url: https://wa.me/2348168808535
+              - text: with your order number. We’ll confirm eligibility and the return address.
+        - generic [ref=f2e42]:
+          - heading "Bespoke & Made-to-Order" [level=2] [ref=f2e43]
+          - paragraph [ref=f2e45]: Bespoke and made-to-order pieces are cut and finished specifically for the customer and are final sale — they are not eligible for return or exchange for reasons of size, fit, or change of mind. We will repair, remake, or refund a bespoke order only where the piece arrives damaged, defective, or materially different from what was ordered.
+        - generic [ref=f2e46]:
+          - heading "Refunds" [level=2] [ref=f2e47]
+          - paragraph [ref=f2e49]: Once a return is received and inspected, refunds are issued to the original payment method (Paystack, card, or bank transfer) within 7–10 business days. Shipping fees are non-refundable, and the cost of return shipping is the customer’s responsibility unless the return is due to our error or a defective item.
+        - generic [ref=f2e50]:
+          - heading "Damaged or Incorrect Items" [level=2] [ref=f2e51]
+          - paragraph [ref=f2e53]: If your order arrives damaged, defective, or different from what you ordered, contact us within 7 days of delivery with photos of the item and packaging. We will arrange a replacement, repair, or full refund, including return shipping, at no cost to you.
+        - generic [ref=f2e54]:
+          - heading "Exchanges" [level=2] [ref=f2e55]
+          - paragraph [ref=f2e57]:
+            - text: We don’t offer direct exchanges. If you’d like a different size or colour, return the eligible item for a refund and place a new order through
+            - link "the shop" [ref=f2e58] [cursor=pointer]:
+              - /url: /shop
+            - text: .
+        - generic [ref=f2e59]:
+          - heading "Questions" [level=2] [ref=f2e60]
+          - paragraph [ref=f2e62]:
+            - text: Reach our team at
+            - link "Onpointclothingnig@yahoo.com" [ref=f2e63] [cursor=pointer]:
+              - /url: mailto:Onpointclothingnig@yahoo.com
+            - text: or
+            - link "+234 803 464 5559" [ref=f2e64] [cursor=pointer]:
+              - /url: tel:+2348034645559
+            - text: .
+  - contentinfo [ref=f2e65]:
+    - generic [ref=f2e66]:
+      - generic [ref=f2e67]:
+        - img "OnPoint Clothing" [ref=f2e68]
+        - paragraph [ref=f2e69]: A multiple award-winning fashion house. Redefining luxury for the 21st century.
+      - navigation "Shop" [ref=f2e70]:
+        - paragraph [ref=f2e71]: Shop
+        - list [ref=f2e72]:
+          - listitem [ref=f2e73]:
+            - link "New Arrivals" [ref=f2e74] [cursor=pointer]:
+              - /url: /shop/new-arrivals
+          - listitem [ref=f2e75]:
+            - link "Men" [ref=f2e76] [cursor=pointer]:
+              - /url: /shop/men
+          - listitem [ref=f2e77]:
+            - link "Women" [ref=f2e78] [cursor=pointer]:
+              - /url: /shop/women
+          - listitem [ref=f2e79]:
+            - link "Accessories" [ref=f2e80] [cursor=pointer]:
+              - /url: /shop/accessories
+          - listitem [ref=f2e81]:
+            - link "Collections" [ref=f2e82] [cursor=pointer]:
+              - /url: /collections
+      - navigation "The House" [ref=f2e83]:
+        - paragraph [ref=f2e84]: The House
+        - list [ref=f2e85]:
+          - listitem [ref=f2e86]:
+            - link "About OnPoint" [ref=f2e87] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=f2e88]:
+            - link "OnPoint Expression" [ref=f2e89] [cursor=pointer]:
+              - /url: /expression
+          - listitem [ref=f2e90]:
+            - link "Bespoke" [ref=f2e91] [cursor=pointer]:
+              - /url: /bespoke
+          - listitem [ref=f2e92]:
+            - link "OnPoint Active" [ref=f2e93] [cursor=pointer]:
+              - /url: /active
+          - listitem [ref=f2e94]:
+            - link "Contact" [ref=f2e95] [cursor=pointer]:
+              - /url: /about#contact
+      - generic [ref=f2e96]:
+        - paragraph [ref=f2e97]: Stay Informed
+        - paragraph [ref=f2e98]: New collections and bespoke openings, occasionally.
+        - generic [ref=f2e101]:
+          - textbox "Email address" [ref=f2e102]
+          - button "Subscribe" [ref=f2e103]
+    - generic [ref=f2e107]:
+      - paragraph [ref=f2e108]: © 2026 OnPoint Clothing
+      - generic [ref=f2e109]:
+        - link "Privacy Policy" [ref=f2e110] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms of Service" [ref=f2e111] [cursor=pointer]:
+          - /url: /terms
+        - link "Returns" [ref=f2e112] [cursor=pointer]:
+          - /url: /returns
+      - paragraph [ref=f2e113]: Multiple Award-Winning
+  - link "Chat with us on WhatsApp" [ref=f2e114] [cursor=pointer]:
+    - /url: https://wa.me/2348034645559?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20OnPoint%20Clothing.
+  - button "Open Next.js Dev Tools" [ref=f2e122] [cursor=pointer]

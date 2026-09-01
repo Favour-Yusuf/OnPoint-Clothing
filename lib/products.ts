@@ -1,4 +1,5 @@
 import { createPublicClient } from "@/lib/supabase/public";
+import { getColorFamily, getFamilyHex } from "@/lib/color-families";
 import type { Category, Collection, CloudinaryImage, Product, ProductColor, ProductVariant } from "@/lib/types";
 
 /**
@@ -220,8 +221,10 @@ export async function filterProducts(filters: ProductFilters): Promise<Product[]
     results = results.filter((product) => product.sizes.includes(filters.size!));
   }
   if (filters.color) {
+    // filters.color holds a family name (e.g. "Red"), not a specific shade
+    // (e.g. "Wine") — see lib/color-families.ts.
     results = results.filter((product) =>
-      product.colors.some((color) => color.name.toLowerCase() === filters.color!.toLowerCase())
+      product.colors.some((color) => getColorFamily(color.name).toLowerCase() === filters.color!.toLowerCase())
     );
   }
 
@@ -273,12 +276,20 @@ export function getAvailableSizes(productList: Product[]): string[] {
   return Array.from(sizes);
 }
 
-export function getAvailableColors(productList: Product[]): string[] {
-  const colors = new Set<string>();
+export type ColorFamily = { name: string; hex: string };
+
+/**
+ * One entry per color *family* (see lib/color-families.ts), not per exact
+ * shade — several distinct "Custom"/"Wine"/"Burgundy"-type names collapse
+ * into a single representative swatch so the filter list stays a handful of
+ * visually distinct dots instead of two dozen near-identical ones.
+ */
+export function getAvailableColors(productList: Product[]): ColorFamily[] {
+  const families = new Set<string>();
   for (const product of productList) {
-    for (const color of product.colors) colors.add(color.name);
+    for (const color of product.colors) families.add(getColorFamily(color.name));
   }
-  return Array.from(colors);
+  return Array.from(families).map((name) => ({ name, hex: getFamilyHex(name) }));
 }
 
 export async function getAllCategories(): Promise<Category[]> {
@@ -346,6 +357,14 @@ export async function getCollection(slug: string): Promise<Collection | undefine
     image: { publicId: row.cloudinary_public_id ?? "placeholder:no-image", alt: row.name },
     productSlugs: row.product_collections.flatMap((pc) => (pc.products ? [pc.products.slug] : [])),
   };
+}
+
+export async function getProductsByIds(ids: string[]): Promise<Product[]> {
+  if (ids.length === 0) return [];
+  const supabase = createPublicClient();
+  const { data, error } = await supabase.from("products").select(PRODUCT_SELECT).in("id", ids).eq("is_active", true);
+  if (error) throw new Error(`getProductsByIds: ${error.message}`);
+  return (data as unknown as ProductRow[]).map(mapProductRow);
 }
 
 export async function getCollectionProducts(slug: string): Promise<Product[]> {

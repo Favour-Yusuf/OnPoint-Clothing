@@ -27,7 +27,7 @@ export function ActiveTeaser() {
           Built <span className="italic">to move.</span>
         </h2>
         <p className="max-w-md text-base leading-relaxed text-foreground/75 sm:text-lg">
-          Performance activewear from OnPoint — sculpting fits, breathable stretch fabric, and the same attention to
+          Performance activewear from OnPoint. Sculpting fits, breathable stretch fabric, and the same attention to
           detail as the rest of the house.
         </p>
         <div>

@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState } from "react";
-import type { SortOption } from "@/lib/products";
+import type { SortOption, ColorFamily } from "@/lib/products";
 import { CloseIcon } from "@/components/ui/icons";
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
@@ -19,7 +19,7 @@ export function FilterBar({
   resultCount,
 }: {
   availableSizes: string[];
-  availableColors: string[];
+  availableColors: ColorFamily[];
   resultCount: number;
 }) {
   const router = useRouter();
@@ -69,16 +69,16 @@ export function FilterBar({
         <div className="flex flex-wrap gap-3">
           {availableColors.map((color) => (
             <button
-              key={color}
+              key={color.name}
               type="button"
-              onClick={() => updateParam("color", activeColor === color ? "" : color)}
-              aria-pressed={activeColor === color}
-              aria-label={color}
-              title={color}
+              onClick={() => updateParam("color", activeColor === color.name ? "" : color.name)}
+              aria-pressed={activeColor === color.name}
+              aria-label={color.name}
+              title={color.name}
               className={`h-7 w-7 rounded-full border transition-all ${
-                activeColor === color ? "ring-2 ring-burgundy ring-offset-2 ring-offset-foreground" : "border-background/20"
+                activeColor === color.name ? "ring-2 ring-burgundy ring-offset-2 ring-offset-foreground" : "border-background/20"
               }`}
-              style={{ backgroundColor: colorToHex(color) }}
+              style={{ backgroundColor: color.hex }}
             />
           ))}
         </div>
@@ -180,18 +180,4 @@ function FilterGroup({ label, children }: { label: string; children: React.React
       {children}
     </div>
   );
-}
-
-const COLOR_HEX: Record<string, string> = {
-  Black: "#0a0a0a",
-  Charcoal: "#3a3733",
-  Ivory: "#f2f0ee",
-  Burgundy: "#6d0f1f",
-  Camel: "#b28a5b",
-  Navy: "#1c2333",
-  Stone: "#a49a89",
-};
-
-function colorToHex(name: string): string {
-  return COLOR_HEX[name] ?? "#8a8478";
 }

@@ -194,6 +194,9 @@ function AccountMenu({ isAdmin }: { isAdmin: boolean }) {
           <MenuLink href="/account/orders" onSelect={() => setOpen(false)}>
             Orders
           </MenuLink>
+          <MenuLink href="/account/wishlist" onSelect={() => setOpen(false)}>
+            Wishlist
+          </MenuLink>
           {isAdmin ? (
             <MenuLink href="/admin" onSelect={() => setOpen(false)}>
               Admin Dashboard

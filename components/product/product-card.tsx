@@ -8,6 +8,7 @@ import { useCart } from "@/lib/cart-context";
 import { useUI } from "@/lib/ui-context";
 import { MediaImage } from "@/components/ui/media-image";
 import { getPrimaryImage } from "@/lib/cloudinary/image";
+import { WishlistButton } from "@/components/product/wishlist-button";
 
 export function ProductCard({
   product,
@@ -82,6 +83,11 @@ export function ProductCard({
             </span>
           ) : null}
         </Link>
+
+        <WishlistButton
+          productId={product.id}
+          className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/70 backdrop-blur-sm hover:text-burgundy-light"
+        />
 
         {defaultVariant ? (
           <button

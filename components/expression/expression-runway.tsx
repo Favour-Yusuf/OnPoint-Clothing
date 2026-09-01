@@ -36,36 +36,35 @@ export function ExpressionRunway() {
         </button>
       </Reveal>
 
-      {/* Horizontal procession: the runway walk continues past the edge of the
-          screen, mirroring how the looks actually moved through the room. */}
-      <div className="scrollbar-hidden mt-6 flex gap-4 overflow-x-auto px-6 pb-2 sm:mt-8 sm:gap-5 sm:px-10 lg:px-16 xl:px-20">
-        {rail.map((image) => (
-          <button
-            key={image.publicId}
-            type="button"
-            onClick={() => open(image)}
-            aria-label={`Open image: ${image.alt}`}
-            className="group relative aspect-16/9 w-[78vw] shrink-0 overflow-hidden bg-foreground/5 sm:w-[46vw] lg:w-[32vw]"
-          >
-            <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-              <MediaImage image={image} sizes="(min-width: 1024px) 32vw, (min-width: 640px) 46vw, 78vw" />
-            </div>
-          </button>
-        ))}
-        {looks.map((image) => (
-          <button
-            key={image.publicId}
-            type="button"
-            onClick={() => open(image)}
-            aria-label={`Open image: ${image.alt}`}
-            className="group relative aspect-4/5 w-[58vw] shrink-0 overflow-hidden bg-foreground/5 sm:w-[30vw] lg:w-[19vw]"
-          >
-            <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-              <MediaImage image={image} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 30vw, 58vw" />
-            </div>
-          </button>
-        ))}
-      </div>
+      <Container className="mt-4 sm:mt-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+          {rail.map((image) => (
+            <Reveal key={image.publicId} className="relative aspect-16/9 w-full">
+              <button type="button" onClick={() => open(image)} aria-label={`Open image: ${image.alt}`} className="group absolute inset-0 block overflow-hidden">
+                <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
+                  <MediaImage image={image} sizes="(min-width: 640px) 50vw, 100vw" />
+                </div>
+              </button>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 gap-4 sm:mt-24 sm:gap-5 lg:grid-cols-4">
+          {looks.map((image, i) => (
+            <Reveal
+              key={image.publicId}
+              delayMs={(i % 4) * 80}
+              className={`relative aspect-4/5 w-full ${i % 4 === 1 || i % 4 === 2 ? "lg:-mt-10" : ""}`}
+            >
+              <button type="button" onClick={() => open(image)} aria-label={`Open image: ${image.alt}`} className="group absolute inset-0 block overflow-hidden">
+                <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
+                  <MediaImage image={image} sizes="(min-width: 1024px) 23vw, 46vw" />
+                </div>
+              </button>
+            </Reveal>
+          ))}
+        </div>
+      </Container>
 
       {openIndex !== null ? (
         <ExpressionLightbox images={images} index={openIndex} onClose={() => setOpenIndex(null)} onNavigate={setOpenIndex} />

@@ -3,10 +3,12 @@ import { Montserrat, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "../globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { UIProvider } from "@/lib/ui-context";
+import { WishlistProvider } from "@/lib/wishlist-context";
 import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { SearchOverlay } from "@/components/layout/search-overlay";
 import { Footer } from "@/components/layout/footer";
+import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 
 const montserrat = Montserrat({
@@ -66,12 +68,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <CartProvider>
           <UIProvider>
-            <Header />
-            <MobileNav />
-            <SearchOverlay />
-            <CartDrawer />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <WishlistProvider>
+              <Header />
+              <MobileNav />
+              <SearchOverlay />
+              <CartDrawer />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <WhatsAppButton />
+            </WishlistProvider>
           </UIProvider>
         </CartProvider>
       </body>
