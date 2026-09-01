@@ -38,10 +38,6 @@ export function ExpressionHost() {
 
           <Reveal delayMs={100} className="flex flex-col gap-5 lg:col-span-7">
             <div className="h-[3px] w-16 bg-burgundy" aria-hidden="true" />
-            <p className="max-w-md text-base leading-relaxed text-background/70 sm:text-lg">
-              Two voices, one register. Regal and unhurried, moving the night from arrival to runway to encore
-              without once losing the room.
-            </p>
           </Reveal>
         </div>
 
