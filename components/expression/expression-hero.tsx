@@ -74,10 +74,6 @@ export function ExpressionHero() {
         <p className="max-w-lg font-display text-2xl leading-tight font-light text-burgundy-light sm:text-3xl">
           Where fashion finds its voice.
         </p>
-
-        <p className="max-w-md text-base leading-relaxed text-foreground/70 sm:text-lg">
-          A night staged in full color. The house steps off the rack and onto a runway of its own making.
-        </p>
       </div>
 
       <div
