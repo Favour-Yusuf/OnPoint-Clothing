@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section className="relative flex h-dvh min-h-[640px] w-full flex-col justify-end overflow-hidden bg-background">
       <div className="absolute inset-0">
-        <HeroImageRotator images={editorialImages.heroRotation} />
+        <HeroImageRotator slides={editorialImages.heroRotation} />
         {/* Burgundy-tinted wash, not a neutral black fade — the color carries the hero. */}
         <div className="absolute inset-0 bg-linear-to-t from-burgundy-deep via-background/75 to-background/20" />
         <div className="absolute inset-0 bg-linear-to-r from-background/50 via-transparent to-transparent" />

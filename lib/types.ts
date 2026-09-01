@@ -23,6 +23,16 @@ export type CloudinaryVideo = {
   publicId: string;
 };
 
+/**
+ * One slide in the homepage hero's rotation — either a still image or a
+ * short autoplaying video. A video slide is trimmed to `endSeconds` at
+ * delivery time (see lib/cloudinary/video.ts) rather than by re-editing the
+ * source file, so it fits the rotator's fixed per-slide display duration.
+ */
+export type HeroSlide =
+  | ({ kind: "image" } & CloudinaryImage)
+  | ({ kind: "video" } & CloudinaryVideo & { alt: string; endSeconds: number });
+
 export type ProductColor = {
   name: string;
   /** Swatch hex, for the color selector UI. */

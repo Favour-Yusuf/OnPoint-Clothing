@@ -1,4 +1,4 @@
-import type { CloudinaryImage } from "@/lib/types";
+import type { CloudinaryImage, HeroSlide } from "@/lib/types";
 
 /**
  * Homepage imagery that isn't sourced from the product/category/collection
@@ -11,37 +11,64 @@ export const editorialImages = {
     publicId: "Web_7",
     alt: "OnPoint model in a white embroidered kaftan with coral beadwork",
   } satisfies CloudinaryImage,
-  /** The homepage hero cycles through these, in order. First entry matches `hero` above. */
+  /**
+   * The homepage hero cycles through these, in order. First entry matches
+   * `hero` above and is always an image (kept fast for first paint/LCP —
+   * see priority handling in HeroImageRotator). Two short video slides are
+   * mixed in further along for motion; each is trimmed to `endSeconds` at
+   * delivery time (lib/cloudinary/video.ts) rather than by re-editing the
+   * source clip, so a longer source still fits the rotator's fixed
+   * per-slide display duration.
+   */
   heroRotation: [
     {
+      kind: "image",
       publicId: "Web_7",
       alt: "OnPoint model in a white embroidered kaftan with coral beadwork",
     },
     {
+      kind: "image",
       publicId: "DSC05331",
       alt: "Two OnPoint models in matching coral two-piece sets, seated on driftwood at the beach",
     },
     {
+      kind: "video",
+      publicId: "On_Point_motion_2",
+      alt: "OnPoint brand motion reel",
+      endSeconds: 6,
+    },
+    {
+      kind: "image",
       publicId: "Web_9",
       alt: "A model in an angular geometric-print wrap walking the runway, GLITZ Fashion Week signage behind",
     },
     {
+      kind: "image",
       publicId: "DSC05254",
       alt: "Two OnPoint models in matching coral two-piece sets, walking together on the beach",
     },
     {
+      kind: "image",
       publicId: "Web_6",
       alt: "OnPoint model in a regal red beaded kaftan and crown, holding a fur-trimmed staff, studio portrait on a red backdrop",
     },
     {
+      kind: "video",
+      publicId: "ONPOINT_FOR_WEBSITE_squished",
+      alt: "OnPoint garment detail and movement reel",
+      endSeconds: 6,
+    },
+    {
+      kind: "image",
       publicId: "DSC05179",
       alt: "Two OnPoint models in matching coral two-piece sets, standing together on the beach",
     },
     {
+      kind: "image",
       publicId: "Web_11",
       alt: "Two OnPoint models in matching sage-green printed co-ord sets, studio portrait on a red backdrop",
     },
-  ] satisfies CloudinaryImage[],
+  ] satisfies HeroSlide[],
   aboutHero: {
     publicId: "Pato_web",
     alt: "The OnPoint atelier",
