@@ -5,12 +5,17 @@ import { sendAbandonedCheckoutEmail } from "@/lib/notifications/abandoned-checko
 const ONE_HOUR_MS = 60 * 60 * 1000;
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
-// Called by Vercel Cron (see vercel.json) on a schedule. Finds orders whose
-// checkout was submitted (payment_status still 'pending', a real Paystack
-// attempt exists) but never completed, and sends each a one-time reminder
-// email. Protected by CRON_SECRET so it can't be triggered by anyone else —
-// Vercel sends this automatically as an Authorization header when the
-// project env var is set.
+// SUSPENDED: the Vercel Cron trigger for this route was removed from
+// vercel.json's `crons` array, so this handler is no longer invoked on a
+// schedule. To re-enable, restore
+// { "path": "/api/cron/abandoned-checkouts", "schedule": "0 * * * *" } to
+// vercel.json's `crons` array and redeploy.
+//
+// Finds orders whose checkout was submitted (payment_status still
+// 'pending', a real Paystack attempt exists) but never completed, and
+// sends each a one-time reminder email. Protected by CRON_SECRET so it
+// can't be triggered by anyone else — Vercel sends this automatically as
+// an Authorization header when the project env var is set.
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
