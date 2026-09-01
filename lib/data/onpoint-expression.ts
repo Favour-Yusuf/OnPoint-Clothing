@@ -463,6 +463,25 @@ export const onPointExpression = {
     },
   ] satisfies ExpressionImage[],
 
+  epilogue: {
+    backstage: [
+      {
+        publicId: "ON_POINT_EXPRESSION_-421",
+        alt: "A black-and-white close embrace between two guests, one laughing broadly in sunglasses",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-92",
+        alt: "A warm backstage embrace between two guests, a stylist working in the background",
+        orientation: "landscape",
+      },
+    ] satisfies ExpressionImage[],
+    legacy: {
+      publicId: "ON_POINT_EXPRESSION_-105",
+      alt: "The OnPoint Expression marquee glowing at dusk",
+    } satisfies CloudinaryImage,
+  },
+
   legacy: {
     publicId: "ON_POINT_EXPRESSION_-105",
     alt: "The OnPoint Expression marquee glowing at dusk",
