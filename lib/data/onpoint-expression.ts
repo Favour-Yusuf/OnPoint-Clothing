@@ -3,7 +3,7 @@ import type { CloudinaryImage } from "@/lib/types";
 /**
  * Photography for the OnPoint Expression page and its homepage teaser, all
  * verified against the live "onpoint/OnPoint Expression" Cloudinary folder
- * (154 assets total — run `npm run cloudinary:list` to see the full set).
+ * (201 assets total — run `npm run cloudinary:list` to see the full set).
  * The page organizes its curated subset into five real event moments —
  * red carpet, runway, host, performance, epilogue — rather than one
  * undifferentiated gallery. Swap or extend any entry below with another
@@ -436,6 +436,7 @@ export const onPointExpression = {
     legacy: {
       publicId: "ON_POINT_EXPRESSION_-105",
       alt: "The OnPoint Expression marquee glowing at dusk",
-    } satisfies CloudinaryImage,
+      orientation: "landscape",
+    } satisfies ExpressionImage,
   },
 };

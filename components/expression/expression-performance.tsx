@@ -35,6 +35,7 @@ export function ExpressionPerformance() {
             // forcing a portrait crop into it cuts the subject's head off.
             const isWideSlot = span.includes("aspect-16/9");
             const className = isWideSlot && image.orientation !== "landscape" ? "aspect-4/5" : span;
+            const isBigTile = className.includes("col-span-2");
 
             return (
               <Reveal key={image.publicId} delayMs={(index % 4) * 60} className={className}>
@@ -45,7 +46,7 @@ export function ExpressionPerformance() {
                   className="group relative block h-full w-full overflow-hidden bg-foreground/5"
                 >
                   <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-                    <MediaImage image={image} sizes="(min-width: 640px) 25vw, 50vw" />
+                    <MediaImage image={image} sizes={isBigTile ? "(min-width: 640px) 50vw, 100vw" : "(min-width: 640px) 25vw, 50vw"} />
                   </div>
                   <div className="absolute inset-0 bg-burgundy-deep/0 transition-colors duration-300 group-hover:bg-burgundy-deep/15" />
                 </button>

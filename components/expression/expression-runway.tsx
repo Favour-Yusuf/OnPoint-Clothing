@@ -32,10 +32,13 @@ export function ExpressionRunway() {
       </Reveal>
 
       {/* Hero band: the standout shots at large scale. Landscape entries span
-          both columns so the four wide cinematic frames break up the mostly
-          portrait grid instead of clustering together. */}
+          both columns of the base 2-col grid (full width below lg) — and half
+          of the 4-col grid at lg — so the four wide cinematic frames break up
+          the mostly portrait grid instead of clustering together. Dense
+          packing backfills the gaps a landscape tile leaves when it can't
+          start mid-row. */}
       <Container className="mt-4 sm:mt-5">
-        <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+        <div className="grid grid-flow-row-dense grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
           {hero.map((image) => (
             <Reveal
               key={image.publicId}
@@ -49,7 +52,7 @@ export function ExpressionRunway() {
                     image={image}
                     sizes={
                       image.orientation === "landscape"
-                        ? "(min-width: 1024px) 92vw, 100vw"
+                        ? "(min-width: 1024px) 46vw, 100vw"
                         : "(min-width: 1024px) 23vw, 46vw"
                     }
                   />
@@ -70,7 +73,14 @@ export function ExpressionRunway() {
             >
               <button type="button" onClick={() => open(image)} aria-label={`Open image: ${image.alt}`} className="group absolute inset-0 block overflow-hidden bg-foreground/5">
                 <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-                  <MediaImage image={image} sizes="(min-width: 1024px) 23vw, (min-width: 640px) 32vw, 46vw" />
+                  <MediaImage
+                    image={image}
+                    sizes={
+                      image.orientation === "landscape"
+                        ? "(min-width: 1024px) 46vw, (min-width: 640px) 66vw, 92vw"
+                        : "(min-width: 1024px) 23vw, (min-width: 640px) 32vw, 46vw"
+                    }
+                  />
                 </div>
               </button>
             </Reveal>
