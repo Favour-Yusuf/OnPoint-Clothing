@@ -36,46 +36,39 @@ export const onPointExpression = {
       orientation: "landscape",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-86",
-      alt: "A guest arriving in a vivid printed dress, flanked by security on the red carpet",
+      publicId: "ON_POINT_EXPRESSION_-206",
+      alt: "A close portrait of a guest in an ornate gold Egyptian-style collar necklace and beige suit, holding a red cup",
       orientation: "portrait",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-55",
-      alt: "OnPoint Expression's security detail lined up along the red carpet",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-62",
-      alt: "The security line holding position as guests arrive",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-173",
-      alt: "A couple posing for a portrait beside the illuminated marquee sign at night",
+      publicId: "ON_POINT_EXPRESSION_-193",
+      alt: "A guest in a burgundy-and-green striped kaftan posing dramatically beside the illuminated ON POINT EXPRESSION marquee letters",
       orientation: "portrait",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-176",
-      alt: "A guest in a beaded cap and embroidered kaftan posing beside the marquee sign",
+      publicId: "ON_POINT_EXPRESSION_-216",
+      alt: "A guest in a black plunging halter jumpsuit checking her phone on a lounge cushion, holding a Hennessy cup",
       orientation: "portrait",
     },
     {
-      publicId: "ON_POINT_EXPRESSION_-192",
-      alt: "A guest in a burgundy and green striped kaftan arriving beside the sign",
+      publicId: "ON_POINT_EXPRESSION_-90",
+      alt: "A guest's back view showing the vivid print of her tie-dye kaftan, in conversation with another guest",
       orientation: "portrait",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-203",
-      alt: "A guest settled into the lounge under neon light, holding a branded cup",
-      orientation: "landscape",
-    },
-    {
-      publicId: "ON_POINT_EXPRESSION_-80",
-      alt: "A guest in an embroidered kaftan and wide-brimmed hat, standing before a backdrop of ornate framed portraits",
-      orientation: "landscape",
     },
   ] satisfies ExpressionImage[],
+
+  breathers: {
+    intoRunway: {
+      publicId: "ON_POINT_EXPRESSION_-50",
+      alt: "OnPoint Expression's security detail lined up in suits and sunglasses before the step-and-repeat wall",
+      orientation: "landscape",
+    },
+    intoHost: {
+      publicId: "ON_POINT_EXPRESSION_-240",
+      alt: "The hosts walking the runway, the female host's cape caught mid-motion",
+      orientation: "landscape",
+    },
+  } satisfies { intoRunway: ExpressionImage; intoHost: ExpressionImage },
 
   runway: {
     opener: {
