@@ -11,9 +11,8 @@ import type { ExpressionImage } from "@/lib/data/onpoint-expression";
 
 export function ExpressionRunway() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { cinematic, looks } = onPointExpression.runway;
-  const [opener, ...rail] = cinematic;
-  const images: ExpressionImage[] = [...cinematic, ...looks];
+  const { opener, hero, wall } = onPointExpression.runway;
+  const images: ExpressionImage[] = [opener, ...hero, ...wall];
 
   function open(image: ExpressionImage) {
     setOpenIndex(images.indexOf(image));
@@ -22,11 +21,7 @@ export function ExpressionRunway() {
   return (
     <section className="py-20 sm:py-28">
       <Container>
-        <SectionHeading
-          eyebrow="The Runway"
-          title="This is what recognition sounds like."
-          description="The clothes, presented the way they were built to be seen: one walk, one look, one argument at a time."
-        />
+        <SectionHeading title="Runway" />
       </Container>
 
       <Reveal className="relative mt-14 aspect-16/9 w-full">
@@ -36,29 +31,46 @@ export function ExpressionRunway() {
         </button>
       </Reveal>
 
+      {/* Hero band: the standout shots at large scale. Landscape entries span
+          both columns so the four wide cinematic frames break up the mostly
+          portrait grid instead of clustering together. */}
       <Container className="mt-4 sm:mt-5">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-          {rail.map((image) => (
-            <Reveal key={image.publicId} className="relative aspect-16/9 w-full">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+          {hero.map((image) => (
+            <Reveal
+              key={image.publicId}
+              className={`relative w-full ${
+                image.orientation === "landscape" ? "col-span-2 aspect-16/9" : "aspect-4/5"
+              }`}
+            >
               <button type="button" onClick={() => open(image)} aria-label={`Open image: ${image.alt}`} className="group absolute inset-0 block overflow-hidden">
                 <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-                  <MediaImage image={image} sizes="(min-width: 640px) 50vw, 100vw" />
+                  <MediaImage
+                    image={image}
+                    sizes={
+                      image.orientation === "landscape"
+                        ? "(min-width: 1024px) 92vw, 100vw"
+                        : "(min-width: 1024px) 23vw, 46vw"
+                    }
+                  />
                 </div>
               </button>
             </Reveal>
           ))}
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-4 sm:mt-24 sm:gap-5 lg:grid-cols-4">
-          {looks.map((image, i) => (
+        {/* Wall: the dense "contact sheet" of every remaining runway shot. */}
+        <div className="mt-16 grid grid-cols-2 gap-3 sm:mt-24 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+          {wall.map((image) => (
             <Reveal
               key={image.publicId}
-              delayMs={(i % 4) * 80}
-              className={`relative aspect-4/5 w-full ${i % 4 === 1 || i % 4 === 2 ? "lg:-mt-10" : ""}`}
+              className={`relative w-full ${
+                image.orientation === "landscape" ? "col-span-2 aspect-16/9 sm:col-span-3 lg:col-span-2" : "aspect-4/5"
+              }`}
             >
-              <button type="button" onClick={() => open(image)} aria-label={`Open image: ${image.alt}`} className="group absolute inset-0 block overflow-hidden">
+              <button type="button" onClick={() => open(image)} aria-label={`Open image: ${image.alt}`} className="group absolute inset-0 block overflow-hidden bg-foreground/5">
                 <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-                  <MediaImage image={image} sizes="(min-width: 1024px) 23vw, 46vw" />
+                  <MediaImage image={image} sizes="(min-width: 1024px) 23vw, (min-width: 640px) 32vw, 46vw" />
                 </div>
               </button>
             </Reveal>

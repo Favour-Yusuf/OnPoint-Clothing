@@ -78,16 +78,32 @@ export const onPointExpression = {
   ] satisfies ExpressionImage[],
 
   runway: {
-    cinematic: [
-      {
-        publicId: "Web_9",
-        alt: "A model in an angular geometric-print wrap walking the runway, GLITZ Fashion Week signage behind",
-        orientation: "landscape",
-      },
+    opener: {
+      publicId: "Web_9",
+      alt: "A model in an angular geometric-print wrap walking the runway, GLITZ Fashion Week signage behind",
+      orientation: "landscape",
+    } satisfies ExpressionImage,
+
+    hero: [
       {
         publicId: "Web_13",
         alt: "A model in a dark beaded caftan and fur hat walking the runway past a seated audience",
         orientation: "landscape",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-376",
+        alt: "A model in a black cropped top and pencil skirt walking through stage fog past an \"ACTIVE ONPOINT\" screen, confident stride",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-443",
+        alt: "A man in a dark trench-style robe and wide-brimmed hat walking alone down the runway path, moody amber lighting",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-307",
+        alt: "A man in a red embroidered kaftan and cap walking alone down the runway path through smoke",
+        orientation: "portrait",
       },
       {
         publicId: "Web_14",
@@ -95,17 +111,163 @@ export const onPointExpression = {
         orientation: "landscape",
       },
       {
+        publicId: "ON_POINT_EXPRESSION_-236",
+        alt: "The hosts walking the runway together in matching dark regalia, big screen behind",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-475",
+        alt: "A black-and-white shot of a plus-size model in a jacquard tunic standing inside an illuminated runway frame",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-237",
+        alt: "The hosts walking the runway in red-trimmed regalia, TRACE screen behind",
+        orientation: "portrait",
+      },
+      {
         publicId: "Web_15",
         alt: "A model in a full-face helmet and dark robe walking alone through fog and light",
         orientation: "landscape",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-470",
+        alt: "A model in a white plunging embellished blazer and matching shorts, voluminous hair, striking pose on the runway",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-377",
+        alt: "A black-and-white shot of a model in a fitted romper with twin space-buns, mid-stride on the runway",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-481",
+        alt: "A model in a dark textured mini set and dramatic feathered hat, side profile inside an illuminated mirrored runway frame",
+        orientation: "portrait",
       },
       {
         publicId: "Web_16",
         alt: "A helmeted model walking toward the camera, screens reading ACE ONPOINT behind",
         orientation: "landscape",
       },
+      {
+        publicId: "ON_POINT_EXPRESSION_-464",
+        alt: "A plus-size model in a sage jacquard kaftan on the runway, a model in black-and-gold following behind",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-445",
+        alt: "A black-and-white close shot of a model in a wide-brimmed hat, sunglasses, and netted gloves on the runway",
+        orientation: "portrait",
+      },
     ] satisfies ExpressionImage[],
-    looks: [
+
+    wall: [
+      {
+        publicId: "ON_POINT_EXPRESSION_-351",
+        alt: "A model in a fur-trimmed black-and-white graphic-print caftan walking past a sculptural silver chair prop",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-235",
+        alt: "A black-and-white shot of the hosts walking the runway toward camera, disco ball prop in the foreground",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-433",
+        alt: "The hosts walking the runway past a \"Just Onpoint\" script screen amid festive lighting",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-439",
+        alt: "A man in an embroidered ivory agbada and sunglasses on the runway, red slides, ON POINT EXPRESSION signage behind",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-442",
+        alt: "A man in a black kaftan and velvet cap with layered red beads, smiling as he walks the runway",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-480",
+        alt: "A model in a black fringed crop top and shorts walking past the Hennessy-branded illuminated runway installation",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-296",
+        alt: "Two men in ceremonial red and black velvet robes walking the runway together",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-332",
+        alt: "Two models on the runway past a mirrored installation, one in a dark bejeweled robe walking, one standing still in green",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-317",
+        alt: "A model in a dark embellished kaftan and cap posed still inside an illuminated mirrored runway box, crowd reflected behind",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-320",
+        alt: "A model in a black velvet embroidered kaftan and red cap standing in profile inside an illuminated runway box",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-324",
+        alt: "A model in a white tie-dye ruffled tunic and dark wide-leg trousers walking between illuminated runway panels",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-352",
+        alt: "A man in a rust agbada walking barefoot down the runway path, disco ball prop in the foreground",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-363",
+        alt: "A model in a mustard sleeveless dress walking through an illuminated glass runway installation, seated guests visible behind",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-358",
+        alt: "A man in a rust kaftan and cap standing still inside an illuminated runway box, crew and photographers visible at the edges",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-362",
+        alt: "A man in a blue-and-white graphic plaid top and cornrows walking the runway past the Expression entrance signage",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-375",
+        alt: "A black-and-white long shot of a model in a white crop set walking through heavy stage fog past a repeating mural",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-437",
+        alt: "A man in a dark brown agbada, cap, and sunglasses walking the runway past red stage lighting",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-472",
+        alt: "A black-and-white side-profile shot of a model in a jacquard cape walking the runway",
+        orientation: "portrait",
+      },
+      {
+        publicId: "J11A7557",
+        alt: "A model's back view in white Onpoint-branded activewear crop top and biker shorts, hair in braided buns",
+        orientation: "portrait",
+      },
+      {
+        publicId: "J11A7554",
+        alt: "A model in a black top and dark maxi skirt walking off the runway into stage fog, jacket in hand",
+        orientation: "portrait",
+      },
+      {
+        publicId: "ON_POINT_EXPRESSION_-239",
+        alt: "A black-and-white candid shot of the hosts walking and conversing along the runway",
+        orientation: "landscape",
+      },
       {
         publicId: "J11A7578",
         alt: "Two models crossing paths on the runway, one in a white cutout bodysuit, one in a matching cream crop set",
