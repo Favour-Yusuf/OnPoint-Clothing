@@ -20,7 +20,7 @@ export default function ExpressionPage() {
     <div className="bg-background">
       <ExpressionHero />
       <ExpressionRedCarpet />
-      <ExpressionBreather image={onPointExpression.breathers.intoRunway} />
+      <ExpressionBreather image={onPointExpression.breathers.intoRunway} position="50% 20%" />
       <ExpressionRunway />
       <ExpressionBreather image={onPointExpression.breathers.intoHost} />
       <ExpressionHost />
