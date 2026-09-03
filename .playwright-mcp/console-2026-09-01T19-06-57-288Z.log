@@ -1,0 +1,36 @@
+[    2671ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[    2755ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[    2957ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[    3836ms] [LOG] [Fast Refresh] done in 993ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[76741053ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[76767530ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76771118ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76771494ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76771925ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76772425ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76772935ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76773493ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76774207ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76774932ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76775694ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76776459ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76777277ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76778250ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76779243ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76780218ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76781257ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76784243ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76785368ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76786520ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76787749ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76789004ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76790309ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76791665ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76793072ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76794530ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76796047ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76797609ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76799223ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76800885ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76802597ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[76804355ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0

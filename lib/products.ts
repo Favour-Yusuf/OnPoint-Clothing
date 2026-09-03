@@ -164,6 +164,7 @@ export async function getFeaturedProducts(limit = 4): Promise<Product[]> {
     .select(PRODUCT_SELECT)
     .eq("is_active", true)
     .eq("is_featured", true)
+    .eq("hide_from_general_shop", false)
     .limit(limit);
   if (error) throw new Error(`getFeaturedProducts: ${error.message}`);
   const rows = (data as unknown as ProductRow[]).map(mapProductRow);
@@ -175,6 +176,7 @@ export async function getFeaturedProducts(limit = 4): Promise<Product[]> {
     .from("products")
     .select(PRODUCT_SELECT)
     .eq("is_active", true)
+    .eq("hide_from_general_shop", false)
     .limit(limit);
   if (fallbackError) throw new Error(`getFeaturedProducts fallback: ${fallbackError.message}`);
   return (fallbackData as unknown as ProductRow[]).map(mapProductRow);
@@ -210,6 +212,11 @@ export async function filterProducts(filters: ProductFilters): Promise<Product[]
   const supabase = createPublicClient();
   let query = supabase.from("products").select(PRODUCT_SELECT).eq("is_active", true);
 
+  // A product flagged hide_from_general_shop (e.g. an accessory still
+  // waiting on model photography) stays visible on its own category page
+  // but drops out of every cross-category listing — "/shop" with no
+  // category filter, "/shop/new-arrivals", etc.
+  if (!filters.category) query = query.eq("hide_from_general_shop", false);
   if (filters.newOnly) query = query.eq("is_new", true);
   if (filters.category) query = query.eq("categories.slug", filters.category);
   if (filters.query) query = query.ilike("name", `%${filters.query.trim()}%`);
@@ -372,6 +379,21 @@ export async function getProductsByIds(ids: string[]): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select(PRODUCT_SELECT).in("id", ids).eq("is_active", true);
   if (error) throw new Error(`getProductsByIds: ${error.message}`);
   return (data as unknown as ProductRow[]).map(mapProductRow);
+}
+
+// For hand-curated slots (e.g. the homepage's "Shop the Look") where the
+// display order itself is the curation — .in() doesn't guarantee row order
+// matches the input array, so results are re-sorted to match `slugs` here.
+export async function getProductsBySlugs(slugs: string[]): Promise<Product[]> {
+  if (slugs.length === 0) return [];
+  const supabase = createPublicClient();
+  const { data, error } = await supabase.from("products").select(PRODUCT_SELECT).in("slug", slugs).eq("is_active", true);
+  if (error) throw new Error(`getProductsBySlugs: ${error.message}`);
+  const bySlug = new Map((data as unknown as ProductRow[]).map((row) => [row.slug, mapProductRow(row)]));
+  return slugs.flatMap((slug) => {
+    const product = bySlug.get(slug);
+    return product ? [product] : [];
+  });
 }
 
 export async function getCollectionProducts(slug: string): Promise<Product[]> {

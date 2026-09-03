@@ -6,3 +6,5 @@
 [    6863ms] [LOG] [Fast Refresh] done in 1313ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
 [   11803ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
 [   12102ms] [LOG] [Fast Refresh] done in 786ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[   27330ms] [ERROR] Failed to load resource: the server responded with a status of 416 (Requested Range Not Satisfiable) @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/On_Point_motion_2.mp4:0
+[   57026ms] [ERROR] Failed to load resource: the server responded with a status of 416 (Requested Range Not Satisfiable) @ https://res.cloudinary.com/pnssqebo/video/upload/f_auto,q_auto:eco,c_limit,w_1920,eo_6/ONPOINT_FOR_WEBSITE_squished.mp4:0

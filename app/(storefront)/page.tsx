@@ -17,7 +17,7 @@ export default function Home() {
       <FeaturedCollection />
       <div aria-hidden="true" className="h-4 bg-foreground" />
       <ExpressionTeaser />
-      <CategoryDiscovery />
+      {/* <CategoryDiscovery /> */}
       <BespokeTeaser />
       <ActiveTeaser />
       <BrandStatement />
