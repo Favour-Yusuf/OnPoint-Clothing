@@ -25,13 +25,16 @@ export type CloudinaryVideo = {
 
 /**
  * One slide in the homepage hero's rotation — either a still image or a
- * short autoplaying video. A video slide is trimmed to `endSeconds` at
- * delivery time (see lib/cloudinary/video.ts) rather than by re-editing the
- * source file, so it fits the rotator's fixed per-slide display duration.
+ * short autoplaying video. A video slide is optionally trimmed to
+ * `endSeconds` at delivery time (see lib/cloudinary/video.ts) rather than by
+ * re-editing the source file, so a longer source can be shortened to fit the
+ * rotator's fixed per-slide display duration. Omit it to deliver the clip
+ * untrimmed (the rotator still advances on its own fixed timer regardless —
+ * this only controls how much of the file is sent, not how long it's shown).
  */
 export type HeroSlide =
   | ({ kind: "image" } & CloudinaryImage)
-  | ({ kind: "video" } & CloudinaryVideo & { alt: string; endSeconds: number });
+  | ({ kind: "video" } & CloudinaryVideo & { alt: string; endSeconds?: number });
 
 export type ProductColor = {
   name: string;

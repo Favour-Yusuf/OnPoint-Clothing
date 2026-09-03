@@ -57,8 +57,8 @@ export function getCloudinaryVideoPosterUrl(publicId: string, options: Pick<Vide
   return `https://res.cloudinary.com/${cloudName}/video/upload/${transforms}/${publicId}.jpg`;
 }
 
-/** Hero-specific convenience wrapper: full-bleed width, trimmed to `endSeconds`. */
-export function getHeroVideoUrl(publicId: string, endSeconds: number): string {
+/** Hero-specific convenience wrapper: full-bleed width, optionally trimmed to `endSeconds` (omit to deliver the clip untrimmed). */
+export function getHeroVideoUrl(publicId: string, endSeconds?: number): string {
   return getCloudinaryVideoUrl(publicId, { width: HERO_VIDEO_WIDTH, endSeconds });
 }
 

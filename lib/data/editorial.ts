@@ -68,6 +68,13 @@ export const editorialImages = {
       publicId: "Web_11",
       alt: "Two OnPoint models in matching sage-green printed co-ord sets, studio portrait on a red backdrop",
     },
+    {
+      kind: "video",
+      publicId: "WEBSITE_squished",
+      alt: "Close-up of a black floral-textured agbada with red beaded buttons, beach backdrop",
+      // Untrimmed on purpose — this source is 11s and should be delivered
+      // in full, unlike the other two hero video slides above.
+    },
   ] satisfies HeroSlide[],
   aboutHero: {
     publicId: "Pato_web",
