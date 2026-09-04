@@ -3,11 +3,13 @@ import { notFound } from "next/navigation";
 import { getCollection, getCollectionProducts, getAvailableSizes, getAvailableColors } from "@/lib/products";
 import { ShopPageContent } from "@/components/shop/shop-page-content";
 import { filterProducts, type SortOption } from "@/lib/products";
+import { getCloudinaryUrl, isPlaceholder } from "@/lib/cloudinary/image";
 
-// Rendered on-demand rather than statically: the catalog has no
-// revalidation hook, so a statically-prerendered collection page would
-// never reflect a later change without a full redeploy.
-export const dynamic = "force-dynamic";
+// The catalog has no revalidation hook, so this can't be fully static — but
+// force-dynamic re-hit Supabase on every single request. A 5-minute ISR
+// window gets the same "never far from stale" guarantee at a fraction of
+// the database load, serving cached HTML in between revalidations.
+export const revalidate = 300;
 
 export async function generateMetadata({
   params,
@@ -16,8 +18,26 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const collection = await getCollection(slug);
-  if (!collection) return { title: "Collection Not Found" };
-  return { title: collection.name, description: collection.description };
+  if (!collection) return { metadataBase: new URL("https://www.justonpointng.com"), title: "Collection Not Found" };
+
+  const ogImage = isPlaceholder(collection.image.publicId) ? undefined : getCloudinaryUrl(collection.image.publicId, 1200);
+
+  return {
+    metadataBase: new URL("https://www.justonpointng.com"),
+    title: collection.name,
+    description: collection.description,
+    openGraph: {
+      title: collection.name,
+      description: collection.description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: collection.name,
+      description: collection.description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
 }
 
 export default async function CollectionDetailPage({

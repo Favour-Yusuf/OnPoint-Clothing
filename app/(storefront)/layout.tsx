@@ -10,6 +10,9 @@ import { SearchOverlay } from "@/components/layout/search-overlay";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { CartDrawer } from "@/components/cart/cart-drawer";
+import { SkipLink } from "@/components/ui/skip-link";
+import { JsonLd } from "@/components/seo/json-ld";
+import { CONTACT } from "@/lib/contact";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -59,6 +62,21 @@ export const metadata: Metadata = {
   },
 };
 
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "OnPoint Clothing",
+  alternateName: "OnPoint Clothing Nig",
+  url: "https://www.justonpointng.com",
+  logo: "https://www.justonpointng.com/ONPOINTlogo.png",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: CONTACT.phone.display,
+    email: CONTACT.email.display,
+    contactType: "customer service",
+  },
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -66,6 +84,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${montserrat.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
+        <JsonLd data={ORGANIZATION_SCHEMA} />
+        <SkipLink />
         <CartProvider>
           <UIProvider>
             <WishlistProvider>
@@ -73,7 +93,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <MobileNav />
               <SearchOverlay />
               <CartDrawer />
-              <main className="flex-1">{children}</main>
+              <main id="main-content" className="flex-1">{children}</main>
               <Footer />
               <WhatsAppButton />
             </WishlistProvider>

@@ -18,6 +18,25 @@ const nextConfig: NextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
   },
+  // Baseline hardening. Deliberately no Content-Security-Policy here: this
+  // site loads Paystack's inline checkout script (js.paystack.co) plus its
+  // own iframe/connect endpoints for payment, and a wrong CSP risks silently
+  // breaking checkout — that needs its own careful pass with live payment
+  // testing, not a blanket header added alongside everything else here.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

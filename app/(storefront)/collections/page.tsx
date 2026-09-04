@@ -11,10 +11,11 @@ export const metadata: Metadata = {
   description: "Curated collections from OnPoint Clothing.",
 };
 
-// Rendered on-demand rather than statically: the catalog has no
-// revalidation hook, so a statically-prerendered listing would never
-// reflect a later change without a full redeploy.
-export const dynamic = "force-dynamic";
+// The catalog has no revalidation hook, so this can't be fully static — but
+// force-dynamic re-hit Supabase on every single request. A 5-minute ISR
+// window gets the same "never far from stale" guarantee at a fraction of
+// the database load, serving cached HTML in between revalidations.
+export const revalidate = 300;
 
 export default async function CollectionsPage() {
   const collections = await getAllCollections();

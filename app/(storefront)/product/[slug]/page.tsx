@@ -6,6 +6,33 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { ProductDetails } from "@/components/product/product-details";
 import { ProductGrid } from "@/components/product/product-grid";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getCloudinaryUrl, getPrimaryImage, isPlaceholder } from "@/lib/cloudinary/image";
+import type { Product } from "@/lib/types";
+
+const AVAILABILITY_SCHEMA: Record<Product["availability"], string> = {
+  "in-stock": "https://schema.org/InStock",
+  "low-stock": "https://schema.org/LimitedAvailability",
+  "made-to-order": "https://schema.org/PreOrder",
+  "sold-out": "https://schema.org/OutOfStock",
+};
+
+function buildProductSchema(product: Product) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.shortDescription,
+    image: product.images.filter((image) => !isPlaceholder(image.publicId)).map((image) => getCloudinaryUrl(image.publicId, 1200)),
+    offers: {
+      "@type": "Offer",
+      url: `https://www.justonpointng.com/product/${product.slug}`,
+      priceCurrency: product.currency,
+      price: product.price,
+      availability: AVAILABILITY_SCHEMA[product.availability],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -19,8 +46,27 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  if (!product) return { title: "Product Not Found" };
-  return { title: product.name, description: product.shortDescription };
+  if (!product) return { metadataBase: new URL("https://www.justonpointng.com"), title: "Product Not Found" };
+
+  const primaryImage = getPrimaryImage(product.images);
+  const ogImage = isPlaceholder(primaryImage.publicId) ? undefined : getCloudinaryUrl(primaryImage.publicId, 1200);
+
+  return {
+    metadataBase: new URL("https://www.justonpointng.com"),
+    title: product.name,
+    description: product.shortDescription,
+    openGraph: {
+      title: product.name,
+      description: product.shortDescription,
+      images: ogImage ? [ogImage] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.name,
+      description: product.shortDescription,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -32,6 +78,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="bg-background pt-16 lg:pt-20">
+      <JsonLd data={buildProductSchema(product)} />
       <Container className="py-8 sm:py-12">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
           <ProductGallery images={product.images} videos={product.videos} />

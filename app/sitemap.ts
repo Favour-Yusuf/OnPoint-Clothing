@@ -16,6 +16,11 @@ const STATIC_ROUTES = [
   "/about",
 ];
 
+// Legal/utility pages: real, indexable content, but not primary discovery
+// paths — kept separate from STATIC_ROUTES so they can carry a lower
+// priority and changeFrequency without affecting the main routes above.
+const LEGAL_ROUTES = ["/privacy", "/terms", "/returns"];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [products, collections] = await Promise.all([getAllProducts(), getAllCollections()]);
   const lastModified = new Date();
@@ -25,6 +30,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified,
     changeFrequency: path === "" ? "daily" : "weekly",
     priority: path === "" ? 1 : 0.7,
+  }));
+
+  const legalEntries: MetadataRoute.Sitemap = LEGAL_ROUTES.map((path) => ({
+    url: `${BASE_URL}${path}`,
+    lastModified,
+    changeFrequency: "yearly",
+    priority: 0.3,
   }));
 
   const productEntries: MetadataRoute.Sitemap = products.map((product) => ({
@@ -41,5 +53,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...productEntries, ...collectionEntries];
+  return [...staticEntries, ...legalEntries, ...productEntries, ...collectionEntries];
 }

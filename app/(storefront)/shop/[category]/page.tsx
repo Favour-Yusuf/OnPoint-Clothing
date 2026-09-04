@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { filterProducts, getAvailableColors, getAvailableSizes, getCategory, type SortOption } from "@/lib/products";
 import { ShopPageContent } from "@/components/shop/shop-page-content";
+import { getCloudinaryUrl, isPlaceholder } from "@/lib/cloudinary/image";
 
 const VALID_CATEGORIES = ["men", "women", "accessories", "new-arrivals"] as const;
 
@@ -19,7 +20,26 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { category } = await params;
   const copy = COPY[category];
-  return { title: copy?.title ?? "Shop" };
+  const categoryData = await getCategory(category);
+  const ogImage =
+    categoryData && !isPlaceholder(categoryData.image.publicId) ? getCloudinaryUrl(categoryData.image.publicId, 1200) : undefined;
+
+  return {
+    metadataBase: new URL("https://www.justonpointng.com"),
+    title: copy?.title ?? "Shop",
+    description: copy?.description,
+    openGraph: {
+      title: copy?.title ?? "Shop",
+      description: copy?.description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: copy?.title ?? "Shop",
+      description: copy?.description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
 }
 
 export default async function ShopCategoryPage({
