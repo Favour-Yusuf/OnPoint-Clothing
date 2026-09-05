@@ -179,7 +179,7 @@ export const products: Product[] = [
     id: "p-05",
     slug: "royal-crown-fila",
     name: "Royal Crown Fila",
-    price: 145000,
+    price: 125000,
     currency: "NGN",
     categorySlug: "accessories",
     collectionSlugs: ["the-regalia-edit"],
