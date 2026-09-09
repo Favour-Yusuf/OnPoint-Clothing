@@ -108,6 +108,14 @@ export type CartItem = {
   quantity: number;
 };
 
+/**
+ * Which delivery fee bucket an order falls into, resolved at checkout from
+ * country/state (see lib/shipping.ts). "international" carries no fixed fee
+ * yet — see SHIPPING_RATES — so it doubles as a flag for admin to follow up
+ * on a shipping quote, not evidence the customer got free shipping.
+ */
+export type ShippingZone = "lagos-island" | "lagos-mainland" | "nigeria-other" | "international";
+
 export type ShippingAddress = {
   fullName: string;
   address1: string;
@@ -117,6 +125,8 @@ export type ShippingAddress = {
   postalCode: string;
   country: string;
   phone?: string;
+  /** Absent on orders placed before shipping-by-zone existed. */
+  shippingZone?: ShippingZone;
 };
 
 export type Customer = {

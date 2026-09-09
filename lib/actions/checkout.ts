@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { validateCartItems, type CartValidationIssue } from "@/lib/cart/validate";
+import { getShippingZone, SHIPPING_RATES, NIGERIA } from "@/lib/shipping";
 import type { CartItem, ShippingAddress } from "@/lib/types";
 
 export type CheckoutState = {
@@ -23,11 +24,6 @@ export type CheckoutState = {
 };
 
 const REQUIRED_FIELDS = ["email", "fullName", "address1", "city", "state", "postalCode", "country"] as const;
-
-const DELIVERY_FEES: Record<string, number> = {
-  standard: 0,
-  express: 350000, // minor units (₦3,500.00)
-};
 
 const ORDER_CURRENCY = "NGN";
 
@@ -53,6 +49,17 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
     errors.email = "Enter a valid email";
   }
 
+  const country = String(formData.get("country") ?? "").trim();
+  const state = String(formData.get("state") ?? "").trim();
+  const lagosAreaRaw = String(formData.get("lagosArea") ?? "").trim();
+  const lagosArea = lagosAreaRaw === "island" || lagosAreaRaw === "mainland" ? lagosAreaRaw : undefined;
+  // The Lagos Island/Mainland choice only renders in the form once country
+  // + state resolve to Lagos, Nigeria — enforced again here since a server
+  // action can't rely on the client having shown it.
+  if (country === NIGERIA && state === "Lagos" && !lagosArea) {
+    errors.lagosArea = "Required";
+  }
+
   if (Object.keys(errors).length > 0) {
     return { status: "error", message: "Please complete the required fields.", errors };
   }
@@ -73,8 +80,8 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
     return { status: "error", message: `${message} Please review your bag before continuing.` };
   }
 
-  const deliveryId = String(formData.get("delivery") ?? "standard");
-  const shippingFee = DELIVERY_FEES[deliveryId] ?? DELIVERY_FEES.standard;
+  const shippingZone = getShippingZone(country, state, lagosArea);
+  const shippingFee = SHIPPING_RATES[shippingZone].fee ?? 0;
   const subtotal = validation.items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
   const total = subtotal + shippingFee;
 
@@ -83,10 +90,11 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
     address1: String(formData.get("address1")),
     address2: String(formData.get("address2") ?? "") || undefined,
     city: String(formData.get("city")),
-    state: String(formData.get("state")),
+    state,
     postalCode: String(formData.get("postalCode")),
-    country: String(formData.get("country")),
+    country,
     phone: String(formData.get("phone") ?? "") || undefined,
+    shippingZone,
   };
 
   const paymentMethod = String(formData.get("paymentMethod") ?? "paystack");

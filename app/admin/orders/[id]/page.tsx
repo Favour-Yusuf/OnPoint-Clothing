@@ -8,6 +8,7 @@ import { OrderStatusControl } from "@/components/admin/order-status-control";
 import { PaymentStatusControl } from "@/components/admin/payment-status-control";
 import { OrderStatusBadge, PaymentStatusBadge, formatPaymentProvider } from "@/components/admin/status-badge";
 import { MediaImage } from "@/components/ui/media-image";
+import { SHIPPING_RATES } from "@/lib/shipping";
 
 export const metadata: Metadata = {
   title: "Order Detail",
@@ -169,6 +170,16 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
               <p>{order.shippingAddress.country}</p>
               {order.shippingAddress.phone ? <p className="mt-2">{order.shippingAddress.phone}</p> : null}
             </div>
+            {order.shippingAddress.shippingZone ? (
+              <p className="mt-3 font-sans text-xs text-foreground/50">
+                {SHIPPING_RATES[order.shippingAddress.shippingZone].label}
+                {order.shippingAddress.shippingZone === "international" ? (
+                  <span className="text-burgundy-light"> — shipping cost not yet confirmed, follow up with customer</span>
+                ) : (
+                  ` — ${SHIPPING_RATES[order.shippingAddress.shippingZone].eta}`
+                )}
+              </p>
+            ) : null}
           </section>
         </div>
       </div>

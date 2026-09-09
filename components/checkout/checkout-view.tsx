@@ -11,14 +11,10 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ChevronDownIcon, BankIcon, CopyIcon, CheckIcon, ChatIcon } from "@/components/ui/icons";
 import { CONTACT, BANK_TRANSFER } from "@/lib/contact";
+import { COUNTRIES, NIGERIA, NIGERIA_STATES, getShippingZone, SHIPPING_RATES } from "@/lib/shipping";
 import type { CartItem } from "@/lib/types";
 
 const initialState: CheckoutState = { status: "idle" };
-
-const DELIVERY_OPTIONS = [
-  { id: "standard", label: "Standard Shipping", detail: "5–7 business days", price: 0 },
-  { id: "express", label: "Express Shipping", detail: "1–2 business days", price: 3500 },
-] as const;
 
 const PAYMENT_METHODS = [
   { id: "paystack", label: "Pay Online", detail: "Card, bank transfer, or USSD via Paystack" },
@@ -38,15 +34,30 @@ export function CheckoutView() {
   const router = useRouter();
   const { items, subtotal, clear } = useCart();
   const [state, formAction, pending] = useActionState(placeOrder, initialState);
-  const [delivery, setDelivery] = useState<(typeof DELIVERY_OPTIONS)[number]["id"]>("standard");
   const [paymentMethod, setPaymentMethod] = useState<(typeof PAYMENT_METHODS)[number]["id"]>("paystack");
   const [phase, setPhase] = useState<Phase>("form");
   const [phaseMessage, setPhaseMessage] = useState<string | null>(null);
   const openedReferenceRef = useRef<string | null>(null);
   const clearedForBankTransferRef = useRef(false);
 
-  const shipping = DELIVERY_OPTIONS.find((option) => option.id === delivery)?.price ?? 0;
+  // Shipping is resolved from the address, not chosen — see lib/shipping.ts.
+  // Nigeria defaults selected since almost every order ships domestically.
+  const [country, setCountry] = useState<string>(NIGERIA);
+  const [addressState, setAddressState] = useState<string>("");
+  const [lagosArea, setLagosArea] = useState<"island" | "mainland">("island");
+
+  const shippingZone = getShippingZone(country, addressState, lagosArea);
+  const shippingRate = SHIPPING_RATES[shippingZone];
+  // SHIPPING_RATES.fee is minor units (kobo), matching the server-side
+  // convention in lib/actions/checkout.ts — but subtotal here (from
+  // useCart()) is major units (naira), so it needs converting before it's
+  // combined with anything client-side.
+  const shipping = (shippingRate.fee ?? 0) / 100;
   const total = subtotal + shipping;
+  const showLagosArea = country === NIGERIA && addressState === "Lagos";
+  // No zone is ever actually free — a $0 shipping fee only ever means
+  // "international, not priced yet" (see SHIPPING_RATES), never a discount.
+  const shippingDisplay = shippingRate.fee === null ? "To be confirmed" : formatPrice(shipping);
 
   const verifyPayment = useCallback(
     async (reference: string) => {
@@ -200,7 +211,7 @@ export function CheckoutView() {
       <form action={formAction} className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-[1fr_380px]">
         <input type="hidden" name="cartItems" value={JSON.stringify(items)} />
 
-        <MobileOrderSummary items={items} subtotal={subtotal} shipping={shipping} total={total} />
+        <MobileOrderSummary items={items} subtotal={subtotal} shippingDisplay={shippingDisplay} total={total} />
 
         <div className="flex flex-col gap-10">
           <Section index="01" title="Contact">
@@ -213,41 +224,78 @@ export function CheckoutView() {
               <Field label="Address" name="address1" error={state.errors?.address1} className="sm:col-span-2" autoComplete="address-line1" />
               <Field label="Apt, Suite, etc. (optional)" name="address2" autoComplete="address-line2" />
               <Field label="City" name="city" error={state.errors?.city} autoComplete="address-level2" />
-              <Field label="State / Province" name="state" error={state.errors?.state} autoComplete="address-level1" />
+
+              <Select
+                label="Country"
+                name="country"
+                value={country}
+                onChange={(value) => {
+                  setCountry(value);
+                  setAddressState("");
+                }}
+                error={state.errors?.country}
+                autoComplete="country-name"
+              >
+                {COUNTRIES.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Select>
+
+              {country === NIGERIA ? (
+                <Select
+                  label="State"
+                  name="state"
+                  value={addressState}
+                  onChange={setAddressState}
+                  error={state.errors?.state}
+                  autoComplete="address-level1"
+                >
+                  <option value="">Select a state</option>
+                  {NIGERIA_STATES.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </Select>
+              ) : (
+                <Field
+                  label="State / Province"
+                  name="state"
+                  error={state.errors?.state}
+                  autoComplete="address-level1"
+                />
+              )}
+
               <Field label="Postal Code" name="postalCode" error={state.errors?.postalCode} autoComplete="postal-code" />
-              <Field label="Country" name="country" error={state.errors?.country} autoComplete="country-name" />
               <Field label="Phone (optional)" name="phone" type="tel" autoComplete="tel" />
+
+              {showLagosArea ? (
+                <Select
+                  label="Lagos Area"
+                  name="lagosArea"
+                  value={lagosArea}
+                  onChange={(value) => setLagosArea(value as "island" | "mainland")}
+                  error={state.errors?.lagosArea}
+                  className="sm:col-span-2"
+                >
+                  <option value="island">Lagos Island</option>
+                  <option value="mainland">Lagos Mainland</option>
+                </Select>
+              ) : null}
             </div>
           </Section>
 
-          <Section index="03" title="Delivery Method">
-            <div className="flex flex-col gap-3">
-              {DELIVERY_OPTIONS.map((option) => (
-                <label
-                  key={option.id}
-                  className={`flex cursor-pointer items-center justify-between border px-4 py-3 transition-colors ${
-                    delivery === option.id ? "border-burgundy" : "border-foreground/20 hover:border-burgundy-light/50"
-                  }`}
-                >
-                  <span className="flex items-center gap-3">
-                    <input
-                      type="radio"
-                      name="delivery"
-                      value={option.id}
-                      checked={delivery === option.id}
-                      onChange={() => setDelivery(option.id)}
-                      className="h-4 w-4 accent-burgundy"
-                    />
-                    <span>
-                      <span className="block font-sans text-sm text-foreground">{option.label}</span>
-                      <span className="block font-sans text-xs text-foreground/50">{option.detail}</span>
-                    </span>
-                  </span>
-                  <span className="font-sans text-sm text-foreground/70 tabular-nums">
-                    {option.price === 0 ? "Free" : formatPrice(option.price)}
-                  </span>
-                </label>
-              ))}
+          <Section index="03" title="Delivery">
+            <div className="border border-foreground/20 px-4 py-3">
+              <div className="flex items-center justify-between">
+                <span className="font-sans text-sm text-foreground">{shippingRate.label}</span>
+                <span className="font-sans text-sm text-foreground/70 tabular-nums">
+                  {shippingRate.fee === null ? "To be confirmed" : formatPrice(shippingRate.fee / 100)}
+                </span>
+              </div>
+              <p className="mt-1 font-sans text-xs text-foreground/50">{shippingRate.eta}</p>
             </div>
           </Section>
 
@@ -327,7 +375,7 @@ export function CheckoutView() {
               </div>
               <div className="flex justify-between text-foreground/60">
                 <span>Shipping</span>
-                <span className="tabular-nums">{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
+                <span className="tabular-nums">{shippingDisplay}</span>
               </div>
               <div className="flex justify-between border-t border-foreground/10 pt-2 text-base text-foreground">
                 <span>Total</span>
@@ -351,12 +399,12 @@ export function CheckoutView() {
 function MobileOrderSummary({
   items,
   subtotal,
-  shipping,
+  shippingDisplay,
   total,
 }: {
   items: CartItem[];
   subtotal: number;
-  shipping: number;
+  shippingDisplay: string;
   total: number;
 }) {
   const [open, setOpen] = useState(false);
@@ -395,7 +443,7 @@ function MobileOrderSummary({
             </div>
             <div className="flex justify-between text-foreground/60">
               <span>Shipping</span>
-              <span className="tabular-nums">{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
+              <span className="tabular-nums">{shippingDisplay}</span>
             </div>
           </div>
         </div>
@@ -490,6 +538,44 @@ function Field({
           error ? "border-burgundy-light" : "border-foreground/20 focus:border-burgundy-light"
         }`}
       />
+      {error ? <span className="font-sans text-xs text-burgundy-light">{error}</span> : null}
+    </label>
+  );
+}
+
+function Select({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  className = "",
+  autoComplete,
+  children,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  className?: string;
+  autoComplete?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label className={`flex flex-col gap-1.5 ${className}`}>
+      <span className="font-sans text-xs text-foreground/50">{label}</span>
+      <select
+        name={name}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        autoComplete={autoComplete}
+        className={`border bg-transparent px-3 py-2.5 font-sans text-sm text-foreground focus-visible:outline-none ${
+          error ? "border-burgundy-light" : "border-foreground/20 focus:border-burgundy-light"
+        }`}
+      >
+        {children}
+      </select>
       {error ? <span className="font-sans text-xs text-burgundy-light">{error}</span> : null}
     </label>
   );
