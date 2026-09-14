@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Geist_Mono, Cormorant_Garamond } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "../globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { UIProvider } from "@/lib/ui-context";
@@ -99,6 +100,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </WishlistProvider>
           </UIProvider>
         </CartProvider>
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        ) : null}
       </body>
     </html>
   );
