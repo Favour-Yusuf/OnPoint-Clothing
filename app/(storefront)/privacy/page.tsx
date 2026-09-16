@@ -154,8 +154,8 @@ export default function PrivacyPage() {
         </ul>
         <p>
           To exercise any of these, email{" "}
-          <a href={CONTACT.email.href} className="text-foreground underline decoration-burgundy underline-offset-4 hover:text-burgundy-light">
-            {CONTACT.email.display}
+          <a href={CONTACT.privacy.href} className="text-foreground underline decoration-burgundy underline-offset-4 hover:text-burgundy-light">
+            {CONTACT.privacy.display}
           </a>
           . We will respond within 30 days. We may ask you to confirm your identity first so we do not release your
           data to the wrong person. There is no charge for this unless a request is clearly excessive or repetitive.
@@ -210,8 +210,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           Email:{" "}
-          <a href={CONTACT.email.href} className="text-foreground underline decoration-burgundy underline-offset-4 hover:text-burgundy-light">
-            {CONTACT.email.display}
+          <a href={CONTACT.privacy.href} className="text-foreground underline decoration-burgundy underline-offset-4 hover:text-burgundy-light">
+            {CONTACT.privacy.display}
           </a>
         </p>
         <p>

@@ -1,5 +1,5 @@
 import "server-only";
-import { sendAdminEmail } from "@/lib/notifications/channels/email";
+import { sendBespokeAdminEmail } from "@/lib/notifications/channels/email";
 import { sendAdminWhatsApp } from "@/lib/notifications/channels/whatsapp";
 import type { BespokeRequestNotification } from "@/lib/notifications/types";
 
@@ -29,5 +29,5 @@ function buildWhatsApp(request: BespokeRequestNotification): string {
 
 /** Fires both admin notifications concurrently. Never throws — each channel already handles its own failures. */
 export async function notifyAdminOfBespokeRequest(request: BespokeRequestNotification): Promise<void> {
-  await Promise.allSettled([sendAdminEmail(buildEmail(request)), sendAdminWhatsApp(buildWhatsApp(request))]);
+  await Promise.allSettled([sendBespokeAdminEmail(buildEmail(request)), sendAdminWhatsApp(buildWhatsApp(request))]);
 }

@@ -1,10 +1,12 @@
 "use server";
 
 import { randomUUID } from "node:crypto";
+import { after } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { validateCartItems, type CartValidationIssue } from "@/lib/cart/validate";
 import { getShippingZone, SHIPPING_RATES, NIGERIA } from "@/lib/shipping";
+import { notifyAdminOfBankTransferOrder } from "@/lib/notifications/bank-transfer";
 import type { CartItem, ShippingAddress } from "@/lib/types";
 
 export type CheckoutState = {
@@ -164,10 +166,30 @@ export async function placeOrder(_prevState: CheckoutState, formData: FormData):
   }
 
   if (isBankTransfer) {
-    // No admin notification fires here on purpose — the customer is sent
-    // straight to WhatsApp with their order number to send the receipt,
-    // which is the actual real-time signal to the OnPoint team. The order
-    // still sits in admin as a normal pending/unpaid order either way.
+    // The customer is also sent straight to WhatsApp with their order
+    // number to send the receipt, which stays the fastest real-time signal
+    // — this email/WhatsApp alert is a backstop so nothing relies solely on
+    // them remembering to message it. Payment is NOT confirmed yet: the
+    // order sits pending until admin manually verifies the transfer.
+    after(() =>
+      notifyAdminOfBankTransferOrder({
+        orderNumber: order.order_number,
+        customerName: shippingAddress.fullName,
+        customerEmail: email,
+        customerPhone: shippingAddress.phone ?? null,
+        total,
+        items: validation.items.map((item) => ({
+          productName: item.productName,
+          size: item.size,
+          color: item.color,
+          quantity: item.quantity,
+          totalPrice: item.unitPrice * item.quantity,
+        })),
+        shippingAddress,
+        adminUrl: `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/admin/orders/${order.id}`,
+      })
+    );
+
     return {
       status: "bank_transfer",
       bankTransfer: { orderNumber: order.order_number, total },
