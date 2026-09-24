@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDownIcon, CheckIcon } from "@/components/ui/icons";
 import { getPrimaryImage } from "@/lib/cloudinary/image";
 import { WishlistButton } from "@/components/product/wishlist-button";
+import { SizeGuide } from "@/components/product/size-guide";
 
 const AVAILABILITY_LABEL: Record<Product["availability"], string> = {
   "in-stock": "In Stock",
@@ -130,9 +131,7 @@ export function ProductDetails({ product }: { product: Product }) {
       <div ref={sizeSectionRef}>
         <div className="flex items-center justify-between">
           <p className="font-sans text-xs font-light tracking-[0.15em] text-foreground/60 uppercase">Size</p>
-          <button type="button" className="font-sans text-xs text-foreground/50 underline hover:text-foreground">
-            Size Guide
-          </button>
+          <SizeGuide sizes={product.sizes} />
         </div>
         <div className="mt-3 flex flex-wrap gap-2">
           {product.sizes.map((size) => {
